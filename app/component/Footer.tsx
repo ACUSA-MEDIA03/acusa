@@ -52,6 +52,8 @@
 
 
 import { Instagram, Facebook, X, Linkedin } from "lucide-react"
+import { FaFacebookF, FaTiktok, } from "react-icons/fa";
+import { BsSnapchat } from "react-icons/bs";
 import Link from "next/link"
 
 export default function Footer(): JSX.Element {
@@ -71,7 +73,7 @@ export default function Footer(): JSX.Element {
                                     target="_blank" 
                                     href="https://www.tiktok.com/@acusamedia?_t=8j75ANdvYVq&_r=1"
                                 > 
-                                    <Facebook /> 
+                                    <FaTiktok /> 
                                 </Link>
                                 <Link 
                                     className='border lg:border-[gray] hover:border-[#25d366] hover:bg-[#25d366] transition-all ease-in-out w-6 h-6 rounded-full grid place-content-center p-[20px]' 
@@ -85,7 +87,7 @@ export default function Footer(): JSX.Element {
                                     target="_blank" 
                                     href=""
                                 > 
-                                    <X /> 
+                                    <BsSnapchat/> 
                                 </Link>
                                 <Link 
                                     className='border lg:border-[gray] hover:border-[#c32aa3] hover:bg-[#c32aa3] transition-all ease-in-out w-6 h-6 rounded-full grid place-content-center p-[20px]' 
