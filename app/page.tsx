@@ -1,13 +1,21 @@
 import Image from "next/image";
+// components
 import NavBar from "./component/Navbar";
-
-import BannerImg from "@/public/Banner/banner.jpg";
-import Animation from "./component/EventAnimation";
+import Footer from "./component/Footer";
 import Button from "./component/Button";
 import Card from "./component/Card"
 import EventCards from "./component/EventCards";
-import Events from "@/public/data/Events";
-import Footer from "./component/Footer";
+import ProfileCard from "./component/ProfileCard";
+
+// Data Objects
+import {Events} from "@/public/data/Events";
+
+// Images
+import BannerImg from "@/public/Banner/banner.jpg";
+import Animation from "@/public/Animation/animation.gif"
+import President from "@/public/Executives/President.jpg"
+import VicePresident from "@/public/Executives/Vice_President.jpg"
+
 export default function Home() {
   return (
     <>
@@ -130,10 +138,43 @@ As elected representatives, we serve as a vital link students, faculty, and admi
         </div>
 
         <div className="lg:col-span-2 lg:grid hidden place-content-center lg:mt-0 mt-5">
-          {/* <Image  src={Animation} alt="" className="lg:w-162.5"/> */}
+          <Image  src={Animation} alt="" className="lg:w-162.5"/>
         </div>
       </div>
 
+      
+       {/* Executives */}
+      <div className="lg:p-10 p-2.5 flex lg:flex-row flex-col bg-[#dfa41cda] text-white gap-4">
+        {/* left */}
+        <div className="flex flex-col justify-center items-left lg:p-5 space-y-3 p-[10px] basis-[50%]">
+          <b className="font-rubik lg:text-[52px] text-[30px]">
+            Meet The Central Executive Committee
+          </b>
+
+          <p
+            className="font-grotesk leading-8 text-[14px]"
+            style={{ whiteSpace: "pre-wrap" }}
+          >
+            {`Welcome to the heart of student advocacy and empowerment at Ajayi Crowther University. The Student Assembly Body is a dedicated team of elected student leaders committed to amplifying the voices,interests, and concerns of the diverse student body.`}
+          </p>
+
+          {/* Button */}
+          <div className="border lg:w-[30%] w-[50%] grid mt-2">
+            <Button text={`Meet The Team ...`} bgcolor='yellow' />
+          </div>
+          {/* Button */}
+        </div>
+        {/* left */}
+
+        {/* right */}
+        <div className="lg:grid lg:grid-cols-2 flex flex-col gap-[20px] p-3 basis-[60%]">
+             {/* Profile Card */}
+            <ProfileCard name="Ayo Odunayo (Joba)" position="President" image={President}/>
+            <ProfileCard name="Anokwute Victor" position="Vice President" image={VicePresident}/>
+             {/* Profile Card */}
+        </div>
+        {/* right */}
+      </div>
       
       <Footer />
     </>  
