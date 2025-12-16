@@ -3,9 +3,9 @@ import Image from "next/image";
 import NavBar from "./component/Navbar";
 import Footer from "./component/Footer";
 import Button from "./component/Button";
-import Card from "./component/Card"
-import EventCards from "./component/EventCards";
-import ProfileCard from "./component/ProfileCard";
+import Card from "./component/Card/Card"
+import EventCards from "./component/Card/EventCards";
+import ProfileCard from "./component/Card/ProfileCard";
 
 // Data Objects
 import {Events} from "@/public/data/Events";

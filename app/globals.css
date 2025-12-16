@@ -75,3 +75,23 @@ body {
   -webkit-backdrop-filter: blur(3.3px);
   border: 1px solid rgba(249, 249, 249, 0.548);
 }
+
+#ripple {
+  animation-name: ripple;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes ripple {
+  0% {
+    box-shadow: 0 0 0 0 #fff4, 0 0 0 0 #fff4;
+  }
+
+  80% {
+    box-shadow: 0 0 0 6px #fff0, 0 0 0 14px #fff0;
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 #fff0, 0 0 0 0 #fff0;
+  }
+}
