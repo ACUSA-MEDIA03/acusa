@@ -6,6 +6,7 @@ const  grotesk = Space_Grotesk({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
   variable: '--font-grotesk',
+  fallback: ["system-ui", "sans-serif"],
   display: 'swap',
 })
 

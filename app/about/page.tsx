@@ -30,7 +30,7 @@ export default function About() {
             {/* HERO Section*/}
          <div
         className="h-[50vh] bg-no-repeat bg-cover bg-center"
-        style={{ backgroundImage: `url(${Banner})` }}>
+        style={{ backgroundImage: `url(${Banner.src})` }}>
         <div className="flex justify-center flex-col px-5 lg:px-20 py-32 text-white h-full bg-black/40 ">
           <div className="max-w-4xl space-y-4 lg:space-y-6 pt-12">
             <h1 className="font-bold text-4xl lg:text-6xl leading-tight ">
@@ -58,13 +58,13 @@ export default function About() {
           </h2>
         </div>
 
-        {/* Content Grid */}
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
+    {/* Content Grid */}
+<div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
   {/* Image Grid */}
   <div className="w-full lg:w-1/2">
     <div className="grid grid-cols-4 grid-rows-2 auto-rows-[150px] lg:auto-rows-[260px] gap-3 lg:gap-5">
 
-      <div className="relative col-span-3">
+      <div className="relative col-span-3 h-[150px] lg:h-[260px]">
         <Image
           src={Frame270}
           alt="Students in a lecture hall"
@@ -73,7 +73,7 @@ export default function About() {
         />
       </div>
 
-      <div className="relative">
+      <div className="relative h-[150px] lg:h-[260px]">
         <Image
           src={Frame272}
           alt="Students in a lecture hall"
@@ -82,7 +82,7 @@ export default function About() {
         />
       </div>
 
-      <div className="relative col-span-1">
+      <div className="relative col-span-1 h-[150px] lg:h-[260px]">
         <Image
           src={Frame273}
           alt="Students in a lecture hall"
@@ -91,7 +91,7 @@ export default function About() {
         />
       </div>
 
-      <div className="relative col-span-3">
+      <div className="relative col-span-3 h-[150px] lg:h-[260px]">
         <Image
           src="/About/Frame275.png"
           alt="Students in discussion"
@@ -102,6 +102,7 @@ export default function About() {
 
     </div>
   </div>
+
 
 
           {/* Text Content */}

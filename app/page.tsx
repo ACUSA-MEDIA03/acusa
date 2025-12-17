@@ -22,7 +22,10 @@ export default function Home() {
       <NavBar />
         <div
         className={`lg:h-screen grid bg-no-repeat bg-cover bg-center`}
-        style={{ backgroundImage: `url(${BannerImg})` }}
+        style={{backgroundImage: `url(${BannerImg.src})`}}
+       
+
+
       >
         <div className="overlay flex justify-center flex-col lg:p-17.5 px-5 py-30 text-white">
           <div className="lg:space-y-6 space-y-4">
@@ -167,7 +170,7 @@ As elected representatives, we serve as a vital link students, faculty, and admi
         {/* left */}
 
         {/* right */}
-        <div className="lg:grid lg:grid-cols-2 flex flex-col gap-[20px] p-3 basis-[60%]">
+        <div className="lg:grid lg:grid-cols-2 flex flex-col gap-5 p-3 basis-[60%]">
              {/* Profile Card */}
             <ProfileCard name="Ayo Odunayo (Joba)" position="President" image={President}/>
             <ProfileCard name="Anokwute Victor" position="Vice President" image={VicePresident}/>
