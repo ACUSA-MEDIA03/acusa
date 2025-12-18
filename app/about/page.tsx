@@ -19,15 +19,16 @@ import Frame272 from "@/public/About/Frame272.png"
 import Frame273 from '@/public/About/Frame273.png'
 import Frame275 from '@/public/About/Frame275.png'
 export default function About() {
-    const [category, setCategory] = useState("Executive");
+  
+  const [category, setCategory] = useState("Executive");
   const filteredLeaders = Leaders.filter((leader) => leader.tag === category);
   const filteredTeam = Team;
     return (
         <>
         <div className="min-h-screen">
-        <Navbar className="fixed pb-2" />
+        <Navbar />
                 
-            {/* HERO Section*/}
+        {/* HERO Section*/}
          <div
         className="h-[50vh] bg-no-repeat bg-cover bg-center"
         style={{ backgroundImage: `url(${Banner.src})` }}>
@@ -64,7 +65,7 @@ export default function About() {
   <div className="w-full lg:w-1/2">
     <div className="grid grid-cols-4 grid-rows-2 auto-rows-[150px] lg:auto-rows-[260px] gap-3 lg:gap-5">
 
-      <div className="relative col-span-3 h-[150px] lg:h-[260px]">
+      <div className="relative col-span-3 h-37.5 lg:h-65">
         <Image
           src={Frame270}
           alt="Students in a lecture hall"
@@ -73,7 +74,7 @@ export default function About() {
         />
       </div>
 
-      <div className="relative h-[150px] lg:h-[260px]">
+      <div className="relative h-37.5 lg:h-65">
         <Image
           src={Frame272}
           alt="Students in a lecture hall"
@@ -82,7 +83,7 @@ export default function About() {
         />
       </div>
 
-      <div className="relative col-span-1 h-[150px] lg:h-[260px]">
+      <div className="relative col-span-1 h-37.5 lg:h-65">
         <Image
           src={Frame273}
           alt="Students in a lecture hall"
@@ -91,7 +92,7 @@ export default function About() {
         />
       </div>
 
-      <div className="relative col-span-3 h-[150px] lg:h-[260px]">
+      <div className="relative col-span-3 h-37.5 lg:h-65">
         <Image
           src="/About/Frame275.png"
           alt="Students in discussion"
@@ -102,9 +103,6 @@ export default function About() {
 
     </div>
   </div>
-
-
-
           {/* Text Content */}
           <div className="w-full lg:w-1/2 space-y-6">
             <p className="text-xl lg:text-3xl font-semibold leading-relaxed">
@@ -239,7 +237,7 @@ export default function About() {
                 phone={leader.phone}
                 facebook={leader.facebook}
                 x={leader.x}
-                linkedln={leader.linkedin}
+                linkedlin={leader.linkedlin}
                 faculty={leader.faculty}
                 department={leader.department}
               />
