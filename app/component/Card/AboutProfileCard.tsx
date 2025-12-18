@@ -45,14 +45,14 @@ function ProfileCard({
       {/* Profile Card */}
       <div
         onClick={openModal}
-        className="rounded-tr-[20px] rounded-bl-[20px] flex relative lg:h-[450px] h-[420px] items-end justify-center p-2 bg-cover bg-center bg-no-repeat cursor-pointer transition-transform hover:scale-105"
+        className="rounded-br-[20px] rounded-bl-[20px] flex relative lg:h-112.5 h-105 items-end justify-center p-2 bg-cover bg-center bg-no-repeat cursor-pointer transition-transform hover:scale-105"
         style={{ backgroundImage: `url(${image})` }}
       >
         <div
           className="top-0 left-0 absolute h-full w-full p-2 flex items-end"
           style={{ background: `rgba(0,0,0,0.3)` }}
         >
-          <div className="border flex items-center flex-col border-white w-full py-[15px] px-[16px] glassmorphism_white rounded-bl-[13px] rounded-tr-[13px] bottom-0">
+          <div className="border flex items-center flex-col border-white w-full py-3.75 px-4 glassmorphism_white rounded-bl-[13px] rounded-br-[13px] bottom-0">
             <b className="font-rubik text-main text-[20px]">{name}</b>
             <p className="font-grotesk text-black text-[15px]">{position}</p>
           </div>
@@ -85,6 +85,7 @@ function ProfileCard({
                   src={fullImage || image}
                   alt={name}
                   className="w-full h-full object-cover"
+                  fill
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/90 via-black/50 to-transparent p-6">
                   <h2 className="text-white text-3xl font-bold mb-1">{name}</h2>
