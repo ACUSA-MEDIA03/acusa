@@ -22,11 +22,7 @@ export default function Home() {
       <NavBar />
         <div
         className={`lg:h-screen grid bg-no-repeat bg-cover bg-center`}
-        style={{backgroundImage: `url(${BannerImg.src})`}}
-       
-
-
-      >
+        style={{backgroundImage: `url(${BannerImg.src})`}}>
         <div className="overlay flex justify-center flex-col lg:p-17.5 px-5 py-30 text-white">
           <div className="lg:space-y-6 space-y-4">
             <p className="font-grotesk lg:text-[30px] text-[15px] ">
@@ -44,8 +40,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-
        {/* What About Us */}
       <div className="lg:p-10 p-5 grid lg:grid-cols-2 bg-main text-white gap-4">
         {/* left */}
