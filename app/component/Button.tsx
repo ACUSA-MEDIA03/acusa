@@ -14,7 +14,7 @@ export default function Button({ text, bgcolor = 'main' }: ButtonProps) {
   return (
     <button
       className="relative inline-flex items-center justify-center
-      px-[16px] lg:py-[23px] py-[19px]
+      px-4 lg:py-5.75 py-4.75
       overflow-hidden font-medium text-white
       transition duration-300 ease-out
       group cursor-pointer"
