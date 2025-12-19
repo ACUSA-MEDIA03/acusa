@@ -5,12 +5,16 @@ import Image from "next/image"
 import Navbar from "../component/Navbar"
 import Footer from "../component/Footer"
 
-import { Leaders, Team } from "@/public/data/Leader"
-import { MissVision } from "@/public/data/AboutUs"
 
+import { Leaders, Team } from "@/assets/data/Leader"
+
+import { MissVision } from "@/assets/data/AboutUs"
 import MissVisionCard from "../component/Card/MissVissionCard"
 import ProfileCard from "../component/Card/AboutProfileCard"
 
+import Banner from "@/assets/Banner/all.jpg"
+import Acusa from "@/assets/Logo/logo.png"
+import Acusa_Media from "@/assets/Logo/media.jpg"
 export default function About() {
   
   const [category, setCategory] = useState("Executive");
@@ -24,7 +28,7 @@ export default function About() {
         {/* HERO Section*/}
          <div
         className="h-[50vh] bg-no-repeat bg-cover bg-center"
-        style={{ backgroundImage: `url("/Banner/all.jpg")` }}>
+        style={{ backgroundImage: `url(${Banner.src})` }}>
         <div className="flex justify-center flex-col px-5 lg:px-20 py-32 text-white h-full bg-black/40 ">
           <div className="max-w-4xl space-y-4 lg:space-y-6 pt-12">
             <h1 className="font-bold text-4xl lg:text-6xl leading-tight ">
@@ -120,7 +124,7 @@ export default function About() {
           {/* Logo */}
           <div className="flex justify-center items-center">
             <Image
-              src="/Logo/logo.png"
+              src={Acusa}
                 alt="ACUSA Logo"
                 width={400}
                 height={400}
@@ -251,7 +255,7 @@ export default function About() {
 
   <div className="relative">
     <Image
-      src="/Logo/media.jpg"
+      src={Acusa_Media}
       alt="ACUSA Media Logo"
       width={192}
       height={192}

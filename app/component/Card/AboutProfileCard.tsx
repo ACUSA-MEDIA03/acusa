@@ -53,7 +53,7 @@ export default function ProfileCard({
       <div
               // onClick={() => setIsModalOpen(true)}
               onClick={openModal}
-        className="group relative h-[420px] cursor-pointer overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
+        className="group relative h-105 cursor-pointer overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
       >
         {/* Background */}
         <div
@@ -62,7 +62,7 @@ export default function ProfileCard({
         />
 
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" />
 
         {/* Content */}
         <div className="absolute bottom-0 w-full p-4">
@@ -77,12 +77,11 @@ export default function ProfileCard({
         </div>
       </div>
 
-      {/* ---------- MODAL ---------- */}
+      {/* MODAL  */}
       {isModalOpen && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-4"
-                  //   onClick={() => setIsModalOpen(false)}
-                  onClick={closeModal}
+           onClick={closeModal}
         >
           <div
             onClick={(e) => e.stopPropagation()}
@@ -90,7 +89,6 @@ export default function ProfileCard({
           >
             {/* Close */}
             <button
-              // onClick={() => setIsModalOpen(false)}
               onClick={closeModal}
               className="absolute right-4 top-4 z-20 rounded-full bg-white/90 p-2 shadow hover:bg-gray-100"
             >
@@ -98,7 +96,7 @@ export default function ProfileCard({
             </button>
 
             {/* Header Image */}
-            <div className="relative h-[340px]">
+            <div className="relative h-85">
               <Image
                 src={fullImage || image}
                 alt={name}
@@ -106,7 +104,7 @@ export default function ProfileCard({
                 className="object-cover"
               />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
+              <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
                 <h2 className="text-3xl font-bold text-white">{name}</h2>
                 <p className="text-sub text-lg">{position}</p>
 

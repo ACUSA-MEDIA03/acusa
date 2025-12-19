@@ -1,11 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { useRef, useState } from "react";
 import Link from "next/link";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { CiCircleRemove } from "react-icons/ci";
-import Logo from '@/public/Logo/logo.png'
-import Image from "next/image";
+import Logo from '@/assets/Logo/logo.png'
 
 type ActivePage =
   | ""
@@ -13,7 +13,6 @@ type ActivePage =
   | "gallery"
   | "publication"
   | "feedback";
-
 interface NavbarProps {
   active?: ActivePage;
 }

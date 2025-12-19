@@ -9,16 +9,17 @@ import EventCards from "./component/Card/EventCards";
 import ProfileCard from "./component/Card/ProfileCard";
 
 // Data Objects
-import {Events} from "@/public/data/Events";
+import {Events} from "@/assets/data/Events";
 
-
+import Banner from "@/assets/Banner/banner.jpg"
+import Animation from "@/assets/Animation/animation.gif"
 export default function Home() {
   return (
     <>
       <NavBar />
         <div
         className={`lg:h-screen grid bg-no-repeat bg-cover bg-center`}
-        style={{backgroundImage: `url("/Banner/banner.jpg")`}}>
+        style={{backgroundImage: `url(${Banner.src})`}}>
         <div className="overlay flex justify-center flex-col lg:p-17.5 px-5 py-30 text-white">
           <div className="lg:space-y-6 space-y-4">
             <p className="font-grotesk lg:text-[30px] text-[15px] ">
@@ -132,7 +133,7 @@ As elected representatives, we serve as a vital link students, faculty, and admi
         </div>
 
         <div className="lg:col-span-2 lg:grid hidden place-content-center lg:mt-0 mt-5">
-          <Image  src="/Animation/animation.gif" alt="Calendar Animation" className="lg:w-162.5"/>
+          <Image  src={Animation} alt="Calendar Animation" className="lg:w-162.5"/>
         </div>
       </div>
 
