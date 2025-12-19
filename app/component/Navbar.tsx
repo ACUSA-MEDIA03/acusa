@@ -1,5 +1,3 @@
-
-
 "use client";
 
 import { useRef, useState } from "react";
@@ -58,9 +56,21 @@ export default function Navbar({ active = "" }: NavbarProps) {
           onClick={removeNav}
         />
 
-        <NavItem href="/" label="Home" active={active === ""} />
-        <NavItem href="/about" label="About Us" active={active === "about"} />
-        <NavItem href="/gallery" label="Gallery" active={active === "gallery"} />
+        <NavItem
+            href="/"
+          label="Home"
+          active={active === ""}
+        />
+        <NavItem
+          href="/about"
+          label="About Us"
+          active={active === "about"}
+        />
+        <NavItem
+          href="/gallery"
+          label="Gallery"
+          active={active === "gallery"}
+        />
         <NavItem
           href="/publication"
           label="Publications"

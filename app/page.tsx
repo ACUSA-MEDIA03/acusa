@@ -1,4 +1,5 @@
-import Image from "next/image";
+import  Image from "next/image";
+
 // components
 import NavBar from "./component/Navbar";
 import Footer from "./component/Footer";
@@ -15,6 +16,7 @@ import BannerImg from "@/public/Banner/banner.jpg";
 import Animation from "@/public/Animation/animation.gif"
 import President from "@/public/Executives/President.jpg"
 import VicePresident from "@/public/Executives/Vice_President.jpg"
+
 
 export default function Home() {
   return (
@@ -40,6 +42,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+
        {/* What About Us */}
       <div className="lg:p-10 p-5 grid lg:grid-cols-2 bg-main text-white gap-4">
         {/* left */}
@@ -69,13 +72,13 @@ As elected representatives, we serve as a vital link students, faculty, and admi
           <div className="flex gap-5 flex-col p-2 lg:mb-8">
             <Card
               white
-              number="1"
+              number={1}
               title="Media Coverage"
               text=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa atque
           eum temporibus dolore. Nobis, commodi."
             />
             <Card
-              number="2"
+              number={2}
               title="Media Coverage"
               text=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa atque
           eum temporibus dolore. Nobis, commodi."
@@ -84,13 +87,13 @@ As elected representatives, we serve as a vital link students, faculty, and admi
 
           <div className="flex gap-5 flex-col p-2 lg:mt-8">
             <Card
-              number="3"
+              number={3}
               title="Media Coverage"
               text=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa atque
           eum temporibus dolore. Nobis, commodi."
             />
             <Card
-              number="4"
+              number={4}
               title="Media Coverage"
               text=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa atque
           eum temporibus dolore. Nobis, commodi."
@@ -157,7 +160,7 @@ As elected representatives, we serve as a vital link students, faculty, and admi
 
           {/* Button */}
           <div className="border lg:w-[30%] w-[50%] grid mt-2">
-            <Button text={`Meet The Team ...`} bgcolor='yellow' />
+            <Button text={`Meet The Team ...`} bgcolor='sub' />
           </div>
           {/* Button */}
         </div>
@@ -166,8 +169,15 @@ As elected representatives, we serve as a vital link students, faculty, and admi
         {/* right */}
         <div className="lg:grid lg:grid-cols-2 flex flex-col gap-5 p-3 basis-[60%]">
              {/* Profile Card */}
-            <ProfileCard name="Ayo Odunayo (Joba)" position="President" image={President}/>
-            <ProfileCard name="Anokwute Victor" position="Vice President" image={VicePresident}/>
+          <ProfileCard
+            name="Ayo Odunayo (Joba)"
+            position="President"
+            image={President.src}
+          />
+          <ProfileCard
+            name="Anokwute Victor" 
+            position="Vice President"
+            image={VicePresident.src} />
              {/* Profile Card */}
         </div>
         {/* right */}
