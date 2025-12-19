@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react'
 
 type ButtonProps = {
   text: string
-  bgcolor?: 'blue' | 'main'
+  bgcolor?: 'blue' | 'main' | 'sub'
 }
 
 export default function Button({ text, bgcolor = 'main' }: ButtonProps) {
