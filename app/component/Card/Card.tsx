@@ -5,13 +5,13 @@ interface CardProps {
   text: string;
 }
 
-export default function Card({ white, number, title, text }: CardProps): JSX.Element {
+export default function Card({ white, number, title, text }: CardProps) {
   return (
     <>
       <div className={`basis-[50%] rounded-[10px] ${white ? 'bg-[white]' : 'glass'} flex flex-col p-6.25 justify-center space-y-3`}>
         <span
           id="ripple"
-          className={`w-11.25 h-11.25 ${number === 1 ? 'bg-main' : 'bg-white text-main'} grid place-content-center rounded-full font-rubik-dirt font-[400] text-[20px]`}
+          className={`w-11.25 h-11.25 ${number === 1 ? 'bg-main' : 'bg-white text-main'} grid place-content-center rounded-full font-rubik-dirt font-normal text-[20px]`}
         >
           {number}
         </span>

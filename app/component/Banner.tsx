@@ -5,7 +5,7 @@ interface BannerProps {
   description: string;
 }
 
-export default function Banner({ image, header, description }: BannerProps): JSX.Element {
+export default function Banner({ image, header, description }: BannerProps) {
   return (
     <div
       className="lg:h-[50lvh] lg:p-0 px-1.25 bg-[#0C1657] text-white bg-no-repeat bg-center bg-cover"

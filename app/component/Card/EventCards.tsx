@@ -55,7 +55,7 @@ export default function EventCards({
   time, 
   location, 
   eventTitle 
-}: EventCardsProps): JSX.Element {
+}: EventCardsProps) {
   return (
     <>
       <div className="lg:flex grid lg:divide-x lg:p-2 p-4 divide-[#ebebebb8] drop-shadow-lg bg-white text-main rounded-[15px]">

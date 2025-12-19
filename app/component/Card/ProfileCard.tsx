@@ -4,7 +4,7 @@ export interface ProfileCardProps {
   position: string;
 }
 
-export default function ProfileCard({ image, name, position }: ProfileCardProps): JSX.Element {
+export default function ProfileCard({ image, name, position }: ProfileCardProps) {
   return (
     <div
       className="rounded-[20px] relative lg:h-100 h-67.5 justify-center bg-cover bg-center bg-no-repeat overflow-hidden"

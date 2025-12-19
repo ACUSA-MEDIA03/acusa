@@ -2,7 +2,7 @@ export interface MissVisionProps{
     header: string;
     description: string;
 }
-export default function MissVisionCard({  header, description }: MissVisionProps): JSX.Element {
+export default function MissVisionCard({  header, description }: MissVisionProps) {
     return (
       <div className="bg-white p-6 rounded-lg shadow-md flex  flex-col space-y-4 text-center lg:text-start">
       <h4 className="text-main text-[20px] font-rubik-dirt lg:text-[36px] font-normal">
