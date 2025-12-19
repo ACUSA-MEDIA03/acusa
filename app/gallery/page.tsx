@@ -5,7 +5,9 @@ import Footer from "../component/Footer"
 export default function Gallery() {
     return (
         <>
-            <Navbar />
+        <Navbar />
+        
+        
          <div className="border border-purple-950 grid relative">
         {/* First Row */}
         <div className="grid grid-cols-2 gap-3.25 w-full h-[60vh] ">
@@ -47,7 +49,10 @@ export default function Gallery() {
           Embark on a Journey Through a Gallery Highlighting ACUSA&apos;s
           Excellence
         </h2>
-      </div>
+        </div>
+        
+
+
 
             <div id="footer" className="relative ">
                 <Footer />

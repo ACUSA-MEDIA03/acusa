@@ -11,12 +11,6 @@ import ProfileCard from "./component/Card/ProfileCard";
 // Data Objects
 import {Events} from "@/public/data/Events";
 
-// Images
-import BannerImg from "@/public/Banner/banner.jpg";
-import Animation from "@/public/Animation/animation.gif"
-import President from "@/public/Executives/President.jpg"
-import VicePresident from "@/public/Executives/Vice_President.jpg"
-
 
 export default function Home() {
   return (
@@ -24,7 +18,7 @@ export default function Home() {
       <NavBar />
         <div
         className={`lg:h-screen grid bg-no-repeat bg-cover bg-center`}
-        style={{backgroundImage: `url(${BannerImg.src})`}}>
+        style={{backgroundImage: `url("/Banner/banner.jpg")`}}>
         <div className="overlay flex justify-center flex-col lg:p-17.5 px-5 py-30 text-white">
           <div className="lg:space-y-6 space-y-4">
             <p className="font-grotesk lg:text-[30px] text-[15px] ">
@@ -138,7 +132,7 @@ As elected representatives, we serve as a vital link students, faculty, and admi
         </div>
 
         <div className="lg:col-span-2 lg:grid hidden place-content-center lg:mt-0 mt-5">
-          <Image  src={Animation} alt="" className="lg:w-162.5"/>
+          <Image  src="/Animation/animation.gif" alt="Calendar Animation" className="lg:w-162.5"/>
         </div>
       </div>
 
@@ -146,7 +140,7 @@ As elected representatives, we serve as a vital link students, faculty, and admi
        {/* Executives */}
       <div className="lg:p-10 p-2.5 flex lg:flex-row flex-col bg-[#dfa41cda] text-white gap-4">
         {/* left */}
-        <div className="flex flex-col justify-center items-left lg:p-5 space-y-3 p-[10px] basis-[50%]">
+        <div className="flex flex-col justify-center items-left lg:p-5 space-y-3 p-2.5 basis-[50%]">
           <b className="font-rubik lg:text-[52px] text-[30px]">
             Meet The Central Executive Committee
           </b>
@@ -164,21 +158,18 @@ As elected representatives, we serve as a vital link students, faculty, and admi
           </div>
           {/* Button */}
         </div>
-        {/* left */}
-
-        {/* right */}
         <div className="lg:grid lg:grid-cols-2 flex flex-col gap-5 p-3 basis-[60%]">
              {/* Profile Card */}
           <ProfileCard
             name="Ayo Odunayo (Joba)"
             position="President"
-            image={President.src}
+            image="/Executives/President.jpg"
           />
           <ProfileCard
             name="Anokwute Victor" 
             position="Vice President"
-            image={VicePresident.src} />
-             {/* Profile Card */}
+            image="/Executives/Vice_President.jpg"/>
+
         </div>
         {/* right */}
       </div>

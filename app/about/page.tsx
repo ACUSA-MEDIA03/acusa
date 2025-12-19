@@ -11,14 +11,6 @@ import { MissVision } from "@/public/data/AboutUs"
 import MissVisionCard from "../component/Card/MissVissionCard"
 import ProfileCard from "../component/Card/AboutProfileCard"
 
-import Logo from "@/public/Logo/logo.png"
-import Media from "@/public/Logo/media.jpg"
-import Banner from "@/public/Banner/all.jpg"
-import Frame270 from '@/public/About/Frame270.png'
-// import Frame271 from "@/public/About/Frame271.png"
-import Frame272 from "@/public/About/Frame272.png"
-import Frame273 from '@/public/About/Frame273.png'
-// import Frame275 from '@/public/About/Frame275.png'
 export default function About() {
   
   const [category, setCategory] = useState("Executive");
@@ -32,7 +24,7 @@ export default function About() {
         {/* HERO Section*/}
          <div
         className="h-[50vh] bg-no-repeat bg-cover bg-center"
-        style={{ backgroundImage: `url(${Banner.src})` }}>
+        style={{ backgroundImage: `url("/Banner/all.jpg")` }}>
         <div className="flex justify-center flex-col px-5 lg:px-20 py-32 text-white h-full bg-black/40 ">
           <div className="max-w-4xl space-y-4 lg:space-y-6 pt-12">
             <h1 className="font-bold text-4xl lg:text-6xl leading-tight ">
@@ -68,7 +60,7 @@ export default function About() {
 
       <div className="relative col-span-3 h-37.5 lg:h-65">
         <Image
-          src={Frame270}
+          src="/About/Frame270.png"
           alt="Students in a lecture hall"
           fill
           className="object-cover rounded-lg"
@@ -77,7 +69,7 @@ export default function About() {
 
       <div className="relative h-37.5 lg:h-65">
         <Image
-          src={Frame272}
+          src="/About/Frame272.png"
           alt="Students in a lecture hall"
           fill
           className="object-cover rounded-lg"
@@ -86,7 +78,7 @@ export default function About() {
 
       <div className="relative col-span-1 h-37.5 lg:h-65">
         <Image
-          src={Frame273}
+          src="/About/Frame273.png"
           alt="Students in a lecture hall"
           fill
           className="object-cover rounded-lg"
@@ -128,9 +120,10 @@ export default function About() {
           {/* Logo */}
           <div className="flex justify-center items-center">
             <Image
-              src={Logo}
+              src="/Logo/logo.png"
                 alt="ACUSA Logo"
                 width={400}
+                height={400}
               className="w-48 h-48 lg:w-64 lg:h-64 object-contain"
             />
           </div>
@@ -258,7 +251,7 @@ export default function About() {
 
   <div className="relative">
     <Image
-      src={Media}
+      src="/Logo/media.jpg"
       alt="ACUSA Media Logo"
       width={192}
       height={192}
