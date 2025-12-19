@@ -250,17 +250,24 @@ export default function About() {
     {/* ACUSA Media Section */}
       <section className="px-5 lg:px-20 py-12 lg:py-20">
         {/* Section Header */}
-        <div className="text-center mb-8 lg:mb-12 max-w-5xl mx-auto">
-              <div className="grid justify-center  ">
-            <h2 className="text-2xl lg:text-4xl font-bold mb-4 lg:mb-6"> About ACUSA Media    </h2>
-              <Image 
-                src={Media}
-                alt="ACUSA Media Logo"
-              width={400}
-              className="w-24 h-24 lg:w-48 lg:h-48 object-contain"
-              />
-          </div>
+        <div className="text-center mb-8 lg:mb-12 max-w-5xl mx-auto">        
+    <div className="flex flex-col items-center justify-center text-center gap-4 lg:gap-6 py-8 lg:py-12">
+    <h2 className="text-2xl lg:text-4xl font-bold tracking-tight">
+         About <span className="text-main">ACUSA Media</span>
+  </h2>
 
+  <div className="relative">
+    <Image
+      src={Media}
+      alt="ACUSA Media Logo"
+      width={192}
+      height={192}
+      className="object-contain"
+      priority
+    />
+  </div>
+  <div className="h-1 w-16 rounded-full bg-main opacity-80" />
+</div>
           <p className="text-base lg:text-xl text-gray-700 leading-relaxed">
             ACUSA Media is the official media body for the Ajayi Crowther
             University Student&apos;s Assembly. It has the responsibility of
@@ -301,9 +308,7 @@ export default function About() {
           )}
         </div>
       </section>      
-
                 <Footer />
-                
                 </div>
         </>
     )
