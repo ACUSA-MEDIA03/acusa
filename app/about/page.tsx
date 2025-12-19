@@ -15,6 +15,10 @@ import ProfileCard from "../component/Card/AboutProfileCard"
 import Banner from "@/assets/Banner/all.jpg"
 import Acusa from "@/assets/Logo/logo.png"
 import Acusa_Media from "@/assets/Logo/media.jpg"
+import Frame270 from "@/assets/About/Frame270.png"
+import Frame272 from '@/assets/About/Frame272.png'
+import Frame273 from '@/assets/About/Frame273.png'
+import Frame275 from '@/assets/About/Frame275.png'
 export default function About() {
   
   const [category, setCategory] = useState("Executive");
@@ -64,7 +68,7 @@ export default function About() {
 
       <div className="relative col-span-3 h-37.5 lg:h-65">
         <Image
-          src="/About/Frame270.png"
+          src={Frame270}
           alt="Students in a lecture hall"
           fill
           className="object-cover rounded-lg"
@@ -73,7 +77,7 @@ export default function About() {
 
       <div className="relative h-37.5 lg:h-65">
         <Image
-          src="/About/Frame272.png"
+          src={Frame272}
           alt="Students in a lecture hall"
           fill
           className="object-cover rounded-lg"
@@ -82,7 +86,7 @@ export default function About() {
 
       <div className="relative col-span-1 h-37.5 lg:h-65">
         <Image
-          src="/About/Frame273.png"
+          src={Frame273}
           alt="Students in a lecture hall"
           fill
           className="object-cover rounded-lg"
@@ -91,7 +95,7 @@ export default function About() {
 
       <div className="relative col-span-3 h-37.5 lg:h-65">
         <Image
-          src="/About/Frame275.png"
+          src={Frame275}
           alt="Students in discussion"
           fill
           className="object-cover rounded-lg"
@@ -166,7 +170,7 @@ export default function About() {
 <div className="lg:w-1/3 lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2 p-5 lg:p-0">
   <div className="relative w-full h-65 lg:h-105">
     <Image
-      src="/About/Frame275.png"
+      src={Frame275}
       alt="Students in a lecture hall"
       fill
       className="object-cover rounded-lg lg:rounded-none shadow-xl"

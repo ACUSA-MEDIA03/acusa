@@ -13,6 +13,8 @@ import {Events} from "@/assets/data/Events";
 
 import Banner from "@/assets/Banner/banner.jpg"
 import Animation from "@/assets/Animation/animation.gif"
+import President from "@/assets/Executives/President.jpg"
+import Vice_President from "@/assets/Executives/Vice_President.jpg"
 export default function Home() {
   return (
     <>
@@ -162,14 +164,14 @@ As elected representatives, we serve as a vital link students, faculty, and admi
         <div className="lg:grid lg:grid-cols-2 flex flex-col gap-5 p-3 basis-[60%]">
              {/* Profile Card */}
           <ProfileCard
-            name="Ayo Odunayo (Joba)"
+            name="Bello Emmanuel O"
             position="President"
-            image="/Executives/President.jpg"
+            image={President.src}
           />
           <ProfileCard
-            name="Anokwute Victor" 
+            name="Faleye Gift Ax1 "
             position="Vice President"
-            image="/Executives/Vice_President.jpg"/>
+            image={Vice_President.src} />
 
         </div>
         {/* right */}
