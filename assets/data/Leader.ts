@@ -1,5 +1,4 @@
-
-export interface LeaderProfile{
+export interface LeaderProfile {
   name: string;
   position: string;
   tag?: string;
@@ -18,11 +17,11 @@ export interface LeaderProfile{
 
 const Leaders: LeaderProfile[] = [
   // Executive
- {
+  {
     name: "Bello Emmanuel",
     position: "Executive President",
     tag: "Executive",
-    image: "../Executives/President.jpg",
+    image: "/Executives/President.jpg",
     email: "ayo.odunayo@student.acu.edu.ng",
     phone: "+234 123 456 7890",
     facebook: "https://facebook.com/",
@@ -31,7 +30,7 @@ const Leaders: LeaderProfile[] = [
     linkedin: "https://linkedin.com/in/",
     faculty: "Faculty of Engineering",
     department: "Electrical/Electronics Engineering",
-    level: "500 Level",
+    level: "500",
   },
   {
     name: "Faleye Gift",
@@ -42,11 +41,12 @@ const Leaders: LeaderProfile[] = [
     phone: "+234 813 011 6201",
     facebook: "https://www.facebook.com/share/17tdbtAv6q/?mibextid=wwXIfr",
     x: "https://x.com/_arike_e_?s=21",
-    instagram: "https://www.instagram.com/arike_billions?igsh=MWM1azEybnp1aGd5Zg%3D%3D&utm_source=qr",
+    instagram:
+      "https://www.instagram.com/arike_billions?igsh=MWM1azEybnp1aGd5Zg%3D%3D&utm_source=qr",
     linkedin: "",
     faculty: "Faculty of Nursing Science",
     department: "Nursing Science",
-    level: "400 Level",
+    level: "400",
   },
   {
     name: "Popoola O Jeremiah",
@@ -61,7 +61,7 @@ const Leaders: LeaderProfile[] = [
     linkedin: "https://linkedin.com/in/",
     faculty: " Humanities ",
     department: "Performing arts and music ",
-    level: "400 Level",
+    level: "400",
   },
   {
     name: "Eitokpah C Franklin ",
@@ -74,11 +74,11 @@ const Leaders: LeaderProfile[] = [
     x: "https://x.com/marketwithfeco",
     instagram: "https://instagram.com/justfranklin__",
     linkedin: "https://linkedin.com/in/e.frankl1n",
-    faculty: "MEDICAL LABORATORY SCIENCE",
-    department: "MEDICAL LABORATORY SCIENCE",
-    level: "300 Level",
+    faculty: "Medical Laboratory Science",
+    department: "Medical Laboratory Science",
+    level: "300",
   },
-   {
+  {
     name: "Oduwale Victor",
     position: "Treasurer",
     tag: "Executive",
@@ -91,7 +91,7 @@ const Leaders: LeaderProfile[] = [
     linkedin: "https://linkedin.com/in/",
     faculty: "Social Sciences",
     department: "Economics ",
-    level: "400 Level",
+    level: "400",
   },
   {
     name: "Ayeku A Elizabeth ",
@@ -106,7 +106,7 @@ const Leaders: LeaderProfile[] = [
     linkedin: "",
     faculty: "Humanities ",
     department: "English language ",
-    level: "400 Level",
+    level: "400 ",
   },
   {
     name: "Ajayi B Ayodeji",
@@ -121,9 +121,9 @@ const Leaders: LeaderProfile[] = [
     linkedin: "",
     faculty: "Social Sciences ",
     department: "Peace Studies and Conflict Resolution ",
-    level: "400 Level",
+    level: "400 ",
   },
-    {
+  {
     name: "Itodo O John",
     position: "Sport Director",
     tag: "Executive",
@@ -136,7 +136,7 @@ const Leaders: LeaderProfile[] = [
     linkedin: "https://linkedln.com/John itodo",
     faculty: "Management Sciences ",
     department: "Business administration ",
-    level: "400 Level",
+    level: "400 ",
   },
   {
     name: "Oduyomi T Ayomikun",
@@ -182,7 +182,7 @@ const Leaders: LeaderProfile[] = [
     faculty: "Nursing science ",
     department: "Nursing science ",
     level: "400",
-  },  
+  },
   {
     name: "Ozoudeh J Kamsiyochukwu",
     position: "Public Relations Officer",
@@ -198,7 +198,7 @@ const Leaders: LeaderProfile[] = [
     department: "Mass communication",
     level: "300 ",
   },
-   {
+  {
     name: "Chidolue C Gosife",
     position: "Auditor",
     tag: "Executive",
@@ -215,9 +215,179 @@ const Leaders: LeaderProfile[] = [
   },
 
   // Legislative
+  {
+    name: "Oso O Bamidele",
+    position: "Senator",
+    tag: "Legislative",
+    image: "/Executives/President.jpg",
+    email: "ayo.odunayo@student.acu.edu.ng",
+    phone: "+234 907 031 9559",
+    facebook: "https://facebook.com/",
+    x: "https://x.com/",
+    instagram: "https://instagram.com/",
+    linkedin: "https://linkedin.com/in/",
+    faculty: "Computing Science ",
+    department: "Computer Science ",
+    level: "300 ",
+  },
 
+  {
+    name: "Ayenogun F Titilope",
+    position: "Senator",
+    tag: "Legislative",
+    image: "/Executives/President.jpg",
+    email: "titilopefaith050@gmail.com",
+    phone: "+234 816 521 1540",
+    facebook: "",
+    x: "",
+    instagram: "",
+    linkedin: "",
+    faculty: "Basic Medical Science ",
+    department: "Medical Laboratory Science ",
+    level: "300 ",
+  },
 
-  // Judicaiary 
+  {
+    name: "Craig O Oluwafeyisetan",
+    position: "Senator",
+    tag: "Legislative",
+    image: "/Executives/President.jpg",
+    email: "feyi.adegbite2005@gmail.com",
+    phone: "+234 814 732 7479",
+    facebook: "",
+    x: "",
+    instagram: "",
+    linkedin: "",
+    faculty: "Communication and media studies ",
+    department: "Mass Communication",
+    level: "400 ",
+  },
+  {
+    name: "Ayo-Ajiboye O Jeremiah",
+    position: "Senator",
+    tag: "Legislative",
+    image: "/Executives/President.jpg",
+    email: "ayoajiboyejeremiah06@gmail.com",
+    phone: "+234 704 440 9310",
+    facebook: "",
+    x: "https://x.com/roshie_jerry",
+    instagram: "https:instagram.com/Yourmanjerry_",
+    linkedin: "",
+    faculty: "Engineering ",
+    department: "Civil Engineering",
+    level: "200 ",
+  },
+
+  {
+    name: "Fakoya M Okikiola",
+    position: "Senator",
+    tag: "Legislative",
+    image: "/Executives/President.jpg",
+    email: "fakoyaokikiola2007@gmail.com",
+    phone: "+234 913 172 7885",
+    facebook: "",
+    x: "https://x.com/roshie_jerry",
+    instagram: "https:instagram.com/Okkfak",
+    linkedin: "",
+    faculty: "Educational foundation ",
+    department: "Guidance and counselling",
+    level: "200 ",
+  },
+  {
+    name: "Oduntan I Charity",
+    position: "Senator",
+    tag: "Legislative",
+    image: "/Executives/President.jpg",
+    email: "oduntancharity715@gmail.com",
+    phone: "+234 913 172 7885",
+    facebook: "",
+    x: "https://x.com/roshie_jerry",
+    instagram: "https:instagram.com/Okkfak",
+    linkedin: "",
+    faculty: "Humantites ",
+    department: "English",
+    level: "200 ",
+  },
+  {
+    name: "Oyekunle O Ireoluwamiri ",
+    position: "Senator",
+    tag: "Legislative",
+    image: "/Executives/President.jpg",
+    email: "ayomikunempire@gmail.com",
+    phone: "+234 913 172 7885",
+    facebook: "",
+    x: "https://x.com/Livinwithjolaaa",
+    instagram: "https:instagram.com/livinwitjolaaa",
+    linkedin: "",
+    faculty: "Humantites ",
+    department: "English",
+    level: "300 ",
+  },
+
+  {
+    name: "Sanni O Samuel",
+    position: "Senator",
+    tag: "Legislative",
+    image: "/Executives/President.jpg",
+    email: "samuelsanni906@gmail.com",
+    phone: "+234 707 314 5607",
+    facebook: "",
+    x: "",
+    instagram: "",
+    linkedin: "",
+    faculty: "Humantites ",
+    department: "Performing arts and music",
+    level: "200 ",
+  },
+
+  {
+    name: "Akande F Adeyemisi",
+    position: "Senator",
+    tag: "Legislative",
+    image: "/Executives/President.jpg",
+    email: "akandeadeyemisi8@gmail.com",
+    phone: "+234 913 349 4196",
+    facebook: "",
+    x: "https:x.com/Akande_Yemisi",
+    instagram: "https://instagram.com/adeyemisi.akande",
+    linkedin: "",
+    faculty: "Natural Science ",
+    department: "Physics with Electronics",
+    level: "200 ",
+  },
+
+  {
+    name: "Morakinyo A Shalom",
+    position: "Senator",
+    tag: "Legislative",
+    image: "/Executives/President.jpg",
+    email: "morakshalom@gmail.com",
+    phone: "+234 907 974 1061",
+    facebook: "",
+    x: "https:x.com/Shalom_morak",
+    instagram: "https://instagram.com/shalommorak",
+    linkedin: "",
+    faculty: "Basic Medical Science ",
+    department: "Medical Laboratory Science",
+    level: "200 ",
+  },
+    {
+    name: "Adewale A Deborah",
+    position: "Senator",
+    tag: "Legislative",
+    image: "/Executives/President.jpg",
+    email: "morakshalom@gmail.com",
+    phone: "+234 907 974 1061",
+    facebook: "",
+    x: "https:x.com/oloyebirin",
+    instagram: "https://instagram.com/debbycappuccino",
+    linkedin: "",
+    faculty: "Humanities",
+    department: "History and international Studies",
+    level: "300 ",
+  },
+  // Judicaiary
+
   {
     name: "ACUSA CEC",
     position: "Chief Whip",
@@ -233,7 +403,7 @@ const Leaders: LeaderProfile[] = [
     department: "Computer Science",
     level: "400 ",
   },
-   {
+  {
     name: "ACUSA CEC",
     position: "Treasurer",
     tag: "Judiciary",
@@ -265,7 +435,7 @@ const Leaders: LeaderProfile[] = [
   },
 
   // Appointee
-   {
+  {
     name: "Evidence Alli",
     position: "DLW Hostel Rep",
     tag: "Appointee",
@@ -295,24 +465,35 @@ const Leaders: LeaderProfile[] = [
     department: "Law",
     level: "500 Level",
   },
- 
-]
-
-
+];
 
 const Team: LeaderProfile[] = [
-{
-    name: "Daniel",
-    position: "Team Lead",
+  {
+    name: " Adio K Daniel",
+    position: "Media Head",
+    image: "/Executives/President.jpg",
+    email: "adiodaniel808@gmail.com",
+    phone: "+234 7048 440 287",
+    facebook: "https://facebook.com/",
+    x: "https://x.com/Adio_dan",
+    instagram: "https://instagram.com/",
+    linkedin: "https://linkedin.com/in/",
+    faculty: "social sciences ",
+    department: "Peace studies and conflict resolution  ",
+    level: "400 Level",
+  },
+  {
+    name: "Mgbamoka N Divine ",
+    position: " Content Creator Lead",
     image: "/Executives/President.jpg",
     email: "ayo.odunayo@student.acu.edu.ng",
-    phone: "+234 123 456 7890",
+    phone: "+234 7048 440 287",
     facebook: "https://facebook.com/",
     x: "https://x.com/",
     instagram: "https://instagram.com/",
     linkedin: "https://linkedin.com/in/",
-    faculty: "Faculty of Science",
-    department: "Computer Science",
+    faculty: "Basic Medical Science ",
+    department: "Medical Laboratory Science ",
     level: "400 Level",
   },
   {
@@ -330,17 +511,17 @@ const Team: LeaderProfile[] = [
     level: "400 Level",
   },
   {
-    name: "Samson",
-    position: "Graphics",
+    name: "Uzoechi S Goodness",
+    position: "Social Handler Lead",
     image: "/Executives/President.jpg",
-    email: "ayo.odunayo@student.acu.edu.ng",
-    phone: "+234 123 456 7890",
-    facebook: "https://facebook.com/",
-    x: "https://x.com/",
-    instagram: "https://instagram.com/",
+    email: "lilyylily768@gmail.com",
+    phone: "+234 901 837 0300",
+    facebook: "",
+    x: "https://x.com/nmesoma.ly",
+    instagram: "https://instagram.com/nmesoma.ly",
     linkedin: "https://linkedin.com/in/",
-    faculty: "Faculty of Science",
-    department: "Computer Science",
+    faculty: "Management science",
+    department: "Accounting",
     level: "400 Level",
   },
   {
@@ -357,21 +538,35 @@ const Team: LeaderProfile[] = [
     department: "Computer Science",
     level: "400 Level",
   },
-  
+
   {
-    name: "ACUSA CEC",
-    position: "Public Relations Officer",
+    name: "Mgbmoka N Divine",
+    position: "Lead Content Creator",
     image: "/Executives/President.jpg",
-    email: "ayo.odunayo@student.acu.edu.ng",
-    phone: "+234 123 456 7890",
+    email: "dnmgbamoka@gmail.com",
+    phone: "+234 704 844 0287 ",
     facebook: "https://facebook.com/",
     x: "https://x.com/",
-    instagram: "https://instagram.com/",
+    instagram: "https://instagram.com/yrbestgirl_",
     linkedin: "https://linkedin.com/in/",
     faculty: "Faculty of Science",
     department: "Computer Science",
-    level: "400 Level",
+    level: "400",
   },
-]
+  {
+    name: "Mgbmoka N Divine",
+    position: "Lead Content Creator",
+    image: "/Executives/President.jpg",
+    email: "dnmgbamoka@gmail.com",
+    phone: "+234 704 844 0287 ",
+    facebook: "",
+    x: "",
+    instagram: "https://instagram.com/yrbestgirl_",
+    linkedin: "",
+    faculty: "Basic Medical Science",
+    department: "Medical Laboratory Science",
+    level: "400",
+  },
+];
 
-export {Leaders, Team};
+export { Leaders, Team };
