@@ -50,11 +50,10 @@ export default function ProfileCard({
 
   return (
     <>
-      {/* ---------- PROFILE CARD ---------- */}
+      {/*  PROFILE CARD  */}
       <div
-              // onClick={() => setIsModalOpen(true)}
-              onClick={openModal}
-        className="group relative h-105 cursor-pointer overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
+      onClick={openModal}
+        className="group relative h-105 cursor-pointer overflow-hidden  rounded-bl-[13px] rounded-tr-[13px] shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
       >
         {/* Background */}
         <div
@@ -67,7 +66,7 @@ export default function ProfileCard({
 
         {/* Content */}
         <div className="absolute bottom-0 w-full p-4">
-          <div className="backdrop-blur-md bg-white/80 rounded-xl px-4 py-3 text-center transition-all duration-300 group-hover:bg-white">
+          <div className="backdrop-blur-md bg-white/80 glassmorphism_white rounded-bl-[13px] rounded-tr-[13px] px-4 py-3 text-center transition-all duration-300 group-hover:bg-white">
             <h3 className="font-rubik text-main text-lg font-semibold">
               {name}
             </h3>

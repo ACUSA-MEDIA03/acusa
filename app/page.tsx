@@ -164,12 +164,12 @@ As elected representatives, we serve as a vital link students, faculty, and admi
         <div className="lg:grid lg:grid-cols-2 flex flex-col gap-5 p-3 basis-[60%]">
              {/* Profile Card */}
           <ProfileCard
-            name="Bello Emmanuel O"
+            name="Bello Emmanuel"
             position="President"
             image={President.src}
           />
           <ProfileCard
-            name="Faleye Gift Ax1 "
+            name="Faleye Gift "
             position="Vice President"
             image={Vice_President.src} />
 
