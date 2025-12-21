@@ -7,6 +7,7 @@ import {
   Instagram,
   Linkedin,
 } from "lucide-react";
+// import { BsSnapchat } from "react-icons/bs";
 import Image from "next/image";
 
 interface ProfileCardProps {
@@ -32,9 +33,9 @@ export default function ProfileCard({
   position,
   fullImage,
   tag,
-  department,
-  faculty,
-  level,
+  // department,
+  // faculty,
+  // level,
   email,
   phone,
   facebook,
@@ -119,7 +120,7 @@ export default function ProfileCard({
             {/* Body */}
             <div className="p-6 space-y-6">
               {/* Academic Info */}
-              {(faculty || department || level) && (
+              {/* {(faculty || department || level) && (
                 <section>
                   <h4 className="mb-3 text-lg font-semibold text-gray-900">
                     Academic Information
@@ -130,7 +131,7 @@ export default function ProfileCard({
                     {level && <p><b>Level:</b> {level}</p>}
                   </div>
                 </section>
-              )}
+              )} */}
 
               {/* Contact */}
               {(email || phone) && (
@@ -164,9 +165,9 @@ export default function ProfileCard({
               {/* Socials */}
               {(facebook || x || instagram || linkedin) && (
                 <section>
-                  <h4 className="mb-3 text-lg font-semibold text-gray-900">
+                  {/* <h4 className="mb-3 text-lg font-semibold text-gray-900">
                     Social Media
-                  </h4>
+                  </h4> */}
                   <div className="flex gap-4">
                     {facebook && <SocialIcon href={facebook} color="bg-blue-600"><Facebook /></SocialIcon>}
                     {x && <SocialIcon href={x} color="bg-black"><X /></SocialIcon>}
