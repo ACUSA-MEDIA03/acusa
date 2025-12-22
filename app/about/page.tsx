@@ -2,15 +2,15 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import Navbar from "../component/Navbar"
-import Footer from "../component/Footer"
+import Navbar from "../../component/Navbar"
+import Footer from "../../component/Footer"
 
 
 import { Leaders, Team } from "@/assets/data/Leader"
 
 import { MissVision } from "@/assets/data/AboutUs"
-import MissVisionCard from "../component/Card/MissVissionCard"
-import ProfileCard from "../component/Card/AboutProfileCard"
+import MissVisionCard from "../../component/Card/MissVissionCard"
+import ProfileCard from "../../component/Card/AboutProfileCard"
 
 import Banner from "@/assets/Banner/all.jpg"
 import Acusa from "@/assets/Logo/logo.png"

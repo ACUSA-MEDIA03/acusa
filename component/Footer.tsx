@@ -46,7 +46,7 @@ export default function Footer() {
                                 <Link 
                                     className='border lg:border-[gray] hover:border-[#fffb00bb] hover:bg-[#fffb00bb] transition-all ease-in-out w-6 h-6 rounded-full grid place-content-center p-5' 
                                     target="_blank" 
-                                    href="https://"
+                                    href=""
                                 >
                                     <FaFacebookF /> 
                                 </Link>

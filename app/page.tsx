@@ -1,12 +1,12 @@
 import  Image from "next/image";
 
 // components
-import NavBar from "./component/Navbar";
-import Footer from "./component/Footer";
-import Button from "./component/Button";
-import Card from "./component/Card/Card"
-import EventCards from "./component/Card/EventCards";
-import ProfileCard from "./component/Card/ProfileCard";
+import NavBar from "../component/Navbar";
+import Footer from "../component/Footer";
+import Button from "../component/Button";
+import Card from "../component/Card/Card"
+import EventCards from "../component/Card/EventCards";
+import ProfileCard from "../component/Card/ProfileCard";
 
 // Data Objects
 import {Events} from "@/assets/data/Events";

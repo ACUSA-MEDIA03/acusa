@@ -2,11 +2,9 @@
 
 import { useState } from "react";
 import ReactPaginate from "react-paginate";
-import PublicationCard from "@/app/component/Card/PublicationCard";
-import PodcastCard from "@/app/component/Card/PodcastCard";
+import PublicationCard from "@/component/Card/PublicationCard";
+import PodcastCard from "@/component/Card/PodcastCard";
 import Link from "next/link";
-
-/* ---------------- Types ---------------- */
 
 export interface PublicationItem {
   id: number;
@@ -15,6 +13,7 @@ export interface PublicationItem {
   description: string;
   author?: string;
   image?: string;
+   audioSource?: string;
 }
 
 interface ItemsProps {
@@ -28,14 +27,14 @@ interface PaginatedItemsProps {
   category: string;
 }
 
-/* ---------------- Items Component ---------------- */
+/*  Items Component  */
 
 function Items({ currentItems, category }: ItemsProps) {
   return (
     <div className="w-full space-y-4 flex flex-col justify-center items-center">
       {currentItems.map((item) =>
         category === "Podcasts" ? (
-          <PodcastCard key={item.id} />
+          <PodcastCard key={item.id} audioSource={item.audioSource!}/>
         ) : (
           <Link
             key={item.id}
@@ -56,7 +55,7 @@ function Items({ currentItems, category }: ItemsProps) {
   );
 }
 
-/* ---------------- Pagination Component ---------------- */
+/*  Pagination Component  */
 
 export default function PaginatedItems({
   itemsPerPage,
@@ -77,7 +76,7 @@ export default function PaginatedItems({
 
   return (
     <>
-      <div className="flex flex-col items-center lg:px-[50px] px-2 py-[50px] h-[500px] overflow-auto no-scrollbar divide-y divide-yellow-950">
+      <div className="flex flex-col items-center lg:px-12.5 px-2 py-12.5 h-125 overflow-auto no-scrollbar divide-y divide-yellow-950">
         <Items currentItems={currentPageItems} category={category} />
       </div>
 

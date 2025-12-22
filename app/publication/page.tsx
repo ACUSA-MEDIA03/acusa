@@ -1,14 +1,11 @@
 "use client"
 
 import { useState } from "react"
-import Navbar from "../component/Navbar"
-import Banner from "../component/Banner"
+import Navbar from "../../component/Navbar"
+import Banner from "../../component/Banner"
 import { Categories, Publication } from "@/assets/data/Publication"
-import PaginatedItems from "";
-
-
-/* ---------------- Types ---------------- */
-
+import PaginatedItems from "@/utils/pagination";
+/*  Types  */
 type CategoryType = {
   id: number;
   category: string;
@@ -29,9 +26,9 @@ type PublicationGroup = {
   publications: PublicationItem[];
 };
 
-/* ---------------- Component ---------------- */
+/*  Component  */
 
-const PublicationPage = () => {
+export default function PublicationPage() {
   const [category, setCategory] = useState<string>("Articles");
 
   const publicationGroup = (Publication as PublicationGroup[]).filter(
@@ -49,13 +46,13 @@ const PublicationPage = () => {
       <Banner
         header="Publications"
         description="News & Articles || Everything from articles to letters. All that you need to know happening around the ACU Space."
-        image="/Banner/banner.jpg"
+        image="@/assets/Banner/banner.jpg"
       />
 
       {/* Main Section */}
       <div className="flex flex-col lg:flex-row bg-white">
         {/* Categories */}
-        <div className="basis-[20%] flex lg:flex-col lg:py17.5] lg:px-4 items-center lg:items-stretch gap-4 lg:gap-0 font-rubik">
+        <div className="basis-[20%] flex lg:flex-col lg:py-17.5 lg:px-4 items-center lg:items-stretch gap-4 lg:gap-0 font-rubik">
           {(Categories as CategoryType[]).map((item) => (
             <button
               key={item.id}
@@ -82,4 +79,4 @@ const PublicationPage = () => {
   );
 };
 
-export default PublicationPage;
+
