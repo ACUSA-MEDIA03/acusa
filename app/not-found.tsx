@@ -29,7 +29,7 @@ export default function NotFound() {
           <p className="text-[#808080] max-w-xl mx-auto mb-6 leading-relaxed">
             The <span className="font-semibold text-[#0C1657]">ACUSA ARK</span> —
             the official vehicle of the Ajayi Crowther University Student Assembly —
-            has arrived at this coordinate, but there’s nothing mapped here.
+            has arrived at this coordinate, but there&apos;s nothing mapped here.
           </p>
 
           <p className="text-[#808080] max-w-xl mx-auto mb-10">

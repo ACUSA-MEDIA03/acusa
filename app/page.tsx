@@ -27,7 +27,7 @@ export default function Home() {
             <p className="font-grotesk lg:text-[30px] text-[15px] ">
               Welcome to the ACUSA Website
             </p>
-            <p className="lg:text-[90px]  text-[30px] lg:w-220 place-content-center font-rubik-dirt  font-thin lg:leading-22.5">
+            <p className="lg:text-[90px]  text-[30px] lg:w-220 place-content-center font-rubik  font-thin lg:leading-22.5">
               Ajayi Crowther Student Assembly
             </p>
 

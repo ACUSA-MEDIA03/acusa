@@ -5,6 +5,11 @@
   --main: #0C1657;
   --sub: #D3AE1A;
   --par: #808080;
+
+  /* Font variables (from Next.js fonts) */
+  --font-mont: 'Montserrat', sans-serif;
+  --font-rubik: 'Rubik', sans-serif;
+  --font-grotesk: 'Space Grotesk', sans-serif;  
 }
 
 @theme inline {
@@ -24,7 +29,9 @@
 
 body {
   background: var(--background);
-  font-family:  Arial, Helvetica, sans-serif;
+font-family: var(--font-mont); /* Main font */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
   /* --sub: #D3AE1A; */
 /* Navbar Additional Styling */
