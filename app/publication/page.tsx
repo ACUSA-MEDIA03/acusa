@@ -26,8 +26,6 @@ type PublicationGroup = {
   publications: PublicationItem[];
 };
 
-/*  Component  */
-
 export default function PublicationPage() {
   const [category, setCategory] = useState<string>("Articles");
 
@@ -41,12 +39,11 @@ export default function PublicationPage() {
   return (
     <>
       <Navbar />
-
       {/* Banner */}
       <Banner
         header="Publications"
         description="News & Articles || Everything from articles to letters. All that you need to know happening around the ACU Space."
-        image="@/assets/Banner/banner.jpg"
+        image="/Banner/banner.jpg"
       />
 
       {/* Main Section */}

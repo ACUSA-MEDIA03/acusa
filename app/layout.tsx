@@ -1,28 +1,9 @@
 import type { Metadata } from "next";
-import {  Space_Grotesk, Rubik, Montserrat } from "next/font/google";
+// import {  Space_Grotesk, Rubik, Montserrat } from "next/font/google";
 import "./globals.css";
+import { mont, rubik, grotesk } from "./fonts";
 
-const  grotesk = Space_Grotesk({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-grotesk',
-  fallback: ["system-ui", "sans-serif"],
-  display: 'swap',
-})
 
-const  rubik = Rubik({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-rubik',
-  display: 'swap',
-})
-const mont = Montserrat({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-mont',
-  display: 'swap',
-
-})
 export const metadata: Metadata = {
   title: "Ajayi Crowther University Student Assembly ",
   description: "ACUSA ",
