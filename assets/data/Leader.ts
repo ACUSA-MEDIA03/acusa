@@ -49,7 +49,7 @@ const Leaders: LeaderProfile[] = [
     level: "400",
   },
   {
-    name: "Popoola O Jeremiah",
+    name: "Popoola Jeremiah",
     position: "General Secretary",
     tag: "Executive",
     image: "/Executives/President.jpg",
@@ -64,7 +64,7 @@ const Leaders: LeaderProfile[] = [
     level: "400",
   },
   {
-    name: "Eitokpah C Franklin ",
+    name: "Eitokpah Franklin ",
     position: "Assistant General Secretary",
     tag: "Executive",
     image: "/Executives/President.jpg",
@@ -94,7 +94,7 @@ const Leaders: LeaderProfile[] = [
     level: "400",
   },
   {
-    name: "Ayeku A Elizabeth ",
+    name: "Ayeku Elizabeth ",
     position: "Financial Secretary",
     tag: "Executive",
     image: "/Executives/President.jpg",
@@ -109,7 +109,7 @@ const Leaders: LeaderProfile[] = [
     level: "400 ",
   },
   {
-    name: "Ajayi B Ayodeji",
+    name: "Ajayi Ayodeji",
     position: "Social Director",
     tag: "Executive",
     image: "/Executives/President.jpg",
@@ -124,7 +124,7 @@ const Leaders: LeaderProfile[] = [
     level: "400 ",
   },
   {
-    name: "Itodo O John",
+    name: "Itodo John",
     position: "Sport Director",
     tag: "Executive",
     image: "/Executives/President.jpg",
@@ -139,7 +139,7 @@ const Leaders: LeaderProfile[] = [
     level: "400 ",
   },
   {
-    name: "Oduyomi T Ayomikun",
+    name: "Oduyomi Ayomikun",
     position: "Asst Sport Director",
     tag: "Executive",
     image: "/Executives/President.jpg",
@@ -154,7 +154,7 @@ const Leaders: LeaderProfile[] = [
     level: "300 ",
   },
   {
-    name: "Oluwatosin O Pleasant",
+    name: "Oluwatosin Pleasant",
     position: "Healthcare Director",
     tag: "Executive",
     image: "/Executives/President.jpg",
@@ -169,7 +169,7 @@ const Leaders: LeaderProfile[] = [
     level: "300",
   },
   {
-    name: "Keshinro T Oluwatunmise ",
+    name: "Keshinro Oluwatunmise ",
     position: "Welfare Director",
     tag: "Executive",
     image: "/Executives/President.jpg",
@@ -184,7 +184,7 @@ const Leaders: LeaderProfile[] = [
     level: "400",
   },
   {
-    name: "Ozoudeh J Kamsiyochukwu",
+    name: "Ozoudeh Kamsiyochukwu",
     position: "Public Relations Officer",
     tag: "Executive",
     image: "/Executives/President.jpg",
@@ -199,7 +199,7 @@ const Leaders: LeaderProfile[] = [
     level: "300 ",
   },
   {
-    name: "Chidolue C Gosife",
+    name: "Chidolue Gosife",
     position: "Auditor",
     tag: "Executive",
     image: "/Executives/President.jpg",
@@ -216,7 +216,7 @@ const Leaders: LeaderProfile[] = [
 
   // Legislative
   {
-    name: "Oso O Bamidele",
+    name: "Oso Bamidele",
     position: "Senator",
     tag: "Legislative",
     image: "/Executives/President.jpg",
@@ -232,7 +232,7 @@ const Leaders: LeaderProfile[] = [
   },
 
   {
-    name: "Ayenogun F Titilope",
+    name: "Ayenogun Titilope",
     position: "Senator",
     tag: "Legislative",
     image: "/Executives/President.jpg",
@@ -248,7 +248,7 @@ const Leaders: LeaderProfile[] = [
   },
 
   {
-    name: "Craig O Oluwafeyisetan",
+    name: "Craig Oluwafeyisetan",
     position: "Senator",
     tag: "Legislative",
     image: "/Executives/President.jpg",
@@ -263,7 +263,7 @@ const Leaders: LeaderProfile[] = [
     level: "400 ",
   },
   {
-    name: "Ayo-Ajiboye O Jeremiah",
+    name: "Ayo-Ajiboye Jeremiah",
     position: "Senator",
     tag: "Legislative",
     image: "/Executives/President.jpg",
@@ -279,7 +279,7 @@ const Leaders: LeaderProfile[] = [
   },
 
   {
-    name: "Fakoya M Okikiola",
+    name: "Fakoya Okikiola",
     position: "Senator",
     tag: "Legislative",
     image: "/Executives/President.jpg",
@@ -294,7 +294,7 @@ const Leaders: LeaderProfile[] = [
     level: "200 ",
   },
   {
-    name: "Oduntan I Charity",
+    name: "Oduntan Charity",
     position: "Senator",
     tag: "Legislative",
     image: "/Executives/President.jpg",
@@ -309,7 +309,7 @@ const Leaders: LeaderProfile[] = [
     level: "200 ",
   },
   {
-    name: "Oyekunle O Ireoluwamiri ",
+    name: "Oyekunle Ireoluwamiri ",
     position: "Senator",
     tag: "Legislative",
     image: "/Executives/President.jpg",
@@ -325,7 +325,7 @@ const Leaders: LeaderProfile[] = [
   },
 
   {
-    name: "Sanni O Samuel",
+    name: "Sanni Samuel",
     position: "Senator",
     tag: "Legislative",
     image: "/Executives/President.jpg",
@@ -341,7 +341,7 @@ const Leaders: LeaderProfile[] = [
   },
 
   {
-    name: "Akande F Adeyemisi",
+    name: "Akande Adeyemisi",
     position: "Senator",
     tag: "Legislative",
     image: "/Executives/President.jpg",
@@ -357,7 +357,7 @@ const Leaders: LeaderProfile[] = [
   },
 
   {
-    name: "Morakinyo A Shalom",
+    name: "Morakinyo Shalom",
     position: "Senator",
     tag: "Legislative",
     image: "/Executives/President.jpg",
@@ -372,7 +372,7 @@ const Leaders: LeaderProfile[] = [
     level: "200 ",
   },
     {
-    name: "Adewale A Deborah",
+    name: "Adewale  Deborah",
     position: "Senator",
     tag: "Legislative",
     image: "/Executives/President.jpg",
@@ -387,7 +387,7 @@ const Leaders: LeaderProfile[] = [
     level: "300 ",
   },
    {
-    name: "Babayeju A  Oluwatofunmi",
+    name: "Babayeju Oluwatofunmi",
     position: "Senator",
     tag: "Legislative",
     image: "/Executives/President.jpg",
@@ -402,7 +402,7 @@ const Leaders: LeaderProfile[] = [
     level: "300 ",
   },
     {
-    name: "Oyedeji O  Paul",
+    name: "Oyedeji Paul",
     position: "Senator",
     tag: "Legislative",
     image: "/Executives/President.jpg",
@@ -417,7 +417,7 @@ const Leaders: LeaderProfile[] = [
     level: "300 ",
   },
      {
-    name: "Nnaji O  Juliet",
+    name: "Nnaji  Juliet",
     position: "Senator",
     tag: "Legislative",
     image: "/Executives/President.jpg",
@@ -432,11 +432,11 @@ const Leaders: LeaderProfile[] = [
     level: "300 ",
   },
     {
-    name: "Alli  E Evidence",
+    name: "Alli Evidence",
     position: "Senator",
     tag: "Legislative",
     image: "/Executives/President.jpg",
-    email: "llievidence1@gmail.com",
+    email: "allievidence1@gmail.com",
     phone: "+234 807 888 0249",
     facebook: "",
     x: "",
@@ -447,7 +447,7 @@ const Leaders: LeaderProfile[] = [
     level: "400 ",
   },
   {
-    name: "Alamu E Toluwanimi",
+    name: "Alamu Toluwanimi",
     position: "Senator",
     tag: "Legislative",
     image: "/Executives/President.jpg",
@@ -462,7 +462,7 @@ const Leaders: LeaderProfile[] = [
     level: "400 ",
   },
    {
-    name: "Lawani  A Imisioluwa",
+    name: "Lawani Imisioluwa",
     position: "Senator",
     tag: "Legislative",
     image: "/Executives/President.jpg",
@@ -477,7 +477,7 @@ const Leaders: LeaderProfile[] = [
     level: "400 ",
   },
 {
-    name: "Adekunle R Racheal",
+    name: "Adekunle Racheal",
     position: "Senator",
     tag: "Legislative",
     image: "/Executives/President.jpg",
@@ -491,39 +491,23 @@ const Leaders: LeaderProfile[] = [
     department: "Accounting",
     level: "400 ",
   },
-  {
-    name: "Adekunle R Racheal",
-    position: "Senator",
-    tag: "Legislative",
-    image: "/Executives/President.jpg",
-    email: "rachealrejoice1@gmail.com",
-    phone: "+234 907 951 0334",
-    facebook: "",
-    x: "",
-    instagram: "https://instagram.com/Re.joice657",
-    linkedin: "",
-    faculty: "Management Science",
-    department: "Accounting",
-    level: "400 ",
-  },
-
+  //   {
+  //   name: "Sanmi O Samuel",
+  //   position: "Senator",
+  //   tag: "Legislative",
+  //   image: "/Executives/President.jpg",
+  //   email: "samuelsanni906@gmail.com",
+  //   phone: "+234 707 314 5607",
+  //   facebook: "",
+  //   x: "",
+  //   instagram: "",
+  //   linkedin: "",
+  //   faculty: "Humanities",
+  //   department: "Performing arts and music ",
+  //   level: "200 ",
+  // },
     {
-    name: "Sanmi O Samuel",
-    position: "Senator",
-    tag: "Legislative",
-    image: "/Executives/President.jpg",
-    email: "samuelsanni906@gmail.com",
-    phone: "+234 707 314 5607",
-    facebook: "",
-    x: "",
-    instagram: "",
-    linkedin: "",
-    faculty: "Humanities",
-    department: "Performing arts and music ",
-    level: "200 ",
-  },
-    {
-    name: "Olatunbosun O Elizabeth",
+    name: "Olatunbosun Elizabeth",
     position: "Senator",
     tag: "Legislative",
     image: "/Executives/President.jpg",
@@ -538,7 +522,7 @@ const Leaders: LeaderProfile[] = [
     level: "200 ",
   },
     {
-    name: "Samuel T Igioye",
+    name: "Samuel Igioye",
     position: "Senator",
     tag: "Legislative",
     image: "/Executives/President.jpg",
@@ -569,7 +553,7 @@ const Leaders: LeaderProfile[] = [
     level: "500 ",
   },
      {
-    name: "Iweajunwa O Renata",
+    name: "Iweajunwa Renata",
     position: "Senator",
     tag: "Legislative",
     image: "/Executives/President.jpg",
@@ -585,7 +569,7 @@ const Leaders: LeaderProfile[] = [
   },
 
    {
-    name: "Olaleye A Favour",
+    name: "Olaleye Favour",
     position: "Senator",
     tag: "Legislative",
     image: "/Executives/President.jpg",
@@ -682,7 +666,7 @@ const Leaders: LeaderProfile[] = [
 
 const Team: LeaderProfile[] = [
   {
-    name: " Adio K Daniel",
+    name: " Adio Daniel",
     position: "Media Head",
     image: "/Executives/President.jpg",
     email: "adiodaniel808@gmail.com",
@@ -696,7 +680,7 @@ const Team: LeaderProfile[] = [
     level: "400 Level",
   },
   {
-    name: "Mgbamoka N Divine ",
+    name: "Mgbamoka Divine ",
     position: " Content Creator Lead",
     image: "/Executives/President.jpg",
     email: "ayo.odunayo@student.acu.edu.ng",
@@ -724,7 +708,7 @@ const Team: LeaderProfile[] = [
     level: "400 Level",
   },
   {
-    name: "Uzoechi S Goodness",
+    name: "Uzoechi Goodness",
     position: "Social Handler Lead",
     image: "/Executives/President.jpg",
     email: "lilyylily768@gmail.com",
@@ -753,7 +737,7 @@ const Team: LeaderProfile[] = [
   },
 
   {
-    name: "Mgbmoka N Divine",
+    name: "Mgbmoka Divine",
     position: "Lead Content Creator",
     image: "/Executives/President.jpg",
     email: "dnmgbamoka@gmail.com",
@@ -767,7 +751,7 @@ const Team: LeaderProfile[] = [
     level: "400",
   },
   {
-    name: "Mgbmoka N Divine",
+    name: "Mgbmoka Divine",
     position: "Lead Content Creator",
     image: "/Executives/President.jpg",
     email: "dnmgbamoka@gmail.com",
