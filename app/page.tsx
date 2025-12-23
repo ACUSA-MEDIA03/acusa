@@ -14,7 +14,7 @@ import {Events} from "@/assets/data/Events";
 import Banner from "@/assets/Banner/banner.jpg"
 import Animation from "@/assets/Animation/animation.gif"
 import President from "@/assets/Executives/President.jpg"
-import Vice_President from "@/assets/Executives/Vice_President.jpg"
+import Vice_President from "@/assets/Executives/Vice_President.jpeg"
 export default function Home() {
   return (
     <>
