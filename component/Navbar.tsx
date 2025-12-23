@@ -27,7 +27,7 @@ export default function Navbar({ active = "" }: NavbarProps) {
   return (
     <div
       className={`fixed z-10 w-full flex p-5 lg:px-16 lg:py-10 lg:items-center lg:justify-between
-      ${active === "" ? "text-white" : ""}`}
+      ${active === "" ? "text-sub" : ""}`}
     >
       {/* Logo */}
       <Link href="/">
@@ -91,7 +91,7 @@ export default function Navbar({ active = "" }: NavbarProps) {
   );
 }
 
-/* ---------------- Nav Item Component ---------------- */
+/*  Nav Item Component  */
 
 interface NavItemProps {
   href: string;
