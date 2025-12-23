@@ -21,8 +21,7 @@ export interface PublicationsGroup {
 
 const Categories: Category[] = [
   {
-    id: 1,
-    category: "Articles",
+    id: 1, category: "Articles",
   },
   { id: 2, category: "Newsletters" },
   { id: 3, category: "Official Letters" },

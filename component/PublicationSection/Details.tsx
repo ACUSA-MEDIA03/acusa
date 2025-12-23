@@ -1,10 +1,8 @@
-import { BiArrowBack } from "react-icons/bi";
+import { ArrowRight } from "lucide-react";
 import Link from 'next/link'
 
-interface DetailsProp{
-    letter: string;
-}
-export default function Details({letter}: DetailsProp) {
+
+export default function Details() {
     return (
         <>
               <div className="p-7.5 space-y-9">
@@ -15,7 +13,7 @@ export default function Details({letter}: DetailsProp) {
           href={`/publication`}
           className="flex items-center px-5 py-1.25 gap-2 text-white bg-[#0C1657] rounded-[5px]"
         >
-          <BiArrowBack /> Back
+          <ArrowRight /> Back
         </Link>
       </div>
       {/* Top */}

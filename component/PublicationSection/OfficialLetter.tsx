@@ -3,9 +3,10 @@ import Link from "next/link"
 
 
 interface OfficialLetterProp{
-    letter: string;
+  recipient?: string;
+  ref?: string;
 }
-export default function OfficialLetter({letter}: OfficialLetterProp){
+export default function OfficialLetter({recipient, ref}: OfficialLetterProp){
     return (
         <>
              <div className="p-7.5 space-y-9">
@@ -19,20 +20,19 @@ export default function OfficialLetter({letter}: OfficialLetterProp){
           >
             <BiArrowBack /> Back
           </Link>
-          {/* <p className="font-medium text-[#0C1657]"  >Ref: {letter.ref} ACUSA24/25L104</p> */}
+          <p className="font-medium text-[#0C1657]"  >Ref: {ref} ACUSA24/25L104</p>
         </div>
         {/* Top */}
         {/* left */}
         <div className="space-y-5">
           <div className="">
-            {/* <p>To: {letter.recipient} Fortune Chimebuka Okpala, </p> */}
-             <p>To: {letter} Fortune Chimebuka Okpala, </p>
-                            <p> Faculty of Law, </p>
+            <p>To: {recipient} Fortune Chimebuka Okpala, </p>
+           <p> Faculty of Law, </p>
             <p> Ajayi Crowther University, </p>
             <p> Oyo State. </p>
           </div>
 
-          <p>Dear Fortune,</p>
+          <p>Dear {recipient?.split(" ")[0]} Fortune,</p>
         </div>
         {/* left */}
       </div>
