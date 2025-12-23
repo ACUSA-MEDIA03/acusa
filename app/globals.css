@@ -6,13 +6,15 @@
   --sub: #D3AE1A;
   --par: #808080;
   --font-mont: 'Montserrat', sans-serif;
-  --font-rubik: 'Rubik-Dirt', sans-serif;
+  --font-rubik: 'Rubik Dirt', sans-serif;
   --font-grotesk: 'Space Grotesk', sans-serif;  
 }
 
 @theme inline {
   --color-background: var(--background);
   --font-grotesk: var(--font-grotesk);
+  --font-mont: var(--font-mont);
+  --font-rubik: var(--font-rubik);
   --color-main: var(--main);
   --color-sub: var(--sub);
   --color-par: var(--par);

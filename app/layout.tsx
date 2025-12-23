@@ -21,7 +21,6 @@ const mont = Montserrat({
   weight: ['400', '500', '600', '700'],
   variable: '--font-mont',
   display: 'swap',
-
 })
 export const metadata: Metadata = {
   title: "Ajayi Crowther University Student Assembly ",
