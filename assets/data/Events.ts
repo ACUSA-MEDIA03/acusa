@@ -9,13 +9,13 @@ export interface EventsItem{
 }
  const Events: EventsItem[] =  [
     {
-        date: 9,
+        date: 5,
         suffix: 'th',
-        month: 'May',
-        year: 2025,
-        time: "1:00pm",
-        location: 'Crowther Hall',
-        eventTitle: "R.A.W Praise"
+        month: 'Jan',
+        year: 2026,
+        time: "8:00pm",
+        location: 'Welcome Center',
+        eventTitle: "Resumption"
     },
     {
         date: 23,
