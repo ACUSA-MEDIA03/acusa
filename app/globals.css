@@ -5,8 +5,6 @@
   --main: #0C1657;
   --sub: #D3AE1A;
   --par: #808080;
-
-  /* Font variables (from Next.js fonts) */
   --font-mont: 'Montserrat', sans-serif;
   --font-rubik: 'Rubik-Dirt', sans-serif;
   --font-grotesk: 'Space Grotesk', sans-serif;  
@@ -98,5 +96,70 @@ font-family: var(--font-mont); /* Main font */
 
   100% {
     box-shadow: 0 0 0 0 #fff0, 0 0 0 0 #fff0;
+  }
+}
+/* About us */
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Responsive */
+@media (max-width: 760px) {
+  .scrollNav {
+    padding: 20px;
+  }
+}
+
+
+.no-scrollbar {
+  -mss-overflow-style: none;
+  scrollbar-width: none; 
+}
+
+
+/* mask */
+.middle{
+  mask-image: url('/Gallery/middle.png');
+  -webkit-mask-image: url('/Gallery/middle.png');
+  mask-size: contain;
+  mask-position: center;
+  mask-repeat: no-repeat;
+}
+.middle,
+.topleft,
+.topright,
+.bottomleft,
+.bottomright {
+  mask-size: cover;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  &.middle{
+    mask-image: url('/Gallery/middle.png');
+    -webkit-mask-image: url('/Gallery/middle.png');
+  }
+  
+  &.topleft {
+    mask-image: url('/Gallery/tl.png');
+    -webkit-mask-image: url('/Gallery/tl.png');
+  }
+
+  &.topright {
+    mask-image: url('/Gallery/tr.png');
+    -webkit-mask-image: url('/Gallery/tr.png');
+  }
+
+  &.bottomleft {
+    mask-image: url('/Gallery/bl.png');
+    -webkit-mask-image: url('/Gallery/bl.png');
+  }
+
+  &.bottomright {
+    mask-image: url('/Gallery/br.png');
+    -webkit-mask-image: url('/Gallery/br.png');
   }
 }
