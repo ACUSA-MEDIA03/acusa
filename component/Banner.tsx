@@ -1,7 +1,7 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 interface BannerProps {
-  image: string;
+  image: StaticImageData | string;
   header: string;
   description: string;
 }

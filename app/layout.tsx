@@ -34,9 +34,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${mont.variable}`}>
+    <html lang="en" className={`${mont.variable} ${grotesk.variable} ${rubik.variable}`}>
       <body
-        className={`${grotesk.variable} ${rubik.variable} antialiased`}
+        className={` antialiased`}
       >
         {children}
       </body>

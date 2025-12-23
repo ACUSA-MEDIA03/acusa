@@ -101,7 +101,7 @@ export default function ProfileCard({
                 src={fullImage || image}
                 alt={name}
                 fill
-                className="object-cover"
+                className="object-cover "
               />
 
               <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
