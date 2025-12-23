@@ -1,8 +1,8 @@
 import Link from "next/link";
-
+import { LocationEditIcon } from "lucide-react";
 export default function NotFound() {
   return (
-    <main className="min-h-screen flex items-center justify-center bg-[#FCFCFC] px-6">
+    <main className="min-h-screen flex items-center justify-center bg-sub px-6">
       <section className="max-w-3xl w-full text-center relative">
 
         {/* Map-style dashed border */}
@@ -13,42 +13,42 @@ export default function NotFound() {
 
           {/* Location Pin */}
           <div className="flex justify-center mb-6">
-            <div className="w-14 h-14 rounded-full bg-[#0C1657] flex items-center justify-center text-white text-2xl">
-              📍
+            <div className="w-14 h-14 rounded-full bg-main flex items-center justify-center text-white text-2xl">
+            <LocationEditIcon  className="w-6 h-5 "/>
             </div>
           </div>
 
-          <h1 className="text-6xl font-extrabold text-[#0C1657] mb-4">
+          <h1 className="text-6xl font-extrabold text-main mb-4">
             404
           </h1>
 
-          <h2 className="text-2xl md:text-3xl font-semibold text-[#0C1657] mb-4">
+          <h2 className="text-2xl md:text-3xl font-semibold text-main mb-4">
             Location Not Found
           </h2>
 
           <p className="text-[#808080] max-w-xl mx-auto mb-6 leading-relaxed">
-            The <span className="font-semibold text-[#0C1657]">ACUSA ARK</span> —
+            The <span className="font-semibold text-main">ACUSA ARK</span> —
             the official vehicle of the Ajayi Crowther University Student Assembly —
             has arrived at this coordinate, but there&apos;s nothing mapped here.
           </p>
 
           <p className="text-[#808080] max-w-xl mx-auto mb-10">
             You may have followed an outdated route or entered an incorrect campus path.
-            Let’s guide you back to familiar grounds.
+            Let&apos;s guide you back to familiar grounds.
           </p>
 
           {/* Navigation */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-[#0C1657] text-white font-medium hover:bg-[#0C1657]/90 transition"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-main text-white font-medium hover:bg-main/90 transition"
             >
               Return to Campus Home
             </Link>
 
             <Link
               href="/about"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-[#D3AE1A] text-[#0C1657] font-medium hover:bg-[#D3AE1A]/10 transition"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-[#D3AE1A] text-main font-medium hover:bg-[#D3AE1A]/10 transition"
             >
               About ACUSA
             </Link>
