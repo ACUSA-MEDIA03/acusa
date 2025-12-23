@@ -5,6 +5,7 @@ import Navbar from "../../component/Navbar"
 import Banner from "../../component/Banner"
 import { Categories, Publication } from "@/assets/data/Publication"
 import PaginatedItems from "@/utils/pagination";
+import BannerImg from "@/assets/Banner/banner.jpg"
 /*  Types  */
 type CategoryType = {
   id: number;
@@ -18,6 +19,7 @@ type PublicationItem = {
   author?: string;
   description: string;
   image?: string;
+  staticImage: string;
 };
 
 type PublicationGroup = {
@@ -43,7 +45,7 @@ export default function PublicationPage() {
       <Banner
         header="Publications"
         description="News & Articles || Everything from articles to letters. All that you need to know happening around the ACU Space."
-        image="/Banner/banner.jpg"
+        image={BannerImg}
       />
 
       {/* Main Section */}

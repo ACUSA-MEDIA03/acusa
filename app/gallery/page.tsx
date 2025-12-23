@@ -50,10 +50,7 @@ export default function Gallery() {
           Excellence
         </h2>
         </div>
-        
-
-
-
+      
             <div id="footer" className="relative ">
                 <Footer />
             </div>
