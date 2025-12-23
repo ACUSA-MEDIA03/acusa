@@ -76,7 +76,7 @@ As elected representatives, we serve as a vital link students, faculty, and admi
             />
             <Card
               number={2}
-              title="Media Coverage"
+              title="Students Welfare"
               text=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa atque
           eum temporibus dolore. Nobis, commodi."
             />
