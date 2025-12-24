@@ -218,8 +218,8 @@ export default function About() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
           {filteredLeaders.length <= 0 ? (
             <div className="col-span-full text-center py-12">
-              <p className="text-main text-lg lg:text-xl font-medium">
-               Lost? No {category}s available.
+              <p className="text-main text-lg lg:text-xl font-mono font-medium">
+               Lost? What are you looking for!!! Sheriff caught you!  No {category}s available.
               </p>
             </div>
           ) : (
@@ -249,8 +249,8 @@ export default function About() {
         {/* Section Header */}
         <div className="text-center mb-8 lg:mb-12 max-w-5xl mx-auto">        
     <div className="flex flex-col items-center justify-center text-center gap-4 lg:gap-6 py-8 lg:py-12">
-    <h2 className="text-2xl lg:text-4xl font-bold tracking-tight">
-         About <span className="text-main">ACUSA Media</span>
+    <h2 className="text-2xl lg:text-4xl font-bold tracking-tight font-mono">
+         About <span className="text-main font-rubik">ACUSA Media</span>
   </h2>
 
   <div className="relative">
@@ -265,7 +265,7 @@ export default function About() {
   </div>
   <div className="h-1 w-16 rounded-full bg-main opacity-80" />
 </div>
-          <p className="text-base lg:text-xl text-gray-700 leading-relaxed">
+          <p className="text-base font-mono lg:text-xl text-gray-700 leading-relaxed">
             ACUSA Media is the official media body for the Ajayi Crowther
             University Student&apos;s Assembly. It has the responsibility of
             providing full media activities for ACUSA. ACUSA Media is
@@ -281,7 +281,7 @@ export default function About() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
           {filteredTeam.length <= 0 ? (
             <div className="col-span-full text-center py-12">
-              <p className="text-main text-lg lg:text-xl font-medium">
+              <p className="text-main text-lg font-grotesk lg:text-xl font-medium">
                 No team members available.
               </p>
             </div>
