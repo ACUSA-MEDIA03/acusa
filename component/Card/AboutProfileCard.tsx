@@ -105,8 +105,8 @@ export default function ProfileCard({
               />
 
               <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end">
-                <h2 className="text-3xl font-bold text-white">{name}</h2>
-                <p className="text-sub text-lg">{position}</p>
+                <h2 className="text-3xl font-bold font-rubik text-white">{name}</h2>
+                <p className="text-sub text-lg font-grotesk">{position}</p>
 
                 {tag && (
                   <span className="mt-3 w-fit rounded-full bg-white/20 px-4 py-1 text-sm text-white backdrop-blur">
@@ -117,7 +117,7 @@ export default function ProfileCard({
             </div>
 
             {/* Body */}
-            <div className="p-6 space-y-6">
+            <div className="p-6 space-y-6 font-mono">
               {/* Academic Info */}
               {/* {(faculty || department || level) && (
                 <section>
