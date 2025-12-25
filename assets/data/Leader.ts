@@ -22,7 +22,7 @@ const Leaders: LeaderProfile[] = [
     position: "Executive President",
     tag: "Executive",
     image: "/Executives/President.jpg",
-    email: "ayo.odunayo@student.acu.edu.ng",
+    email: "",
     phone: "+234 123 456 7890",
     facebook: "https://facebook.com/",
     x: "https://x.com/",
