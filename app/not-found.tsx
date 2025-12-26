@@ -25,7 +25,7 @@ export default function NotFound() {
           <h2 className="text-2xl md:text-3xl font-semibold text-main mb-4">
             {/* Location Not Found */}
 
-            You want him to eat your Sharwamah? Better go back to your hostel 
+            You want them to eat your Sharwamah? Better go back to your hostel 
           </h2>
 
           <p className="text-[#808080] max-w-xl mx-auto mb-6 leading-relaxed">
