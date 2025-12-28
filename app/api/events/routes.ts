@@ -15,8 +15,8 @@ interface EventItem {
   }
   
 export async function POST(req: NextRequest) {
-    const body = await req.json();
+    // const body = await req.json();
 
-    const { date, suffix, month, year, time, location, eventTitle } = body;
-    const {data, error} = 
+    // const { date, suffix, month, year, time, location, eventTitle } = body;
+    // const {data, error} = 
 }
