@@ -1,5 +1,5 @@
 import  Image from "next/image";
-
+import Link from "next/link";
 // components
 import NavBar from "../component/Navbar";
 import Footer from "../component/Footer";
@@ -15,6 +15,7 @@ import Banner from "@/assets/Banner/banner.jpg"
 import Animation from "@/assets/Animation/animation.gif"
 import President from "@/assets/Executives/President.jpg"
 import Vice_President from "@/assets/Executives/Vice_President.jpeg"
+
 export default function Home() {
   return (
     <>
@@ -58,7 +59,9 @@ As elected representatives, we serve as a vital link students, faculty, and admi
 
           {/* Button */}
           <div className="border lg:w-[30%] w-[50%] grid mt-2">
-            <Button text={`View More ...`} bgcolor='blue'/>
+            <Link href="/about">
+              <Button text={`View More ...`} bgcolor='blue' />
+               </Link>
           </div>
           {/* Button */}
         </div>
@@ -85,13 +88,13 @@ As elected representatives, we serve as a vital link students, faculty, and admi
           <div className="flex gap-5 flex-col p-2 lg:mt-8">
             <Card
               number={3}
-              title="Media Coverage"
+              title="Student Activism"
               text=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa atque
           eum temporibus dolore. Nobis, commodi."
             />
             <Card
               number={4}
-              title="Media Coverage"
+              title="Community Service"
               text=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa atque
           eum temporibus dolore. Nobis, commodi."
             />
@@ -116,7 +119,7 @@ As elected representatives, we serve as a vital link students, faculty, and admi
 
           {/* Event Card */}
           <div className="grid gap-7">
-            {Events.slice(0, 2).map((event) => {
+            {Events.slice(0, 3).map((event) => {
               return (
                 <EventCards
                   key={event.eventTitle}
