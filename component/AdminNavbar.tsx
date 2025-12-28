@@ -8,11 +8,10 @@ import { CiCircleRemove } from "react-icons/ci";
 import Logo from '@/assets/Logo/logo.png'
 
 type ActivePage =
-  | ""
-  | "about"
-  | "gallery"
-  | "publication"
-  | "feedback";
+  | "/admin"
+  | "events"
+  | "publications"
+  | "feedbacks";
 interface NavbarProps {
   active?: ActivePage;
 }
@@ -27,7 +26,7 @@ export default function Navbar({ active = "" }: NavbarProps) {
   return (
     <div
       className={`fixed z-10 w-full flex p-5 lg:px-16 lg:py-10 lg:items-center lg:justify-between
-      ${active === "" ? "text-[#fff]" : ""}`}
+      ${ active === "" ? "text-main" : ""}`}
     >
       {/* Logo */}
       <Link href="/">
@@ -51,35 +50,35 @@ export default function Navbar({ active = "" }: NavbarProps) {
       >
         {/* Close Icon */}
         <CiCircleRemove
-          className="lg:hidden absolute right-8 top-10 text-[50px] cursor-pointer hover:text-sub"
+          className="lg:hidden absolute right-8 top-10 text-[50px] cursor-pointer hover:text-main-yellow"
           onClick={removeNav}
         />
 
         <NavItem
-            href="/"
+            href="/admin"
           label="Home"
           active={active === ""}
         />
         <NavItem
-          href="/about"
-          label="About Us"
-          active={active === "about"}
+          href="/events"
+          label="Events"
+          active={active === "events"}
         />
         <NavItem
-          href="/gallery"
-          label="Gallery"
-          active={active === "gallery"}
-        />
-        <NavItem
-          href="/publication"
+          href="/publications"
           label="Publications"
-          active={active === "publication"}
+          active={active === "publications"}
         />
         <NavItem
+          href="/feedbacks"
+          label="Feedback"
+          active={active === "feedbacks"}
+        />
+        {/* <NavItem
           href="/feedback"
           label="Feedbacks"
           active={active === "feedback"}
-        />
+        /> */}
       </ul>
 
       {/* Mobile Menu Icon */}
