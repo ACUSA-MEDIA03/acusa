@@ -8,7 +8,7 @@ import { CiCircleRemove } from "react-icons/ci";
 import Logo from '@/assets/Logo/logo.png'
 
 type ActivePage =
-  | "/admin"
+  | "admin"
   | "events"
   | "publications"
   | "feedbacks";
@@ -16,7 +16,7 @@ interface NavbarProps {
   active?: ActivePage;
 }
 
-export default function Navbar({ active = "" }: NavbarProps) {
+export default function Navbar({ active = "admin" }: NavbarProps) {
   const navBarRef = useRef<HTMLUListElement | null>(null);
   const [open, setOpen] = useState(false);
 
@@ -26,7 +26,7 @@ export default function Navbar({ active = "" }: NavbarProps) {
   return (
     <div
       className={`fixed z-10 w-full flex p-5 lg:px-16 lg:py-10 lg:items-center lg:justify-between
-      ${ active === "" ? "text-main" : ""}`}
+      ${ active === "admin" ? "text-main" : ""}`}
     >
       {/* Logo */}
       <Link href="/">
@@ -57,28 +57,24 @@ export default function Navbar({ active = "" }: NavbarProps) {
         <NavItem
             href="/admin"
           label="Home"
-          active={active === ""}
+          active={active === "admin"}
         />
         <NavItem
-          href="/events"
+          href="events"
           label="Events"
           active={active === "events"}
         />
         <NavItem
-          href="/publications"
+          href="publications"
           label="Publications"
           active={active === "publications"}
         />
         <NavItem
-          href="/feedbacks"
+          href="feedbacks"
           label="Feedback"
           active={active === "feedbacks"}
         />
-        {/* <NavItem
-          href="/feedback"
-          label="Feedbacks"
-          active={active === "feedback"}
-        /> */}
+       
       </ul>
 
       {/* Mobile Menu Icon */}
