@@ -1,1 +1,6 @@
-export default function FeedbacksPage() { }
+export default function FeedbacksPage() { 
+    return (
+        <>
+        </>
+    )
+}

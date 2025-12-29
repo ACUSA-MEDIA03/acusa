@@ -22,6 +22,7 @@ export default function Events({ date, suffix, month, year, time, location, even
        eventTitle: ""
     });
     return (
-
+        <>
+        </>
     )
 }

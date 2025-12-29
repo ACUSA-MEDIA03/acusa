@@ -16,10 +16,7 @@ export default function RootLayout({
         <html lang="en">
             <body className={` antialised`}>
                <div className="flex min-h-screen">
-          {/* Navbar */}
           <Navbar />
-
-          {/* Page content */}
           <main className="flex-1 p-6 bg-gray-50">
             {children}
           </main>
