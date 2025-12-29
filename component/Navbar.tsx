@@ -33,7 +33,7 @@ export default function Navbar({ active = "" }: NavbarProps) {
       <Link href="/">
         <Image
           src={Logo} 
-          alt="Logo"
+          alt=" ACUSA Logo"
           className="lg:w-12.5 w-10"
         />
       </Link>
