@@ -9,9 +9,9 @@ import Logo from '@/assets/Logo/logo.png'
 
 type ActivePage =
   | "admin"
-  | "events"
-  | "publications"
-  | "feedbacks";
+  | "admin/events"
+  | "admin/publications"
+  | "admin/feedbacks";
 interface NavbarProps {
   active?: ActivePage;
 }
@@ -29,7 +29,7 @@ export default function Navbar({ active = "admin" }: NavbarProps) {
       ${ active === "admin" ? "text-main" : ""}`}
     >
       {/* Logo */}
-      <Link href="/">
+      <Link href="/admin">
         <Image
           src={Logo} 
           alt="Logo"
@@ -55,24 +55,24 @@ export default function Navbar({ active = "admin" }: NavbarProps) {
         />
 
         <NavItem
-            href="/admin"
+            href="admin"
           label="Home"
           active={active === "admin"}
         />
         <NavItem
           href="events"
           label="Events"
-          active={active === "events"}
+          active={active === "admin/events"}
         />
         <NavItem
           href="publications"
           label="Publications"
-          active={active === "publications"}
+          active={active === "admin/publications"}
         />
         <NavItem
           href="feedbacks"
           label="Feedback"
-          active={active === "feedbacks"}
+          active={active === "admin/feedbacks"}
         />
        
       </ul>
