@@ -119,7 +119,7 @@ As elected representatives, we serve as a vital link students, faculty, and admi
 
           {/* Event Card */}
           <div className="grid gap-7">
-            {Events.slice(0, 3).map((event) => {
+            {Events.slice(0, 2).map((event) => {
               return (
                 <EventCards
                   key={event.eventTitle}
