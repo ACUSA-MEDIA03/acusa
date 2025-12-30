@@ -13,6 +13,9 @@ interface EventProps{
 export default function EventsPage() { 
     return (
         <>
+            <div>
+                <h2>
+                Manage Events Calendar</h2></div>  
         </>
     )
 }
