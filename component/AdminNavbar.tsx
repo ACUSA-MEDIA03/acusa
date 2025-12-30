@@ -55,7 +55,7 @@ export default function Navbar({ active = "admin" }: NavbarProps) {
         />
 
         <NavItem
-            href="admin"
+            href="/admin"
           label="Home"
           active={active === "admin"}
         />
