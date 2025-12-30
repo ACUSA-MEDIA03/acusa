@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import '../globals.css'
 import Navbar from "@/component/AdminNavbar"
-
+import AuthProvider from "@/component/providers/session-provider"
 
 export const metadata: Metadata = {
     title: "ACUSA Admin Panel",
@@ -18,7 +18,9 @@ export default function RootLayout({
                <div className="flex min-h-screen">
           <Navbar />
           <main className="flex-1 p-6 bg-gray-50">
-            {children}
+           <AuthProvider>
+             {children}
+            </AuthProvider>
           </main>
         </div>
             </body>
