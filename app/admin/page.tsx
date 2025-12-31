@@ -3,13 +3,17 @@ import Animation from "@/assets/Animation/animation.gif"
 import Image from 'next/image'
 import EventCards from "@/component/Card/EventCards";
 import {Events} from "@/assets/data/Events";
+import { useSession } from "next-auth/react";
 
-export default function Admin(){
+export default function Admin() {
+
+  const { data: session, status } = useSession();
+  if (status === "loading") return <p>Loading...</p>;
     return (
         <>
     <div className="mt-12 px-6">
       <h1 className="lg:text-[56px] text-[40px] font-bold text-main">Admin Dashboard</h1>
-      <p>Welcome to the admin panel</p>
+          <p>Good {new Date().getHours() < 12 ? "Morning": "Evening"}, {session?.user?.name}</p>
     </div>
              {/* Events */}
                   <div className="lg:grid-cols-5 lg:grid lg:p-10 gap-4 p-5">
