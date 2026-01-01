@@ -56,7 +56,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   events        Event[]
- // publications  Publication[]
+  publications  Publication[]
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
 }
@@ -92,4 +92,42 @@ model Event {
 
   @@index([createdById])
   @@index([startDateTime])
+}
+
+model Publication {
+  id          String            @id @default(cuid())
+  title       String
+  content     String            @db.Text
+  description String?           @db.Text  // Short description/excerpt
+  category    PublicationType
+  
+  // Media fields
+  imageUrl    String?           // For articles, newsletters thumbnails
+  images      String[]          // Multiple images for articles/newsletters
+  fileUrl     String?           // For official letters (PDF/image of letter)
+  audioUrl    String?           // For podcasts (uploaded file or external link)
+  
+  // Metadata
+  tags        String[]          // Tags for newsletters/articles
+  author      String?           // Author name (optional, different from createdBy)
+  duration    Int?              // Podcast duration in seconds
+  fileSize    Int?              // File size in bytes
+  
+  published   Boolean           @default(false)
+  createdBy   User              @relation(fields: [createdById], references: [id])
+  createdById String
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+
+  @@index([createdById])
+  @@index([createdAt])
+  @@index([category])
+  @@index([published, category])
+}
+
+enum PublicationType {
+  ARTICLE
+  NEWSLETTER
+  OFFICIAL_LETTER
+  PODCAST
 }
