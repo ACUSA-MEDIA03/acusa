@@ -1,0 +1,193 @@
+import { NextRequest, NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
+import { requireAdmin } from "@/lib/require-Admin";
+
+// GET /api/admin/publications/[id]
+export async function GET(
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  try {
+    await requireAdmin();
+
+    const publication = await prisma.publication.findUnique({
+      where: { id: params.id },
+      include: {
+        createdBy: {
+          select: {
+            id: true,
+            name: true,
+            email: true,
+          },
+        },
+      },
+    });
+
+    if (!publication) {
+      return NextResponse.json(
+        { error: "Publication not found" },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json(publication);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Unauthorized";
+    return NextResponse.json({ error: message }, { status: 401 });
+  }
+}
+
+// PATCH /api/admin/publications/[id]
+export async function PATCH(
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  try {
+    await requireAdmin();
+
+    const body = await req.json();
+    const {
+      title,
+      content,
+      description,
+      category,
+      imageUrl,
+      images,
+      fileUrl,
+      audioUrl,
+      tags,
+      author,
+      duration,
+      fileSize,
+      published,
+    } = body;
+
+    // Build update data
+    const updateData: {
+      title?: string;
+      content?: string;
+      description?: string | null;
+      category?: "ARTICLE" | "NEWSLETTER" | "OFFICIAL_LETTER" | "PODCAST";
+      imageUrl?: string | null;
+      images?: string[];
+      fileUrl?: string | null;
+      audioUrl?: string | null;
+      tags?: string[];
+      author?: string | null;
+      duration?: number | null;
+      fileSize?: number | null;
+      published?: boolean;
+    } = {};
+
+    if (title !== undefined) updateData.title = title;
+    if (content !== undefined) updateData.content = content;
+    if (description !== undefined) updateData.description = description;
+    if (imageUrl !== undefined) updateData.imageUrl = imageUrl;
+    if (images !== undefined) updateData.images = images;
+    if (fileUrl !== undefined) updateData.fileUrl = fileUrl;
+    if (audioUrl !== undefined) updateData.audioUrl = audioUrl;
+    if (tags !== undefined) updateData.tags = tags;
+    if (author !== undefined) updateData.author = author;
+    if (duration !== undefined) updateData.duration = duration;
+    if (fileSize !== undefined) updateData.fileSize = fileSize;
+    if (published !== undefined) updateData.published = published;
+
+    if (category !== undefined) {
+      const validCategories = [
+        "ARTICLE",
+        "NEWSLETTER",
+        "OFFICIAL_LETTER",
+        "PODCAST",
+      ];
+      if (!validCategories.includes(category)) {
+        return NextResponse.json(
+          { error: "Invalid category" },
+          { status: 400 }
+        );
+      }
+      updateData.category = category;
+    }
+
+    if (Object.keys(updateData).length === 0) {
+      return NextResponse.json(
+        { error: "No fields to update" },
+        { status: 400 }
+      );
+    }
+
+    const publication = await prisma.publication.update({
+      where: { id: params.id },
+      data: updateData,
+      include: {
+        createdBy: {
+          select: {
+            name: true,
+            email: true,
+          },
+        },
+      },
+    });
+
+    return NextResponse.json(publication);
+  } catch (error) {
+    console.error("Publication update error:", error);
+
+    if (error && typeof error === "object" && "code" in error) {
+      if (error.code === "P2025") {
+        return NextResponse.json(
+          { error: "Publication not found" },
+          { status: 404 }
+        );
+      }
+    }
+
+    const message =
+      error instanceof Error ? error.message : "Failed to update publication";
+    return NextResponse.json({ error: message }, { status: 500 });
+  }
+}
+
+// DELETE /api/admin/publications/[id]
+export async function DELETE(
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  try {
+    await requireAdmin();
+
+    const existingPublication = await prisma.publication.findUnique({
+      where: { id: params.id },
+    });
+
+    if (!existingPublication) {
+      return NextResponse.json(
+        { error: "Publication not found" },
+        { status: 404 }
+      );
+    }
+
+    await prisma.publication.delete({
+      where: { id: params.id },
+    });
+
+    return NextResponse.json(
+      { message: "Publication deleted successfully" },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("Publication deletion error:", error);
+
+    if (error && typeof error === "object" && "code" in error) {
+      if (error.code === "P2025") {
+        return NextResponse.json(
+          { error: "Publication not found" },
+          { status: 404 }
+        );
+      }
+    }
+
+    const message =
+      error instanceof Error ? error.message : "Failed to delete publication";
+    return NextResponse.json({ error: message }, { status: 500 });
+  }
+}
