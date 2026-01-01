@@ -28,9 +28,10 @@ export async function GET(
     }
 
     return NextResponse.json(event);
-  } catch (error: any) {
+  } catch (error) {
+ const message = error instanceof Error ? error.message : "Unauthorized";
     return NextResponse.json(
-      { error: error.message || "Unauthorized" },
+      { error: message },
       { status: 401 }
     );
   }
@@ -56,7 +57,14 @@ export async function PATCH(
     } = body;
 
     // Build update data object
-    let updateData: any = {};
+   const updateData: {
+      title?: string;
+      location?: string;
+      description?: string;
+      published?: boolean;
+      endDateTime?: Date | null;
+      startDateTime?: Date;
+    } = {};
 
     // Only include fields that were provided
     if (title !== undefined) updateData.title = title;
@@ -110,16 +118,21 @@ export async function PATCH(
     });
 
     return NextResponse.json(event);
-  } catch (error: any) {
+  } catch (error) {
     console.error("Event update error:", error);
 
     // Handle Prisma error codes
-    if (error.code === "P2025") {
-      return NextResponse.json({ error: "Event not found" }, { status: 404 });
+    if (error && typeof error === 'object' && 'code' in error) {
+      if (error.code === "P2025") {
+        return NextResponse.json(
+          { error: "Event not found" },
+          { status: 404 }
+        );
+      }
     }
-
+const message = error instanceof Error ? error.message : "Failed to update event";
     return NextResponse.json(
-      { error: error.message || "Failed to update event" },
+      { error: message },
       { status: 500 }
     );
   }
@@ -151,16 +164,22 @@ export async function DELETE(
       { message: "Event deleted successfully" },
       { status: 200 }
     );
-  } catch (error: any) {
+  } catch (error) {
     console.error("Event deletion error:", error);
 
     // Handle Prisma error codes
-    if (error.code === "P2025") {
-      return NextResponse.json({ error: "Event not found" }, { status: 404 });
+      if (error && typeof error === 'object' && 'code' in error) {
+      if (error.code === "P2025") {
+        return NextResponse.json(
+          { error: "Event not found" },
+          { status: 404 }
+        );
+      }
     }
 
+    const message = error instanceof Error ? error.message : "Failed to delete event";
     return NextResponse.json(
-      { error: error.message || "Failed to delete event" },
+      { error: message },
       { status: 500 }
     );
   }
