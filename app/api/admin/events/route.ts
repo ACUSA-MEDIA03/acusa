@@ -20,9 +20,10 @@ export async function GET() {
     });
 
     return NextResponse.json(events);
-  } catch (error: any) {
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Unauthorized";
     return NextResponse.json(
-      { error: error.message || "Unauthorized" },
+      { error: message },
       { status: 401 }
     );
   }
@@ -58,6 +59,13 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    //  Type assertion for session user.user 
+    if(!session.user?.id){
+        return NextResponse.json(
+            {error: "User ID not found in session"},
+            {status: 401}
+        )
+    }
     const event = await prisma.event.create({
       data: {
         title,
@@ -78,10 +86,11 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json(event, { status: 201 });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Event creation error:", error);
+    const message = error instanceof Error ? error.message : "Failed to create event";
     return NextResponse.json(
-      { error: error.message || "Failed to create event" },
+      { error: message },
       { status: 500 }
     );
   }
