@@ -14,6 +14,7 @@ export async function GET(req: NextRequest) {
     // Filtering
     const category = searchParams.get("category") as 
       "ARTICLE" | "NEWSLETTER" | "OFFICIAL_LETTER" | "PODCAST" | null;
+    
     const tag = searchParams.get("tag");
     const search = searchParams.get("search");
 
