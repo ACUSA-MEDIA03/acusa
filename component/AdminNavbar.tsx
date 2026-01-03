@@ -134,7 +134,7 @@ export default function Navbar() {
   return (
     <div
       className={`fixed z-10 w-full flex p-5 lg:px-16 lg:py-10 lg:items-center lg:justify-between
-      ${pathname === "/admin" ? "text-main" : ""}`}
+      ${pathname === "/admin" ? "text-white" : ""}`}
     >
       {/* Logo */}
       <Link href="/admin">
@@ -159,7 +159,7 @@ export default function Navbar() {
       >
         {/* Close Icon */}
         <CiCircleRemove
-          className="lg:hidden absolute right-8 top-10 text-[50px] cursor-pointer hover:text-main-yellow"
+          className="lg:hidden absolute right-8 top-10 text-[50px] cursor-pointer hover:text-sub"
           onClick={removeNav}
         />
 
