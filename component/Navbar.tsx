@@ -35,6 +35,7 @@ export default function Navbar({ active = "" }: NavbarProps) {
           src={Logo} 
           alt=" ACUSA Logo"
           className="lg:w-12.5 w-10"
+          loading="eager"
         />
       </Link>
 

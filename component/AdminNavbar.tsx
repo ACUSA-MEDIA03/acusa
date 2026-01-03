@@ -142,6 +142,7 @@ export default function Navbar() {
           src={Logo} 
           alt="Logo"
           className="lg:w-12.5 w-10"
+          loading="eager"
         />
       </Link>
 
