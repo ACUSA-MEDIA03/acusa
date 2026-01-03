@@ -6,28 +6,30 @@ import Link from "next/link";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { CiCircleRemove } from "react-icons/ci";
 import Logo from '@/assets/Logo/logo.png'
+import { usePathname } from "next/navigation";
 
-type ActivePage =
-  | ""
-  | "about"
-  | "gallery"
-  | "publication"
-  | "feedback";
-interface NavbarProps {
-  active?: ActivePage;
-}
+// type ActivePage =
+//   | ""
+//   | "about"
+//   | "gallery"
+//   | "publication"
+//   | "feedback";
+// interface NavbarProps {
+//   active?: ActivePage;
+// }
 
-export default function Navbar({ active = "" }: NavbarProps) {
+export default function Navbar( ) {
   const navBarRef = useRef<HTMLUListElement | null>(null);
   const [open, setOpen] = useState(false);
 
   const showNav = () => setOpen(true);
   const removeNav = () => setOpen(false);
+  const pathname = usePathname();
 
   return (
     <div
       className={`fixed z-10 w-full flex p-5 lg:px-16 lg:py-10 lg:items-center lg:justify-between
-      ${active === "" ? "text-[#fff]" : ""}`}
+      ${pathname === "" ? "text-white" : ""}`}
     >
       {/* Logo */}
       <Link href="/">
@@ -59,27 +61,32 @@ export default function Navbar({ active = "" }: NavbarProps) {
         <NavItem
             href="/"
           label="Home"
-          active={active === ""}
+          active={pathname === ""}
+          onClick={removeNav}
         />
         <NavItem
           href="/about"
           label="About Us"
-          active={active === "about"}
+          active={pathname === "/about"}
+          onClick={removeNav}
         />
         <NavItem
           href="/gallery"
           label="Gallery"
-          active={active === "gallery"}
+          active={pathname === "/gallery"}
+          onClick={removeNav}
         />
         <NavItem
           href="/publication"
           label="Publications"
-          active={active === "publication"}
+          active={pathname === "/publication"}
+          onClick={removeNav}
         />
         <NavItem
           href="/feedback"
           label="Feedbacks"
-          active={active === "feedback"}
+          active={pathname === "/feedback"}
+          onClick={removeNav}
         />
       </ul>
 
@@ -98,14 +105,16 @@ interface NavItemProps {
   href: string;
   label: string;
   active?: boolean;
+  onClick?: () => void;
 }
 
-function NavItem({ href, label, active }: NavItemProps) {
+function NavItem({ href, label, active, onClick }: NavItemProps) {
   return (
     <Link
       href={href}
+      onClick={onClick}
       className={`px-4 lg:px-0 py-4 lg:py-2 text-right lg:text-left
-       lg:hover:bg-transparent 
+       lg:hover:bg-transparent transparent-colors
       ${
         active
           ? "text-sub font-medium  lg:bg-transparent"
