@@ -57,7 +57,7 @@ export default function Signup() {
 
     try {
       // Register user
-      const response = await fetch("/api/admin/auth/register", {
+      const response = await fetch("/api/admin/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -89,7 +89,7 @@ export default function Signup() {
         setError("Registration successful but login failed. Please login manually.");
         setLoading(false);
         setTimeout(() => {
-          router.push("/admin/login");
+          router.push("/admin/signin");
         }, 2000);
         return;
       }

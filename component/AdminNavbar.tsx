@@ -1,12 +1,9 @@
-
-
-
 "use client";
 
 import Image from "next/image";
 import { useRef, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // Add this import
+import { usePathname } from "next/navigation"; 
 import { FaBarsStaggered } from "react-icons/fa6";
 import { CiCircleRemove } from "react-icons/ci";
 import Logo from '@/assets/Logo/logo.png'
@@ -14,7 +11,7 @@ import Logo from '@/assets/Logo/logo.png'
 export default function Navbar() {
   const navBarRef = useRef<HTMLUListElement | null>(null);
   const [open, setOpen] = useState(false);
-  const pathname = usePathname(); // Get current path
+  const pathname = usePathname(); 
 
   const showNav = () => setOpen(true);
   const removeNav = () => setOpen(false);
