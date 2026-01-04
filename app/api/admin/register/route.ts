@@ -1,5 +1,3 @@
-"use server"
-
 import bcrypt from "bcryptjs";
 import { NextResponse, NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
