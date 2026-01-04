@@ -8,20 +8,9 @@ import { CiCircleRemove } from "react-icons/ci";
 import Logo from '@/assets/Logo/logo.png'
 import { usePathname } from "next/navigation";
 
-// type ActivePage =
-//   | ""
-//   | "about"
-//   | "gallery"
-//   | "publication"
-//   | "feedback";
-// interface NavbarProps {
-//   active?: ActivePage;
-// }
-
 export default function Navbar( ) {
   const navBarRef = useRef<HTMLUListElement | null>(null);
   const [open, setOpen] = useState(false);
-
   const showNav = () => setOpen(true);
   const removeNav = () => setOpen(false);
   const pathname = usePathname();
