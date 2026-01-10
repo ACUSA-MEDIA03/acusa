@@ -1,69 +1,73 @@
 "use client"
-import Animation from "@/assets/Animation/animation.gif"
-import Image from 'next/image'
-import EventCards from "@/component/Card/EventCards";
-import {Events} from "@/assets/data/Events";
-import {signOut,  useSession } from "next-auth/react";
-
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import {useSession } from "next-auth/react";
+import Image from "next/image";
+import Logo from "@/assets/Logo/logo.png"
+import AcusaMedia from "@/assets/Logo/media.jpg"
 export default function Admin() {
 
   const { data: session, status } = useSession();
-  if (status === "loading") return <p>Loading...</p>;
+  const router = useRouter();
+  
+  useEffect(() => {
+  //  if admin is authenticated redirect to dashboard
+    if (status ===  "authenticated") {
+      router.push("/admin/dashboard")
+    } 
+    //  if not authenticated redirect to signup
+    else if (status === "unauthenticated") {
+      router.push("/admin/signin")
+    }
+  }, [status,router])
+
+  //  show loading state while checking for authentication state
+  if (status === "loading") {
     return (
-        <>
-    <div className="mt-12 px-6">
-      <h1 className="lg:text-[56px] text-[40px] font-bold text-main">Admin Dashboard</h1>
-          <p>Good {new Date().getHours() < 12 ? "Morning" : "Evening"}, {session?.user?.name}</p>
-          
-
-           <button
-                  onClick={() => signOut({ callbackUrl: "/admin/signin" })}
-                  className="px-4 py-2 bg-red-600 text-white text-sm rounded-lg hover:bg-red-700 transition"
-                >
-                  Sign Out
-                </button>
+      <div className="min-h-screen flex items-center justify-center">
+        <Image 
+          src={AcusaMedia} 
+          alt="Acusa Media" 
+          className="absolute inset-0 w-full h-full object-cover opacity-20"
+        />
+        <div className="relative z-10 bg-white bg-opacity-90 p-8 rounded-lg shadow-lg max-w-md w-full text-center">
+          <Image 
+            src={Logo} 
+            alt="Acusa Logo" 
+            width={150} 
+            height={150} 
+            className="mx-auto mb-4"
+          />
+          <div className="flex items-center justify-center space-x-2">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600"></div>
+            <p className="text-gray-700">Loading...</p>
+          </div>
         </div>
-        
-
-             {/* Events */}
-                  <div className="lg:grid-cols-5 lg:grid lg:p-10 gap-4 p-5">
-                    <div className="lg:col-span-3 flex-col flex justify-center items-left lg:p-5 space-y-7">
-                      <div className="">
-                        <b className="font-rubik lg:text-[56px] text-[40px] text-main">
-                          Upcoming Events{" "}
-                        </b>
-                        <p className="font-grotesk font-light lg:text-[25px] text-[15px]">
-                          These is the schedule of events coming up in school
-                        </p>
-                      </div>
-            
-                      {/* Event Card */}
-                      <div className="grid gap-7">
-                        {Events.slice(0,1).map((event) => {
-                          return (
-                            <EventCards
-                              key={event.eventTitle}
-                              date={event.date}
-                              suffix={event.suffix}
-                              month={event.month}
-                              year={event.year}
-                              time={event.time}
-                              location={event.location}
-                              eventTitle={event.eventTitle}
-                            />
-                          );
-                        })}
-                      </div>
-                      {/* Event Card */}
-                    </div>
-            
-                    <div className="lg:col-span-2 lg:grid  place-content-center lg:mt-0 mt-5">
-                      <Image  src={Animation} alt="Calendar Animation" className="lg:w-162.5"/>
-                    </div>
-            </div>
-            
-
-
+      </div>
+    )
+  }
+  return (
+        <>
+        <div className="min-h-screen flex items-center justify-center">
+        <Image 
+          src={AcusaMedia} 
+          alt="Acusa Media" 
+          className="absolute inset-0 w-full h-full object-cover opacity-20"
+        />
+        <div className="relative z-10 bg-white bg-opacity-90 p-8 rounded-lg shadow-lg max-w-md w-full text-center">
+          <Image 
+            src={Logo} 
+            alt="Acusa Logo" 
+            width={150} 
+            height={150} 
+            className="mx-auto mb-4"
+          />
+          <div className="flex items-center justify-center space-x-2">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600"></div>
+            <p className="text-gray-700">Loading...</p>
+          </div>
+        </div>
+      </div>
         </>
     )
 }
