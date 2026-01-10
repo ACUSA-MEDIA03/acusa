@@ -1,22 +1,40 @@
 import  Image from "next/image";
 import Link from "next/link";
 // components
-import NavBar from "../component/Navbar";
-import Footer from "../component/Footer";
-import Button from "../component/Button";
-import Card from "../component/Card/Card"
-import EventCards from "../component/Card/EventCards";
-import ProfileCard from "../component/Card/ProfileCard";
-
-// Data Objects
-import {Events} from "@/assets/data/Events";
+import NavBar from "../components/Navbar";
+import Footer from "../components/Footer";
+import Button from "../components/Button";
+import Card from "../components/Card/Card"
+import EventCards from "../components/Card/EventCards";
+import ProfileCard from "../components/Card/ProfileCard";
 
 import Banner from "@/assets/Banner/banner.jpg"
 import Animation from "@/assets/Animation/animation.gif"
 import President from "@/assets/Executives/President.jpg"
 import Vice_President from "@/assets/Executives/Vice_President.jpeg"
 
+interface Event {
+  id: string;
+  title: string;
+  description: string;
+  location: string;
+  startDateTime: string;
+}
+async function getPublicEvents() {
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/events`, {
+    cache: 'no-store', // Always get fresh data
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch events');
+  }
+
+  return res.json();
+  }
+  const Events: Event[] = await getPublicEvents();
 export default function Home() {
+  
+  
   return (
     <>
       <NavBar />
@@ -122,14 +140,12 @@ As elected representatives, we serve as a vital link students, faculty, and admi
             {Events.slice(0, 2).map((event) => {
               return (
                 <EventCards
-                  key={event.eventTitle}
-                  date={event.date}
-                  suffix={event.suffix}
-                  month={event.month}
-                  year={event.year}
-                  time={event.time}
-                  location={event.location}
-                  eventTitle={event.eventTitle}
+                 key={event.id}
+                id={event.id}
+                title={event.title}
+                location={event.location}
+                startDateTime={event.startDateTime}
+                description={event.description}
                 />
               );
             })}
