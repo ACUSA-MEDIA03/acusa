@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import '../globals.css'
-import Navbar from "@/component/AdminNavbar"
-import AuthProvider from "@/component/providers/session-provider"
+import Navbar from "@/components/AdminNavbar"
+import AuthProvider from "@/components/providers/session-provider"
 import { Montserrat } from 'next/font/google'
 
 
