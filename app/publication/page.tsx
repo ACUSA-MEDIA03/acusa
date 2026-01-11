@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import Navbar from "../../component/Navbar"
-import Banner from "../../component/Banner"
+import Navbar from "../../components/Navbar"
+import Banner from "../../components/Banner"
 import { Categories, Publication } from "@/assets/data/Publication"
 import PaginatedItems from "@/utils/pagination";
 import BannerImg from "@/assets/Banner/banner.jpg"
