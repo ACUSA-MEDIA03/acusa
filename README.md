@@ -27,3 +27,44 @@
 | Example Color | ![#00b48a](https://via.placeholder.com/10/00b48a?text=+) #00b48a |
 | Example Color | ![#00d1a0](https://via.placeholder.com/10/00b48a?text=+) #00d1a0 |
 
+
+
+# ADMIN SECTION Auth, Publications etc
+###  Register/Signup
+``` Signup with Name, Email, Password
+ localhost:3000/api/admin/auth/register
+```
+``` Then proceed to auth signup to admin 
+```
+``` Login with Email, and Password
+localhost:3000/api/admin/auth/login
+```
+
+
+### Publications 
+
+
+npx prisma studio
+
+Complete Test Flow:
+
+Register Admin → Get user ID
+Login → Get session token
+Create 5 Events → Get event IDs
+Get All Events (Admin) → Verify all 5 appear
+Get Public Events → Verify only published ones appear
+Get Single Event → Verify details
+Update Event → Change title or toggle published
+Get Event Again → Verify changes
+Delete Event → Remove test event
+Get All Events → Verify deletion
+
+
+{
+  "eventDate": "2025-02-15",
+  "time": "14:00",
+  "title": "Student Assembly General Meeting",
+  "location": "Main Hall, Building A",
+  "description": "Monthly general assembly meeting to discuss student affairs and upcoming events.",
+  "published": true
+}
