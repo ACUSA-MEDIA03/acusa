@@ -60,7 +60,6 @@ export default function AdminEventsPage() {
       if (!response.ok) {
         throw new Error("Failed to fetch events");
       }
-
       const data = await response.json();
       setEvents(data.publications || data); // Handle both response formats
       setLoading(false);
@@ -73,8 +72,8 @@ export default function AdminEventsPage() {
 
   const resetForm = () => {
     setFormData({ title: "", date: "", description: "", time: "", location: "" })
-    setEditingEvent(null),
-    setShowForm(false)
+    setEditingEvent(null);
+    setShowForm(false);
   }
   if (status === "loading" || loading) {
     return (
