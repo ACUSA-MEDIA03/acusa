@@ -131,3 +131,16 @@ enum PublicationType {
   OFFICIAL_LETTER
   PODCAST
 }
+
+model Feedback {
+  id          String   @id @default(cuid())
+  name        String?  // Optional - can be anonymous
+  email       String?  // Optional
+  phoneNumber String?  // Optional
+  message     String   @db.Text
+  read        Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([read])
+}
