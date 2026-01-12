@@ -3,8 +3,13 @@
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import EventCard from "@/components/Card/EventCards";
-
+import EventCard from "@/components/Card/EventCard";
+import { Button } from "@/components/ui/button";
+import { Calendar, Pencil, Plus, Trash2 } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 interface Event {
   id: string;
   title: string;
@@ -21,10 +26,19 @@ interface Event {
 export default function AdminEventsPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
+  const [showForm, setShowForm] = useState(false);
   const [events, setEvents] = useState<Event[]>([]);
+  const [editingEvent, setEditingEvent] = useState<Event | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  const [formData, setFormData] = useState({
+    title: "",
+    date: "",
+    time: "",
+    description: "",
+    location: "",
+  })
   // Redirect if not authenticated
   useEffect(() => {
     if (status === "unauthenticated") {
@@ -57,6 +71,11 @@ export default function AdminEventsPage() {
     }
   };
 
+  const resetForm = () => {
+    setFormData({ title: "", date: "", description: "", time: "", location: "" })
+    setEditingEvent(null),
+    setShowForm(false)
+  }
   if (status === "loading" || loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -73,15 +92,100 @@ export default function AdminEventsPage() {
     <div className="min-h-screen bg-gray-50 py-12 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-4xl font-bold">Manage Events</h1>
-          <button
-            onClick={() => router.push("/admin/events/create")}
-            className="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition"
-          >
-            Create New Event
-          </button>
+<div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-3xl font-mono text-main">Events</h1>
+              <p className="text-slate-600 mt-1">Manage your upcoming events</p>
+            </div>
+
+          {!showForm && (
+            <Button
+            className="px-6 py-3 bg-main  rounded-lg hover:bg-main-900 transition text-white font-mono" onClick={() => setShowForm(true)}>
+              <Plus className="w-4 h-4 mr-2" /> Add Event
+            </Button>
+          )}
         </div>
+
+        {/*  Form Field  Section*/}
+        {showForm && (
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-sub">{ editingEvent ? "Edit Event" : "Create New Event "}</CardTitle>
+            </CardHeader>
+
+            <CardContent>
+              <form className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="title" className="text-sub font-mono">Event Title</Label>
+                  <Input
+                    id="title"
+                    type="text"
+                    placeholder="Enter Event Title"
+                    value={formData.title}
+                    onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                  required/>
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="date" className="text-sub font-mono">Date</Label>
+                  <Input
+                    id="date"
+                    type="date"
+                    placeholder="Input event date"
+                    value={formData.date}
+                    onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                  required/>
+                </div>
+                  <div className="space-y-2">
+                  <Label htmlFor="date" className="text-sub font-mono">Time</Label>
+                  <Input
+                    id="time"
+                    type="time"
+                    placeholder="Input event time"
+                    value={formData.time}
+                    onChange={(e) => setFormData({ ...formData, time: e.target.value })}
+                  required/>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="location" className="text-sub font-mono">Location</Label>
+                  <Input
+                    id="location"
+                    placeholder="Enter event location"
+                    value={formData.location}
+                    onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                    required
+                  />
+                </div>
+
+
+                <div className="space-y-2">
+                  <Label htmlFor="description" className="text-sub font-mono">Description</Label>
+                  <Textarea
+                    id="description"
+                    placeholder="Enter event description"
+                    value={formData.description}
+                    onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                    rows={4}
+                    required
+                  />
+                </div>
+
+
+
+                <div className=" flex gap-2 ">
+                  <Button type="submit" className="bg-main font-mono">
+                    {editingEvent ? "Update Event": "Create Event"}
+                  </Button>
+                  
+                  <Button type="button" variant="outline" className="text-sub font-mono"
+                  onClick={resetForm}> Cancel
+                    </Button>
+                </div>
+              </form>
+            </CardContent>
+          </Card>
+)}
 
         {/* Error Message */}
         {error && (
@@ -90,89 +194,49 @@ export default function AdminEventsPage() {
           </div>
         )}
 
-        {/* Events List */}
-        {events.length === 0 ? (
-          <div className="text-center py-12 bg-white rounded-lg shadow">
-            <p className="text-gray-600 text-lg">No events found.</p>
-            <button
-              onClick={() => router.push("/admin/events/create")}
-              className="mt-4 px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition"
-            >
-              Create Your First Event
-            </button>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {events.map((event) => (
-              <div key={event.id} className="relative">
-                {/* Event Card */}
+        <div className="grid gap-4 ">
+          {events.length === 0 ? (
+            <Card>
+              <CardContent className="flex flex-col items-center justify-center py-12 ">
+                <Calendar className=" w-12 h-12 bg-sub mb-3" />
+                <p className="text-sub mb-4 font-mono">No Events created yet</p>
+                <Button onClick={() => setShowForm(true)}>
+                  <Plus  className="w-4 h-4 mr-2"/>
+                Create your first event
+                </Button>
+              </CardContent>
+              </Card>
+          ) : (
+              events.map((event) => (
                 <EventCard
+                  key={event.id}
                   id={event.id}
                   title={event.title}
                   location={event.location}
                   startDateTime={event.startDateTime}
                   description={event.description}
+                  createdBy={event.createdBy}
+                  published={event.published}
+                  actions={(
+                    <>
+                      <Button size="sm" variant="outline"
+                      >
+                        <Pencil className="w-4 h-4 " />
+                      </Button>
+                      <Button variant="destructive" size="sm"
+                        // onClick={() => handleDelete(event.id)}
+                      >
+                        <Trash2  className="w-4 h-4 "/>
+                      </Button>
+                    </>
+                  )}
                 />
-
-                {/* Admin Actions */}
-                <div className="mt-4 flex justify-between items-center bg-white p-4 rounded-lg shadow">
-                  <div className="flex items-center space-x-4">
-                    <span
-                      className={`px-3 py-1 rounded-full text-sm font-medium ${
-                        event.published
-                          ? "bg-green-100 text-green-800"
-                          : "bg-yellow-100 text-yellow-800"
-                      }`}
-                    >
-                      {event.published ? "Published" : "Draft"}
-                    </span>
-                    <span className="text-sm text-gray-600">
-                      By {event.createdBy.name}
-                    </span>
-                  </div>
-                  
-                  <div className="flex space-x-2">
-                    <button
-                      onClick={() => router.push(`/admin/events/edit/${event.id}`)}
-                      className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      onClick={() => handleDelete(event.id)}
-                      className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition text-sm"
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
+              ))
+          )}
+        </div>
       </div>
     </div>
-  );
-
-  async function handleDelete(id: string) {
-    if (!confirm("Are you sure you want to delete this event?")) {
-      return;
-    }
-
-    try {
-      const response = await fetch(`/api/admin/events/${id}`, {
-        method: "DELETE",
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to delete event");
-      }
-
-      // Refresh events list
-      fetchEvents();
-    } catch (err) {
-      console.error("Delete error:", err);
-      alert("Failed to delete event");
-    }
-  }
+  
+  
+);
 }
