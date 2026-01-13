@@ -49,9 +49,9 @@ export default function Navbar() {
         />
 
         <NavItem
-          href="/admin"
+          href="/admin/dashboard"
           label="Home"
-          active={pathname === "/admin"}
+          active={pathname === "/admin/dashboard"}
           onClick={removeNav}
         />
         <NavItem
@@ -70,6 +70,12 @@ export default function Navbar() {
           href="/admin/feedbacks"
           label="Feedback"
           active={pathname === "/admin/feedbacks"}
+          onClick={removeNav}
+        />
+         <NavItem
+          href="/admin/users"
+          label="Users"
+          active={pathname === "/admin/users"}
           onClick={removeNav}
         />
       </ul>

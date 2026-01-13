@@ -75,6 +75,30 @@ export default function AdminEventsPage() {
     setEditingEvent(null);
     setShowForm(false);
   }
+
+  const handleDelete = async (id: string) => {
+    // Implement delete functionality
+    if (!confirm("Are you sure you want to delete this event?")) {
+    return;
+    }
+    
+    try {
+      const res = await fetch('/api/admin/event/${id}', {
+        method: "DELETE"
+      });
+      if (!res.ok) {
+        throw new Error("failed to delete")
+      };
+
+
+      //  update ui view 
+      setEvents((prev) => prev.filter((event) => event.id !== id))
+    } catch (error) {
+      console.error(error);
+      alert("Failed to delete event")
+    }
+  };
+
   if (status === "loading" || loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -223,7 +247,7 @@ export default function AdminEventsPage() {
                         <Pencil className="w-4 h-4 " />
                       </Button>
                       <Button variant="destructive" size="sm"
-                        // onClick={() => handleDelete(event.id)}
+                        onClick={() => handleDelete(event.id)}
                       >
                         <Trash2  className="w-4 h-4 "/>
                       </Button>
@@ -232,6 +256,8 @@ export default function AdminEventsPage() {
                 />
               ))
           )}
+
+          {/* +44 1522 561600 */}
         </div>
       </div>
     </div>
