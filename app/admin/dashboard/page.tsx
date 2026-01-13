@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Animation from "@/assets/Animation/animation.gif"
 // import { Events } from "@/assets/data/Events";
 import EventCards from "@/components/Card/EventCards";
+import { Button } from "@/components/ui/button";
 
 interface Event {
   id: string;
@@ -27,17 +28,34 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  const fetchEvents = async () => {
+    try {
+      const response = await fetch('/api/admin/events');
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch events")
+      }
+
+      const data = await response.json();
+      setEvents(data.publications || data);
+      setLoading(false)
+    } catch (error) {
+      console.error("Fetch error:", error);
+      setError("Failed to load events");
+      setLoading(false);
+    }
+  }
   useEffect(() => {
     if (status === "unauthenticated") {
       router.push("/admin/signin");
     }
   }, [status, router]);
 
-    useEffect(() => {
-      if (status === "authenticated") {
-        fetchEvents();
-      }
-    }, [status]);
+  useEffect(() => {
+    if (status === "authenticated") {
+      fetchEvents();
+    }
+  }, [status]);
   if (status === "loading") {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -57,30 +75,25 @@ export default function AdminDashboard() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-red-600">Access Denied</h1>
-          <p className="mt-2 text-gray-600">You don&apos;t have admin privileges</p>
+          <h1 className="text-2xl font-bold text-main">Account Pending</h1>
+          <p className="mt-2 text-sub">
+            Thanks for registering! An admin must verify your account before you can access the dashboard.
+          </p>
+          <p className="mb-4 text-sub">
+            You will be redirected to the login page.
+          </p>
+
+          <Button onClick={() => signOut({ callbackUrl: "/admin/signin" })}>
+            Sign out
+          </Button>
         </div>
       </div>
     );
   }
 
-  const fetchEvents = async () => {
-    try {
-      const response = await fetch('/api/admin/events');
 
-      if (!response.ok) {
-        throw new Error("Failed to fetch events")
-      }
 
-      const data = await response.json();
-      setEvents(data.publications || data);
-      setLoading(false)
-    } catch (error) {
- console.error("Fetch error:", error);
-      setError("Failed to load events");
-      setLoading(false);
-    }
-  } 
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -150,40 +163,40 @@ export default function AdminDashboard() {
       </main>
 
 
-       {/* Events */}
-                  <div className="lg:grid-cols-5 lg:grid lg:p-10 gap-4 p-5">
-                    <div className="lg:col-span-3 flex-col flex justify-center items-left lg:p-5 space-y-7">
-                      <div className="">
-                        <b className="font-rubik lg:text-[56px] text-[40px] text-main">
-                          Upcoming Events{" "}
-                        </b>
-                        <p className="font-grotesk font-light lg:text-[25px] text-[15px]">
-                          These is the schedule of events coming up in school
-                        </p>
-                      </div>
-            
-                      {/* Event Card */}
-                      <div className="grid gap-7">
-                        {events.slice(0,1).map((event) => {
-                          return (
-                            <EventCards
-                             key={event.id}
-                id={event.id}
-                title={event.title}
-                location={event.location}
-                startDateTime={event.startDateTime}
-                description={event.description}
-                            />
-                          );
-                        })}
-                      </div>
-                      {/* Event Card */}
-                    </div>
-            
-                    <div className="lg:col-span-2 lg:grid  place-content-center lg:mt-0 mt-5">
-                      <Image  src={Animation} alt="Calendar Animation" className="lg:w-162.5" unoptimized/>
-                    </div>
-            </div>
+      {/* Events */}
+      <div className="lg:grid-cols-5 lg:grid lg:p-10 gap-4 p-5">
+        <div className="lg:col-span-3 flex-col flex justify-center items-left lg:p-5 space-y-7">
+          <div className="">
+            <b className="font-rubik lg:text-[56px] text-[40px] text-main">
+              Upcoming Events{" "}
+            </b>
+            <p className="font-grotesk font-light lg:text-[25px] text-[15px]">
+              These is the schedule of events coming up in school
+            </p>
+          </div>
+
+          {/* Event Card */}
+          <div className="grid gap-7">
+            {events.slice(0, 1).map((event) => {
+              return (
+                <EventCards
+                  key={event.id}
+                  id={event.id}
+                  title={event.title}
+                  location={event.location}
+                  startDateTime={event.startDateTime}
+                  description={event.description}
+                />
+              );
+            })}
+          </div>
+          {/* Event Card */}
+        </div>
+
+        <div className="lg:col-span-2 lg:grid  place-content-center lg:mt-0 mt-5">
+          <Image src={Animation} alt="Calendar Animation" className="lg:w-162.5" unoptimized />
+        </div>
+      </div>
     </div>
   );
 }
