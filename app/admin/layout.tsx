@@ -1,39 +1,27 @@
+// app/admin/layout.tsx
 import type { Metadata } from "next";
-import '../globals.css'
-import Navbar from "@/components/AdminNavbar"
-import AuthProvider from "@/components/providers/session-provider"
-import { Montserrat } from 'next/font/google'
-
+import "../globals.css";
+import Navbar from "@/components/AdminNavbar";
+import AuthProvider from "@/components/providers/session-provider";
 
 export const metadata: Metadata = {
-    title: "ACUSA Admin Panel",
-    description: "Admin Panel for ACUSA"
-}
+  title: "ACUSA Admin Panel",
+  description: "Admin Panel for ACUSA",
+};
 
-
-const mont = Montserrat({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-mont',
-  display: 'swap',
-})
-export default function RootLayout({
-    children,
-}: Readonly<{
-    children: React.ReactNode;
-}>) {
-    return (
-        <html lang="en" className={` ${mont.variable}`}>
-            <body className={` antialised` }>
-               <div className="flex min-h-screen">
-          <Navbar />
-          <main className="flex-1 p-6 bg-gray-50">
-           <AuthProvider>
-             {children}
-            </AuthProvider>
-          </main>
-        </div>
-            </body>
-        </html>
-    )
+export default function AdminLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <AuthProvider>
+      <div className="flex min-h-screen">
+        <Navbar />
+        <main className="flex-1 p-6 bg-gray-50">
+          {children}
+        </main>
+      </div>
+    </AuthProvider>
+  );
 }
