@@ -2,49 +2,15 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { requireAdmin } from "@/lib/require-Admin";
 
-// GET /api/admin/events/[id] - Get single event
-export async function GET(
-  req: NextRequest,
-  { params }: { params: { id: string } }
-) {
-  try {
-    await requireAdmin();
-
-    const event = await prisma.event.findUnique({
-      where: { id: params.id },
-      include: {
-        createdBy: {
-          select: {
-            id: true,
-            name: true,
-            email: true,
-          },
-        },
-      },
-    });
-
-    if (!event) {
-      return NextResponse.json({ error: "Event not found" }, { status: 404 });
-    }
-
-    return NextResponse.json(event);
-  } catch (error) {
- const message = error instanceof Error ? error.message : "Unauthorized";
-    return NextResponse.json(
-      { error: message },
-      { status: 401 }
-    );
-  }
-}
-
 // PATCH /api/admin/events/[id] - Update event
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> } // ← Changed this
 ) {
   try {
     await requireAdmin();
 
+    const { id } = await context.params; // ← Added this line
     const body = await req.json();
     const {
       eventDate,
@@ -56,11 +22,13 @@ export async function PATCH(
       endDateTime,
     } = body;
 
+    console.log("PATCH event ID:", id); // Debug log
+
     // Build update data object
-   const updateData: {
+    const updateData: {
       title?: string;
       location?: string;
-      description?: string;
+      description?: string | null;
       published?: boolean;
       endDateTime?: Date | null;
       startDateTime?: Date;
@@ -86,7 +54,6 @@ export async function PATCH(
 
       updateData.startDateTime = startDateTime;
     } else if (eventDate || time) {
-      // If only one is provided, return error
       return NextResponse.json(
         {
           error: "Both eventDate and time are required to update the date/time",
@@ -105,7 +72,7 @@ export async function PATCH(
 
     // Update the event
     const event = await prisma.event.update({
-      where: { id: params.id },
+      where: { id }, // Now id is defined!
       data: updateData,
       include: {
         createdBy: {
@@ -121,43 +88,74 @@ export async function PATCH(
   } catch (error) {
     console.error("Event update error:", error);
 
-    // Handle Prisma error codes
-    if (error && typeof error === 'object' && 'code' in error) {
+    if (error && typeof error === "object" && "code" in error) {
       if (error.code === "P2025") {
-        return NextResponse.json(
-          { error: "Event not found" },
-          { status: 404 }
-        );
+        return NextResponse.json({ error: "Event not found" }, { status: 404 });
       }
     }
-const message = error instanceof Error ? error.message : "Failed to update event";
-    return NextResponse.json(
-      { error: message },
-      { status: 500 }
-    );
+
+    const message =
+      error instanceof Error ? error.message : "Failed to update event";
+    return NextResponse.json({ error: message }, { status: 500 });
+  }
+}
+
+// GET /api/admin/events/[id] - Get single event
+export async function GET(
+  req: NextRequest,
+  context: { params: Promise<{ id: string }> } // ← Changed this
+) {
+  try {
+    await requireAdmin();
+
+    const { id } = await context.params; // ← Added this line
+
+    const event = await prisma.event.findUnique({
+      where: { id },
+      include: {
+        createdBy: {
+          select: {
+            id: true,
+            name: true,
+            email: true,
+          },
+        },
+      },
+    });
+
+    if (!event) {
+      return NextResponse.json({ error: "Event not found" }, { status: 404 });
+    }
+
+    return NextResponse.json(event);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Unauthorized";
+    return NextResponse.json({ error: message }, { status: 401 });
   }
 }
 
 // DELETE /api/admin/events/[id] - Delete event
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> } 
 ) {
   try {
     await requireAdmin();
 
-    // Check if event exists first (optional but gives better error message)
+    const { id } = await context.params; // ← Added this line
+
+    console.log("DELETE event ID:", id); // Debug log
+
     const existingEvent = await prisma.event.findUnique({
-      where: { id: params.id },
+      where: { id },
     });
 
     if (!existingEvent) {
       return NextResponse.json({ error: "Event not found" }, { status: 404 });
     }
 
-    // Delete the event
     await prisma.event.delete({
-      where: { id: params.id },
+      where: { id },
     });
 
     return NextResponse.json(
@@ -167,20 +165,14 @@ export async function DELETE(
   } catch (error) {
     console.error("Event deletion error:", error);
 
-    // Handle Prisma error codes
-      if (error && typeof error === 'object' && 'code' in error) {
+    if (error && typeof error === "object" && "code" in error) {
       if (error.code === "P2025") {
-        return NextResponse.json(
-          { error: "Event not found" },
-          { status: 404 }
-        );
+        return NextResponse.json({ error: "Event not found" }, { status: 404 });
       }
     }
 
-    const message = error instanceof Error ? error.message : "Failed to delete event";
-    return NextResponse.json(
-      { error: message },
-      { status: 500 }
-    );
+    const message =
+      error instanceof Error ? error.message : "Failed to delete event";
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

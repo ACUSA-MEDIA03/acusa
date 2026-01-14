@@ -5,13 +5,13 @@ import { requireAdmin } from "@/lib/require-Admin";
 // GET /api/admin/publications/[id]
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     await requireAdmin();
-
+ const { id } = await context.params;
     const publication = await prisma.publication.findUnique({
-      where: { id: params.id },
+      where: { id },
       include: {
         createdBy: {
           select: {

@@ -1,46 +1,48 @@
-"use client"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+"use client";
 
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import ArticleTab from "@/components/publicationsection/article-tab";
+import NewsletterTab from "@/components/publicationsection/newsletter-tab";
+import { OfficialLettersTab } from "@/components/publicationsection/officialletters-tab";
+import { PodcastsTab } from "@/components/publicationsection/podcast-tab";
 
-import ArticleTab from "@/components/publicationsection/article-tab"
-import NewsletterTab from "@/components/publicationsection/newsletter-tab"
-import { OfficialLettersTab }  from "@/components/publicationsection/officialletters-tab"
-import { PodcastsTab } from "@/components/publicationsection/podcast-tab"
-export default function PublicationsPage() { 
-    return (
-        <>
-             <div className="space-y-6 mt-20 font-mono">
-          <div>
-            <h1 className="text-3xl font-bold text-main">Publications</h1>
-            <p className="text-black mt-1">Manage all  your  Acusa content in one place</p>
-                </div>
+export default function PublicationsPage() {
+  return (
+    <>
+      <div className="space-y-6 mt-20 font-mono">
+        <div>
+          <h1 className="text-3xl font-bold text-main">Publications</h1>
+          <p className="text-black mt-1">
+            Manage all Acusa content in one place
+          </p>
+        </div>
+        <Tabs defaultValue="article" className="w-full ">
+          <TabsList className="grid w-full grid-cols-4 lg:w-auto  lg:inline-grid">
+            <TabsTrigger value="articles" className="">
+              Articles
+            </TabsTrigger>
+            <TabsTrigger value="newsletter">Newsletter</TabsTrigger>
+            <TabsTrigger value="official-letters">Official Letters</TabsTrigger>
+            <TabsTrigger value="podcasts">Podcasts</TabsTrigger>
+          </TabsList>
 
+          <TabsContent value="articles" className="mt-6">
+            <ArticleTab />
+          </TabsContent>
 
-                <Tabs defaultValue="article"  className="w-full ">
-                    <TabsList className="grid w-full grid-cols-4 lg:w-auto  lg:inline-grid">
-                        <TabsTrigger value="articles" className="">Articles</TabsTrigger>
-                        <TabsTrigger value="newsletter">Newsletter</TabsTrigger>
-                        <TabsTrigger value="official-letters">Official Letters</TabsTrigger>
-                          <TabsTrigger value="podcasts">Podcasts</TabsTrigger>
-                    </TabsList>
-                    
-                    <TabsContent value="articles" className="mt-6">
-                        <ArticleTab />
-                    </TabsContent>
+          <TabsContent value="newsletter" className="mt-6">
+            <NewsletterTab />
+          </TabsContent>
 
-                    <TabsContent value="newsletter" className="mt-6">
-                    <NewsletterTab />
-                    </TabsContent>
+          <TabsContent value="official-letters" className="mt-6">
+            <OfficialLettersTab />
+          </TabsContent>
 
-                    <TabsContent value="official-letters" className="mt-6">
-                        <OfficialLettersTab />
-                    </TabsContent>
-
-                    <TabsContent value="podcasts" className="mt-6">
-                        <PodcastsTab />
-                    </TabsContent>
-                </Tabs>
-                </div>
-        </>
-    )
+          <TabsContent value="podcasts" className="mt-6">
+            <PodcastsTab />
+          </TabsContent>
+        </Tabs>
+      </div>
+    </>
+  );
 }
