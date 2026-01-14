@@ -1,8 +1,9 @@
 "use client"
 
+import Image from "next/image"
 import { useState,  } from "react"
 import { Button } from "../ui/button"
-import { Plus } from "lucide-react"
+import { Plus, Mail , ChevronRight, ChevronLeft, Trash2, Pencil} from "lucide-react"
 import {Card, CardContent, CardHeader, CardTitle } from "../ui/card"
 import { Tabs, TabsContent, TabsTrigger, TabsList } from "../ui/tabs"
 import { Label } from "../ui/label"
@@ -42,18 +43,17 @@ export default function Newsletter() {
 
     }
 
-    // const handleEdit = (newsletter: Newsletter) => {
-    //     setEditingNewsLetter(newsletter)
-    //     setShowForm({
-
-    //         title: newsletter.title,
-    //         description: newsletter.description,
-    //         content: newsletter.content,
-    //         image: newsletter.image,
-    //         tags: newsletter.tags.join(",")
-    //     })
-    //     setShowForm(true)
-    // }
+    const handleEdit = (newsletter: Newsletter) => {
+        setEditingNewsLetter(newsletter)
+        setShowForm({
+            title: newsletter.title,
+            description: newsletter.description,
+            content: newsletter.content,
+            image: newsletter.image,
+            tags: newsletter.tags.join(",")
+        })
+        setShowForm(true)
+    }
 
     const handleDelete = () => {
 
@@ -168,6 +168,99 @@ export default function Newsletter() {
                         </form>
                     </CardContent>
                 </Card>
+            )}
+
+
+            {!showForm && (
+                <>
+                    {paginatedNewsletters.length === 0 ? (
+                        <Card>
+                            <CardContent className="flex flex-col items-center justify-center py-12">
+                <Mail className="w-12 h-12 text-slate-300 mb-3" />
+                <p className="text-slate-600 mb-4">No newsletters created yet</p>
+                <Button onClick={() => setShowForm(true)}>
+                  <Plus className="w-4 h-4 mr-2" />
+                  Create your first newsletter
+                </Button>
+              </CardContent>
+                        </Card>
+                    ) : (
+                            <>
+                                              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {paginatedNewsletters.map((newsletter) => (
+                  <Card key={newsletter.id} className="overflow-hidden">
+                    <div className="aspect-video relative bg-slate-100">
+                      <Image
+                        src={newsletter.image || "/placeholder.svg"}
+                        alt={newsletter.title}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <CardContent className="p-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Mail className="w-4 h-4 text-purple-600" />
+                        <span className="text-xs font-medium text-purple-600">NEWSLETTER</span>
+                      </div>
+                      <h3 className="font-semibold text-lg text-slate-900 mb-2 line-clamp-2">{newsletter.title}</h3>
+                      <p className="text-sm text-slate-600 mb-3 line-clamp-2">{newsletter.description}</p>
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-xs text-slate-500">
+                          {new Date(newsletter.createdAt).toLocaleDateString()}
+                        </span>
+                      </div>
+                      <div className="flex flex-wrap gap-2 mb-3">
+                        {newsletter.tags.slice(0, 3).map((tag, idx) => (
+                          <span key={idx} className="text-xs px-2 py-1 bg-purple-50 text-purple-600 rounded-full">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="flex gap-2">
+                        <Button size="sm" variant="outline" onClick={() => handleEdit(newsletter)} className="flex-1">
+                          <Pencil className="w-3 h-3 mr-1" />
+                          Edit
+                        </Button>
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          onClick={() => handleDelete()}
+                          className="text-red-600 hover:text-red-700"
+                        >
+                          <Trash2 className="w-3 h-3" />
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+
+              {totalPages > 1 && (
+                <div className="flex items-center justify-center gap-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                    disabled={currentPage === 1}
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </Button>
+                  <span className="text-sm text-slate-600">
+                    Page {currentPage} of {totalPages}
+                  </span>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                    disabled={currentPage === totalPages}
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </Button>
+                </div>
+              )}
+                                </>
+                    )}
+                </>
             )}
         </div>
     )
