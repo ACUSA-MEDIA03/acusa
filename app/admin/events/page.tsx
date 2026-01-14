@@ -11,6 +11,8 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
+import { CheckedState } from "@radix-ui/react-checkbox";
+
 import { toast } from "sonner";
 interface Event {
   id: string;
@@ -48,7 +50,7 @@ export default function EventsPage() {
   const fetchEvents = async () => {
     try {
       const response = await fetch("/api/admin/events");
-      
+
       if (!response.ok) {
         throw new Error("Failed to fetch events");
       }
@@ -70,10 +72,10 @@ export default function EventsPage() {
 
     try {
       // Determine if we're editing or creating
-      const url = editingEvent 
+      const url = editingEvent
         ? `/api/admin/events/${editingEvent.id}`
         : "/api/admin/events";
-      
+
       const method = editingEvent ? "PATCH" : "POST";
 
       const response = await fetch(url, {
@@ -85,7 +87,7 @@ export default function EventsPage() {
           title: formData.title,
           description: formData.description,
           location: formData.location,
-          eventDate: formData.date,  // API expects 'eventDate'
+          eventDate: formData.date, // API expects 'eventDate'
           time: formData.time,
           published: formData.published,
         }),
@@ -100,13 +102,19 @@ export default function EventsPage() {
       // Success! Reset form and refresh events
       resetForm();
       fetchEvents();
-      
-      // Show success message (optional)
-      toast.success(editingEvent ? "Event updated successfully!" : "Event created successfully!");
 
-    } catch (err: any) {
-      console.error("Submit error:", err);
-      setError(err.message || "Failed to submit event");
+      // Show success message (optional)
+      toast.success(
+        editingEvent
+          ? "Event updated successfully!"
+          : "Event created successfully!"
+      );
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+    setError(err.message);
+  } else {
+    setError("Failed to submit an event");
+  }
     } finally {
       setSubmitting(false);
     }
@@ -114,13 +122,13 @@ export default function EventsPage() {
 
   // Reset form
   const resetForm = () => {
-    setFormData({ 
-      title: "", 
-      date: "", 
-      description: "", 
-      time: "", 
+    setFormData({
+      title: "",
+      date: "",
+      description: "",
+      time: "",
       location: "",
-      published: false 
+      published: false,
     });
     setEditingEvent(null);
     setShowForm(false);
@@ -130,7 +138,7 @@ export default function EventsPage() {
   const handleEdit = (event: Event) => {
     // Convert ISO datetime to date and time inputs
     const startDate = new Date(event.startDateTime);
-    const date = startDate.toISOString().split('T')[0];
+    const date = startDate.toISOString().split("T")[0];
     const time = startDate.toTimeString().slice(0, 5);
 
     setFormData({
@@ -152,8 +160,9 @@ export default function EventsPage() {
     }
 
     try {
-      const res = await fetch(`/api/admin/events/${id}`, { // Fixed template literal
-        method: "DELETE"
+      const res = await fetch(`/api/admin/events/${id}`, {
+        // Fixed template literal
+        method: "DELETE",
       });
 
       if (!res.ok) {
@@ -163,7 +172,6 @@ export default function EventsPage() {
       // Update UI
       setEvents((prev) => prev.filter((event) => event.id !== id));
       toast.success("Event deleted successfully!");
-      
     } catch (error) {
       console.error(error);
       alert("Failed to delete event");
@@ -197,7 +205,7 @@ export default function EventsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4">
+    <div className=" spaced-y-6 mt-20 font-mono">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
@@ -208,9 +216,10 @@ export default function EventsPage() {
 
           {!showForm && (
             <Button
-              className="px-6 py-3 bg-main rounded-lg hover:bg-main-900 transition text-white font-mono"
+              type="button"
+              className="px-6 py-3 bg-main rounded-lg hover:bg-main-900 transition text-white font-mono z-20"
               onClick={() => {
-                resetForm(); // Clear any previous data
+                resetForm();
                 setShowForm(true);
               }}
             >
@@ -245,7 +254,9 @@ export default function EventsPage() {
                     type="text"
                     placeholder="Enter Event Title"
                     value={formData.title}
-                    onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, title: e.target.value })
+                    }
                     required
                     disabled={submitting}
                   />
@@ -261,7 +272,9 @@ export default function EventsPage() {
                       type="date"
                       placeholder="Input event date"
                       value={formData.date}
-                      onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, date: e.target.value })
+                      }
                       required
                       disabled={submitting}
                     />
@@ -276,7 +289,9 @@ export default function EventsPage() {
                       type="time"
                       placeholder="Input event time"
                       value={formData.time}
-                      onChange={(e) => setFormData({ ...formData, time: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, time: e.target.value })
+                      }
                       required
                       disabled={submitting}
                     />
@@ -291,7 +306,9 @@ export default function EventsPage() {
                     id="location"
                     placeholder="Enter event location"
                     value={formData.location}
-                    onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, location: e.target.value })
+                    }
                     required
                     disabled={submitting}
                   />
@@ -305,7 +322,9 @@ export default function EventsPage() {
                     id="description"
                     placeholder="Enter event description"
                     value={formData.description}
-                    onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, description: e.target.value })
+                    }
                     rows={4}
                     disabled={submitting}
                   />
@@ -315,23 +334,33 @@ export default function EventsPage() {
                   <Checkbox
                     id="published"
                     checked={formData.published}
-                    onCheckedChange={(checked: any) => 
-                      setFormData({ ...formData, published: checked as boolean })
+                    onCheckedChange={(checked: CheckedState) =>
+                      setFormData({
+                        ...formData,
+                        published: checked as boolean,
+                      })
                     }
                     disabled={submitting}
                   />
-                  <Label htmlFor="published" className="text-sub font-mono cursor-pointer">
+                  <Label
+                    htmlFor="published"
+                    className="text-sub font-mono cursor-pointer"
+                  >
                     Publish immediately (visible to public)
                   </Label>
                 </div>
 
                 <div className="flex gap-2 pt-4">
-                  <Button 
-                    type="submit" 
+                  <Button
+                    type="submit"
                     className="bg-main font-mono"
                     disabled={submitting}
                   >
-                    {submitting ? "Saving..." : (editingEvent ? "Update Event" : "Create Event")}
+                    {submitting
+                      ? "Saving..."
+                      : editingEvent
+                      ? "Update Event"
+                      : "Create Event"}
                   </Button>
 
                   <Button
@@ -356,7 +385,7 @@ export default function EventsPage() {
               <CardContent className="flex flex-col items-center justify-center py-12">
                 <Calendar className="w-12 h-12 text-sub mb-3" />
                 <p className="text-sub mb-4 font-mono">No Events created yet</p>
-                <Button onClick={() => setShowForm(true)}>
+                <Button type="button" onClick={() => setShowForm(true)}>
                   <Plus className="w-4 h-4 mr-2" />
                   Create your first event
                 </Button>
