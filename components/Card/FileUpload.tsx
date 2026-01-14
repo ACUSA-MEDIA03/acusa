@@ -88,7 +88,7 @@ export function FileUpload({ accept, label, onFileSelect, currentFile, fileType 
         >
           <div className="flex flex-col items-center gap-2">
             <div className="p-3 bg-slate-100 rounded-full">
-              <Upload className="w-6 h-6 text-slate-600" />
+              <Upload className="w-6 h-6 text-sub" />
             </div>
             <div>
               <p className="text-sm font-medium text-slate-700">{label}</p>
@@ -105,7 +105,7 @@ export function FileUpload({ accept, label, onFileSelect, currentFile, fileType 
           ) : fileType === "audio" ? (
             <div className="p-4 flex items-center gap-3">
               <div className="p-2 bg-orange-100 rounded">
-                <File className="w-5 h-5 text-orange-600" />
+                <File className="w-5 h-5 text-sub" />
               </div>
               <div className="flex-1">
                 <p className="text-sm font-medium text-slate-700">Audio file selected</p>
@@ -115,10 +115,10 @@ export function FileUpload({ accept, label, onFileSelect, currentFile, fileType 
           ) : (
             <div className="p-4 flex items-center gap-3">
               <div className="p-2 bg-blue-100 rounded">
-                <File className="w-5 h-5 text-blue-600" />
+                <File className="w-5 h-5 text-sub" />
               </div>
               <div className="flex-1">
-                <p className="text-sm font-medium text-slate-700">File selected</p>
+                <p className="text-sm font-medium text-black">File selected</p>
                 <p className="text-xs text-slate-500">Ready to upload</p>
               </div>
             </div>

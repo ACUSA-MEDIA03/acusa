@@ -75,7 +75,7 @@ export default function Newsletter() {
         <div className="space-y-6">
             {!showForm && (
                 <div className="flex justify-end">
-                    <Button onClick={() => setShowForm(true)}>
+                    <Button onClick={() => setShowForm(true)} className="bg-main">
                         <Plus className="w-4 h-4 mr-2" /> Add Newsletter
                         </Button>
             </div>
@@ -85,14 +85,14 @@ export default function Newsletter() {
             {showForm && (
                 <Card>
                     <CardHeader >
-                        <CardTitle>{ editingNewsLetter ? "Edit Newsletter": "Create Newsletter"}</CardTitle>
+                        <CardTitle className="text-main">{ editingNewsLetter ? "Edit Newsletter": "Create Newsletter"}</CardTitle>
                     </CardHeader>
 
 
                     <CardContent>
                         <form action="" onSubmit={handleSubmit}>
                             <div className="space-y-2">
-                                <Label htmlFor="newsLetter-title">Title</Label>
+                                <Label htmlFor="newsLetter-title" className="text-main">Title</Label>
                                 <Input
                                                       id="newsletter-title"
                   placeholder="Enter newsletter title"
@@ -103,7 +103,7 @@ export default function Newsletter() {
                             </div>
 
                             <div className="space-y-2">
-                                <Label htmlFor="news-letter-description"> Description</Label>
+                                <Label htmlFor="news-letter-description" className="text-main"> Description</Label>
                                 <Textarea  id="newsletter-description"
                   placeholder="Brief description of the newsletter"
                   value={formData.description}
@@ -114,7 +114,7 @@ export default function Newsletter() {
 
 
                              <div className="space-y-2">
-                                <Label>Newsletter Image</Label>
+                                <Label htmlFor="newsletter-image" className="text-main">Newsletter Image</Label>
                                 <Tabs value={uploadMethod} onValueChange={(v) => setUploadMethod( v as "upload" | "url")}>
  <TabsList className="grid w-full grid-cols-2">
                     <TabsTrigger value="upload">Upload File</TabsTrigger>
@@ -139,7 +139,7 @@ export default function Newsletter() {
                             
 
                                           <div className="space-y-2">
-                <Label htmlFor="newsletter-content">Content</Label>
+                <Label htmlFor="newsletter-content"  className="text-main">Content</Label>
                 <Textarea
                   id="newsletter-content"
                   placeholder="Write your newsletter content here..."
@@ -160,7 +160,7 @@ export default function Newsletter() {
                             </div>
                             
                              <div className="flex gap-2">
-                <Button type="submit">{editingNewsLetter ? "Update Newsletter" : "Create Newsletter"}</Button>
+                <Button type="submit" className="text-main">{editingNewsLetter ? "Update Newsletter" : "Create Newsletter"}</Button>
                 <Button type="button" variant="outline" onClick={resetForm}>
                   Cancel
                 </Button>
@@ -176,9 +176,9 @@ export default function Newsletter() {
                     {paginatedNewsletters.length === 0 ? (
                         <Card>
                             <CardContent className="flex flex-col items-center justify-center py-12">
-                <Mail className="w-12 h-12 text-slate-300 mb-3" />
-                <p className="text-slate-600 mb-4">No newsletters created yet</p>
-                <Button onClick={() => setShowForm(true)}>
+                <Mail className="w-12 h-12 text-sub mb-3" />
+                <p className="text-sub mb-4">No newsletters created yet</p>
+                <Button onClick={() => setShowForm(true)} className="bg-main">
                   <Plus className="w-4 h-4 mr-2" />
                   Create your first newsletter
                 </Button>
@@ -200,7 +200,7 @@ export default function Newsletter() {
                     <CardContent className="p-4">
                       <div className="flex items-center gap-2 mb-2">
                         <Mail className="w-4 h-4 text-purple-600" />
-                        <span className="text-xs font-medium text-purple-600">NEWSLETTER</span>
+                        <span className="text-xs font-medium text-sub">NEWSLETTER</span>
                       </div>
                       <h3 className="font-semibold text-lg text-slate-900 mb-2 line-clamp-2">{newsletter.title}</h3>
                       <p className="text-sm text-slate-600 mb-3 line-clamp-2">{newsletter.description}</p>

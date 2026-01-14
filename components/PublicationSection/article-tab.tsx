@@ -69,19 +69,17 @@ export default function ArticleTab() {
     return (
         <div className="space-y-6">
             {!showForm && (
-                <div className="flex justify-center">
-                    <Button onClick={() => setShowForm(true)}>
-                        <Plus />
-                        Add Article
+                <div className="flex justify-end">
+                    <Button onClick={() => setShowForm(true)} className="bg-main">
+                                   <Plus className="w-4 h-4 mr-2" /> Add Article
                         </Button>
                 </div>
             )}
 
-
             {showForm && (
                 <Card>
                     <CardHeader>
-                        <CardTitle>
+                        <CardTitle className="text-main">
                         {editingArticle ? "Edit Article " : "Create New Article"}
                     </CardTitle>
                         
@@ -89,7 +87,7 @@ export default function ArticleTab() {
                         <CardContent>
                             <form action="" className="space-y-4">
                                 <div className="space-y-2">
-                                    <Label htmlFor="article-title">Title</Label>
+                                    <Label htmlFor="article-title" className="text-main">Title</Label>
                                     <Input
                                         id="article-title"
                                         placeholder="Enter Article title"
@@ -100,7 +98,7 @@ export default function ArticleTab() {
                                 </div>
 
                                  <div className="space-y-2">
-                <Label htmlFor="article-author">Author</Label>
+                <Label htmlFor="article-author" className="text-main">Author</Label>
                 <Input
                   id="article-author"
                   placeholder="Enter author name"
@@ -112,7 +110,7 @@ export default function ArticleTab() {
                                 
 
                                 <div className="space-y-2">
-                                    <Label>Article Images</Label>
+                                    <Label htmlFor="article-images" className="text-main">Article Images</Label>
                                     <Tabs>
                                         <TabsList>
                                             <TabsTrigger value="upload">Upload File </TabsTrigger>
@@ -137,7 +135,7 @@ export default function ArticleTab() {
                                 </div>
 
                                               <div className="space-y-2">
-                <Label htmlFor="article-content">Content</Label>
+                <Label htmlFor="article-content" className="text-main">Content</Label>
                 <Textarea
                   id="article-content"
                   placeholder="Write your article content here..."
@@ -149,7 +147,7 @@ export default function ArticleTab() {
                                 </div>
                                 
                                               <div className="space-y-2">
-                <Label htmlFor="article-tags">Tags (comma-separated)</Label>
+                <Label htmlFor="article-tags" className="text-main">Tags (comma-separated)</Label>
                 <Input
                   id="article-tags"
                   placeholder="e.g., technology, business, news"
@@ -159,7 +157,7 @@ export default function ArticleTab() {
                                 </div>
                                 
                                   <div className="flex gap-2">
-                <Button type="submit">{editingArticle ? "Update Article" : "Create Article"}</Button>
+                <Button type="submit"  className="bg-main">{editingArticle ? "Update Article" : "Create Article"}</Button>
                 <Button type="button" variant="outline" onClick={resetForm}>
                   Cancel
                 </Button>
@@ -178,9 +176,9 @@ export default function ArticleTab() {
                     {paginatedArticles.length === 0 ? (
                                     <Card>
               <CardContent className="flex flex-col items-center justify-center py-12">
-                <FileText className="w-12 h-12 text-slate-300 mb-3" />
-                <p className="text-slate-600 mb-4">No articles created yet</p>
-                <Button onClick={() => setShowForm(true)}>
+                <FileText className="w-12 h-12 text-sub mb-3" />
+                <p className="text-sub mb-4">No articles created yet</p>
+                <Button onClick={() => setShowForm(true)} className="bg-main">
                   <Plus className="w-4 h-4 mr-2" />
                   Create your first article
                 </Button>
@@ -200,17 +198,17 @@ export default function ArticleTab() {
                       />
                     </div>
                     <CardContent className="p-4">
-                      <h3 className="font-semibold text-lg text-slate-900 mb-2 line-clamp-2">{article.title}</h3>
-                      <p className="text-sm text-slate-600 mb-3 line-clamp-3">{article.content}</p>
+                      <h3 className="font-semibold text-lg text-main mb-2 line-clamp-2">{article.title}</h3>
+                      <p className="text-sm text-black mb-3 line-clamp-3">{article.content}</p>
                       <div className="flex items-center justify-between mb-3">
-                        <span className="text-xs text-slate-500">By {article.author}</span>
-                        <span className="text-xs text-slate-500">
+                        <span className="text-xs text-black">By {article.author}</span>
+                        <span className="text-xs text-black">
                           {new Date(article.createdAt).toLocaleDateString()}
                         </span>
                       </div>
                       <div className="flex flex-wrap gap-2 mb-3">
                         {article.tags.slice(0, 3).map((tag, idx) => (
-                          <span key={idx} className="text-xs px-2 py-1 bg-blue-50 text-blue-600 rounded-full">
+                          <span key={idx} className="text-xs px-2 py-1 bg-blue-50 text-sub rounded-full">
                             {tag}
                           </span>
                         ))}
