@@ -13,7 +13,6 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
-
     // Validate message length
     if (message.length < 10) {
       return NextResponse.json(

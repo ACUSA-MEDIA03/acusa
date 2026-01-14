@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-
+import {toast} from "sonner";
 interface User {
   id: string;
   name: string | null;
@@ -57,7 +57,7 @@ export default function AdminUsersPage() {
     fetchUsers();
   }, [status, fetchUsers]);
 
-  // 🔹 Toggle role
+  //  Toggle role
   const toggleRole = async (userId: string, currentRole: string) => {
     const newRole = currentRole === "ADMIN" ? "USER" : "ADMIN";
     const action =
@@ -77,15 +77,15 @@ export default function AdminUsersPage() {
       const data = await response.json();
       if (!response.ok) return alert(data.error || "Failed to update user role");
 
-      alert(data.message);
+      toast.custom(data.message);
       fetchUsers();
     } catch (err) {
       console.error("Update error:", err);
-      alert("Failed to update user role");
+      toast.error("Failed to update user role");
     }
   };
 
-  // 🔹 Delete user
+  // Delete user
   const deleteUser = async (userId: string, userEmail: string) => {
     if (!confirm(`Are you sure you want to delete user ${userEmail}? This action cannot be undone.`))
       return;
@@ -98,15 +98,15 @@ export default function AdminUsersPage() {
       const data = await response.json();
       if (!response.ok) return alert(data.error || "Failed to delete user");
 
-      alert("User deleted successfully");
+      toast.success("User deleted successfully");
       fetchUsers();
     } catch (err) {
       console.error("Delete error:", err);
-      alert("Failed to delete user");
+      toast.error("Failed to delete user");
     }
   };
 
-  // 🔹 Show loader while fetching
+  //  Show loader while fetching
   if (status === "loading" || loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">

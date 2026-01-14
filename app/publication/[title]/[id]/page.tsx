@@ -1,8 +1,8 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-import Details from "@/components/PublicationSection/Details";
-import OfficialLetter from "@/components/PublicationSection/OfficialLetter";
+import Details from "@/components/publicationsection/details";
+import OfficialLetter from "@/components/publicationsection/officialletter";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 interface PageProps {

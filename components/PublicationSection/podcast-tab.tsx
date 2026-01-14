@@ -46,11 +46,7 @@ export function PodcastsTab() {
     host: "",
   })
 
-  
-
   const loadPodcasts = () => {
-    const stored = localStorage.getItem("podcasts")
-   
   }
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -294,14 +290,14 @@ export function PodcastsTab() {
                     </div>
                     <CardContent className="p-4">
                       <div className="flex items-center gap-2 mb-2">
-                        <Podcast className="w-4 h-4 text-orange-600" />
+                        <Podcast className="w-4 h-4 text-sub" />
                         <span className="text-xs font-medium text-main">PODCAST</span>
                       </div>
                       <h3 className="font-semibold text-lg text-slate-900 mb-2 line-clamp-2">{podcast.title}</h3>
-                      <p className="text-sm text-slate-600 mb-3 line-clamp-2">{podcast.description}</p>
+                      <p className="text-sm text-black mb-3 line-clamp-2">{podcast.description}</p>
                       <div className="flex items-center justify-between mb-3">
-                        <span className="text-xs text-slate-500">Host: {podcast.host}</span>
-                        {podcast.duration && <span className="text-xs text-slate-500">{podcast.duration}</span>}
+                        <span className="text-xs text-black">Host: {podcast.host}</span>
+                        {podcast.duration && <span className="text-xs text-black">{podcast.duration}</span>}
                       </div>
                       <div className="flex gap-2 mb-3">
                         {podcast.audioType === "upload" ? (

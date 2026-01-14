@@ -56,6 +56,9 @@ export default function AdminDashboard() {
       fetchEvents();
     }
   }, [status]);
+
+  //  Filter events lists
+  // const availableEvents = events.filter((u) => u.event === '')
   if (status === "loading") {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -91,9 +94,6 @@ export default function AdminDashboard() {
     );
   }
 
-
-
-
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -128,7 +128,7 @@ export default function AdminDashboard() {
               Events
             </h3>
             <p className="text-gray-600 mb-4">Manage campus events</p>
-            {/* <p>{ session.event}</p> */}
+            <p>{ events.length}</p>
 
           </div>
 
