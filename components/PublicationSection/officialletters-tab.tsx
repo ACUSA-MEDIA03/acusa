@@ -1,92 +1,211 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Plus, FileCheck, Pencil, Trash2, ChevronLeft, ChevronRight } from "lucide-react"
-import Image from "next/image"
-import { FileUpload } from "@/components/Card/FileUpload"
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Plus,
+  FileCheck,
+  Pencil,
+  Trash2,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
+import Image from "next/image";
+import { FileUpload } from "@/components/Card/FileUpload";
+import { toast } from "sonner";
+
 
 interface OfficialLetter {
-  id: string
-  title: string
-  description: string
-  imageUrl: string
-  referenceNumber: string
-  createdAt: string
+  id: string;
+  title: string;
+  description: string;
+  fileUrl: string;
+  fileSize: string;
+  referenceNo: string;
+  imageUrl?: string;
+  published: boolean;
+  createdAt: string;
+  createdBy?: {
+    name: string;
+    email: string;
+  }
 }
 
-const ITEMS_PER_PAGE = 6
+const ITEMS_PER_PAGE = 6;
 
 export function OfficialLettersTab() {
-  const [letters, setLetters] = useState<OfficialLetter[]>([])
-  const [showForm, setShowForm] = useState(false)
-  const [editingLetter, setEditingLetter] = useState<OfficialLetter | null>(null)
-  const [currentPage, setCurrentPage] = useState(1)
-  const [uploadMethod, setUploadMethod] = useState<"upload" | "url">("upload")
+  const [letters, setLetters] = useState<OfficialLetter[]>([]);
+  const [showForm, setShowForm] = useState(false);
+  const [editingLetter, setEditingLetter] = useState<OfficialLetter | null>(
+    null
+  );
+  const [currentPage, setCurrentPage] = useState(1);
+  const [uploadMethod, setUploadMethod] = useState<"upload" | "url">("upload");
+  const [submitting, setSubmitting] = useState(false);
+  const [loading, setIsLoading] = useState(true);
   const [formData, setFormData] = useState({
     title: "",
     description: "",
     imageUrl: "",
-    referenceNumber: "",
-  })
+    fileUrl: "",
+    fileSize: "",
+    referenceNo: "",
+    published: false,
 
+  });
 
+  useEffect(() => {
+    loadLetters();
+  }, [])
+  const loadLetters = async () => {
+    try {
+      setIsLoading(true)
+      const response = await fetch("/api/admin/publications?category=OFFICIAL_LETTER&limit=100");
+      if (!response) {
+        throw new Error("Failed to fetch articles");
+      }
 
-  const loadLetters = () => {
-    
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-
-    const letterData: OfficialLetter = {
-      id: editingLetter?.id,
-      title: formData.title,
-      description: formData.description,
-      imageUrl: formData.imageUrl || "/official-letter.jpg",
-      referenceNumber: formData.referenceNumber,
-      createdAt: editingLetter?.createdAt || new Date().toISOString(),
+      const data = await response.json();
+      setLetters(data.publications || []);
+    } catch (error) {
+      console.error("Fetch error", error);
+      toast.error("Failed to load letters")
+    } finally {
+      setIsLoading(false);
     }
+  };
 
-    setLetters(updatedLetters)
-    resetForm()
-  }
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitting(true);
 
-//       useEffect(() => {
-//     loadLetters()
-//   }, [])
+    try {
+      //  validation
+      if (!formData.title || !formData.description) {
+        toast.error("Title and description are required");
+        setSubmitting(false);
+        return;
+      }
+
+      //  determine url and method
+      const url = editingLetter
+        ? `/api/admin/publications/${editingLetter.id}`
+        : `/api/admin/publications`;
+      
+      const method = editingLetter ? "PUT" : "POST";
+
+      const response = await fetch(url, {
+        method,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: formData.title,
+          description: formData.description,
+          fileUrl: formData.fileUrl,
+          category: "OFFICIAL_LETTER",
+          fileSize: formData.fileSize,
+          published: formData.published,
+          imageUrl: formData.imageUrl || null,
+          refernceNo: formData.referenceNo,
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to save letter");
+      }
+      //  on success
+      toast.success(editingLetter ? "Letter Updated" : "Letter created");
+      resetForm();
+      loadLetters();
+    } catch (error: unknown) {
+      console.error("Submit error", error);
+      toast.error("Failed to save letter");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+
   const handleEdit = (letter: OfficialLetter) => {
-    setEditingLetter(letter)
+    setEditingLetter(letter);
     setFormData({
       title: letter.title,
-      description: letter.description,
-      imageUrl: letter.imageUrl,
-      referenceNumber: letter.referenceNumber,
-    })
-    setShowForm(true)
-  }
+      description: letter.description || "",
+      imageUrl: letter.imageUrl || "",
+      fileSize: letter.fileSize,
+      fileUrl: letter.fileUrl,
+      referenceNo: letter.referenceNo,
+      published: letter.published,
+    });
+    setShowForm(true);
+  };
 
-  const handleDelete = (id: string) => {
-    
-  }
+  const handleDelete = async (id: string) => {
+    if (!confirm("Are you sure you want to delete the letter?")) {
+      return;
+    }
+
+    try {
+      const response = await fetch(`/api/admin/publications/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+          throw new Error("Failed to delete letter")
+      }
+
+      //  update
+      setLetters((prev: OfficialLetter[]) =>
+    prev.filter((letter: OfficialLetter) => letter.id !== id)
+  );
+      toast.success("Letter deleted successfully");
+    } catch (error) {
+      console.error("Delete error", error);
+      toast.error("Failed to delete letter")
+    }
+  };
 
   const resetForm = () => {
-    setFormData({ title: "", description: "", imageUrl: "", referenceNumber: "" })
-    setEditingLetter(null)
-    setShowForm(false)
-    setUploadMethod("upload")
+    setFormData({
+      title: "",
+      description: "",
+      imageUrl: "",
+      fileSize: "",
+      fileUrl: "",
+      referenceNo: "",
+      published: false,
+    });
+    setEditingLetter(null);
+    setShowForm(false);
+    setUploadMethod("upload");
+  };
+
+  const sortedLetters = [...letters].sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  );
+  const totalPages = Math.ceil(sortedLetters.length / ITEMS_PER_PAGE);
+  const paginatedLetters = sortedLetters.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
+
+    if (loading) {
+    return (
+      <div className="flex items-center justify-center py-12">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-main"></div>
+      </div>
+    );
   }
-  
-  const sortedLetters = [...letters].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-  const totalPages = Math.ceil(sortedLetters.length / ITEMS_PER_PAGE)
-  const paginatedLetters = sortedLetters.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE)
 
   return (
     <div className="space-y-6">
@@ -102,33 +221,54 @@ export function OfficialLettersTab() {
       {showForm && (
         <Card>
           <CardHeader>
-            <CardTitle className="text-main">{editingLetter ? "Edit Official Letter" : "Add New Official Letter"}</CardTitle>
+            <CardTitle className="text-main">
+              {editingLetter
+                ? "Edit Official Letter"
+                : "Add New Official Letter"}
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="letter-title" className="text-main">Title</Label>
+                <Label htmlFor="letter-title" className="text-main">
+                  Title
+                </Label>
                 <Input
                   id="letter-title"
                   placeholder="Enter letter title"
                   value={formData.title}
-                  onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, title: e.target.value })
+                  }
                   required
+                  disabled={submitting}
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="letter-reference" className="text-main">Reference Number</Label>
+                <Label htmlFor="letter-reference" className="text-main">
+                  Reference Number
+                </Label>
                 <Input
                   id="letter-reference"
                   placeholder="e.g., REF/2024/001"
-                  value={formData.referenceNumber}
-                  onChange={(e) => setFormData({ ...formData, referenceNumber: e.target.value })}
+                  value={formData.referenceNo}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      referenceNo: e.target.value,
+                    })
+                  }
                   required
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="letter-document"  className="text-main">Letter Document</Label>
-                <Tabs value={uploadMethod} onValueChange={(v) => setUploadMethod(v as "upload" | "url")}>
+                <Label htmlFor="letter-document" className="text-main">
+                  Letter Document
+                </Label>
+                <Tabs
+                  value={uploadMethod}
+                  onValueChange={(v) => setUploadMethod(v as "upload" | "url")}
+                >
                   <TabsList className="grid w-full grid-cols-2">
                     <TabsTrigger value="upload">Upload Scan</TabsTrigger>
                     <TabsTrigger value="url">Document URL</TabsTrigger>
@@ -137,7 +277,9 @@ export function OfficialLettersTab() {
                     <FileUpload
                       accept="image/*"
                       label="Upload scanned letter/memo"
-                      onFileSelect={(url) => setFormData({ ...formData, imageUrl: url })}
+                      onFileSelect={(url) =>
+                        setFormData({ ...formData, fileUrl: url })
+                      }
                       currentFile={formData.imageUrl}
                       fileType="document"
                     />
@@ -146,24 +288,49 @@ export function OfficialLettersTab() {
                     <Input
                       placeholder="Enter document image URL"
                       value={formData.imageUrl}
-                      onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, imageUrl: e.target.value })
+                      }
                     />
                   </TabsContent>
                 </Tabs>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="letter-description" className="text-main">Description</Label>
+                <Label htmlFor="letter-description" className="text-main">
+                  Description
+                </Label>
                 <Textarea
                   id="letter-description"
                   placeholder="Brief description of the letter contents"
                   value={formData.description}
-                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, description: e.target.value })
+                  }
                   rows={4}
                   required
+                  disabled={submitting}
                 />
               </div>
+
+                            <div className="flex items-center space-x-2">
+                <input
+                  id="article-published"
+                  type="checkbox"
+                  checked={formData.published}
+                  onChange={(e) =>
+                    setFormData({ ...formData, published: e.target.checked })
+                  }
+                  className="h-4 w-4 text-indigo-600 rounded"
+                  disabled={submitting}
+                />
+                <Label htmlFor="article-published" className="text-main cursor-pointer">
+                  Publish immediately (visible to public)
+                </Label>
+              </div>
               <div className="flex gap-2">
-                <Button type="submit" className="bg-main">{editingLetter ? "Update Letter" : "Add Letter"}</Button>
+                <Button type="submit" className="bg-main">
+                  {editingLetter ? "Update Letter" : "Add Letter"}
+                </Button>
                 <Button type="button" variant="outline" onClick={resetForm}>
                   Cancel
                 </Button>
@@ -191,7 +358,7 @@ export function OfficialLettersTab() {
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {paginatedLetters.map((letter) => (
                   <Card key={letter.id} className="overflow-hidden">
-                    <div className="aspect-[4/5] relative bg-slate-100">
+                    <div className="aspect-4/5 relative bg-slate-100">
                       <Image
                         src={letter.imageUrl || "/placeholder.svg"}
                         alt={letter.title}
@@ -202,18 +369,31 @@ export function OfficialLettersTab() {
                     <CardContent className="p-4">
                       <div className="flex items-center gap-2 mb-2">
                         <FileCheck className="w-4 h-4 text-green-600" />
-                        <span className="text-xs font-medium text-green-600">OFFICIAL</span>
+                        <span className="text-xs font-medium text-green-600">
+                          OFFICIAL
+                        </span>
                       </div>
-                      <h3 className="font-semibold text-lg text-slate-900 mb-2 line-clamp-2">{letter.title}</h3>
-                      <p className="text-sm text-slate-600 mb-3 line-clamp-2">{letter.description}</p>
+                      <h3 className="font-semibold text-lg text-slate-900 mb-2 line-clamp-2">
+                        {letter.title}
+                      </h3>
+                      <p className="text-sm text-slate-600 mb-3 line-clamp-2">
+                        {letter.description}
+                      </p>
                       <div className="flex items-center justify-between mb-3">
-                        <span className="text-xs font-mono text-slate-500">{letter.referenceNumber}</span>
+                        <span className="text-xs font-mono text-slate-500">
+                          {letter.fileSize}
+                        </span>
                         <span className="text-xs text-slate-500">
                           {new Date(letter.createdAt).toLocaleDateString()}
                         </span>
                       </div>
                       <div className="flex gap-2">
-                        <Button size="sm" variant="outline" onClick={() => handleEdit(letter)} className="flex-1">
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          onClick={() => handleEdit(letter)}
+                          className="flex-1"
+                        >
                           <Pencil className="w-3 h-3 mr-1" />
                           Edit
                         </Button>
@@ -247,7 +427,9 @@ export function OfficialLettersTab() {
                   <Button
                     variant="outline"
                     size="sm"
-                    onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                    onClick={() =>
+                      setCurrentPage((p) => Math.min(totalPages, p + 1))
+                    }
                     disabled={currentPage === totalPages}
                   >
                     <ChevronRight className="w-4 h-4" />
@@ -259,5 +441,5 @@ export function OfficialLettersTab() {
         </>
       )}
     </div>
-  )
+  );
 }

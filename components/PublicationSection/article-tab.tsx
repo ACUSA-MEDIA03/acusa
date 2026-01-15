@@ -96,7 +96,7 @@ export default function ArticleTab() {
       const url = editingArticle
         ? `/api/admin/publications/${editingArticle.id}`
         : "/api/admin/publications";
-      const method = editingArticle ? "PATCH" : "POST";
+      const method = editingArticle ? "PUT" : "POST";
 
       const response = await fetch(url, {
         method,
