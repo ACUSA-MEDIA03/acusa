@@ -37,6 +37,98 @@ export async function GET(
   }
 }
 
+export async function PUT(
+  req: NextRequest,
+  context: { params: Promise<{ id: string }> }
+) {
+  try {
+    await requireAdmin();
+ const { id } = await context.params;
+    const body = await req.json();
+
+    const {
+      title,
+      content,
+      description,
+      category,
+      imageUrl,
+      images,
+      fileUrl,
+      audioUrl,
+      tags,
+      author,
+      duration,
+      fileSize,
+      published,
+    } = body;
+
+    // ✅ PUT = enforce required fields
+    if (!title || !content || !category) {
+      return NextResponse.json(
+        { error: "title, content and category are required" },
+        { status: 400 }
+      );
+    }
+
+    const validCategories = [
+      "ARTICLE",
+      "NEWSLETTER",
+      "OFFICIAL_LETTER",
+      "PODCAST",
+    ];
+
+    if (!validCategories.includes(category)) {
+      return NextResponse.json({ error: "Invalid category" }, { status: 400 });
+    }
+
+    const publication = await prisma.publication.update({
+      where: { id },
+      data: {
+        title,
+        content,
+        description: description ?? null,
+        category,
+        imageUrl: imageUrl ?? null,
+        images: images ?? [],
+        fileUrl: fileUrl ?? null,
+        audioUrl: audioUrl ?? null,
+        tags: tags ?? [],
+        author: author ?? null,
+        duration: duration ?? null,
+        fileSize: fileSize ?? null,
+        published: published ?? false,
+      },
+      include: {
+        createdBy: {
+          select: {
+            name: true,
+            email: true,
+          },
+        },
+      },
+    });
+
+    return NextResponse.json({
+      message: "Publication updated successfully",
+      publication,
+    });
+  } catch (error) {
+    console.error("Publication PUT error:", error);
+
+    // if (error?.code === "P2025") {
+    //   return NextResponse.json(
+    //     { error: "Publication not found" },
+    //     { status: 404 }
+    //   );
+    // }
+
+    return NextResponse.json(
+      { error: "Failed to update publication" },
+      { status: 500 }
+    );
+  }
+}
+
 // PATCH /api/admin/publications/[id]
 export async function PATCH(
   req: NextRequest,
