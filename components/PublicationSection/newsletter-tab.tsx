@@ -25,7 +25,7 @@ interface Newsletter {
   description: string;
   content: string;
   images?: string[];
-  imageUrl?: string; 
+  imageUrl?: string;
   tags: string[];
   published: boolean;
   createdAt: string;
@@ -46,17 +46,16 @@ export default function Newsletter() {
   const [uploadMethod, setUploadMethod] = useState<"upload" | "url">("upload");
   const [submitting, setSubmitting] = useState(false);
   const [loading, setLoading] = useState(false);
-  
-  const [formData, setFormData] = useState({
-  title: "",
-  description: "",
-  content: "",
-  imageUrl: "",
-  images: [] as string[],
-  tags: "",
-  published: false,
-});
 
+  const [formData, setFormData] = useState({
+    title: "",
+    description: "",
+    content: "",
+    imageUrl: "",
+    images: [] as string[],
+    tags: "",
+    published: false,
+  });
 
   //  Fetch Newsletter on counter mount
   useEffect(() => {
@@ -66,23 +65,23 @@ export default function Newsletter() {
   const fetchNewsletters = async () => {
     try {
       setLoading(true);
-      const response = await fetch("/api/admin/publications?category=NEWSLETTER&limit=100");
-      
+      const response = await fetch(
+        "/api/admin/publications?category=NEWSLETTER&limit=100"
+      );
+
       if (!response.ok) {
         throw new Error("Failed to fetch newsletters");
       }
 
       const data = await response.json();
-      setNewsLetter(data.newsletters || []);
-      
+      setNewsLetter(data.publications || []);
     } catch (error) {
       console.error("Error fetching newsletters:", error);
       toast.error("Error fetching newsletters");
-    }
-    finally {
+    } finally {
       setLoading(false);
     }
-  }
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     // Handle form submission for creating or updating a newsletter
@@ -98,9 +97,9 @@ export default function Newsletter() {
       }
       //  conveert comma- seperated tags to array
       const tagsArray = formData.tags
-  .split(",")
-  .map(tag => tag.trim())
-  .filter(Boolean);
+        .split(",")
+        .map((tag) => tag.trim())
+        .filter(Boolean);
       //  Determine URL and method
       const url = editingNewsLetter
         ? `/api/admin/publications/${editingNewsLetter.id}`
@@ -112,16 +111,16 @@ export default function Newsletter() {
         headers: {
           "Content-Type": "application/json",
         },
-       body: JSON.stringify({
-  title: formData.title,
-  content: formData.content,
-  description: formData.description,
-  category: "NEWSLETTER",
-  imageUrl: formData.imageUrl || formData.images[0],
-  images: formData.images,
-  tags: tagsArray,
-  published: formData.published,
-}),
+        body: JSON.stringify({
+          title: formData.title,
+          content: formData.content,
+          description: formData.description,
+          category: "NEWSLETTER",
+          imageUrl: formData.imageUrl || formData.images[0],
+          images: formData.images,
+          tags: tagsArray,
+          published: formData.published,
+        }),
       });
 
       const data = await response.json();
@@ -129,33 +128,36 @@ export default function Newsletter() {
         throw new Error(data.message || "Something went wrong");
       }
       //  success
-      toast.success(`Newsletter ${editingNewsLetter ? "updated" : "created"} successfully`);
+      toast.success(
+        `Newsletter ${editingNewsLetter ? "updated" : "created"} successfully`
+      );
       resetForm();
-      // fetchNewsletters();
+       fetchNewsletters();
     } catch (error: unknown) {
       console.error("Error submitting newsletter:", error);
-      toast.error(error instanceof Error ? error.message : "An unexpected error occurred.");
+      toast.error(
+        error instanceof Error ? error.message : "An unexpected error occurred."
+      );
     } finally {
       setSubmitting(false);
-  }
+    }
   };
 
   const handleEdit = (newsletter: Newsletter) => {
-  setEditingNewsLetter(newsletter);
-  setFormData({
-    title: newsletter.title,
-    content: newsletter.content,
-    description: newsletter.description,
-    imageUrl: newsletter.imageUrl || "",
-    images: newsletter.images || [],
-    tags: newsletter.tags.join(", "),
-    published: newsletter.published,
-  });
-  setShowForm(true);
-};
+    setEditingNewsLetter(newsletter);
+    setFormData({
+      title: newsletter.title,
+      content: newsletter.content,
+      description: newsletter.description,
+      imageUrl: newsletter.imageUrl || "",
+      images: newsletter.images || [],
+      tags: newsletter.tags.join(", "),
+      published: newsletter.published,
+    });
+    setShowForm(true);
+  };
 
-
-  const handleDelete =  async (id: string) => {
+  const handleDelete = async (id: string) => {
     if (!confirm("Are you sure you want to delete this newsletter")) {
       return;
     }
@@ -166,30 +168,29 @@ export default function Newsletter() {
       });
       if (!response.ok) {
         throw new Error("Failed to delete newsletter");
-      } 
+      }
       toast.success("Newsletter deleted successfully");
       setNewsLetter((prev) => prev.filter((n) => n.id !== id));
-
     } catch (error) {
       console.error("Error deleting newsletter:", error);
       toast.error("Error deleting newsletter");
     }
   };
 
-const resetForm = () => {
-  setFormData({
-    title: "",
-    description: "",
-    content: "",
-    tags: "",
-    imageUrl: "",
-    images: [],
-    published: false,
-  });
-  setEditingNewsLetter(null);
-  setShowForm(false);
-  setUploadMethod("upload");
-};
+  const resetForm = () => {
+    setFormData({
+      title: "",
+      description: "",
+      content: "",
+      tags: "",
+      imageUrl: "",
+      images: [],
+      published: false,
+    });
+    setEditingNewsLetter(null);
+    setShowForm(false);
+    setUploadMethod("upload");
+  };
 
   const sortedNewsletters = [...newsLetter].sort(
     (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
@@ -199,6 +200,14 @@ const resetForm = () => {
     (currentPage - 1) * ITEMS_PER_PAGE,
     currentPage * ITEMS_PER_PAGE
   );
+
+  if (loading) {
+    (
+       <div className="flex items-center justify-center py-12">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-main"></div>
+      </div>
+)
+  }
   return (
     <div className="space-y-6">
       {!showForm && (
@@ -231,13 +240,14 @@ const resetForm = () => {
                     setFormData({ ...formData, title: e.target.value })
                   }
                   required
+                  disabled={submitting}
                 />
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="news-letter-description" className="text-main">
                   {" "}
-                  Description
+                 Short   Description
                 </Label>
                 <Textarea
                   id="newsletter-description"
@@ -248,6 +258,7 @@ const resetForm = () => {
                   }
                   rows={3}
                   required
+                  disabled={submitting}
                 />
               </div>
 
@@ -272,6 +283,7 @@ const resetForm = () => {
                       }
                       currentFile={formData.images[0]}
                       fileType="image"
+                      
                     />
                   </TabsContent>
                   <TabsContent value="url" className="mt-3">
@@ -281,6 +293,7 @@ const resetForm = () => {
                       onChange={(e) =>
                         setFormData({ ...formData, images: [e.target.value] })
                       }
+                      disabled={submitting}
                     />
                   </TabsContent>
                 </Tabs>
@@ -299,6 +312,7 @@ const resetForm = () => {
                   }
                   rows={8}
                   required
+                  disabled={submitting}
                 />
               </div>
               <div className="space-y-2">
@@ -310,11 +324,25 @@ const resetForm = () => {
                   onChange={(e) =>
                     setFormData({ ...formData, tags: e.target.value })
                   }
+                  disabled={submitting}
                 />
               </div>
 
+              <div className="flex items-center space-x-2">
+                <input
+                  id="newsletter-published"
+                  type="checkbox"
+                  checked={formData.published}
+                 onChange={(e) =>
+                    setFormData({ ...formData, published: e.target.checked })
+                  }
+                className="h-4 w-4 text-main rounded"
+                />
+                <Label htmlFor="article-published" className="text-main cursor-pointer">Publish immediately (visible to public)</Label>
+              </div>
+
               <div className="flex gap-2">
-                <Button type="submit" className="text-main">
+                <Button type="submit" className="bg-main">
                   {editingNewsLetter
                     ? "Update Newsletter"
                     : "Create Newsletter"}
@@ -348,7 +376,11 @@ const resetForm = () => {
                   <Card key={newsletter.id} className="overflow-hidden">
                     <div className="aspect-video relative bg-slate-100">
                       <Image
-                        src={newsletter.imageUrl || newsletter.images?.[0] || "/placeholder.svg"}
+                        src={
+                          newsletter.imageUrl ||
+                          newsletter.images?.[0] ||
+                          "/placeholder.svg"
+                        }
                         alt={newsletter.title}
                         fill
                         className="object-cover"
