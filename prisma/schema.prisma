@@ -112,6 +112,7 @@ model Publication {
   author      String?           // Author name (optional, different from createdBy)
   duration    Int?              // Podcast duration in seconds
   fileSize    Int?              // File size in bytes
+  referenceNo String?           // store Ref no 24/23/213
   
   published   Boolean           @default(false)
   createdBy   User              @relation(fields: [createdById], references: [id])

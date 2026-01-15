@@ -116,6 +116,7 @@ export async function POST(req: NextRequest) {
       author,
       duration,
       fileSize,
+      referenceNo,
       published = false,
     } = await req.json();
 
@@ -187,6 +188,7 @@ export async function POST(req: NextRequest) {
         author,
         duration,
         fileSize,
+        referenceNo,
         published,
         createdById: session.user.id,
       },
