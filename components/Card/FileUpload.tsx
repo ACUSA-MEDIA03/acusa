@@ -10,7 +10,7 @@ import Image from "next/image"
 interface FileUploadProps {
   accept?: string
   label: string
-  onFileSelect: (fileUrl: string) => void
+  onFileSelect: (fileUrl: string, file?: File) => void
   currentFile?: string
   fileType?: "image" | "audio" | "document"
 }
