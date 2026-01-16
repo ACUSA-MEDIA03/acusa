@@ -6,15 +6,16 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { MessageCircle, Trash2, Check, Mail, User } from "lucide-react"
 import { useState, useEffect } from "react"
+import { toast } from "sonner"
 
 interface Feedback {
   id: string
-  name: string
-  email: string
+  name: string // optional
+  email: string // optional 
   message: string
-  isAnonymous: boolean
+  phoneNumber: number // optinonal
   createdAt: string
-  status: "unread" | "read"
+ read: boolean
 }
 
 export default function FeedbackPage() {
@@ -22,61 +23,72 @@ export default function FeedbackPage() {
   const [searchQuery, setSearchQuery] = useState("")
   const [filterStatus, setFilterStatus] = useState<"all" | "unread" | "read">("all")
   const [expandedId, setExpandedId] = useState<string | null>(null)
-
+  const [loading, setLoading] = useState(false)
   useEffect(() => {
-    // loadFeedbacks()
+    loadFeedbacks()
   }, [])
 
-  const loadFeedbacks = () => {
-    const storedFeedback = localStorage.getItem("feedback")
-    if (storedFeedback) {
-      const parsed = JSON.parse(storedFeedback)
-      // Sort by newest first
-      const sorted = parsed.sort(
-        (a: Feedback, b: Feedback) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-      )
-      setFeedbacks(sorted)
+  const loadFeedbacks = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch("/api/admin/feedbacks", {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      } );
+      if (!response.ok) {
+        throw new Error("Failed to fetch feedbacks");        
+      } 
+      const data = await response.json();
+        setFeedbacks(data.feedback ?? []);
+    } catch (error) {
+      console.error("Error loading feedbacks:", error);
+      toast.error("Error loading feedbacks");
+
+      setFeedbacks([]);
+    } finally {
+      setLoading(false);  
     }
   }
 
   const handleDelete = (id: string) => {
     if (confirm("Are you sure you want to delete this feedback?")) {
       const updated = feedbacks.filter((f) => f.id !== id)
-      localStorage.setItem("feedback", JSON.stringify(updated))
       setFeedbacks(updated)
     }
   }
-
   const handleMarkAsRead = (id: string) => {
-    const updated = feedbacks.map((f) => (f.id === id ? { ...f, status: "read" as const } : f))
-    localStorage.setItem("feedback", JSON.stringify(updated))
+    const updated = feedbacks.map((f) => (f.id === id ? { ...f, read: true } : f))
     setFeedbacks(updated)
   }
-
-  const filteredFeedbacks = feedbacks.filter((feedback) => {
-    // Filter by status
-    if (filterStatus !== "all" && feedback.status !== filterStatus) {
-      return false
-    }
-
-    // Filter by search query (name, email, message)
-    if (searchQuery.trim()) {
-      const query = searchQuery.toLowerCase()
-      return (
-        feedback.name.toLowerCase().includes(query) ||
-        feedback.email.toLowerCase().includes(query) ||
-        feedback.message.toLowerCase().includes(query)
-      )
-    }
-
-    return true
-  })
-
-  const stats = {
-    total: feedbacks.length,
-    unread: feedbacks.filter((f) => f.status === "unread").length,
-    anonymous: feedbacks.filter((f) => f.isAnonymous).length,
+const filteredFeedbacks = (feedbacks || []).filter((feedback) => {
+  // Filter by status
+  if (filterStatus !== "all") {
+    if (filterStatus === "unread" && feedback.read) return false;
+    if (filterStatus === "read" && !feedback.read) return false;
   }
+
+  // Filter by search query
+  if (searchQuery.trim()) {
+    const query = searchQuery.toLowerCase();
+    return (
+      (feedback.name?.toLowerCase() ?? "").includes(query) ||
+      (feedback.email?.toLowerCase() ?? "").includes(query) ||
+      feedback.message.toLowerCase().includes(query)
+    );
+  }
+
+  return true;
+});
+
+
+ const stats = {
+  total: feedbacks.length,
+  unread: feedbacks.filter((f) => !f.read).length,
+};
+
 
   return (
   
@@ -93,7 +105,7 @@ export default function FeedbackPage() {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm font-medium text-black">Total Feedback</p>
-                    <p className="text-2xl font-bold mt-2">{stats.total}</p>
+                    <p className="text-2xl font-bold mt-2">{feedbacks.length}</p>
                   </div>
                   <div className="p-3 rounded-full bg-blue-50">
                     <MessageCircle className="w-6 h-6 text-blue-600" />
@@ -107,7 +119,7 @@ export default function FeedbackPage() {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm font-medium text-slate-600">Unread</p>
-                    <p className="text-2xl font-bold mt-2 text-orange-600">{stats.unread}</p>
+                    <p className="text-2xl font-bold mt-2 text-orange-600">{feedbacks.filter((f) => !f.read).length}</p>
                   </div>
                   <div className="p-3 rounded-full bg-orange-50">
                     <Mail className="w-6 h-6 text-orange-600" />
@@ -121,7 +133,7 @@ export default function FeedbackPage() {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm font-medium text-slate-600">Anonymous</p>
-                    <p className="text-2xl font-bold mt-2 text-purple-600">{stats.anonymous}</p>
+                    {/* <p className="text-2xl font-bold mt-2 text-purple-600">{stats.anonymous}</p> */}
                   </div>
                   <div className="p-3 rounded-full bg-purple-50">
                     <User className="w-6 h-6 text-purple-600" />
@@ -169,14 +181,14 @@ export default function FeedbackPage() {
               </Card>
             ) : (
               filteredFeedbacks.map((feedback) => (
-                <Card key={feedback.id} className={feedback.status === "unread" ? "border-blue-200 bg-blue-50" : ""}>
+                <Card key={feedback.id} className={feedback.read === false ? "border-blue-200 bg-blue-50" : ""}>
                   <CardContent className="p-6">
                     <div className="space-y-3">
                       {/* Header with status badge */}
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-2">
-                            {feedback.isAnonymous ? (
+                            {/* {feedback.isAnonymous ? (
                               <span className="text-xs font-medium px-2 py-1 rounded-full bg-purple-100 text-purple-700">
                                 Anonymous
                               </span>
@@ -189,15 +201,15 @@ export default function FeedbackPage() {
                               <span className="text-xs font-medium px-2 py-1 rounded-full bg-orange-100 text-orange-700">
                                 Unread
                               </span>
-                            )}
+                            )} */}
                           </div>
                           <h3 className="font-semibold text-slate-900">{feedback.name}</h3>
-                          {!feedback.isAnonymous && feedback.email && (
+                          {/* {!feedback.isAnonymous && feedback.email && (
                             <p className="text-sm text-slate-600 flex items-center gap-1 mt-1">
                               <Mail className="w-4 h-4" />
                               {feedback.email}
                             </p>
-                          )}
+                          )} */}
                         </div>
 
                         {/* Delete Button */}
@@ -245,7 +257,7 @@ export default function FeedbackPage() {
                             {expandedId === feedback.id ? "Show Less" : "Show More"}
                           </Button>
                         )}
-                        {feedback.status === "unread" && (
+                        {feedback.read === false && (
                           <Button
                             size="sm"
                             variant="outline"
