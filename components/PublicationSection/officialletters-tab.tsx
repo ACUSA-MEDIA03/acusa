@@ -133,8 +133,6 @@ export function OfficialLettersTab() {
       setSubmitting(false);
     }
   };
-
-
   const handleEdit = (letter: OfficialLetter) => {
     setEditingLetter(letter);
     setFormData({

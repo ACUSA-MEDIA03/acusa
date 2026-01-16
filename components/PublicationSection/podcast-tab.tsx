@@ -160,10 +160,25 @@ export function PodcastsTab() {
   };
 
   const handleEdit = (podcast: PodcastItem) => {
-    setEditingPodcast(podcast);
+  setEditingPodcast(podcast);
 
-    setShowForm(true);
-  };
+  setFormData({
+    title: podcast.title,
+    content: podcast.content,
+    description: podcast.description,
+    audioUrl: podcast.audioUrl,
+    imageUrl: podcast.imageUrl || "",
+    author: podcast.author,
+    tags: podcast.tags.join(", "),
+    published: podcast.published,
+    duration: podcast.duration
+      ? `${Math.floor(podcast.duration / 60)}:${podcast.duration % 60}`
+      : "",
+  });
+
+  setShowForm(true);
+};
+
 
   const handleDelete = async (id: string) => {
       if (!confirm("Are you sure you want to delete this podcast")) {
@@ -513,7 +528,7 @@ export function PodcastsTab() {
                       </p>
                       <div className="flex items-center justify-between mb-3">
                         <span className="text-xs text-black">
-                          Host: {podcast.author}
+                          Author: {podcast.author}
                         </span>
                         {podcast.duration && (
                           <span className="text-xs text-black">

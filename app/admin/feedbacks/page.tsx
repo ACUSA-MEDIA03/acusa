@@ -228,7 +228,7 @@ export default function FeedbackPage() {
                       {/* Message Preview / Full */}
                       <div>
                         {expandedId === feedback.id ? (
-                          <p className="text-slate-700 whitespace-pre-wrap break-words">{feedback.message}</p>
+                          <p className="text-slate-700 whitespace-pre-wrap wrap-break-word">{feedback.message}</p>
                         ) : (
                           <p className="text-slate-700 line-clamp-2">{feedback.message}</p>
                         )}
