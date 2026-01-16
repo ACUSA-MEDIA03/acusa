@@ -24,7 +24,7 @@ export default function FeedbackPage() {
   const [expandedId, setExpandedId] = useState<string | null>(null)
 
   useEffect(() => {
-    loadFeedbacks()
+    // loadFeedbacks()
   }, [])
 
   const loadFeedbacks = () => {

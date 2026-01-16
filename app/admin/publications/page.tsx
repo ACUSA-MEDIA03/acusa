@@ -18,7 +18,7 @@ export default function PublicationsPage() {
         </div>
         <Tabs defaultValue="article" className="w-full ">
           <TabsList className="grid w-full grid-cols-4 lg:w-auto  lg:inline-grid">
-            <TabsTrigger value="articles" className="">
+            <TabsTrigger value="article" className="">
               Articles
             </TabsTrigger>
             <TabsTrigger value="newsletter">Newsletter</TabsTrigger>
@@ -26,7 +26,7 @@ export default function PublicationsPage() {
             <TabsTrigger value="podcasts">Podcasts</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="articles" className="mt-6">
+          <TabsContent value="article" className="mt-6">
             <ArticleTab />
           </TabsContent>
 
