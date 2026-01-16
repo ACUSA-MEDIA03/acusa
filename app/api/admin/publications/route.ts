@@ -16,7 +16,9 @@ interface CustomSession {
 // GET /api/admin/publications - Get all publications (admin)
 export async function GET(req: NextRequest) {
   try {
+    // console.log("📝 Publications GET started");
     await requireAdmin();
+    // console.log("✅ Admin check passed");
 
     const searchParams = req.nextUrl.searchParams;
 
@@ -35,6 +37,8 @@ export async function GET(req: NextRequest) {
     const published = searchParams.get("published");
     const search = searchParams.get("search");
 
+
+    // console.log("📊 Query where clause:", where);
     // Build where clause
     const where: {
       category?: "ARTICLE" | "NEWSLETTER" | "OFFICIAL_LETTER" | "PODCAST";
@@ -60,6 +64,7 @@ export async function GET(req: NextRequest) {
       ];
     }
 
+    //  console.log("📊 Query where clause:", where);
     // Get publications with pagination
     const [publications, total] = await Promise.all([
       prisma.publication.findMany({
@@ -82,6 +87,7 @@ export async function GET(req: NextRequest) {
 
     const totalPages = Math.ceil(total / limit);
 
+    // console.log("✅ Publications fetched:", publications.length)
     return NextResponse.json({
       publications,
       pagination: {
@@ -180,14 +186,14 @@ export async function POST(req: NextRequest) {
         content: content || "",
         description,
         category,
-        imageUrl,
+        imageUrl: null,
         images: images || [],
         fileUrl,
         audioUrl,
         tags: tags || [],
         author,
         duration,
-        fileSize,
+        fileSize: null,
         referenceNo,
         published,
         createdById: session.user.id,

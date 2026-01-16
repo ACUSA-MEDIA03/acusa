@@ -55,6 +55,7 @@ export async function PUT(
       images,
       fileUrl,
       audioUrl,
+      referenceNo,
       tags,
       author,
       duration,
@@ -93,6 +94,7 @@ export async function PUT(
         fileUrl: fileUrl ?? null,
         audioUrl: audioUrl ?? null,
         tags: tags ?? [],
+        referenceNo: referenceNo ?? null,
         author: author ?? null,
         duration: duration ?? null,
         fileSize: fileSize ?? null,
@@ -148,6 +150,7 @@ export async function PATCH(
       fileUrl,
       audioUrl,
       tags,
+      referenceNo,
       author,
       duration,
       fileSize,
@@ -167,6 +170,7 @@ export async function PATCH(
       tags?: string[];
       author?: string | null;
       duration?: number | null;
+      referenceNo?: string | null;
       fileSize?: number | null;
       published?: boolean;
     } = {};
@@ -179,6 +183,7 @@ export async function PATCH(
     if (fileUrl !== undefined) updateData.fileUrl = fileUrl;
     if (audioUrl !== undefined) updateData.audioUrl = audioUrl;
     if (tags !== undefined) updateData.tags = tags;
+    if (referenceNo !== undefined) updateData.referenceNo = referenceNo;
     if (author !== undefined) updateData.author = author;
     if (duration !== undefined) updateData.duration = duration;
     if (fileSize !== undefined) updateData.fileSize = fileSize;
