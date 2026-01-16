@@ -95,7 +95,7 @@ export default function Newsletter() {
         setSubmitting(false);
         return;
       }
-      //  conveert comma- seperated tags to array
+      //  convert comma- seperated tags to array
       const tagsArray = formData.tags
         .split(",")
         .map((tag) => tag.trim())
