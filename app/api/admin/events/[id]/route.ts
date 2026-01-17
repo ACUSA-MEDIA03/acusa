@@ -5,12 +5,12 @@ import { requireAdmin } from "@/lib/require-Admin";
 // PATCH /api/admin/events/[id] - Update event
 export async function PATCH(
   req: NextRequest,
-  context: { params: Promise<{ id: string }> } // ← Changed this
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await requireAdmin();
 
-    const { id } = await context.params; // ← Added this line
+    const { id } = await params; // ← Added this line
     const body = await req.json();
     const {
       eventDate,
@@ -21,9 +21,6 @@ export async function PATCH(
       published,
       endDateTime,
     } = body;
-
-    console.log("PATCH event ID:", id); // Debug log
-
     // Build update data object
     const updateData: {
       title?: string;
@@ -103,12 +100,12 @@ export async function PATCH(
 // GET /api/admin/events/[id] - Get single event
 export async function GET(
   req: NextRequest,
-  context: { params: Promise<{ id: string }> } // ← Changed this
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await requireAdmin();
 
-    const { id } = await context.params; // ← Added this line
+    const { id } = await params; 
 
     const event = await prisma.event.findUnique({
       where: { id },
@@ -137,12 +134,12 @@ export async function GET(
 // DELETE /api/admin/events/[id] - Delete event
 export async function DELETE(
   req: NextRequest,
-  context: { params: Promise<{ id: string }> } 
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await requireAdmin();
 
-    const { id } = await context.params; // ← Added this line
+    const { id } = await params; // ← Added this line
 
     console.log("DELETE event ID:", id); // Debug log
 

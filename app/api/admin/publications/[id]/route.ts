@@ -5,11 +5,11 @@ import { requireAdmin } from "@/lib/require-Admin";
 // GET /api/admin/publications/[id]
 export async function GET(
   req: NextRequest,
-  context: { params: Promise<{ id: string }> }
+{ params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await requireAdmin();
- const { id } = await context.params;
+ const { id } = await params;
     const publication = await prisma.publication.findUnique({
       where: { id },
       include: {
@@ -134,11 +134,11 @@ export async function PUT(
 // PATCH /api/admin/publications/[id]
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     await requireAdmin();
-
+    const { id } = await context.params;
     const body = await req.json();
     const {
       title,
@@ -213,7 +213,7 @@ export async function PATCH(
     }
 
     const publication = await prisma.publication.update({
-      where: { id: params.id },
+      where: { id: id },
       data: updateData,
       include: {
         createdBy: {
@@ -247,13 +247,13 @@ export async function PATCH(
 // DELETE /api/admin/publications/[id]
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     await requireAdmin();
-
+const { id } = await context.params;
     const existingPublication = await prisma.publication.findUnique({
-      where: { id: params.id },
+      where: { id: id },
     });
 
     if (!existingPublication) {
@@ -264,7 +264,7 @@ export async function DELETE(
     }
 
     await prisma.publication.delete({
-      where: { id: params.id },
+      where: { id: id },
     });
 
     return NextResponse.json(

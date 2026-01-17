@@ -5,13 +5,11 @@ import { requireAdmin } from "@/lib/require-Admin";
 // GET /api/admin/feedback/[id] - Get single feedback
 export async function GET(
   req: NextRequest,
-  context: { params: Promise<{ id: string }> } // Updated for Next.js 15+
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    await requireAdmin();
-    
-    const { id } = await context.params; // Await params
-
+    await requireAdmin();    
+    const { id } = await params;
     const feedback = await prisma.feedback.findUnique({
       where: { id },
     });
@@ -36,12 +34,12 @@ export async function GET(
 // PATCH /api/admin/feedback/[id] - Mark as read/unread
 export async function PATCH(
   req: NextRequest,
-  context: { params: Promise<{ id: string }> } 
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await requireAdmin();
-    
-    const { id } = await context.params; // Await params
+
+    const { id } = await params; // Await params
     const { read } = await req.json();
 
     console.log("PATCH feedback ID:", id); // Debug log
@@ -72,23 +70,21 @@ export async function PATCH(
       }
     }
 
-    const message = error instanceof Error ? error.message : "Failed to update feedback";
-    return NextResponse.json(
-      { error: message },
-      { status: 500 }
-    );
+    const message =
+      error instanceof Error ? error.message : "Failed to update feedback";
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }
 
 // DELETE /api/admin/feedback/[id] - Delete feedback
 export async function DELETE(
   req: NextRequest,
-  context: { params: Promise<{ id: string }> } 
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await requireAdmin();
     
-    const { id } = await context.params; // Await params
+    const { id } = await params; // Await params
 
     console.log("DELETE feedback ID:", id); // Debug log
 
