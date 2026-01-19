@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import {  Space_Grotesk, Rubik_Dirt, Montserrat } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const  grotesk = Space_Grotesk({
@@ -38,6 +39,7 @@ export default function RootLayout({
         className={` antialiased`}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );
