@@ -1,5 +1,5 @@
 import  Image from "next/image";
-import Link from "next/link";
+
 // components
 import NavBar from "../component/Navbar";
 import Footer from "../component/Footer";
