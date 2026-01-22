@@ -2,6 +2,9 @@
 
 import Navbar from "../../component/Navbar"
 import Footer from "../../component/Footer"
+
+
+
 export default function Gallery() {
     return (
         <>
@@ -50,12 +53,10 @@ export default function Gallery() {
           Excellence
         </h2>
         </div>
+        <div className="py-12 px-6 lg:px-8 bg-white border-b border-gray-100">  
 
 
-        <div>
-          
         </div>
-      
             <div id="footer" className="relative ">
                 <Footer />
             </div>
