@@ -40,21 +40,22 @@ export default function Gallery() {
     ? galleryItems 
     : galleryItems.filter(item => item.category === activeCategory)
   
-  
+  //  function to open modal 
   const openModal = (index: number) => {
     setSelectedImage(index);
   }
 
+  // function to close the modal 
   const closeModal = () => {
     setSelectedImage(null);
   }
-
+//  check next image function
   const nextImage = () => {
     if (selectedImage !== null) {
       setSelectedImage((selectedImage + 1) % filteredItems.length);
     }
   }
-
+//  function to check previous image
   const prevImage = () => {
     if (selectedImage !== null) {
       setSelectedImage(selectedImage === 0 ? filteredItems.length - 1 :
