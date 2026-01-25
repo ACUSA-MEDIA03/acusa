@@ -104,7 +104,7 @@ export default function Signup() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 px-4 py-12">
+    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 to-indigo-100 px-4 py-12">
       <div className="max-w-md w-full space-y-8">
         {/* Header */}
         <div className="text-center">
@@ -265,7 +265,7 @@ export default function Signup() {
         {/* Info Box */}
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
           <div className="flex">
-            <div className="flex-shrink-0">
+            <div className="shrink-0">
               <svg
                 className="h-5 w-5 text-blue-400"
                 xmlns="http://www.w3.org/2000/svg"
