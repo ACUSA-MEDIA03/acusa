@@ -68,3 +68,6 @@ Get All Events → Verify deletion
   "description": "Monthly general assembly meeting to discuss student affairs and upcoming events.",
   "published": true
 }
+
+
+[![Made with Prisma](http://made-with.prisma.io/dark.svg)](https://prisma.io)
