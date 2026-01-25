@@ -20,38 +20,26 @@ interface Event {
   location: string;
   startDateTime: string;
 }
+
 async function getPublicEvents() {
-  const res = await fetch("/api/events", {
-    cache: "no-store",
-  });
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/events`,
+      { cache: "no-store" }
+    );
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch events");
+    if (!res.ok) {
+      throw new Error("Failed to fetch events");
+    }
+
+    return res.json();
+  } catch (error) {
+    console.error("getPublicEvents error:", error);
+    return [];
   }
-
-  return res.json();
 }
 
 const Events: Event[] = await getPublicEvents();
-// async function getPublicEvents() {
-//   try {
-//     const res = await fetch(
-//       `${process.env.NEXT_PUBLIC_BASE_URL}/api/events`,
-//       { cache: "no-store" }
-//     );
-
-//     if (!res.ok) {
-//       throw new Error("Failed to fetch events");
-//     }
-
-//     return res.json();
-//   } catch (error) {
-//     console.error("getPublicEvents error:", error);
-//     return [];
-//   }
-// }
-
-// const Events: Event[] = await getPublicEvents();
 
 export default function Home() {
   
