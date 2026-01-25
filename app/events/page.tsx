@@ -9,7 +9,7 @@ interface Event {
 }
 
 async function getPublicEvents() {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/events`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/events`, {
     cache: 'no-store', // Always get fresh data
   });
 

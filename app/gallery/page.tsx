@@ -7,7 +7,6 @@ export default function Gallery() {
         <>
         <Navbar />
         
-        
          <div className="border border-purple-950 grid relative">
         {/* First Row */}
         <div className="grid grid-cols-2 gap-3.25 w-full h-[60vh] ">
