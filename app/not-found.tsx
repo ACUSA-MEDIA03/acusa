@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LocationEditIcon } from "lucide-react";
+import { Map } from "lucide-react";
 export default function NotFound() {
   return (
     <main className="min-h-screen flex items-center justify-center bg-sub px-6">
@@ -14,7 +14,7 @@ export default function NotFound() {
           {/* Location Pin */}
           <div className="flex justify-center mb-6">
             <div className="w-14 h-14 rounded-full bg-main flex items-center justify-center text-white text-2xl">
-            <LocationEditIcon  className="w-6 h-5 "/>
+            <Map  className="w-6 h-5 "/>
             </div>
           </div>
 
