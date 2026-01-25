@@ -9,7 +9,7 @@ import EventCards from "../component/Card/EventCards";
 import ProfileCard from "../component/Card/ProfileCard";
 
 // Data Objects
-import {Events} from "@/assets/data/Events";
+import { Events } from "@/assets/data/Events";
 
 import Banner from "@/assets/Banner/banner.jpg"
 import Animation from "@/assets/Animation/animation.gif"
