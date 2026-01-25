@@ -1,3 +1,4 @@
+export const runtime = "nodejs";
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { requireAdmin } from "@/lib/require-Admin";
@@ -36,7 +37,6 @@ export async function GET(req: NextRequest) {
       | null;
     const published = searchParams.get("published");
     const search = searchParams.get("search");
-
 
     // console.log("📊 Query where clause:", where);
     // Build where clause
@@ -130,7 +130,7 @@ export async function POST(req: NextRequest) {
     if (!title || !category) {
       return NextResponse.json(
         { error: "Missing required fields: title, category" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -147,7 +147,7 @@ export async function POST(req: NextRequest) {
           error:
             "Invalid category. Must be one of: ARTICLE, NEWSLETTER, OFFICIAL_LETTER, PODCAST",
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -155,28 +155,28 @@ export async function POST(req: NextRequest) {
     if (category === "ARTICLE" && !content) {
       return NextResponse.json(
         { error: "Articles require content" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     if (category === "NEWSLETTER" && !content) {
       return NextResponse.json(
         { error: "Newsletters require content" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     if (category === "OFFICIAL_LETTER" && !fileUrl) {
       return NextResponse.json(
         { error: "Official letters require fileUrl (PDF or image)" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     if (category === "PODCAST" && !audioUrl) {
       return NextResponse.json(
         { error: "Podcasts require audioUrl" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 

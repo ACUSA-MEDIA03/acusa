@@ -1,3 +1,5 @@
+export const runtime = "nodejs";
+
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { requireAdmin } from "@/lib/require-Admin";
@@ -5,11 +7,11 @@ import { requireAdmin } from "@/lib/require-Admin";
 // GET /api/admin/publications/[id]
 export async function GET(
   req: NextRequest,
-{ params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ id: string }> },
 ) {
   try {
     await requireAdmin();
- const { id } = await params;
+    const { id } = await params;
     const publication = await prisma.publication.findUnique({
       where: { id },
       include: {
@@ -26,7 +28,7 @@ export async function GET(
     if (!publication) {
       return NextResponse.json(
         { error: "Publication not found" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -39,11 +41,11 @@ export async function GET(
 
 export async function PUT(
   req: NextRequest,
-  context: { params: Promise<{ id: string }> }
+  context: { params: Promise<{ id: string }> },
 ) {
   try {
     await requireAdmin();
- const { id } = await context.params;
+    const { id } = await context.params;
     const body = await req.json();
 
     const {
@@ -67,7 +69,7 @@ export async function PUT(
     if (!title || !content || !category) {
       return NextResponse.json(
         { error: "title, content and category are required" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -126,7 +128,7 @@ export async function PUT(
 
     return NextResponse.json(
       { error: "Failed to update publication" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -134,7 +136,7 @@ export async function PUT(
 // PATCH /api/admin/publications/[id]
 export async function PATCH(
   req: NextRequest,
-  context: { params: Promise<{ id: string }> }
+  context: { params: Promise<{ id: string }> },
 ) {
   try {
     await requireAdmin();
@@ -199,7 +201,7 @@ export async function PATCH(
       if (!validCategories.includes(category)) {
         return NextResponse.json(
           { error: "Invalid category" },
-          { status: 400 }
+          { status: 400 },
         );
       }
       updateData.category = category;
@@ -208,7 +210,7 @@ export async function PATCH(
     if (Object.keys(updateData).length === 0) {
       return NextResponse.json(
         { error: "No fields to update" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -233,7 +235,7 @@ export async function PATCH(
       if (error.code === "P2025") {
         return NextResponse.json(
           { error: "Publication not found" },
-          { status: 404 }
+          { status: 404 },
         );
       }
     }
@@ -247,11 +249,11 @@ export async function PATCH(
 // DELETE /api/admin/publications/[id]
 export async function DELETE(
   req: NextRequest,
-  context: { params: Promise<{ id: string }> }
+  context: { params: Promise<{ id: string }> },
 ) {
   try {
     await requireAdmin();
-const { id } = await context.params;
+    const { id } = await context.params;
     const existingPublication = await prisma.publication.findUnique({
       where: { id: id },
     });
@@ -259,7 +261,7 @@ const { id } = await context.params;
     if (!existingPublication) {
       return NextResponse.json(
         { error: "Publication not found" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -269,7 +271,7 @@ const { id } = await context.params;
 
     return NextResponse.json(
       { message: "Publication deleted successfully" },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
     console.error("Publication deletion error:", error);
@@ -278,7 +280,7 @@ const { id } = await context.params;
       if (error.code === "P2025") {
         return NextResponse.json(
           { error: "Publication not found" },
-          { status: 404 }
+          { status: 404 },
         );
       }
     }

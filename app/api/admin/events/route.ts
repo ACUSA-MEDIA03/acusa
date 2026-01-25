@@ -1,3 +1,4 @@
+export const runtime = "nodejs";
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { requireAdmin } from "@/lib/require-Admin";
@@ -22,10 +23,7 @@ export async function GET() {
     return NextResponse.json(events);
   } catch (error) {
     const message = error instanceof Error ? error.message : "Unauthorized";
-    return NextResponse.json(
-      { error: message },
-      { status: 401 }
-    );
+    return NextResponse.json({ error: message }, { status: 401 });
   }
 }
 
@@ -46,7 +44,7 @@ export async function POST(req: NextRequest) {
     if (!eventDate || !time || !title || !location) {
       return NextResponse.json(
         { error: "Missing required fields" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -55,16 +53,16 @@ export async function POST(req: NextRequest) {
     if (isNaN(startDateTime.getTime())) {
       return NextResponse.json(
         { error: "Invalid date or time format" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
-    //  Type assertion for session user.user 
-    if(!session.user?.id){
-        return NextResponse.json(
-            {error: "User ID not found in session"},
-            {status: 401}
-        )
+    //  Type assertion for session user.user
+    if (!session.user?.id) {
+      return NextResponse.json(
+        { error: "User ID not found in session" },
+        { status: 401 },
+      );
     }
     const event = await prisma.event.create({
       data: {
@@ -88,10 +86,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(event, { status: 201 });
   } catch (error) {
     console.error("Event creation error:", error);
-    const message = error instanceof Error ? error.message : "Failed to create event";
-    return NextResponse.json(
-      { error: message },
-      { status: 500 }
-    );
+    const message =
+      error instanceof Error ? error.message : "Failed to create event";
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

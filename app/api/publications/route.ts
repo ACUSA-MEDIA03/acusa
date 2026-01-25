@@ -1,3 +1,4 @@
+export const runtime = "nodejs";
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
@@ -5,16 +6,20 @@ import { prisma } from "@/lib/prisma";
 export async function GET(req: NextRequest) {
   try {
     const searchParams = req.nextUrl.searchParams;
-    
+
     // Pagination
     const page = parseInt(searchParams.get("page") || "1");
     const limit = parseInt(searchParams.get("limit") || "10");
     const skip = (page - 1) * limit;
-    
+
     // Filtering
-    const category = searchParams.get("category") as 
-      "ARTICLE" | "NEWSLETTER" | "OFFICIAL_LETTER" | "PODCAST" | null;
-    
+    const category = searchParams.get("category") as
+      | "ARTICLE"
+      | "NEWSLETTER"
+      | "OFFICIAL_LETTER"
+      | "PODCAST"
+      | null;
+
     const tag = searchParams.get("tag");
     const search = searchParams.get("search");
 
@@ -92,7 +97,7 @@ export async function GET(req: NextRequest) {
     console.error("Publications fetch error:", error);
     return NextResponse.json(
       { error: "Failed to fetch publications" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

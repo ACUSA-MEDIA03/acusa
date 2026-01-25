@@ -1,3 +1,4 @@
+export const runtime = "nodejs";
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { requireAdmin } from "@/lib/require-Admin";
@@ -5,7 +6,7 @@ import { requireAdmin } from "@/lib/require-Admin";
 // PATCH /api/admin/users/[id] - Update user role
 export async function PATCH(
   req: NextRequest,
-  context: { params: Promise<{ id: string }> }
+  context: { params: Promise<{ id: string }> },
 ) {
   try {
     const session = await requireAdmin();
@@ -16,7 +17,7 @@ export async function PATCH(
     if (!role || !["USER", "ADMIN"].includes(role)) {
       return NextResponse.json(
         { error: "Invalid role. Must be USER or ADMIN" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -24,7 +25,7 @@ export async function PATCH(
     if (id === session.user.id && role === "USER") {
       return NextResponse.json(
         { error: "You cannot remove your own admin privileges" },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
@@ -73,7 +74,7 @@ export async function PATCH(
 // DELETE /api/admin/users/[id] - Delete user (optional)
 export async function DELETE(
   req: NextRequest,
-  context: { params: Promise<{ id: string }> }
+  context: { params: Promise<{ id: string }> },
 ) {
   try {
     const session = await requireAdmin();
@@ -83,7 +84,7 @@ export async function DELETE(
     if (id === session.user.id) {
       return NextResponse.json(
         { error: "You cannot delete your own account" },
-        { status: 403 }
+        { status: 403 },
       );
     }
 

@@ -1,3 +1,4 @@
+export const runtime = "nodejs";
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { requireAdmin } from "@/lib/require-Admin";
@@ -5,7 +6,7 @@ import { requireAdmin } from "@/lib/require-Admin";
 // PATCH /api/admin/events/[id] - Update event
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ id: string }> },
 ) {
   try {
     await requireAdmin();
@@ -45,7 +46,7 @@ export async function PATCH(
       if (isNaN(startDateTime.getTime())) {
         return NextResponse.json(
           { error: "Invalid date or time format" },
-          { status: 400 }
+          { status: 400 },
         );
       }
 
@@ -55,7 +56,7 @@ export async function PATCH(
         {
           error: "Both eventDate and time are required to update the date/time",
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -63,7 +64,7 @@ export async function PATCH(
     if (Object.keys(updateData).length === 0) {
       return NextResponse.json(
         { error: "No fields to update" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -100,12 +101,12 @@ export async function PATCH(
 // GET /api/admin/events/[id] - Get single event
 export async function GET(
   req: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ id: string }> },
 ) {
   try {
     await requireAdmin();
 
-    const { id } = await params; 
+    const { id } = await params;
 
     const event = await prisma.event.findUnique({
       where: { id },
@@ -134,7 +135,7 @@ export async function GET(
 // DELETE /api/admin/events/[id] - Delete event
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ id: string }> },
 ) {
   try {
     await requireAdmin();
@@ -157,7 +158,7 @@ export async function DELETE(
 
     return NextResponse.json(
       { message: "Event deleted successfully" },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
     console.error("Event deletion error:", error);

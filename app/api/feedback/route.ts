@@ -1,3 +1,5 @@
+export const runtime = "nodejs";
+
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
@@ -10,21 +12,21 @@ export async function POST(req: NextRequest) {
     if (!message || message.trim().length === 0) {
       return NextResponse.json(
         { error: "Message is required" },
-        { status: 400 }
+        { status: 400 },
       );
     }
     // Validate message length
     if (message.length < 10) {
       return NextResponse.json(
         { error: "Message must be at least 10 characters long" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     if (message.length > 5000) {
       return NextResponse.json(
         { error: "Message is too long (max 5000 characters)" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -34,7 +36,7 @@ export async function POST(req: NextRequest) {
       if (!emailRegex.test(email)) {
         return NextResponse.json(
           { error: "Invalid email format" },
-          { status: 400 }
+          { status: 400 },
         );
       }
     }
@@ -46,7 +48,7 @@ export async function POST(req: NextRequest) {
       if (!phoneRegex.test(phoneNumber)) {
         return NextResponse.json(
           { error: "Invalid phone number format" },
-          { status: 400 }
+          { status: 400 },
         );
       }
     }
@@ -70,13 +72,13 @@ export async function POST(req: NextRequest) {
         message: "Feedback submitted successfully. Thank you!",
         feedbackId: feedback.id,
       },
-      { status: 201 }
+      { status: 201 },
     );
   } catch (error) {
     console.error("Feedback submission error:", error);
     return NextResponse.json(
       { error: "Failed to submit feedback. Please try again." },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
