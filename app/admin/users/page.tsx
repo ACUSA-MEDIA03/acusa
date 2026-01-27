@@ -23,7 +23,7 @@ export default function AdminUsersPage() {
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<"all" | "admin" | "user">("all");
 
-  // 🔹 Fetch users function declared BEFORE any useEffect
+  //Fetch users function declared BEFORE any useEffect
   const fetchUsers = useCallback(async () => {
     try {
       setLoading(true);
@@ -59,52 +59,85 @@ export default function AdminUsersPage() {
 
   //  Toggle role
   const toggleRole = async (userId: string, currentRole: string) => {
-    const newRole = currentRole === "ADMIN" ? "USER" : "ADMIN";
-    const action =
-      newRole === "ADMIN"
-        ? "promote this user to admin"
-        : "remove admin privileges from this user";
+  const newRole = currentRole === "ADMIN" ? "USER" : "ADMIN";
 
-    if (!confirm(`Are you sure you want to ${action}?`)) return;
+  const actionText =
+    newRole === "ADMIN"
+      ? "promote this user to admin"
+      : "remove admin privileges from this user";
 
-    try {
-      const response = await fetch(`/api/admin/users/${userId}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ role: newRole }),
-      });
+  toast.error(`Are you sure you want to ${actionText}?`, {
+    action: {
+      label: "Confirm",
+      onClick: async () => {
+        try {
+          const response = await fetch(`/api/admin/users/${userId}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ role: newRole }),
+          });
 
-      const data = await response.json();
-      if (!response.ok) return alert(data.error || "Failed to update user role");
+          const data = await response.json();
 
-      toast.custom(data.message);
-      fetchUsers();
-    } catch (err) {
-      console.error("Update error:", err);
-      toast.error("Failed to update user role");
-    }
-  };
+          if (!response.ok) {
+            toast.error(data.error || "Failed to update user role");
+            return;
+          }
+
+          toast.success(data.message || "User role updated successfully");
+          fetchUsers();
+        } catch (err) {
+          console.error("Update error:", err);
+          toast.error("Failed to update user role");
+        }
+      },
+    },
+    cancel: {
+      label: "Cancel",
+      onClick: () => {
+        toast.dismiss();
+      },
+    },
+  });
+};
 
   // Delete user
-  const deleteUser = async (userId: string, userEmail: string) => {
-    if (!confirm(`Are you sure you want to delete user ${userEmail}? This action cannot be undone.`))
-      return;
+  const deleteUser = (userId: string, userEmail: string) => {
+  toast.error(
+    `Are you sure you want to delete user ${userEmail}? This action cannot be undone.`,
+    {
+      action: {
+        label: "Delete user",
+        onClick: async () => {
+          try {
+            const response = await fetch(`/api/admin/users/${userId}`, {
+              method: "DELETE",
+            });
 
-    try {
-      const response = await fetch(`/api/admin/users/${userId}`, {
-        method: "DELETE",
-      });
+            const data = await response.json();
 
-      const data = await response.json();
-      if (!response.ok) return alert(data.error || "Failed to delete user");
+            if (!response.ok) {
+              toast.error(data.error || "Failed to delete user");
+              return;
+            }
 
-      toast.success("User deleted successfully");
-      fetchUsers();
-    } catch (err) {
-      console.error("Delete error:", err);
-      toast.error("Failed to delete user");
+            toast.success("User deleted successfully");
+            fetchUsers();
+          } catch (err) {
+            console.error("Delete error:", err);
+            toast.error("Failed to delete user");
+          }
+        },
+      },
+      cancel: {
+        label: "Cancel",
+        onClick: () => {
+          toast.dismiss();
+        },
+      },
     }
-  };
+  );
+};
 
   //  Show loader while fetching
   if (status === "loading" || loading) {

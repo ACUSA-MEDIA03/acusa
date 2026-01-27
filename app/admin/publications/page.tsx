@@ -1,10 +1,10 @@
 "use client";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import ArticleTab from "@/components/publicationsection/article-tab";
-import NewsletterTab from "@/components/publicationsection/newsletter-tab";
-import { OfficialLettersTab } from "@/components/publicationsection/officialletters-tab";
-import { PodcastsTab } from "@/components/publicationsection/podcast-tab";
+import ArticleTab from "@/components/publicationSection/article-tab";
+import NewsletterTab from "@/components/publicationSection/newsletter-tab";
+import { OfficialLettersTab } from "@/components/publicationSection/officialletters-tab";
+import { PodcastsTab } from "@/components/publicationSection/podcast-tab";
 
 export default function PublicationsPage() {
   return (
