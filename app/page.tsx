@@ -27,23 +27,18 @@ async function getPublicEvents() {
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/events`,
       { cache: "no-store" }
     );
-
     if (!res.ok) {
       throw new Error("Failed to fetch events");
     }
-
     return res.json();
   } catch (error) {
     console.error("getPublicEvents error:", error);
     return [];
   }
 }
-
 const Events: Event[] = await getPublicEvents();
 
 export default function Home() {
-  
-  
   return (
     <>
       <NavBar />
