@@ -160,7 +160,7 @@ export default function Newsletter() {
   };
 
  const handleDelete = (id: string) => {
-  toast("Are you sure you want to delete this article?", {
+  toast.error("Are you sure you want to delete this article?", {
     action: {
       label: "Delete",
       onClick: async () => {
@@ -188,7 +188,7 @@ export default function Newsletter() {
     cancel: {
       label: "Cancel",
       onClick: () => {
-        toast.dismiss(); // closes the toast
+        toast.dismiss(); 
       },
     },
   });

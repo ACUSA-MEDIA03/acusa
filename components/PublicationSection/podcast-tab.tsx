@@ -183,7 +183,7 @@ export function PodcastsTab() {
   };
 
   const handleDelete = async (id: string) => {
-   toast("Are you sure you want to delete this podcast?", {
+   toast.error("Are you sure you want to delete this podcast?", {
       action: {
         label: "Delete",
         onClick: async () => {
@@ -205,7 +205,7 @@ export function PodcastsTab() {
       cancel: {
         label: "Cancel",
         onClick: () => {
-        toast.dismiss(); // closes the toast
+        toast.dismiss(); 
       },
       },
     });
