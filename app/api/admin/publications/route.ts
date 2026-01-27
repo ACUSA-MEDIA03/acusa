@@ -19,7 +19,7 @@ export async function GET(req: NextRequest) {
   try {
     // console.log("📝 Publications GET started");
     await requireAdmin();
-    // console.log("✅ Admin check passed");
+    // console.log(" Admin check passed");
 
     const searchParams = req.nextUrl.searchParams;
 
@@ -87,7 +87,7 @@ export async function GET(req: NextRequest) {
 
     const totalPages = Math.ceil(total / limit);
 
-    // console.log("✅ Publications fetched:", publications.length)
+    // console.log(" Publications fetched:", publications.length)
     return NextResponse.json({
       publications,
       pagination: {
@@ -180,21 +180,38 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    //  Helper function to extract URL from string or object
+    const extractUrl = (value: any): string | null => {
+      if (!value) return null;
+      if (typeof value === "string") return value;
+      if (typeof value === "object" && value.url) return value.url;
+      return null;
+    };
+
+    //  Extract URLs from potentially nested objects
+    const cleanImageUrl = extractUrl(imageUrl);
+    const cleanFileUrl = extractUrl(fileUrl);
+    const cleanAudioUrl = extractUrl(audioUrl);
+    //  Handle images array - filter out nulls with Boolean
+    const cleanImages = Array.isArray(images)
+      ? (images.map((img) => extractUrl(img)).filter(Boolean) as string[])
+      : [];
+
     const publication = await prisma.publication.create({
       data: {
         title,
         content: content || "",
         description,
         category,
-        imageUrl: imageUrl || null,
-        images: images || [],
-        fileUrl,
-        audioUrl,
+        imageUrl: cleanImageUrl,
+        images: cleanImages,
+        fileUrl: cleanFileUrl,
+        audioUrl: cleanAudioUrl,
         tags: tags || [],
-        author,
-        duration,
-        fileSize: fileSize ?? null,
-        referenceNo,
+        author: author || null,
+        duration: duration || null,
+        fileSize: fileSize && fileSize !== "" ? Number(fileSize) : null,
+        referenceNo: referenceNo || null,
         published,
         createdById: session.user.id,
       },
