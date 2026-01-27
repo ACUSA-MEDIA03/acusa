@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import Navbar from "../../components/Navbar";
-import Banner from "../../components/Banner";
+import Navbar from "../../components/navbar";
+import Banner from "@/components/Banner";
 import PaginatedItems from "@/utils/pagination";
 import BannerImg from "@/assets/Banner/banner.jpg";
 
@@ -18,7 +18,7 @@ type PublicationItem = {
   header: string;
   title: string;
   date: string;
-  author: string | null;
+  author?: string | null;
   description: string;
   content: string;
   category: string;
