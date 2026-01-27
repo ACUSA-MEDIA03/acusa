@@ -10,7 +10,11 @@ import Image from "next/image"
 interface FileUploadProps {
   accept?: string
   label: string
-  onFileSelect: (fileUrl: string, file?: File) => void
+ onFileSelect: (payload: {
+  url: string
+  file: File
+  size: number
+}) => void
   currentFile?: string
   fileType?: "image" | "audio" | "document"
 }
@@ -29,9 +33,15 @@ export function FileUpload({ accept, label, onFileSelect, currentFile, fileType 
 
   const processFile = (file: File) => {
     // Create a local URL for the file
-    const fileUrl = URL.createObjectURL(file)
-    setPreview(fileUrl)
-    onFileSelect(fileUrl)
+   const fileUrl = URL.createObjectURL(file)
+
+setPreview(fileUrl)
+
+onFileSelect({
+  url: fileUrl,
+  file,
+  size: file.size,
+})
 
     // In a real application, you would upload to a storage service here
     // For now, we're using blob URLs which work in the browser
@@ -59,7 +69,12 @@ export function FileUpload({ accept, label, onFileSelect, currentFile, fileType 
 
   const clearFile = () => {
     setPreview("")
-    onFileSelect("")
+    onFileSelect({
+  url: "",
+  file: null as any,
+  size: 0,
+})
+
     if (fileInputRef.current) {
       fileInputRef.current.value = ""
     }
