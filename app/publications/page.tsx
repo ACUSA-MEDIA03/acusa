@@ -63,17 +63,13 @@ export default function PublicationPage() {
       const url = apiCategory
         ? `/api/publications?category=${apiCategory}&limit=100`
         : "/api/publications?limit=100";
-
       const res = await fetch(url, {
         cache: "no-store",
       });
-
       if (!res.ok) {
         throw new Error("Failed to fetch publications");
       }
-
       const data = await res.json();
-      
       // Transform API data to match your component's expected format
       const transformedPublications: PublicationItem[] = data.publications.map((pub: {
         id: string;
