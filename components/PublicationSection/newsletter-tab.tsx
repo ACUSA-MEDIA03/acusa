@@ -16,7 +16,7 @@ import { Tabs, TabsContent, TabsTrigger, TabsList } from "../ui/tabs";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
-import { FileUpload } from "../Card/FileUpload";
+import { FileUpload } from "../card/FileUpload";
 import { toast } from "sonner";
 
 interface Newsletter {

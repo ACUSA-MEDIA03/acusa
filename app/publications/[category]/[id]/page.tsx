@@ -1,7 +1,7 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import Details from "@/components/PublicationSection/Details";
-import OfficialLetter from "@/components/PublicationSection/OfficialLetter";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
+import Details from "@/components/publicationsection/details";
+import OfficialLetter from "@/components/publicationsection/OfficialLetter";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
