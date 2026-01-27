@@ -1,42 +1,210 @@
-"use client"
+// "use client"
 
-import { useState } from "react"
-import Navbar from "../../components/Navbar"
-import Banner from "../../components/Banner"
-import { Categories, Publication } from "@/assets/data/Publication"
+// import { useState } from "react"
+// import Navbar from "../../components/Navbar"
+// import Banner from "../../components/Banner"
+// import { Categories, Publication } from "@/assets/data/Publication"
+// import PaginatedItems from "@/utils/pagination";
+// import BannerImg from "@/assets/Banner/banner.jpg"
+// /*  Types  */
+// type CategoryType = {
+//   id: number;
+//   category: string;
+// };
+
+// type PublicationItem = {
+//   id: number;
+//   header: string;
+//   date: string;
+//   author?: string;
+//   description: string;
+//   image?: string;
+//   staticImage: string;
+// };
+
+// type PublicationGroup = {
+//   id: number;
+//   category: string;
+//   publications: PublicationItem[];
+// };
+
+// async function fetchPublications(){
+//   try {
+//     const res = await fetch(
+//       `${process.env.NEXT_PUBLIC_BASE_URL}/api/publications`,
+//       { cache: "no-store" }
+//     );
+//     if (!res.ok) {
+//       throw new Error("Failed to fetch publications");
+//     }
+//     return res.json();
+//    }
+//   catch (error) {
+//       console.error("fetchPublications error:", error);
+//       return [];
+//   }
+// }
+
+// export default function PublicationPage() {
+//   const [category, setCategory] = useState<string>("Articles");
+
+//   const publicationGroup = (Publication as PublicationGroup[]).filter(
+//     (item) => item.category === category
+//   );
+
+//   const publications: PublicationItem[] =
+//     publicationGroup.length > 0 ? publicationGroup[0].publications : [];
+
+//   return (
+//     <>
+//       <Navbar />
+//       {/* Banner */}
+//       <Banner
+//         header="Publications"
+//         description="News & Articles || Everything from articles to letters. All that you need to know happening around the ACU Space."
+//         image={BannerImg}
+//       />
+
+//       {/* Main Section */}
+//       <div className="flex flex-col lg:flex-row bg-white">
+//         {/* Categories */}
+//         <div className="basis-[20%] flex lg:flex-col lg:py-17.5 lg:px-4 items-center lg:items-stretch gap-4 lg:gap-0 font-rubik">
+//           {(Categories as CategoryType[]).map((item) => (
+//             <button
+//               key={item.id}
+//               className={`lg:pb-3 lg:border-b border-r border-l lg:border-r-0 lg:border-l-0 px-1 text-left lg:pl-2 cursor-pointer lg:text-[16px] text-[14px] ${
+//                 item.category === category ? "text-main" : ""
+//               }`}
+//               onClick={() => setCategory(item.category)}
+//             >
+//               {item.category}
+//             </button>
+//           ))}
+//         </div>
+
+//         {/* Publications */}
+//         <div className="basis-[80%] bg-[#F0EAEA]">
+//           <PaginatedItems
+//             itemsPerPage={3}
+//             currentItems={publications}
+//             category={category}
+//           />
+//         </div>
+//       </div>
+//     </>
+//   );
+// };
+
+
+
+"use client";
+
+import { useState, useEffect } from "react";
+import Navbar from "../../components/Navbar";
+import Banner from "../../components/Banner";
 import PaginatedItems from "@/utils/pagination";
-import BannerImg from "@/assets/Banner/banner.jpg"
+import BannerImg from "@/assets/Banner/banner.jpg";
+
 /*  Types  */
 type CategoryType = {
   id: number;
   category: string;
+  apiValue: string;
 };
 
 type PublicationItem = {
-  id: number;
-  header: string;
-  date: string;
-  author?: string;
+  id: string;
+  title: string;
   description: string;
-  image?: string;
-  staticImage: string;
+  content: string;
+  category: string;
+  imageUrl: string | null;
+  fileUrl: string | null;
+  audioUrl: string | null;
+  author: string | null;
+  referenceNo: string | null;
+  createdAt: string;
+  createdBy?: {
+    name: string;
+  };
 };
 
-type PublicationGroup = {
-  id: number;
-  category: string;
-  publications: PublicationItem[];
-};
+// Map your UI categories to API categories
+const Categories: CategoryType[] = [
+  { id: 1, category: "Articles", apiValue: "ARTICLE" },
+  { id: 2, category: "Newsletters", apiValue: "NEWSLETTER" },
+  { id: 3, category: "Official Letters", apiValue: "OFFICIAL_LETTER" },
+  { id: 4, category: "Podcasts", apiValue: "PODCAST" },
+];
 
 export default function PublicationPage() {
   const [category, setCategory] = useState<string>("Articles");
+  const [publications, setPublications] = useState<PublicationItem[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const publicationGroup = (Publication as PublicationGroup[]).filter(
-    (item) => item.category === category
-  );
+  useEffect(() => {
+    fetchPublications();
+  }, [category]);
 
-  const publications: PublicationItem[] =
-    publicationGroup.length > 0 ? publicationGroup[0].publications : [];
+  async function fetchPublications() {
+    try {
+      setLoading(true);
+      setError(null);
+
+      // Find the API value for the selected category
+      const selectedCategory = Categories.find(
+        (cat) => cat.category === category
+      );
+      const apiCategory = selectedCategory?.apiValue || "";
+
+      // Build the API URL with category filter
+      const url = apiCategory
+        ? `/api/publications?category=${apiCategory}&limit=100`
+        : "/api/publications?limit=100";
+
+      const res = await fetch(url, {
+        cache: "no-store",
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to fetch publications");
+      }
+
+      const data = await res.json();
+      
+      // Transform API data to match your component's expected format
+      const transformedPublications = data.publications.map((pub: any) => ({
+        id: pub.id,
+        header: pub.title, // Map title to header for compatibility
+        title: pub.title,
+        date: new Date(pub.createdAt).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        }),
+        author: pub.author || pub.createdBy?.name || "ACUSA",
+        description: pub.description || "",
+        content: pub.content || "",
+        category: pub.category,
+        image: pub.imageUrl || pub.fileUrl,
+        staticImage: pub.imageUrl || pub.fileUrl || "/placeholder.svg",
+        imageUrl: pub.imageUrl,
+        fileUrl: pub.fileUrl,
+        audioUrl: pub.audioUrl,
+        referenceNo: pub.referenceNo,
+        createdAt: pub.createdAt,
+      }));
+
+      setPublications(transformedPublications);
+    } catch (error) {
+      console.error("fetchPublications error:", error);
+      setError("Failed to load publications. Please try again later.");
+      setPublications([]);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <>
@@ -52,7 +220,7 @@ export default function PublicationPage() {
       <div className="flex flex-col lg:flex-row bg-white">
         {/* Categories */}
         <div className="basis-[20%] flex lg:flex-col lg:py-17.5 lg:px-4 items-center lg:items-stretch gap-4 lg:gap-0 font-rubik">
-          {(Categories as CategoryType[]).map((item) => (
+          {Categories.map((item) => (
             <button
               key={item.id}
               className={`lg:pb-3 lg:border-b border-r border-l lg:border-r-0 lg:border-l-0 px-1 text-left lg:pl-2 cursor-pointer lg:text-[16px] text-[14px] ${
@@ -67,15 +235,32 @@ export default function PublicationPage() {
 
         {/* Publications */}
         <div className="basis-[80%] bg-[#F0EAEA]">
-          <PaginatedItems
-            itemsPerPage={3}
-            currentItems={publications}
-            category={category}
-          />
+          {loading ? (
+            <div className="flex items-center justify-center py-12">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-main"></div>
+            </div>
+          ) : error ? (
+            <div className="flex items-center justify-center py-12">
+              <p className="text-red-600">{error}</p>
+            </div>
+          ) : publications.length === 0 ? (
+            <div className="flex items-center justify-center py-12">
+              <p className="text-gray-600">
+                No {category.toLowerCase()} available yet.
+              </p>
+            </div>
+          ) : (
+            <PaginatedItems
+              itemsPerPage={3}
+              currentItems={publications}
+              category={category}
+            />
+          )}
         </div>
       </div>
     </>
   );
-};
+}
+
 
 
