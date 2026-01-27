@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import { Plus } from "lucide-react";
@@ -10,7 +10,13 @@ import { Input } from "../ui/input";
 import { Tabs, TabsList, TabsContent, TabsTrigger } from "../ui/tabs";
 import { FileUpload } from "../Card/FileUpload";
 import { Textarea } from "../ui/textarea";
-import { FileText, ChevronRight, ChevronLeft, Trash2, Pencil } from "lucide-react";
+import {
+  FileText,
+  ChevronRight,
+  ChevronLeft,
+  Trash2,
+  Pencil,
+} from "lucide-react";
 import { toast } from "sonner";
 
 interface ArticleProps {
@@ -33,7 +39,9 @@ interface ArticleProps {
 export default function ArticleTab() {
   const [articles, setArticles] = useState<ArticleProps[]>([]);
   const [showForm, setShowForm] = useState(false);
-  const [editingArticle, setEditingArticle] = useState<ArticleProps | null>(null);
+  const [editingArticle, setEditingArticle] = useState<ArticleProps | null>(
+    null,
+  );
   const [currentPage, setCurrentPage] = useState(1);
   const [uploadMethod, setUploadMethod] = useState<"upload" | "url">("upload");
   const [loading, setLoading] = useState(true);
@@ -58,8 +66,10 @@ export default function ArticleTab() {
   const fetchArticles = async () => {
     try {
       setLoading(true);
-      const response = await fetch("/api/admin/publications?category=ARTICLE&limit=100");
-      
+      const response = await fetch(
+        "/api/admin/publications?category=ARTICLE&limit=100",
+      );
+
       if (!response.ok) {
         throw new Error("Failed to fetch articles");
       }
@@ -191,12 +201,12 @@ export default function ArticleTab() {
   // Pagination
   const ITEMS_PER_PAGE = 6;
   const sortedArticles = [...articles].sort(
-    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
   );
   const totalPages = Math.ceil(sortedArticles.length / ITEMS_PER_PAGE);
   const paginatedArticles = sortedArticles.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
+    currentPage * ITEMS_PER_PAGE,
   );
 
   if (loading) {
@@ -295,8 +305,8 @@ export default function ArticleTab() {
                     <FileUpload
                       accept="image/*"
                       label="Upload article image"
-                      onFileSelect={(url) =>
-                        setFormData({ ...formData, imageUrl: url })
+                      onFileSelect={(fileObj) =>
+                        setFormData({ ...formData, imageUrl: fileObj.url })
                       }
                       currentFile={formData.imageUrl}
                       fileType="image"
@@ -358,7 +368,10 @@ export default function ArticleTab() {
                   className="h-4 w-4 text-indigo-600 rounded"
                   disabled={submitting}
                 />
-                <Label htmlFor="article-published" className="text-main cursor-pointer">
+                <Label
+                  htmlFor="article-published"
+                  className="text-main cursor-pointer"
+                >
                   Publish immediately (visible to public)
                 </Label>
               </div>
@@ -368,8 +381,8 @@ export default function ArticleTab() {
                   {submitting
                     ? "Saving..."
                     : editingArticle
-                    ? "Update Article"
-                    : "Create Article"}
+                      ? "Update Article"
+                      : "Create Article"}
                 </Button>
                 <Button
                   type="button"
@@ -392,10 +405,7 @@ export default function ArticleTab() {
               <CardContent className="flex flex-col items-center justify-center py-12">
                 <FileText className="w-12 h-12 text-sub mb-3" />
                 <p className="text-sub mb-4">No articles created yet</p>
-                <Button
-                  onClick={() => setShowForm(true)}
-                  className="bg-main"
-                >
+                <Button onClick={() => setShowForm(true)} className="bg-main">
                   <Plus className="w-4 h-4 mr-2" />
                   Create your first article
                 </Button>
@@ -436,7 +446,10 @@ export default function ArticleTab() {
 
                       <div className="flex items-center justify-between mb-3">
                         <span className="text-xs text-black">
-                          By {article.author || article.createdBy?.name || "Unknown"}
+                          By{" "}
+                          {article.author ||
+                            article.createdBy?.name ||
+                            "Unknown"}
                         </span>
                         <span className="text-xs text-black">
                           {new Date(article.createdAt).toLocaleDateString()}

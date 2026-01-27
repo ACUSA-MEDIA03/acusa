@@ -40,7 +40,7 @@ export default function Newsletter() {
   const [newsLetter, setNewsLetter] = useState<Newsletter[]>([]);
   const [showForm, setShowForm] = useState(false);
   const [editingNewsLetter, setEditingNewsLetter] = useState<Newsletter | null>(
-    null
+    null,
   );
   const [currentPage, setCurrentPage] = useState(1);
   const [uploadMethod, setUploadMethod] = useState<"upload" | "url">("upload");
@@ -66,7 +66,7 @@ export default function Newsletter() {
     try {
       setLoading(true);
       const response = await fetch(
-        "/api/admin/publications?category=NEWSLETTER&limit=100"
+        "/api/admin/publications?category=NEWSLETTER&limit=100",
       );
 
       if (!response.ok) {
@@ -129,14 +129,16 @@ export default function Newsletter() {
       }
       //  success
       toast.success(
-        `Newsletter ${editingNewsLetter ? "updated" : "created"} successfully`
+        `Newsletter ${editingNewsLetter ? "updated" : "created"} successfully`,
       );
       resetForm();
-       fetchNewsletters();
+      fetchNewsletters();
     } catch (error: unknown) {
       console.error("Error submitting newsletter:", error);
       toast.error(
-        error instanceof Error ? error.message : "An unexpected error occurred."
+        error instanceof Error
+          ? error.message
+          : "An unexpected error occurred.",
       );
     } finally {
       setSubmitting(false);
@@ -193,20 +195,18 @@ export default function Newsletter() {
   };
 
   const sortedNewsletters = [...newsLetter].sort(
-    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
   );
   const totalPages = Math.ceil(sortedNewsletters.length / ITEMS_PER_PAGE);
   const paginatedNewsletters = sortedNewsletters.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
+    currentPage * ITEMS_PER_PAGE,
   );
 
   if (loading) {
-    (
-       <div className="flex items-center justify-center py-12">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-main"></div>
-      </div>
-)
+    <div className="flex items-center justify-center py-12">
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-main"></div>
+    </div>;
   }
   return (
     <div className="space-y-6">
@@ -247,7 +247,7 @@ export default function Newsletter() {
               <div className="space-y-2">
                 <Label htmlFor="news-letter-description" className="text-main">
                   {" "}
-                 Short   Description
+                  Short Description
                 </Label>
                 <Textarea
                   id="newsletter-description"
@@ -278,20 +278,19 @@ export default function Newsletter() {
                     <FileUpload
                       accept="image/*"
                       label="Upload newsletter image"
-                      onFileSelect={(url) =>
-                        setFormData({ ...formData, images: [url] })
+                      onFileSelect={(fileObj) =>
+                        setFormData({ ...formData, imageUrl: fileObj.url })
                       }
-                      currentFile={formData.images[0]}
+                      currentFile={formData.imageUrl}
                       fileType="image"
-                      
                     />
                   </TabsContent>
                   <TabsContent value="url" className="mt-3">
                     <Input
                       placeholder="Enter image URL or leave blank for placeholder"
-                      value={formData.images[0] || ""}
+                      value={formData.imageUrl || ""}
                       onChange={(e) =>
-                        setFormData({ ...formData, images: [e.target.value] })
+                        setFormData({ ...formData, imageUrl: e.target.value })
                       }
                       disabled={submitting}
                     />
@@ -333,12 +332,17 @@ export default function Newsletter() {
                   id="newsletter-published"
                   type="checkbox"
                   checked={formData.published}
-                 onChange={(e) =>
+                  onChange={(e) =>
                     setFormData({ ...formData, published: e.target.checked })
                   }
-                className="h-4 w-4 text-main rounded"
+                  className="h-4 w-4 text-main rounded"
                 />
-                <Label htmlFor="article-published" className="text-main cursor-pointer">Publish immediately (visible to public)</Label>
+                <Label
+                  htmlFor="article-published"
+                  className="text-main cursor-pointer"
+                >
+                  Publish immediately (visible to public)
+                </Label>
               </div>
 
               <div className="flex gap-2">
@@ -376,11 +380,7 @@ export default function Newsletter() {
                   <Card key={newsletter.id} className="overflow-hidden">
                     <div className="aspect-video relative bg-slate-100">
                       <Image
-                        src={
-                          newsletter.imageUrl ||
-                          newsletter.images?.[0] ||
-                          "/placeholder.svg"
-                        }
+                        src={newsletter.imageUrl || "/placeholder.svg"}
                         alt={newsletter.title}
                         fill
                         className="object-cover"

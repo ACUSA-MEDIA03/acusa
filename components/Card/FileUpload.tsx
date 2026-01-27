@@ -31,21 +31,30 @@ export function FileUpload({ accept, label, onFileSelect, currentFile, fileType 
     }
   }
 
-  const processFile = (file: File) => {
-    // Create a local URL for the file
-   const fileUrl = URL.createObjectURL(file)
+const processFile = async (file: File) => {
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
 
-setPreview(fileUrl)
+  reader.onload = async () => {
+    const fileBase64 = reader.result;
+    // Upload to your Next.js API route
+    const res = await fetch("/api/upload", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ file: fileBase64 }),
+    });
+    const data = await res.json();
 
-onFileSelect({
-  url: fileUrl,
-  file,
-  size: file.size,
-})
-
-    // In a real application, you would upload to a storage service here
-    // For now, we're using blob URLs which work in the browser
-  }
+    if (data.url) {
+      setPreview(data.url); // show preview from Cloudinary
+      onFileSelect({
+        url: data.url,
+        file,
+        size: file.size,
+      });
+    }
+  };
+};
 
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault()
@@ -71,10 +80,9 @@ onFileSelect({
     setPreview("")
     onFileSelect({
   url: "",
-  file: null as any,
+  file: {} as File,
   size: 0,
 })
-
     if (fileInputRef.current) {
       fileInputRef.current.value = ""
     }
