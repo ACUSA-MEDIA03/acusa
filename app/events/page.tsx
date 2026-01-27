@@ -1,5 +1,5 @@
-import EventCards from "@/components/Card/EventCards"
-import Navbar from "@/components/Navbar"
+import EventCards from "@/components/card/eventcards"
+import Navbar from "@/components/navbar"
 interface Event {
   id: string;
   title: string;

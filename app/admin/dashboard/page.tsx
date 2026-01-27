@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Animation from "@/assets/Animation/animation.gif"
 // import { Events } from "@/assets/data/Events";
-import EventCards from "@/components/Card/EventCards";
+import EventCards from "@/components/card/eventcards";
 import { Button } from "@/components/ui/button";
 
 interface Event {

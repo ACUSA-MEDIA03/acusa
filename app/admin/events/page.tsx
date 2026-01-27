@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import EventCard from "@/components/Card/EventCard";
+import EventCard from "@/components/card/eventcard";
 import { Button } from "@/components/ui/button";
 import { Calendar, Pencil, Plus, Trash2 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

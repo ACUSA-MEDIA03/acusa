@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Tabs, TabsList, TabsContent, TabsTrigger } from "../ui/tabs";
-import { FileUpload } from "../Card/FileUpload";
+import { FileUpload } from "../card/FileUpload";
 import { Textarea } from "../ui/textarea";
 import {
   FileText,
