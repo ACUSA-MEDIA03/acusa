@@ -21,10 +21,20 @@ interface Event {
   };
 }
 
+interface Publications {
+  id: string;
+  header: string;
+  date: string;
+  author?: string;
+  description: string;
+  image?: string;
+  staticImage: string;
+}
 export default function AdminDashboard() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const [events, setEvents] = useState<Event[]>([]);
+  const [publications, setPublications] = useState<Publications[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -56,6 +66,29 @@ export default function AdminDashboard() {
       fetchEvents();
     }
   }, [status]);
+
+  const fetchPublications = async () => {
+    try {
+      const response = await fetch('/api/admin/publications');  
+      if (!response.ok) {   
+        throw new Error("Failed to fetch publications")
+      } 
+
+      const data = await response.json();
+      setPublications(data.publications || data);
+      setLoading(false)
+    } catch (error) {
+      console.error("Fetch error:", error);
+      setError("Failed to load publications");
+      setLoading(false);
+    }
+  }
+  useEffect(() => {
+    if (status === "authenticated") {
+      fetchPublications();
+    } 
+  }, [status]);
+
 
   //  Filter events lists
   // const availableEvents = events.filter((u) => u.event === '')
@@ -138,7 +171,9 @@ export default function AdminDashboard() {
             </h3>
             <p className="text-gray-600 mb-4">
               Manage articles, newsletters, and more
+           
             </p>
+      <p> {publications.length}</p>
             <a
               href="/admin/publications"
               className="inline-block px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition"
