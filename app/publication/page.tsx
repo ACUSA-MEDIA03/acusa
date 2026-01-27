@@ -1,105 +1,6 @@
-// "use client"
-
-// import { useState } from "react"
-// import Navbar from "../../components/Navbar"
-// import Banner from "../../components/Banner"
-// import { Categories, Publication } from "@/assets/data/Publication"
-// import PaginatedItems from "@/utils/pagination";
-// import BannerImg from "@/assets/Banner/banner.jpg"
-// /*  Types  */
-// type CategoryType = {
-//   id: number;
-//   category: string;
-// };
-
-// type PublicationItem = {
-//   id: number;
-//   header: string;
-//   date: string;
-//   author?: string;
-//   description: string;
-//   image?: string;
-//   staticImage: string;
-// };
-
-// type PublicationGroup = {
-//   id: number;
-//   category: string;
-//   publications: PublicationItem[];
-// };
-
-// async function fetchPublications(){
-//   try {
-//     const res = await fetch(
-//       `${process.env.NEXT_PUBLIC_BASE_URL}/api/publications`,
-//       { cache: "no-store" }
-//     );
-//     if (!res.ok) {
-//       throw new Error("Failed to fetch publications");
-//     }
-//     return res.json();
-//    }
-//   catch (error) {
-//       console.error("fetchPublications error:", error);
-//       return [];
-//   }
-// }
-
-// export default function PublicationPage() {
-//   const [category, setCategory] = useState<string>("Articles");
-
-//   const publicationGroup = (Publication as PublicationGroup[]).filter(
-//     (item) => item.category === category
-//   );
-
-//   const publications: PublicationItem[] =
-//     publicationGroup.length > 0 ? publicationGroup[0].publications : [];
-
-//   return (
-//     <>
-//       <Navbar />
-//       {/* Banner */}
-//       <Banner
-//         header="Publications"
-//         description="News & Articles || Everything from articles to letters. All that you need to know happening around the ACU Space."
-//         image={BannerImg}
-//       />
-
-//       {/* Main Section */}
-//       <div className="flex flex-col lg:flex-row bg-white">
-//         {/* Categories */}
-//         <div className="basis-[20%] flex lg:flex-col lg:py-17.5 lg:px-4 items-center lg:items-stretch gap-4 lg:gap-0 font-rubik">
-//           {(Categories as CategoryType[]).map((item) => (
-//             <button
-//               key={item.id}
-//               className={`lg:pb-3 lg:border-b border-r border-l lg:border-r-0 lg:border-l-0 px-1 text-left lg:pl-2 cursor-pointer lg:text-[16px] text-[14px] ${
-//                 item.category === category ? "text-main" : ""
-//               }`}
-//               onClick={() => setCategory(item.category)}
-//             >
-//               {item.category}
-//             </button>
-//           ))}
-//         </div>
-
-//         {/* Publications */}
-//         <div className="basis-[80%] bg-[#F0EAEA]">
-//           <PaginatedItems
-//             itemsPerPage={3}
-//             currentItems={publications}
-//             category={category}
-//           />
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-
-
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Navbar from "../../components/Navbar";
 import Banner from "../../components/Banner";
 import PaginatedItems from "@/utils/pagination";
@@ -114,14 +15,18 @@ type CategoryType = {
 
 type PublicationItem = {
   id: string;
+  header: string;
   title: string;
+  date: string;
+  author: string | null;
   description: string;
   content: string;
   category: string;
+  image: string | null;
+  staticImage: string;
   imageUrl: string | null;
   fileUrl: string | null;
   audioUrl: string | null;
-  author: string | null;
   referenceNo: string | null;
   createdAt: string;
   createdBy?: {
@@ -143,11 +48,7 @@ export default function PublicationPage() {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    fetchPublications();
-  }, [category]);
-
-  async function fetchPublications() {
+  const fetchPublications = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
@@ -174,7 +75,22 @@ export default function PublicationPage() {
       const data = await res.json();
       
       // Transform API data to match your component's expected format
-      const transformedPublications = data.publications.map((pub: any) => ({
+      const transformedPublications: PublicationItem[] = data.publications.map((pub: {
+        id: string;
+        title: string;
+        description: string;
+        content: string;
+        category: string;
+        imageUrl: string | null;
+        fileUrl: string | null;
+        audioUrl: string | null;
+        author: string | null;
+        referenceNo: string | null;
+        createdAt: string;
+        createdBy?: {
+          name: string;
+        };
+      }) => ({
         id: pub.id,
         header: pub.title, // Map title to header for compatibility
         title: pub.title,
@@ -194,17 +110,22 @@ export default function PublicationPage() {
         audioUrl: pub.audioUrl,
         referenceNo: pub.referenceNo,
         createdAt: pub.createdAt,
+        createdBy: pub.createdBy,
       }));
 
       setPublications(transformedPublications);
-    } catch (error) {
-      console.error("fetchPublications error:", error);
+    } catch (err) {
+      console.error("fetchPublications error:", err);
       setError("Failed to load publications. Please try again later.");
       setPublications([]);
     } finally {
       setLoading(false);
     }
-  }
+  }, [category]); // Only category in dependencies
+
+  useEffect(() => {
+    fetchPublications();
+  }, [fetchPublications]); // Now includes fetchPublications
 
   return (
     <>
@@ -261,6 +182,3 @@ export default function PublicationPage() {
     </>
   );
 }
-
-
-
