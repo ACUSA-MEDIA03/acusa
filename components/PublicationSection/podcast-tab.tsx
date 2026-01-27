@@ -91,6 +91,7 @@ export function PodcastsTab() {
       setPodcasts(data.publications || []);
     } catch (error) {
       console.error("Error fetching Podcasts", error);
+      console.log(error);
       toast.error("Error fetching podcasts");
     } finally {
       setLoading(false);
@@ -351,14 +352,14 @@ export function PodcastsTab() {
                   </TabsList>
                   <TabsContent value="upload" className="mt-3">
                     <FileUpload
-                      accept="image/*"
-                      label="Upload podcast cover"
-                      onFileSelect={(url) =>
-                        setFormData({ ...formData, imageUrl: url })
-                      }
-                      currentFile={formData.imageUrl}
-                      fileType="image"
-                    />
+  accept="image/*"
+  label="Upload podcast cover"
+  onFileSelect={(fileObj) =>
+    setFormData({ ...formData, imageUrl: fileObj.url })
+  }
+  currentFile={formData.imageUrl}
+  fileType="image"
+/>
                   </TabsContent>
                   <TabsContent value="url" className="mt-3">
                     <Input
@@ -417,14 +418,19 @@ export function PodcastsTab() {
               {formData.audioUrl === "upload" ? (
                 <div className="space-y-2">
                   <Label>Audio File</Label>
-                  <FileUpload
-                    accept="audio/*"
-                    label="Upload podcast audio"
-                    onFileSelect={(url, file) => {
-                      setFormData((prev) => ({ ...prev, audioUrl: url }));
-                      setFileSize(file?.size ?? null);
-                    }}
-                  />
+                 <FileUpload
+  accept="audio/*"
+  label="Upload podcast audio"
+  onFileSelect={(fileObj) => {
+    setFormData((prev) => ({ 
+      ...prev, 
+      audioUrl: fileObj.url 
+    }));
+    setFileSize(fileObj.size ?? null);
+  }}
+  currentFile={formData.audioUrl}
+  fileType="audio"
+/>
                 </div>
               ) : (
                 <div className="space-y-2">

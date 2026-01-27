@@ -20,53 +20,68 @@ import Image from "next/image";
 import { FileUpload } from "@/components/Card/FileUpload";
 import { toast } from "sonner";
 
-
 interface OfficialLetter {
   id: string;
   title: string;
   description: string;
   fileUrl: string;
-  fileSize: string;
+  fileSize: number | null;
   referenceNo: string;
-  imageUrl?: string;
+  imageUrl?: string | null;
   published: boolean;
   createdAt: string;
   createdBy?: {
     name: string;
     email: string;
-  }
+  };
 }
 
+interface FileObj {
+  url: string;
+  file: File | null;
+  size: number;
+}
+
+interface FormData {
+  title: string;
+  description: string;
+  imageUrl: string;
+  fileUrl: FileObj | null; 
+  fileSize: number | null;
+  referenceNo: string;
+  published: boolean;
+}
 const ITEMS_PER_PAGE = 6;
 
 export function OfficialLettersTab() {
   const [letters, setLetters] = useState<OfficialLetter[]>([]);
   const [showForm, setShowForm] = useState(false);
   const [editingLetter, setEditingLetter] = useState<OfficialLetter | null>(
-    null
+    null,
   );
   const [currentPage, setCurrentPage] = useState(1);
   const [uploadMethod, setUploadMethod] = useState<"upload" | "url">("upload");
   const [submitting, setSubmitting] = useState(false);
   const [loading, setIsLoading] = useState(true);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     title: "",
     description: "",
     imageUrl: "",
-    fileUrl: "",
-    fileSize: "",
+    fileUrl: { url: "", file: null as File | null, size: 0 },
+    fileSize: null as number | null,
     referenceNo: "",
     published: false,
-
   });
 
   useEffect(() => {
     loadLetters();
-  }, [])
+  }, []);
   const loadLetters = async () => {
     try {
-      setIsLoading(true)
-      const response = await fetch("/api/admin/publications?category=OFFICIAL_LETTER&limit=100");
+      setIsLoading(true);
+      const response = await fetch(
+        "/api/admin/publications?category=OFFICIAL_LETTER&limit=100",
+      );
       if (!response) {
         throw new Error("Failed to fetch articles");
       }
@@ -75,64 +90,69 @@ export function OfficialLettersTab() {
       setLetters(data.publications || []);
     } catch (error) {
       console.error("Fetch error", error);
-      toast.error("Failed to load letters")
+      toast.error("Failed to load letters");
     } finally {
       setIsLoading(false);
     }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitting(true);
+  e.preventDefault();
+  setSubmitting(true);
 
-    try {
-      //  validation
-      if (!formData.title || !formData.description) {
-        toast.error("Title and description are required");
-        setSubmitting(false);
-        return;
-      }
-
-      //  determine url and method
-      const url = editingLetter
-        ? `/api/admin/publications/${editingLetter.id}`
-        : `/api/admin/publications`;
-      
-      const method = editingLetter ? "PUT" : "POST";
-
-      const response = await fetch(url, {
-        method,
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title: formData.title,
-          description: formData.description,
-          fileUrl: formData.fileUrl,
-          category: "OFFICIAL_LETTER",
-          fileSize: formData.fileSize,
-          published: formData.published,
-          imageUrl: formData.imageUrl || null,
-          refernceNo: formData.referenceNo,
-        })
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to save letter");
-      }
-      //  on success
-      toast.success(editingLetter ? "Letter Updated" : "Letter created");
-      resetForm();
-      loadLetters();
-    } catch (error: unknown) {
-      console.error("Submit error", error);
-      toast.error("Failed to save letter");
-    } finally {
+  try {
+    // validation
+    if (!formData.title || !formData.description) {
+      toast.error("Title and description are required");
       setSubmitting(false);
+      return;
     }
-  };
+
+    // determine url and method
+    const url = editingLetter
+      ? `/api/admin/publications/${editingLetter.id}`
+      : `/api/admin/publications`;
+
+    const method = editingLetter ? "PUT" : "POST";
+
+    // Determine which URL to use based on upload method
+    const documentUrl = uploadMethod === "upload" 
+      ? formData.fileUrl?.url || null 
+      : formData.imageUrl || null;
+
+    const response = await fetch(url, {
+      method,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: formData.title,
+        description: formData.description,
+        fileUrl: documentUrl,
+        fileSize: formData.fileUrl?.size || null, // ✅ This should be number or null
+        category: "OFFICIAL_LETTER",
+        published: formData.published,
+        imageUrl: null,
+        referenceNo: formData.referenceNo || null, // ✅ Add null fallback
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || "Failed to save letter");
+    }
+    // on success
+    toast.success(editingLetter ? "Letter Updated" : "Letter created");
+    resetForm();
+    loadLetters();
+  } catch (error: unknown) {
+    console.error("Submit error", error);
+    toast.error("Failed to save letter");
+  } finally {
+    setSubmitting(false);
+  }
+};
   const handleEdit = (letter: OfficialLetter) => {
     setEditingLetter(letter);
     setFormData({
@@ -140,7 +160,11 @@ export function OfficialLettersTab() {
       description: letter.description || "",
       imageUrl: letter.imageUrl || "",
       fileSize: letter.fileSize,
-      fileUrl: letter.fileUrl,
+    fileUrl: {
+      url: letter.fileUrl || "",  // wrap string in object
+      file: null,                  // no file when editing
+      size: letter.fileSize || 0,  // you can default to 0
+    },
       referenceNo: letter.referenceNo,
       published: letter.published,
     });
@@ -158,17 +182,17 @@ export function OfficialLettersTab() {
       });
 
       if (!response.ok) {
-          throw new Error("Failed to delete letter")
+        throw new Error("Failed to delete letter");
       }
 
       //  update
       setLetters((prev: OfficialLetter[]) =>
-    prev.filter((letter: OfficialLetter) => letter.id !== id)
-  );
+        prev.filter((letter: OfficialLetter) => letter.id !== id),
+      );
       toast.success("Letter deleted successfully");
     } catch (error) {
       console.error("Delete error", error);
-      toast.error("Failed to delete letter")
+      toast.error("Failed to delete letter");
     }
   };
 
@@ -177,8 +201,8 @@ export function OfficialLettersTab() {
       title: "",
       description: "",
       imageUrl: "",
-      fileSize: "",
-      fileUrl: "",
+      fileSize: null,
+      fileUrl: null,
       referenceNo: "",
       published: false,
     });
@@ -188,15 +212,15 @@ export function OfficialLettersTab() {
   };
 
   const sortedLetters = [...letters].sort(
-    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
   );
   const totalPages = Math.ceil(sortedLetters.length / ITEMS_PER_PAGE);
   const paginatedLetters = sortedLetters.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
+    currentPage * ITEMS_PER_PAGE,
   );
 
-    if (loading) {
+  if (loading) {
     return (
       <div className="flex items-center justify-center py-12">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-main"></div>
@@ -274,10 +298,10 @@ export function OfficialLettersTab() {
                     <FileUpload
                       accept="image/*"
                       label="Upload scanned letter/memo"
-                      onFileSelect={(url) =>
-                        setFormData({ ...formData, fileUrl: url })
+                      onFileSelect={(fileObj) =>
+                        setFormData({ ...formData, fileUrl: fileObj })
                       }
-                      currentFile={formData.imageUrl}
+                      currentFile={formData.fileUrl?.url}
                       fileType="document"
                     />
                   </TabsContent>
@@ -309,7 +333,7 @@ export function OfficialLettersTab() {
                 />
               </div>
 
-                            <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2">
                 <input
                   id="article-published"
                   type="checkbox"
@@ -320,7 +344,10 @@ export function OfficialLettersTab() {
                   className="h-4 w-4 text-indigo-600 rounded"
                   disabled={submitting}
                 />
-                <Label htmlFor="article-published" className="text-main cursor-pointer">
+                <Label
+                  htmlFor="article-published"
+                  className="text-main cursor-pointer"
+                >
                   Publish immediately (visible to public)
                 </Label>
               </div>
@@ -357,7 +384,7 @@ export function OfficialLettersTab() {
                   <Card key={letter.id} className="overflow-hidden">
                     <div className="aspect-4/5 relative bg-slate-100">
                       <Image
-                        src={letter.imageUrl || "/placeholder.svg"}
+                        src={letter.fileUrl || "/placeholder.svg"}
                         alt={letter.title}
                         fill
                         className="object-contain"
