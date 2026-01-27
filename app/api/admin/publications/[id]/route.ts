@@ -119,13 +119,6 @@ export async function PUT(
   } catch (error) {
     console.error("Publication PUT error:", error);
 
-    // if (error?.code === "P2025") {
-    //   return NextResponse.json(
-    //     { error: "Publication not found" },
-    //     { status: 404 }
-    //   );
-    // }
-
     return NextResponse.json(
       { error: "Failed to update publication" },
       { status: 500 },
