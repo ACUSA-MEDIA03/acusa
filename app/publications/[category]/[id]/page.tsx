@@ -1,48 +1,3 @@
-// import Navbar from "@/components/Navbar";
-
-// import Footer from "@/components/Footer";
-
-// import Details from "@/components/PublicationSection/Details";
-// import OfficialLetter from "@/components/PublicationSection/OfficialLetter";
-// import { ArrowRight } from "lucide-react";
-// import Link from "next/link";
-// interface PageProps {
-//   params: {
-//     title: string;
-//     id: string;
-//   };
-// }
-// export default function PublicationsPage({ params }: PageProps) {
-//     const { category, id } = params;
-//     console.log("Params:", title, id);
-//     return (
-//         <>
-//             <Navbar />
-
-//          {/* TopNav */}
-//       <div className="px-22.5 h-[34lvh] py-4 bg-[#0C1657] flex items-start justify-end flex-col text-white">
-//         <h2 className="font-rubik font-bold text-[40px]">Publications</h2>
-//         <p className="font-grotesk tracking-[0.9px] flex items-center gap-2">
-//           <Link href="/publication" className="hover:underline">  Publications </Link>{" "} <ArrowRight />
-//           {title}
-//         </p>
-//       </div>
-     
-//         {title ===
-//           "Official Letters" ?
-//           <OfficialLetter />
-//           :
-//            <Details />
-//          }
-    
-//         <Footer />
-//          </>
-//      )
-//  }
-
-
-
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Details from "@/components/PublicationSection/Details";
@@ -50,7 +5,7 @@ import OfficialLetter from "@/components/PublicationSection/OfficialLetter";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import toast from "sonner"
+
 interface PageProps {
   params: Promise<{
     category: string;
@@ -61,13 +16,11 @@ interface PageProps {
 // Fetch publication data
 async function getPublication(id: string) {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/publications/${id}`,
-      { 
-        cache: "no-store",
-        next: { revalidate: 0 }
-      }
-    );
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+    const res = await fetch(`${baseUrl}/api/publications/${id}`, { 
+      cache: "no-store",
+      next: { revalidate: 0 }
+    });
 
     if (!res.ok) {
       return null;
@@ -76,7 +29,6 @@ async function getPublication(id: string) {
     return res.json();
   } catch (error) {
     console.error("Error fetching publication:", error);
-    toast.error("Failed to load publication data.");
     return null;
   }
 }
@@ -97,25 +49,23 @@ function formatCategory(category: string): string {
 }
 
 export default async function PublicationDetailPage({ params }: PageProps) {
- const { category, id } = await params; //  Using category and id
-  
-  console.log("Params:", { category, id }); // Debug log
+  const { category, id } = await params;
   
   // Fetch the publication data
   const publication = await getPublication(id);
 
   // If publication not found, show 404
   if (!publication) {
-    // console.log("Publication not found for id:", id);
     notFound();
   }
 
   const formattedCategory = formatCategory(category);
   const isOfficialLetter = publication.category === "OFFICIAL_LETTER";
 
-  return ( 
+  return (
     <>
       <Navbar />
+
       {/* TopNav */}
       <div className="px-22.5 h-[34lvh] py-4 bg-[#0C1657] flex items-start justify-end flex-col text-white">
         <h2 className="font-rubik font-bold text-[40px]">Publications</h2>
@@ -147,7 +97,6 @@ export default async function PublicationDetailPage({ params }: PageProps) {
   );
 }
 
-// Generate metadata for SEO
 export async function generateMetadata({ params }: PageProps) {
   const { id } = await params;
   const publication = await getPublication(id);

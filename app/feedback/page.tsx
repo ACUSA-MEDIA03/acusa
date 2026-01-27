@@ -1,40 +1,27 @@
 "use client"
+
+import { useState } from "react"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
-
-
 export default function Feedback() {
-    return (
-        <>
-           <Navbar />
-             <div className="max-w-md mx-auto mt-20 space-y-4">
-     <h2 className="text-2xl font-bold">Login</h2>
+  const [submitted, setSubmitted] = useState(false);
+  return (
+    <>
+      <Navbar />
+        <div className="container max-w-2xl mx-auto px-4 py-12 md:py-20">
+        {/* Header */}
+        <div className="mb-12 text-center">
+          <h1 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-4">
+            We Value Your Feedback
+          </h1>
+          <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+            Share your complaints, observations, or suggestions to help us improve your experience.
+          </p>
+        </div>
 
-      <input
-        type="email"
-        placeholder="Email"
-        // value={email}
-        // onChange={(e) => setEmail(e.target.value)}
-        className="w-full border p-2 rounded"
-        // disabled={loading}
-      />
+        </div>
 
-      <input
-        type="password"
-        placeholder="Password"
-        // value={password}
-        // onChange={(e) => setPassword(e.target.value)}
-        className="w-full border p-2 rounded"
-        // disabled={loading}
-        // onKeyPress={(e) => {
-        //   if (e.key === "Enter") {
-            // handleLogin(e);
-        //   }
-        // }}
-      />
-
-</div>
-            <Footer />
-            </>
-    )
+      <Footer />
+  </>
+  )
 }
