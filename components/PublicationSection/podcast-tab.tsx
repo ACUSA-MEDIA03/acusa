@@ -51,12 +51,12 @@ export function PodcastsTab() {
   const [loading, setLoading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [editingPodcast, setEditingPodcast] = useState<PodcastItem | null>(
-    null
+    null,
   );
   const [currentPage, setCurrentPage] = useState(1);
   const [playingId, setPlayingId] = useState<string | null>(null);
   const [imageUploadMethod, setImageUploadMethod] = useState<"upload" | "url">(
-    "upload"
+    "upload",
   );
   const audioRefs = useRef<{ [key: string]: HTMLAudioElement }>({});
   const [fileSize, setFileSize] = useState<number | null>(null);
@@ -81,7 +81,7 @@ export function PodcastsTab() {
     try {
       setLoading(true);
       const response = await fetch(
-        "/api/admin/publications?category=PODCAST&limit=100"
+        "/api/admin/publications?category=PODCAST&limit=100",
       );
       if (!response.ok) {
         throw new Error("Failed to fetch podcasts");
@@ -146,14 +146,16 @@ export function PodcastsTab() {
       }
 
       toast.success(
-        `Podcast ${editingPodcast ? "updated" : "created"} successfully`
+        `Podcast ${editingPodcast ? "updated" : "created"} successfully`,
       );
       resetForm();
       loadPodcasts();
     } catch (error) {
       console.error("Error submitting podcast:", error);
       toast.error(
-        error instanceof Error ? error.message : "An unexpected error occurred."
+        error instanceof Error
+          ? error.message
+          : "An unexpected error occurred.",
       );
     } finally {
       setSubmitting(false);
@@ -161,45 +163,54 @@ export function PodcastsTab() {
   };
 
   const handleEdit = (podcast: PodcastItem) => {
-  setEditingPodcast(podcast);
+    setEditingPodcast(podcast);
 
-  setFormData({
-    title: podcast.title,
-    content: podcast.content,
-    description: podcast.description,
-    audioUrl: podcast.audioUrl,
-    imageUrl: podcast.imageUrl || "",
-    author: podcast.author,
-    tags: podcast.tags.join(", "),
-    published: podcast.published,
-    duration: podcast.duration
-      ? `${Math.floor(podcast.duration / 60)}:${podcast.duration % 60}`
-      : "",
-  });
+    setFormData({
+      title: podcast.title,
+      content: podcast.content,
+      description: podcast.description,
+      audioUrl: podcast.audioUrl,
+      imageUrl: podcast.imageUrl || "",
+      author: podcast.author,
+      tags: podcast.tags.join(", "),
+      published: podcast.published,
+      duration: podcast.duration
+        ? `${Math.floor(podcast.duration / 60)}:${podcast.duration % 60}`
+        : "",
+    });
 
-  setShowForm(true);
-};
-
+    setShowForm(true);
+  };
 
   const handleDelete = async (id: string) => {
-      if (!confirm("Are you sure you want to delete this podcast")) {
-        return;
-      }
-  
-      try {
-        const response = await fetch(`/api/admin/publications/${id}`, {
-          method: "DELETE",
-        });
-        if (!response.ok) {
-          throw new Error("Failed to delete podcast");
-        }
-        toast.success("Podcast deleted successfully");
-        setPodcasts((prev) => prev.filter((n) => n.id !== id));
-      } catch (error) {
-        console.error("Error deleting newsletter:", error);
-        toast.error("Error deleting newsletter");
-      }
-    };
+   toast("Are you sure you want to delete this podcast?", {
+      action: {
+        label: "Delete",
+        onClick: async () => {
+          try {
+            const response = await fetch(`/api/admin/publications/${id}`, {
+              method: "DELETE",
+            });
+            if (!response.ok) {
+              throw new Error("Failed to delete podcast");
+            }
+            toast.success("Podcast deleted successfully");
+            setPodcasts((prev) => prev.filter((n) => n.id !== id));
+          } catch (error) {
+            console.error("Error deleting podcast:", error);
+            toast.error("Error deleting podcast");
+          }
+        },
+      },
+      cancel: {
+        label: "Cancel",
+        onClick: () => {
+        toast.dismiss(); // closes the toast
+      },
+      },
+    });
+  };
+      
 
   const togglePlay = (id: string, audioUrl: string) => {
     if (playingId === id) {
@@ -214,7 +225,7 @@ export function PodcastsTab() {
       if (!audioRefs.current[id]) {
         audioRefs.current[id] = new Audio(audioUrl);
         audioRefs.current[id].addEventListener("ended", () =>
-          setPlayingId(null)
+          setPlayingId(null),
         );
       }
       audioRefs.current[id].play();
@@ -259,20 +270,18 @@ export function PodcastsTab() {
   };
 
   const sortedPodcasts = [...podcasts].sort(
-    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
   );
   const totalPages = Math.ceil(sortedPodcasts.length / ITEMS_PER_PAGE);
   const paginatedPodcasts = sortedPodcasts.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
+    currentPage * ITEMS_PER_PAGE,
   );
 
-   if (loading) {
-    (
-       <div className="flex items-center justify-center py-12">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-main"></div>
-      </div>
-)
+  if (loading) {
+    <div className="flex items-center justify-center py-12">
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-main"></div>
+    </div>;
   }
   return (
     <div className="space-y-6">
@@ -308,7 +317,7 @@ export function PodcastsTab() {
                   required
                 />
               </div>
-               <div className="space-y-2">
+              <div className="space-y-2">
                 <Label htmlFor="podcast-content" className="text-main">
                   Podcast Content
                 </Label>
@@ -352,14 +361,14 @@ export function PodcastsTab() {
                   </TabsList>
                   <TabsContent value="upload" className="mt-3">
                     <FileUpload
-  accept="image/*"
-  label="Upload podcast cover"
-  onFileSelect={(fileObj) =>
-    setFormData({ ...formData, imageUrl: fileObj.url })
-  }
-  currentFile={formData.imageUrl}
-  fileType="image"
-/>
+                      accept="image/*"
+                      label="Upload podcast cover"
+                      onFileSelect={(fileObj) =>
+                        setFormData({ ...formData, imageUrl: fileObj.url })
+                      }
+                      currentFile={formData.imageUrl}
+                      fileType="image"
+                    />
                   </TabsContent>
                   <TabsContent value="url" className="mt-3">
                     <Input
@@ -418,19 +427,19 @@ export function PodcastsTab() {
               {formData.audioUrl === "upload" ? (
                 <div className="space-y-2">
                   <Label>Audio File</Label>
-                 <FileUpload
-  accept="audio/*"
-  label="Upload podcast audio"
-  onFileSelect={(fileObj) => {
-    setFormData((prev) => ({ 
-      ...prev, 
-      audioUrl: fileObj.url 
-    }));
-    setFileSize(fileObj.size ?? null);
-  }}
-  currentFile={formData.audioUrl}
-  fileType="audio"
-/>
+                  <FileUpload
+                    accept="audio/*"
+                    label="Upload podcast audio"
+                    onFileSelect={(fileObj) => {
+                      setFormData((prev) => ({
+                        ...prev,
+                        audioUrl: fileObj.url,
+                      }));
+                      setFileSize(fileObj.size ?? null);
+                    }}
+                    currentFile={formData.audioUrl}
+                    fileType="audio"
+                  />
                 </div>
               ) : (
                 <div className="space-y-2">

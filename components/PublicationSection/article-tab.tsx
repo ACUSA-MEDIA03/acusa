@@ -144,28 +144,40 @@ export default function ArticleTab() {
     }
   };
 
-  const handleDelete = async (id: string) => {
-    if (!confirm("Are you sure you want to delete this article?")) {
-      return;
-    }
+const handleDelete = (id: string) => {
+  toast("Are you sure you want to delete this article?", {
+    action: {
+      label: "Delete",
+      onClick: async () => {
+        try {
+          const response = await fetch(`/api/admin/publications/${id}`, {
+            method: "DELETE",
+          });
 
-    try {
-      const response = await fetch(`/api/admin/publications/${id}`, {
-        method: "DELETE",
-      });
+          if (!response.ok) {
+            throw new Error("Failed to delete article");
+          }
 
-      if (!response.ok) {
-        throw new Error("Failed to delete article");
-      }
+          // Update UI
+          setArticles((prev) =>
+            prev.filter((article) => article.id !== id)
+          );
 
-      // Update UI
-      setArticles((prev) => prev.filter((article) => article.id !== id));
-      toast.success("Article deleted successfully!");
-    } catch (error) {
-      console.error("Delete error:", error);
-      toast.error("Failed to delete article");
-    }
-  };
+          toast.success("Article deleted successfully!");
+        } catch (error) {
+          console.error("Delete error:", error);
+          toast.error("Failed to delete article");
+        }
+      },
+    },
+    cancel: {
+      label: "Cancel",
+      onClick: () => {
+        toast.dismiss(); // closes the toast
+      },
+    },
+  });
+};
 
   const handleEdit = (article: ArticleProps) => {
     setEditingArticle(article);

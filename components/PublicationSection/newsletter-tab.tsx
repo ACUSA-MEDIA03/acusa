@@ -159,26 +159,40 @@ export default function Newsletter() {
     setShowForm(true);
   };
 
-  const handleDelete = async (id: string) => {
-    if (!confirm("Are you sure you want to delete this newsletter")) {
-      return;
-    }
+ const handleDelete = (id: string) => {
+  toast("Are you sure you want to delete this article?", {
+    action: {
+      label: "Delete",
+      onClick: async () => {
+        try {
+          const response = await fetch(`/api/admin/publications/${id}`, {
+            method: "DELETE",
+          });
 
-    try {
-      const response = await fetch(`/api/admin/publications/${id}`, {
-        method: "DELETE",
-      });
-      if (!response.ok) {
-        throw new Error("Failed to delete newsletter");
-      }
-      toast.success("Newsletter deleted successfully");
-      setNewsLetter((prev) => prev.filter((n) => n.id !== id));
-    } catch (error) {
-      console.error("Error deleting newsletter:", error);
-      toast.error("Error deleting newsletter");
-    }
-  };
+          if (!response.ok) {
+            throw new Error("Failed to delete article");
+          }
 
+          // Update UI
+          setNewsLetter((prev) =>
+            prev.filter((newsletter) => newsletter.id !== id)
+          );
+
+          toast.success("Newsletter deleted successfully!");
+        } catch (error) {
+          console.error("Delete error:", error);
+          toast.error("Failed to delete newsletter");
+        }
+      },
+    },
+    cancel: {
+      label: "Cancel",
+      onClick: () => {
+        toast.dismiss(); // closes the toast
+      },
+    },
+  });
+};
   const resetForm = () => {
     setFormData({
       title: "",

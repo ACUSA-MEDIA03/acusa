@@ -129,11 +129,11 @@ export function OfficialLettersTab() {
         title: formData.title,
         description: formData.description,
         fileUrl: documentUrl,
-        fileSize: formData.fileUrl?.size || null, // ✅ This should be number or null
+        fileSize: formData.fileUrl?.size || null, // This should be number or null
         category: "OFFICIAL_LETTER",
         published: formData.published,
         imageUrl: null,
-        referenceNo: formData.referenceNo || null, // ✅ Add null fallback
+        referenceNo: formData.referenceNo || null, // Add null fallback
       }),
     });
 
@@ -171,30 +171,41 @@ export function OfficialLettersTab() {
     setShowForm(true);
   };
 
-  const handleDelete = async (id: string) => {
-    if (!confirm("Are you sure you want to delete the letter?")) {
-      return;
-    }
-
-    try {
-      const response = await fetch(`/api/admin/publications/${id}`, {
-        method: "DELETE",
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to delete letter");
-      }
-
-      //  update
-      setLetters((prev: OfficialLetter[]) =>
-        prev.filter((letter: OfficialLetter) => letter.id !== id),
-      );
-      toast.success("Letter deleted successfully");
-    } catch (error) {
-      console.error("Delete error", error);
-      toast.error("Failed to delete letter");
-    }
+  const handleDelete = (id: string) => {
+    toast("Are you sure you want to delete this article?", {
+      action: {
+        label: "Delete",
+        onClick: async () => {
+          try {
+            const response = await fetch(`/api/admin/publications/${id}`, {
+              method: "DELETE",
+            });
+  
+            if (!response.ok) {
+              throw new Error("Failed to delete article");
+            }
+  
+            // Update UI
+            setLetters((prev) =>
+              prev.filter((letter) => letter.id !== id)
+            );
+  
+            toast.success("Letter deleted successfully!");
+          } catch (error) {
+            console.error("Delete error:", error);
+            toast.error("Failed to delete article");
+          }
+        },
+      },
+      cancel: {
+        label: "Cancel",
+        onClick: () => {
+        toast.dismiss(); // closes the toast
+      },
+      },
+    });
   };
+
 
   const resetForm = () => {
     setFormData({
