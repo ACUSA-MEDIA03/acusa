@@ -1,5 +1,5 @@
 import  Image from "next/image";
-import Link from "next/link";
+
 // components
 import NavBar from "../components/navbar";
 import Footer from "../components/footer";
@@ -80,11 +80,9 @@ As elected representatives, we serve as a vital link students, faculty, and admi
           </p>
 
           {/* Button */}
-          <div className="border lg:w-[30%] w-[50%] grid mt-2">
-            <Link href="/about">
-              <Button text={`View More ...`} bgcolor='blue' />
-               </Link>
-          </div>
+          <div className="border lg:w-[15%] w-[40%] grid mt-2">
+              <Button text={`View More ...`} bgcolor='blue'/>
+            </div>
           {/* Button */}
         </div>
         {/* left */}
@@ -96,14 +94,13 @@ As elected representatives, we serve as a vital link students, faculty, and admi
               white
               number={1}
               title="Media Coverage"
-              text=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa atque
-          eum temporibus dolore. Nobis, commodi."
+              text=" We amplify student voices by highlighting key issues, achievements, and events through responsible and engaging media coverage that informs, educates, and inspires the campus community."
             />
             <Card
               number={2}
               title="Students Welfare"
-              text=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa atque
-          eum temporibus dolore. Nobis, commodi."
+              text="We foster a culture of service by organizing outreach programs, volunteering initiatives, and social impact projects that strengthen our connection with the wider community."
+
             />
           </div>
 
@@ -111,14 +108,14 @@ As elected representatives, we serve as a vital link students, faculty, and admi
             <Card
               number={3}
               title="Student Activism"
-              text=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa atque
-          eum temporibus dolore. Nobis, commodi."
+              text="We encourage active student participation in leadership, dialogue, and advocacy by empowering students to stand up for their rights and contribute to positive institutional change."
+
             />
             <Card
               number={4}
               title="Community Service"
-              text=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa atque
-          eum temporibus dolore. Nobis, commodi."
+              text="We foster a culture of service by organizing outreach programs, volunteering initiatives, and social impact projects that strengthen our connection with the wider community."
+
             />
           </div>
         </div>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import {  Space_Grotesk, Rubik_Dirt, Montserrat } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import {Toaster} from "@/components/ui/sonner"
 const  grotesk = Space_Grotesk({
@@ -39,6 +40,7 @@ export default function RootLayout({
       >
         {children}
         <Toaster />
+        <Analytics />
       </body>
     </html>
   );

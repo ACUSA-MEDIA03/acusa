@@ -2,7 +2,68 @@
 
 import Navbar from "../../components/navbar"
 import Footer from "../../components/footer"
+
+import { useState } from "react";
+
+
+interface galleryProps {
+  id: number;
+  title: string;
+  description: string;
+  imageUrl: string;
+  category: string;
+}
 export default function Gallery() {
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+
+
+  const galleryItems: galleryProps[] = [
+    {
+      id: 1,
+      title: "",
+      description: "",
+      imageUrl: "/Gallery/1.JPG",
+      category: "",
+    },
+    {
+      id: 2,
+      title: "",
+      description: "",
+      imageUrl: "/Gallery/2.JPG",
+      category: ""
+    }
+  ]
+
+  const categories = ["All", "Events", "Executives", "Activities"];
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const filteredItems = activeCategory === "All"
+    ? galleryItems 
+    : galleryItems.filter(item => item.category === activeCategory)
+  
+  //  function to open modal 
+  const openModal = (index: number) => {
+    setSelectedImage(index);
+  }
+
+  // function to close the modal 
+  const closeModal = () => {
+    setSelectedImage(null);
+  }
+//  check next image function
+  const nextImage = () => {
+    if (selectedImage !== null) {
+      setSelectedImage((selectedImage + 1) % filteredItems.length);
+    }
+  }
+//  function to check previous image
+  const prevImage = () => {
+    if (selectedImage !== null) {
+      setSelectedImage(selectedImage === 0 ? filteredItems.length - 1 :
+        selectedImage - 1
+      );
+    }
+  }
     return (
         <>
         <Navbar />
@@ -49,7 +110,10 @@ export default function Gallery() {
           Excellence
         </h2>
         </div>
-      
+        <div className="py-12 px-6 lg:px-8 bg-white border-b border-gray-100">  
+
+
+        </div>
             <div id="footer" className="relative ">
                 <Footer />
             </div>

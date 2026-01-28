@@ -11,10 +11,12 @@ import ProfileCard from "../../components/card/aboutprofilecard"
 import Banner from "@/assets/Banner/all.jpg"
 import Acusa from "@/assets/Logo/logo.png"
 import Acusa_Media from "@/assets/Logo/media.jpg"
-import Frame270 from "@/assets/About/Frame270.png"
-import Frame272 from '@/assets/About/Frame272.png'
-import Frame273 from '@/assets/About/Frame273.png'
-import Frame275 from '@/assets/About/Frame275.png'
+// import Frame270 from "@/assets/About/Frame270.png"
+import Frame270 from "@/assets/About/12.jpg"
+import Frame272 from '@/assets/About/13.jpg'
+import Frame273 from '@/assets/About/14.jpg'
+import Frame275 from '@/assets/About/34.jpg'
+import Frame276 from '@/assets/About/Frame275.png'
 export default function About() {
   
   const [category, setCategory] = useState("Executive");
@@ -31,10 +33,10 @@ export default function About() {
         style={{ backgroundImage: `url(${Banner.src})` }}>
         <div className="flex justify-center flex-col px-5 lg:px-20 py-32 text-white h-full bg-black/40 ">
           <div className="max-w-4xl space-y-4 lg:space-y-6 pt-12">
-            <h1 className="font-bold text-4xl lg:text-6xl leading-tight ">
+            <h1 className="font-bold text-4xl lg:text-6xl leading-tight font-rubik">
               About Us
             </h1>
-            <p className="text-lg lg:text-2xl leading-relaxed max-w-3xl">
+            <p className="text-lg lg:text-2xl leading-relaxed max-w-3xl font-mono">
               Learn all there is to learn about the Ajayi Crowther University
               Students&apos; Assembly
             </p>
@@ -52,7 +54,7 @@ export default function About() {
           </p>
           <h2 className="text-2xl lg:text-4xl font-bold leading-tight max-w-4xl font-rubik ">
             There is more to the Ajayi Crowther University Students Assembly
-            than just simply paying the ACUSA fee.
+            than just simply paying the ACUSA fees.
           </h2>
         </div>
 
@@ -166,7 +168,7 @@ export default function About() {
 <div className="lg:w-1/3 lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2 p-5 lg:p-0">
   <div className="relative w-full h-65 lg:h-105">
     <Image
-      src={Frame275}
+      src={Frame276}
       alt="Students in a lecture hall"
       fill
       className="object-cover rounded-lg lg:rounded-none shadow-xl"
