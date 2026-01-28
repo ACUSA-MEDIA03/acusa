@@ -2,9 +2,10 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Navbar from "../../components/navbar";
-import Banner from "@/components/Banner";
+
 import PaginatedItems from "@/utils/pagination";
 import BannerImg from "@/assets/Banner/banner.jpg";
+import Banner from "@/components/banner";
 
 /*  Types  */
 type CategoryType = {
@@ -59,7 +60,7 @@ export default function PublicationPage() {
       );
       const apiCategory = selectedCategory?.apiValue || "";
 
-      // Build the API URL with category filter
+      // Built the API URL with category filter
       const url = apiCategory
         ? `/api/publications?category=${apiCategory}&limit=100`
         : "/api/publications?limit=100";
@@ -70,7 +71,7 @@ export default function PublicationPage() {
         throw new Error("Failed to fetch publications");
       }
       const data = await res.json();
-      // Transform API data to match your component's expected format
+    
       const transformedPublications: PublicationItem[] = data.publications.map((pub: {
         id: string;
         title: string;
