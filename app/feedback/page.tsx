@@ -11,7 +11,7 @@ export default function Feedback() {
         <div className="container max-w-2xl mx-auto px-4 py-12 md:py-20">
         {/* Header */}
         <div className="mb-12 text-center">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-4">
+          <h1 className="text-4xl md:text-5xl font-grotesk font-bold text-primary mb-4">
             We Value Your Feedback
           </h1>
           <p className="text-lg text-muted-foreground max-w-xl mx-auto">
