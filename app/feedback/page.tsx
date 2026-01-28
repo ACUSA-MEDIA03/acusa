@@ -80,7 +80,6 @@ export default function Feedback() {
               Your voice matters to us.
             </p>
           </div>
-
           {/* Form Card */}
           <Card className="border-2 shadow-lg">
             <CardContent className="pt-6">
