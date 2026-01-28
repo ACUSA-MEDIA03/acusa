@@ -1,8 +1,3 @@
-
-
-
-
-
 import { BiArrowBack } from "react-icons/bi";
 import Link from "next/link";
 import Image from "next/image";
@@ -126,7 +121,7 @@ export default function OfficialLetter({ publication }: OfficialLetterProps) {
               <div className="space-y-4">
                 <iframe
                   src={publication.fileUrl}
-                  className="w-full h-[800px] border rounded-lg"
+                  className="w-full h-200 border rounded-lg"
                   title={publication.title}
                 />
                 <div className="text-center">

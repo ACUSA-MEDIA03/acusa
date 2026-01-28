@@ -1,7 +1,7 @@
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Details from "@/components/publicationsection/details";
-import OfficialLetter from "@/components/publicationsection/OfficialLetter";
+import Officialletter from "@/components/publicationsection/officialletter";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -16,8 +16,7 @@ interface PageProps {
 // Fetch publication data
 async function getPublication(id: string) {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-    const res = await fetch(`${baseUrl}/api/publications/${id}`, { 
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/publications/${id}`, { 
       cache: "no-store",
       next: { revalidate: 0 }
     });
@@ -87,7 +86,7 @@ export default async function PublicationDetailPage({ params }: PageProps) {
 
       {/* Content - Pass publication data to components */}
       {isOfficialLetter ? (
-        <OfficialLetter publication={publication} />
+        <Officialletter publication={publication} />
       ) : (
         <Details publication={publication} />
       )}

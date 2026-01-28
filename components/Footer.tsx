@@ -1,4 +1,4 @@
-import { Instagram, X  } from "lucide-react"
+import { Instagram,   } from "lucide-react"
 import { FaFacebookF, FaTiktok,  FaWhatsapp, FaLinkedin , FaSpotify} from "react-icons/fa";
 import { BsSnapchat } from "react-icons/bs";
 import Link from "next/link"
