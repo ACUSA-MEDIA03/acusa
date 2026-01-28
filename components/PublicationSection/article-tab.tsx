@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Tabs, TabsList, TabsContent, TabsTrigger } from "../ui/tabs";
-import { FileUpload } from "../card/FileUpload";
+import { FileUpload } from "@/components/card/fileupload";
 import { Textarea } from "../ui/textarea";
 import {
   FileText,
@@ -144,40 +144,38 @@ export default function ArticleTab() {
     }
   };
 
-const handleDelete = (id: string) => {
-  toast.error("Are you sure you want to delete this article?", {
-    action: {
-      label: "Delete",
-      onClick: async () => {
-        try {
-          const response = await fetch(`/api/admin/publications/${id}`, {
-            method: "DELETE",
-          });
+  const handleDelete = (id: string) => {
+    toast.error("Are you sure you want to delete this article?", {
+      action: {
+        label: "Delete",
+        onClick: async () => {
+          try {
+            const response = await fetch(`/api/admin/publications/${id}`, {
+              method: "DELETE",
+            });
 
-          if (!response.ok) {
-            throw new Error("Failed to delete article");
+            if (!response.ok) {
+              throw new Error("Failed to delete article");
+            }
+
+            // Update UI
+            setArticles((prev) => prev.filter((article) => article.id !== id));
+
+            toast.success("Article deleted successfully!");
+          } catch (error) {
+            console.error("Delete error:", error);
+            toast.error("Failed to delete article");
           }
-
-          // Update UI
-          setArticles((prev) =>
-            prev.filter((article) => article.id !== id)
-          );
-
-          toast.success("Article deleted successfully!");
-        } catch (error) {
-          console.error("Delete error:", error);
-          toast.error("Failed to delete article");
-        }
+        },
       },
-    },
-    cancel: {
-      label: "Cancel",
-      onClick: () => {
-        toast.dismiss(); 
+      cancel: {
+        label: "Cancel",
+        onClick: () => {
+          toast.dismiss();
+        },
       },
-    },
-  });
-};
+    });
+  };
 
   const handleEdit = (article: ArticleProps) => {
     setEditingArticle(article);
