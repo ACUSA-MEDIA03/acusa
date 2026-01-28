@@ -18,7 +18,7 @@ export default function NotFound() {
           </div>
 
           <h1 className="text-6xl font-extrabold text-main mb-4">
-            404
+            404?? yes
           </h1>
 
           <h2 className="text-2xl md:text-3xl font-semibold text-main mb-4">
