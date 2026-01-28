@@ -1,10 +1,10 @@
 "use client"
 
-import { useState } from "react"
-import Navbar from "@/components/Navbar"
-import Footer from "@/components/Footer"
+// import { useState } from "react"
+import Navbar from "@/components/navbar"
+import Footer from "@/components/footer"
 export default function Feedback() {
-  const [submitted, setSubmitted] = useState(false);
+  // const [submitted, setSubmitted] = useState(false);
   return (
     <>
       <Navbar />

@@ -21,7 +21,7 @@ import {
   Pause,
 } from "lucide-react";
 import Image from "next/image";
-import { FileUpload } from "@/components/Card/FileUpload";
+import { FileUpload } from "@/components/card/fileupload";
 import { toast } from "sonner";
 
 interface PodcastItem {

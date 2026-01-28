@@ -133,8 +133,8 @@
 
 import { useState } from "react";
 import ReactPaginate from "react-paginate";
-import PublicationCard from "@/components/Card/PublicationCard";
-import PodcastCard from "@/components/Card/PodcastCard";
+import PublicationCard from "@/components/card/PublicationCard";
+import PodcastCard from "@/components/card/PodcastCard";
 import Link from "next/link";
 
 export interface PublicationItem {
@@ -143,7 +143,7 @@ export interface PublicationItem {
   title: string;
   date: string;
   description: string;
-  author?: string;
+  author?: string | null;
   image?: string;
   audioSource?: string;
   category: string;
