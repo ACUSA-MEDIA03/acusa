@@ -1,7 +1,8 @@
 "use client"
 
-import Navbar from "../../component/Navbar"
-import Footer from "../../component/Footer"
+import Navbar from "../../components/navbar"
+import Footer from "../../components/footer"
+
 import { useState } from "react";
 
 
@@ -66,7 +67,6 @@ export default function Gallery() {
     return (
         <>
         <Navbar />
-        
         
          <div className="border border-purple-950 grid relative">
         {/* First Row */}

@@ -1,20 +1,42 @@
 import  Image from "next/image";
 
 // components
-import NavBar from "../component/Navbar";
-import Footer from "../component/Footer";
-import Button from "../component/Button";
-import Card from "../component/Card/Card"
-import EventCards from "../component/Card/EventCards";
-import ProfileCard from "../component/Card/ProfileCard";
-
-// Data Objects
-import {Events} from "@/assets/data/Events";
+import NavBar from "../components/navbar";
+import Footer from "../components/footer";
+import Button from "../components/button";
+import Card from "../components/card/card"
+import EventCards from "../components/card/eventcards";
+import ProfileCard from "../components/card/profilecard";
 
 import Banner from "@/assets/Banner/banner.jpg"
 import Animation from "@/assets/Animation/animation.gif"
 import President from "@/assets/Executives/President.jpg"
 import Vice_President from "@/assets/Executives/Vice_President.jpeg"
+
+interface Event {
+  id: string;
+  title: string;
+  description: string;
+  location: string;
+  startDateTime: string;
+}
+
+async function getPublicEvents() {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/events`,
+      { cache: "no-store" }
+    );
+    if (!res.ok) {
+      throw new Error("Failed to fetch events");
+    }
+    return res.json();
+  } catch (error) {
+    console.error("getPublicEvents error:", error);
+    return [];
+  }
+}
+const Events: Event[] = await getPublicEvents();
 
 export default function Home() {
   return (
@@ -116,17 +138,15 @@ As elected representatives, we serve as a vital link students, faculty, and admi
 
           {/* Event Card */}
           <div className="grid gap-7">
-            {Events.slice(0, 3).map((event) => {
+            {Events.slice(0, 2).map((event) => {
               return (
                 <EventCards
-                  key={event.eventTitle}
-                  date={event.date}
-                  suffix={event.suffix}
-                  month={event.month}
-                  year={event.year}
-                  time={event.time}
-                  location={event.location}
-                  eventTitle={event.eventTitle}
+                 key={event.id}
+                id={event.id}
+                title={event.title}
+                location={event.location}
+                startDateTime={event.startDateTime}
+                description={event.description}
                 />
               );
             })}

@@ -282,7 +282,7 @@ const Leaders: LeaderProfile[] = [
     name: "Ayo-Ajiboye Jeremiah",
     position: "Senator",
     tag: "Legislative",
-    image: "/Executives/umh_rep1.jpeg",
+    image: "/Executives/umh_rep1.jpg",
     email: "ayoajiboyejeremiah06@gmail.com",
     phone: "+234 704 440 9310",
     facebook: "",
@@ -716,7 +716,7 @@ const Team: LeaderProfile[] = [
   },
   {
     name: "Mgbmoka Divine",
-    position: "Lead Content Creator",
+    position: "Content Creation Lead",
     image: "/Executives/content_lead.jpeg",
     email: "dnmgbamoka@gmail.com",
     phone: "+234 704 844 0287 ",
