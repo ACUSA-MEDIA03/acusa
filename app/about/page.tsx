@@ -8,9 +8,11 @@ import Footer from "@/components/Footer"
 //  Data from assets
 import { Leaders, Team } from "@/assets/data/Leader"
 import { MissVision } from "@/assets/data/AboutUs"
+
 // Profile Card Component
 import MissVisionCard  from "@/components/card/MissvissionCard"
 import ProfileCard from "@/components/card/AboutProfileCard"
+
 // Images
 import Banner from "@/assets/Banner/all2.jpg"
 import Acusa from "@/assets/Logo/logo.png"
