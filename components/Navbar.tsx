@@ -3,28 +3,29 @@
 import Image from "next/image";
 import { useRef, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation"; 
 import { FaBarsStaggered } from "react-icons/fa6";
 import { CiCircleRemove } from "react-icons/ci";
 import Logo from '@/assets/Logo/logo.png'
-import { usePathname } from "next/navigation";
 
-export default function Navbar( ) {
+export default function Navbar() {
   const navBarRef = useRef<HTMLUListElement | null>(null);
   const [open, setOpen] = useState(false);
+  const pathname = usePathname(); 
+
   const showNav = () => setOpen(true);
   const removeNav = () => setOpen(false);
-  const pathname = usePathname();
 
   return (
     <div
       className={`fixed z-10 w-full flex p-5 lg:px-16 lg:py-10 lg:items-center lg:justify-between
-      ${pathname === "" ? "text-white" : ""}`}
+      ${pathname === "/admin" ? "text-main" : ""}`}
     >
       {/* Logo */}
-      <Link href="/">
+      <Link href="/admin">
         <Image
           src={Logo} 
-          alt=" ACUSA Logo"
+          alt="Logo"
           className="lg:w-12.5 w-10"
           loading="eager"
         />
@@ -48,9 +49,9 @@ export default function Navbar( ) {
         />
 
         <NavItem
-            href="/"
+          href="/"
           label="Home"
-          active={pathname === ""}
+          active={pathname === "/"}
           onClick={removeNav}
         />
         <NavItem
@@ -66,17 +67,18 @@ export default function Navbar( ) {
           onClick={removeNav}
         />
         <NavItem
-          href="/publication"
+          href="/publications"
           label="Publications"
           active={pathname === "/publications"}
           onClick={removeNav}
         />
         <NavItem
-          href="/feedback"
-          label="Feedbacks"
-          active={pathname === "/feedback"}
+          href="/feedbacks"
+          label="Feedback"
+          active={pathname === "/feedbacks"}
           onClick={removeNav}
         />
+
       </ul>
 
       {/* Mobile Menu Icon */}
@@ -103,10 +105,10 @@ function NavItem({ href, label, active, onClick }: NavItemProps) {
       href={href}
       onClick={onClick}
       className={`px-4 lg:px-0 py-4 lg:py-2 text-right lg:text-left
-       lg:hover:bg-transparent transparent-colors
+       lg:hover:bg-transparent transition-colors
       ${
         active
-          ? "text-sub font-medium  lg:bg-transparent"
+          ? "text-sub font-medium lg:bg-transparent"
           : ""
       }`}
     >
