@@ -5,7 +5,6 @@ import Officialletter from "@/components/publicationsection/officialletter";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-
 interface PageProps {
   params: Promise<{
     category: string;

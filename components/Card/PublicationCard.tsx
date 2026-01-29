@@ -1,7 +1,5 @@
 "use client";
-
 import Image from "next/image";
-
 interface PublicationCardProps {
   header: string;
   date: string;
@@ -9,7 +7,6 @@ interface PublicationCardProps {
   author?: string;
   image?: string;
 }
-
 export default function PublicationCard({
   header,
   date,
