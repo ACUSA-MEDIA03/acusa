@@ -22,14 +22,14 @@ export default function Gallery() {
       id: 1,
       title: "",
       description: "",
-      imageUrl: "/Gallery/1.JPG",
+      imageUrl: "/Gallery/1.jpg",
       category: "",
     },
     {
       id: 2,
       title: "",
       description: "",
-      imageUrl: "/Gallery/2.JPG",
+      imageUrl: "/Gallery/2.jpg",
       category: ""
     }
   ]
@@ -73,18 +73,17 @@ export default function Gallery() {
         <div className="grid grid-cols-2 gap-3.25 w-full h-[60vh] ">
           <div
             className=" topleft bg-no-repeat bg-cover flex items-center"
-            style={{ backgroundImage: `url(/Gallery/1.JPG)` }}
+            style={{ backgroundImage: `url(/Gallery/8.jpg)` }}
           ></div>
           <div
             className=" topright bg-no-repeat bg-center bg-cover "
-            style={{ backgroundImage: `url(/Gallery/2.JPG)` }}
+            style={{ backgroundImage: `url(/Gallery/9.jpg)` }}
           ></div>
         </div>
-
         {/* Middle Section */}
         <div
           className="middle bg-no-repeat bg-cover left-0 bg-position-[50%_40%] h-[60vh] relative "
-          style={{ backgroundImage: `url(/Gallery/all.JPG)` }}
+          style={{ backgroundImage: `url(/Gallery/16.jpg)` }}
         >
           <div className="absolute top-0 left-0 w-full h-full bg-[#0c16578a]">
           </div>
@@ -95,11 +94,11 @@ export default function Gallery() {
         <div className="grid grid-cols-2 gap-3.25 relative w-full h-[60vh] ">
           <div
             className=" bottomleft bg-no-repeat bg-cover flex items-center"
-            style={{ backgroundImage: `url(/Gallery/3.JPG)` }}
+            style={{ backgroundImage: `url(/Gallery/11.jpg)` }}
           ></div>
           <div
             className=" bottomright bg-no-repeat bg-center bg-cover "
-            style={{ backgroundImage: `url(/Gallery/4.JPG)` }}
+            style={{ backgroundImage: `url(/Gallery/14.jpg)` }}
           ></div>
         </div>
       </div>
@@ -114,6 +113,42 @@ export default function Gallery() {
 
 
         </div>
+
+
+          <div className="border border-purple-950 grid relative">
+        {/* First Row */}
+        <div className="grid grid-cols-2 gap-3.25 w-full h-[60vh] ">
+          <div
+            className=" topleft bg-no-repeat bg-cover flex items-center"
+            style={{ backgroundImage: `url(/Gallery/20.jpg)` }}
+          ></div>
+          <div
+            className=" topright bg-no-repeat bg-center bg-cover "
+            style={{ backgroundImage: `url(/Gallery/21.jpg)` }}
+          ></div>
+        </div>
+        {/* Middle Section */}
+        <div
+          className="middle bg-no-repeat bg-cover left-0 bg-position-[50%_40%] h-[60vh] relative "
+          style={{ backgroundImage: `url(/Gallery/22.jpg)` }}
+        >
+          <div className="absolute top-0 left-0 w-full h-full bg-[#0c16578a]">
+          </div>
+        </div>
+        {/* Middle Section */}
+
+        {/* Last Row */}
+        <div className="grid grid-cols-2 gap-3.25 relative w-full h-[60vh] ">
+          <div
+            className=" bottomleft bg-no-repeat bg-cover flex items-center"
+            style={{ backgroundImage: `url(/Gallery/27.jpg)` }}
+          ></div>
+          <div
+            className=" bottomright bg-no-repeat bg-center bg-cover "
+            style={{ backgroundImage: `url(/Gallery/28.jpg)` }}
+          ></div>
+        </div>
+      </div>
             <div id="footer" className="relative ">
                 <Footer />
             </div>
