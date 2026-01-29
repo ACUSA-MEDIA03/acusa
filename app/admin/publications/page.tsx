@@ -18,9 +18,7 @@ export default function PublicationsPage() {
         </div>
         <Tabs defaultValue="article" className="w-full ">
           <TabsList className="grid w-full grid-cols-4 lg:w-auto  lg:inline-grid">
-            <TabsTrigger value="article" className="">
-              Articles
-            </TabsTrigger>
+            <TabsTrigger value="article" className="">Articles</TabsTrigger>
             <TabsTrigger value="newsletter">Newsletter</TabsTrigger>
             <TabsTrigger value="official-letters">Official Letters</TabsTrigger>
             <TabsTrigger value="podcasts">Podcasts</TabsTrigger>
