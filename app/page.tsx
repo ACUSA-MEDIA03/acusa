@@ -8,6 +8,7 @@ import  Card  from "@/components/card/card";
 import EventCards from "../components/card/eventcards";
 import ProfileCard from "../components/card/profilecard";
 
+
 import Banner from "@/assets/Banner/banner.jpg"
 import Animation from "@/assets/Animation/animation.gif"
 import President from "@/assets/Executives/President.jpg"
