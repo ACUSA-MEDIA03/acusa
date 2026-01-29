@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Navbar from "@/components/Navbar";
-import PaginatedItems from "@/utils/pagination";
+import PaginatedItems from "@/utils/Pagination";
 import BannerImg from "@/assets/Banner/banner.jpg";
 import Banner from "@/components/Banner";
 
