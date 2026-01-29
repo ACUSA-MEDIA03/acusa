@@ -17,7 +17,7 @@ async function getPublication(id: string) {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/publications/${id}`, { 
       cache: "no-store",
-      next: { revalidate: 0 }
+      next: { revalidate: 600 }
     });
 
     if (!res.ok) {
