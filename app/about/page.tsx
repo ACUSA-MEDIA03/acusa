@@ -13,6 +13,7 @@ import MissVisionCard  from "@/components/card/MissvissionCard"
 import ProfileCard from "@/components/card/AboutProfileCard"
 
 // Images
+
 import Banner from "@/assets/Banner/all2.jpg"
 import Acusa from "@/assets/Logo/logo.png"
 import Acusa_Media from "@/assets/Logo/media.jpg"
