@@ -83,11 +83,11 @@ As elected representatives, we serve as a vital link students, faculty, and admi
           </p>
 
           {/* Button */}
-          <div className="border lg:w-[15%] w-[40%] grid mt-2">
+          {/* <div className="border lg:w-[15%] w-[40%] grid mt-2">
             <Link href="/about">
                <Button text={`View More ...`} bgcolor='blue'/>
               </Link>
-            </div>
+            </div> */}
           {/* Button */}
         </div>
         {/* left */}
