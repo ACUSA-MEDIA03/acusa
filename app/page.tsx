@@ -1,4 +1,5 @@
-import  Image from "next/image";
+import Image from "next/image";
+import Link from "next/link";
 
 // components
 import NavBar from "../components/navbar";
@@ -56,9 +57,10 @@ export default function Home() {
             </p>
 
             {/* Button */}
-            <div className="border lg:w-[15%] w-[40%] grid mt-2">
+            <Link href={'/gallery'}>
+              <div className="border lg:w-[15%] w-[40%] grid mt-2">
               <Button text={`View More ...`} bgcolor='blue'/>
-            </div>
+            </div></Link>
             {/* Button */}
           </div>
         </div>
@@ -82,7 +84,9 @@ As elected representatives, we serve as a vital link students, faculty, and admi
 
           {/* Button */}
           <div className="border lg:w-[15%] w-[40%] grid mt-2">
-              <Button text={`View More ...`} bgcolor='blue'/>
+            <Link href="/about">
+               <Button text={`View More ...`} bgcolor='blue'/>
+              </Link>
             </div>
           {/* Button */}
         </div>
