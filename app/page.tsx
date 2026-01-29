@@ -119,7 +119,7 @@ As elected representatives, we serve as a vital link students, faculty, and admi
             <Card
               number={4}
               title="Community Service"
-              text="We foster a culture of service by organizing outreach programs, volunteering initiatives, and social impact projects that strengthen our connection with the wider community."
+              text="One of the biggest benefits of community service is that it teaches responsibility and compassion. When we serve others, we begin to understand the challenges people face and learn how our actions can make a difference. It helps us develop empathy, kindness, teamwork, and leadership skills."
 
             />
           </div>
