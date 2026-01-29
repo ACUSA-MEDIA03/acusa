@@ -2,12 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 // components
-import NavBar from "../components/navbar";
-import Footer from "../components/footer";
-import Button from "../components/button";
+import NavBar from "@/components/navbar";
+import Footer from "@/components/footer";
+import Button from "@/components/button";
 import  Card  from "@/components/card/card";
-import EventCards from "../components/card/eventcards";
-import ProfileCard from "../components/card/profilecard";
+import EventCards from "@/components/card/eventcards";
+import ProfileCard from "@/components/card/profilecard";
 
 
 import Banner from "@/assets/Banner/banner.jpg"
