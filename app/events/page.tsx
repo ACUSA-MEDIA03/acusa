@@ -1,5 +1,6 @@
 import EventCards from "@/components/card/eventcards"
 import Navbar from "@/components/navbar"
+
 interface Event {
   id: string;
   title: string;
