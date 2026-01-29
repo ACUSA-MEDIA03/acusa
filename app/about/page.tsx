@@ -2,16 +2,20 @@
 
 import { useState } from "react"
 import Image from "next/image"
+// Components
 import Navbar from "../../components/navbar"
 import Footer from "../../components/footer"
+//  Data from assets
 import { Leaders, Team } from "@/assets/data/Leader"
 import { MissVision } from "@/assets/data/AboutUs"
+// Profile Card Component
 import MissVisionCard  from "@/components/card/missvissioncard"
 import ProfileCard from "../../components/card/aboutprofilecard"
-import Banner from "@/assets/Banner/all.jpg"
+
+// Images
+import Banner from "@/assets/Banner/all2.jpg"
 import Acusa from "@/assets/Logo/logo.png"
 import Acusa_Media from "@/assets/Logo/media.jpg"
-// import Frame270 from "@/assets/About/Frame270.png"
 import Frame270 from "@/assets/About/12.jpg"
 import Frame272 from '@/assets/About/13.jpg'
 import Frame273 from '@/assets/About/14.jpg'
@@ -180,7 +184,6 @@ export default function About() {
         </div>
             </section>
             
-
         {/* Leadership Section  */}
         <section className="bg-gray-100 px-5 lg:px-20 py-12 lg:py-20">
         {/* Section Header */}
