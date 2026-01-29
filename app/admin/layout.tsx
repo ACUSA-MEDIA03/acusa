@@ -1,7 +1,7 @@
 // app/admin/layout.tsx
 import type { Metadata } from "next";
 import "../globals.css";
-import Navbar from "@/components/adminnavbar";
+import Navbar from "@/components/AdminNavbar";
 import AuthProvider from "@/components/providers/session-provider";
 
 export const metadata: Metadata = {

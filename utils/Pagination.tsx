@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import ReactPaginate from "react-paginate";
-import PublicationCard from "@/components/card/publicationcard";
-import PodcastCard from "@/components/card/podcastcard";
+import PublicationCard from "@/components/card/PublicationCard";
+import PodcastCard from "@/components/card/PodcastCard";
 import Link from "next/link";
 
 export interface PublicationItem {

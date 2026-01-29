@@ -1,6 +1,6 @@
-import Navbar from "@/components/navbar"
-import Footer from "@/components/footer"
-import FeedbackCard from "@/components/card/feedback"
+import Navbar from "@/components/Navbar"
+import Footer from "@/components/Footer"
+import FeedbackCard from "@/components/card/Feedback"
 import { MessageSquare } from "lucide-react"
 export default function Feedback() {
 

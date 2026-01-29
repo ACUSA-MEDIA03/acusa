@@ -17,7 +17,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import Image from "next/image";
-import { FileUpload } from "@/components/card/fileupload";
+import { FileUpload } from "@/components/card/FileUpload";
 import { toast } from "sonner";
 
 interface OfficialLetter {

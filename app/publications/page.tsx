@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/Navbar";
 import PaginatedItems from "@/utils/pagination";
 import BannerImg from "@/assets/Banner/banner.jpg";
-import Banner from "@/components/banner";
+import Banner from "@/components/Banner";
 
 /*  Types  */
 type CategoryType = {

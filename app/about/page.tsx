@@ -3,14 +3,14 @@
 import { useState } from "react"
 import Image from "next/image"
 // Components
-import Navbar from "@/components/navbar"
-import Footer from "@/components/footer"
+import Navbar from "@/components/Navbar"
+import Footer from "@/components/Footer"
 //  Data from assets
 import { Leaders, Team } from "@/assets/data/Leader"
 import { MissVision } from "@/assets/data/AboutUs"
 // Profile Card Component
-import MissVisionCard  from "@/components/card/missvissioncard"
-import ProfileCard from "@/components/card/aboutprofilecard"
+import MissVisionCard  from "@/components/card/MissvissionCard"
+import ProfileCard from "@/components/card/AboutProfileCard"
 
 // Images
 import Banner from "@/assets/Banner/all2.jpg"
