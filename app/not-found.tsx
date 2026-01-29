@@ -7,7 +7,6 @@ export default function NotFound() {
 
         {/* Map-style dashed border */}
         <div className="absolute inset-0 border-2 border-dashed border-[#D3AE1A]/40 rounded-2xl pointer-events-none" />
-
         {/* Content */}
         <div className="relative bg-white rounded-2xl shadow-lg p-10 md:p-14">
 

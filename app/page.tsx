@@ -4,7 +4,7 @@ import  Image from "next/image";
 import NavBar from "../components/navbar";
 import Footer from "../components/footer";
 import Button from "../components/button";
-import Card from "../components/card/card"
+import  Card  from "@/components/card/card";
 import EventCards from "../components/card/eventcards";
 import ProfileCard from "../components/card/profilecard";
 
