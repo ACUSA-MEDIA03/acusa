@@ -67,7 +67,7 @@ export default function Navbar() {
         />
         <NavItem
           href="/admin/feedbacks"
-          label="Feedback"
+          label="Feedbacks"
           active={pathname === "/admin/feedbacks"}
           onClick={removeNav}
         />

@@ -73,9 +73,9 @@ export default function Navbar() {
           onClick={removeNav}
         />
         <NavItem
-          href="/feedbacks"
+          href="/feedback"
           label="Feedback"
-          active={pathname === "/feedbacks"}
+          active={pathname === "/feedback"}
           onClick={removeNav}
         />
 
