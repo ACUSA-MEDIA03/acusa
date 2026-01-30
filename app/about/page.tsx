@@ -21,7 +21,8 @@ import Frame270 from "@/assets/About/12.jpg"
 import Frame272 from '@/assets/About/13.jpg'
 import Frame273 from '@/assets/About/14.jpg'
 import Frame275 from '@/assets/About/34.jpg'
-import Frame276 from '@/assets/About/Frame275.png'
+import Frame276 from '@/assets/About/12.jpg'
+// import Frame276 from '@/assets/About/Frame275.png'
 export default function About() {
   
   const [category, setCategory] = useState("Executive");
