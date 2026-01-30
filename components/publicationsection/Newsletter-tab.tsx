@@ -87,7 +87,11 @@ export default function Newsletter() {
     // Handle form submission for creating or updating a newsletter
     e.preventDefault();
     setSubmitting(true);
-
+const contentWithParagraphs = formData.content
+    .split('\n\n')  // Split by double line breaks
+    .filter(para => para.trim())  // Remove empty paragraphs
+    .map(para => `<p>${para.trim()}</p>`)  // Wrap in <p> tags
+    .join('');
     try {
       // Validate
       if (!formData.title || !formData.content) {
@@ -113,7 +117,7 @@ export default function Newsletter() {
         },
         body: JSON.stringify({
           title: formData.title,
-          content: formData.content,
+          content: contentWithParagraphs,
           description: formData.description,
           category: "NEWSLETTER",
           imageUrl: formData.imageUrl || formData.images[0],
@@ -318,7 +322,7 @@ export default function Newsletter() {
                 </Label>
                 <Textarea
                   id="newsletter-content"
-                  placeholder="Write your newsletter content here..."
+                  placeholder="Write your article content here... (Press Enter twice for new paragraph)"
                   value={formData.content}
                   onChange={(e) =>
                     setFormData({ ...formData, content: e.target.value })
@@ -410,7 +414,7 @@ export default function Newsletter() {
                       <h3 className="font-semibold text-lg text-slate-900 mb-2 line-clamp-2">
                         {newsletter.title}
                       </h3>
-                      <p className="text-sm text-slate-600 mb-3 line-clamp-2">
+                      <p className="text-sm text-slate-600 mb-3 line-clamp-2 whitespace-pre-line">
                         {newsletter.description}
                       </p>
                       <div className="flex items-center justify-between mb-3">
