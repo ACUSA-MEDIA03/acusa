@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 // import { BsSnapchat } from "react-icons/bs";
 import Image from "next/image";
-// import { getOptimizedImage } from "@/lib/cloudinary";
+
 interface ProfileCardProps {
   image: string;
   name: string;

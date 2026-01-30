@@ -143,7 +143,7 @@ const Leaders: LeaderProfile[] = [
     position: "Sport Director",
     tag: "Executive",
     // image: "/Executives/Spo_Dir.jpeg",
-    image: "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767240/public/Executives/Spo_Dir_su9r6h.jpg",
+    image: "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767309/public/Executives/Spo_Dir_shagrw.jpg",
     email: "johnitodo99@gmail.com",
     phone: "+234 903 376 9105",
     facebook: "https://facebook.com/John itodo",
