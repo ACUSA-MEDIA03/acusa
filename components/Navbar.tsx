@@ -44,7 +44,7 @@ export default function Navbar() {
       >
         {/* Close Icon */}
         <CiCircleRemove
-          className="lg:hidden absolute right-8 top-10 text-[50px] cursor-pointer hover:text-sub"
+          className="lg:hidden absolute right-8 top-10 text-white text-[50px] cursor-pointer hover:text-sub"
           onClick={removeNav}
         />
 
@@ -109,7 +109,7 @@ function NavItem({ href, label, active, onClick }: NavItemProps) {
       ${
         active
           ? "text-sub font-medium lg:bg-transparent"
-          : ""
+          : "text-white lg:text-inherit"
       }`}
     >
       {label}
