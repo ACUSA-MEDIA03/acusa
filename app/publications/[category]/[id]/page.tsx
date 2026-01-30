@@ -64,33 +64,33 @@ export default async function PublicationDetailPage({ params }: PageProps) {
     <>
       <Navbar />
 
-      {/* TopNav */}
-      <div className="px-22.5 h-[34lvh] py-4 bg-[#0C1657] flex items-start justify-end flex-col text-white">
-        <h2 className="font-rubik font-bold text-[40px]">Publications</h2>
-        <p className="font-grotesk tracking-[0.9px] flex items-center gap-2">
-          <Link href="/publications" className="hover:underline">
-            Publications
-          </Link>{" "}
-          <ArrowRight />
-          <Link 
-            href={`/publications?category=${publication.category}`} 
-            className="hover:underline"
-          >
-            {formattedCategory}
-          </Link>
-          <ArrowRight />
-          <span className="line-clamp-1">{publication.title}</span>
-        </p>
-      </div>
+{/* TopNav */}
+<div className="px-4 sm:px-8 md:px-16 lg:px-22.5 h-[34lvh] py-4 bg-[#0C1657] flex items-start justify-end flex-col text-white">
+  <h2 className="font-rubik font-bold text-2xl sm:text-3xl lg:text-[40px]">
+    Publications
+  </h2>
+  <p className="font-grotesk text-sm sm:text-base tracking-[0.9px] flex items-center gap-2 flex-wrap">
+    <Link href="/publications" className="hover:underline">
+      Publications
+    </Link>{" "}
+    <ArrowRight className="shrink-0" />
+    <Link 
+      href={`/publications?category=${publication.category}`} 
+      className="hover:underline truncate"
+    >
+      {formattedCategory}
+    </Link>
+  </p>
+</div>
 
-      {/* Content - Pass publication data to components */}
-      {isOfficialLetter ? (
-        <Officialletter publication={publication} />
-      ) : (
-        <Details publication={publication} />
-      )}
+{/* Content - Pass publication data to components */}
+{isOfficialLetter ? (
+  <Officialletter publication={publication} />
+) : (
+  <Details publication={publication} />
+)}
 
-      <Footer />
+<Footer />
     </>
   );
 }

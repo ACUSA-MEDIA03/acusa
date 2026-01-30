@@ -73,7 +73,7 @@ export default function Gallery() {
         <div className="grid grid-cols-2 gap-3.25 w-full h-[60vh] ">
           <div
             className=" topleft bg-no-repeat bg-cover flex items-center"
-            style={{ backgroundImage: `url(/Gallery/8.jpg)` }}
+            style={{ backgroundImage: `url(/Gallery/fc1.jpeg)` }}
           ></div>
           <div
             className=" topright bg-no-repeat bg-center bg-cover "

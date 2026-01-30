@@ -16,13 +16,21 @@ export default function PublicationsPage() {
             Manage all Acusa content in one place
           </p>
         </div>
-        <Tabs defaultValue="article" className="w-full ">
-          <TabsList className="grid w-full grid-cols-4 lg:w-auto  lg:inline-grid">
-            <TabsTrigger value="article" className="">Articles</TabsTrigger>
-            <TabsTrigger value="newsletter">Newsletter</TabsTrigger>
-            <TabsTrigger value="official-letters">Official Letters</TabsTrigger>
-            <TabsTrigger value="podcasts">Podcasts</TabsTrigger>
-          </TabsList>
+        <Tabs defaultValue="article" className="w-full">
+  <TabsList className="grid w-full grid-cols-2 gap-2 h-auto lg:grid-cols-4 lg:w-auto lg:inline-grid">
+    <TabsTrigger value="article" className="whitespace-nowrap">
+      Articles
+    </TabsTrigger>
+    <TabsTrigger value="newsletter" className="whitespace-nowrap">
+      Newsletter
+    </TabsTrigger>
+    <TabsTrigger value="official-letters" className="whitespace-nowrap">
+      Official Letters
+    </TabsTrigger>
+    <TabsTrigger value="podcasts" className="whitespace-nowrap">
+      Podcasts
+    </TabsTrigger>
+  </TabsList>
 
           <TabsContent value="article" className="mt-6">
             <ArticleTab />
