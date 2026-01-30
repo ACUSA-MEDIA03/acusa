@@ -87,7 +87,11 @@ export default function ArticleTab() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-
+    const contentWithParagraphs = formData.content
+      .split("\n\n") // Split by double line breaks
+      .filter((para) => para.trim()) // Remove empty paragraphs
+      .map((para) => `<p>${para.trim()}</p>`) // Wrap in <p> tags
+      .join("");
     try {
       // Validate
       if (!formData.title || !formData.content) {
@@ -115,7 +119,7 @@ export default function ArticleTab() {
         },
         body: JSON.stringify({
           title: formData.title,
-          content: formData.content,
+          content: contentWithParagraphs,
           description: formData.description,
           category: "ARTICLE",
           imageUrl: formData.imageUrl || null,
@@ -341,7 +345,7 @@ export default function ArticleTab() {
                 </Label>
                 <Textarea
                   id="article-content"
-                  placeholder="Write your article content here..."
+                  placeholder="Write your article content here... (Press Enter twice for new paragraph)"
                   value={formData.content}
                   onChange={(e) =>
                     setFormData({ ...formData, content: e.target.value })
@@ -450,8 +454,9 @@ export default function ArticleTab() {
                         </span>
                       </div>
 
-                      <p className="text-sm text-black mb-3 line-clamp-3">
-                        {article.description || article.content}
+                      <p className="text-sm text-black mb-3 line-clamp-3 whitespace-pre-line">
+                        {article.description ||
+                          article.content?.replace(/<[^>]*>/g, "")}
                       </p>
 
                       <div className="flex items-center justify-between mb-3">
