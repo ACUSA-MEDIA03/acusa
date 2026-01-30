@@ -24,7 +24,7 @@ export default function Navbar() {
       {/* Logo */}
       <Link href="/admin">
         <Image
-          src={Logo} 
+          src={Logo}
           alt="Logo"
           className="lg:w-12.5 w-10"
           loading="eager"
