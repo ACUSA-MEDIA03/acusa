@@ -125,56 +125,85 @@ export default function PublicationPage() {
 
   return (
     <>
-      <Navbar />
-      {/* Banner */}
-      <Banner
-        header="Publications"
-        description="News & Articles || Everything from articles to letters. All that you need to know happening around the ACU Space."
-        image={BannerImg}
-      />
+   <Navbar />
 
-      {/* Main Section */}
-      <div className="flex flex-col lg:flex-row bg-white">
-        {/* Categories */}
-        <div className="basis-[20%] flex lg:flex-col lg:py-17.5 lg:px-4 items-center lg:items-stretch gap-4 lg:gap-0 font-rubik">
-          {Categories.map((item) => (
-            <button
-              key={item.id}
-              className={`lg:pb-3 lg:border-b border-r border-l lg:border-r-0 lg:border-l-0 px-1 text-left lg:pl-2 cursor-pointer lg:text-[16px] text-[14px] ${
-                item.category === category ? "text-main" : ""
-              }`}
-              onClick={() => setCategory(item.category)}
-            >
-              {item.category}
-            </button>
-          ))}
-        </div>
+{/* Banner */}
+<Banner
+  header="Publications"
+  description="News & Articles || Everything from articles to letters. All that you need to know happening around the ACU Space."
+  image={BannerImg}
+/>
 
-        {/* Publications */}
-        <div className="basis-[80%] bg-[#F0EAEA]">
-          {loading ? (
-            <div className="flex items-center justify-center py-12">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-main"></div>
-            </div>
-          ) : error ? (
-            <div className="flex items-center justify-center py-12">
-              <p className="text-red-600">{error}</p>
-            </div>
-          ) : publications.length === 0 ? (
-            <div className="flex items-center justify-center py-12">
-              <p className="text-gray-600">
-                No {category.toLowerCase()} available yet.
-              </p>
-            </div>
-          ) : (
-            <PaginatedItems
-              itemsPerPage={3}
-              currentItems={publications}
-              category={category}
-            />
-          )}
-        </div>
+{/* Main Section */}
+<div className="flex flex-col lg:flex-row bg-white">
+  {/* Categories - Mobile: Horizontal Scroll, Desktop: Sidebar */}
+  <div className="lg:basis-[20%] w-full lg:w-auto">
+    {/* Mobile: Horizontal scrollable */}
+    <div className="lg:hidden overflow-x-auto">
+      <div className="flex gap-2 p-4 min-w-max font-rubik">
+        {Categories.map((item) => (
+          <button
+            key={item.id}
+            className={`px-4 py-2 rounded-lg whitespace-nowrap text-sm font-medium transition-all ${
+              item.category === category
+                ? "bg-main text-white shadow-md"
+                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+            }`}
+            onClick={() => setCategory(item.category)}
+          >
+            {item.category}
+          </button>
+        ))}
       </div>
+    </div>
+
+    {/* Desktop: Vertical sidebar */}
+    <div className="hidden lg:flex lg:flex-col lg:py-17.5 lg:px-4 font-rubik">
+      {Categories.map((item) => (
+        <button
+          key={item.id}
+          className={`pb-3 border-b text-left pl-2 cursor-pointer text-base transition-colors ${
+            item.category === category
+              ? "text-main font-semibold"
+              : "text-gray-700 hover:text-main"
+          }`}
+          onClick={() => setCategory(item.category)}
+        >
+          {item.category}
+        </button>
+      ))}
+    </div>
+  </div>
+
+  {/* Publications */}
+  <div className="lg:basis-[80%] w-full bg-[#F0EAEA] min-h-[400px]">
+    {loading ? (
+      <div className="flex items-center justify-center py-12 sm:py-16 lg:py-20">
+        <div className="animate-spin rounded-full h-10 w-10 sm:h-12 sm:w-12 border-b-2 border-main"></div>
+      </div>
+    ) : error ? (
+      <div className="flex items-center justify-center py-12 px-4">
+        <p className="text-red-600 text-center text-sm sm:text-base">
+          {error}
+        </p>
+      </div>
+    ) : publications.length === 0 ? (
+      <div className="flex items-center justify-center py-12 px-4">
+        <p className="text-gray-600 text-center text-sm sm:text-base">
+          No {category.toLowerCase()} available yet.
+        </p>
+      </div>
+    ) : (
+      <div className="p-4 sm:p-6 lg:p-8">
+        <PaginatedItems
+          itemsPerPage={3}
+          currentItems={publications}
+          category={category}
+        />
+      </div>
+    )}
+  </div>
+</div>
     </>
   );
 }

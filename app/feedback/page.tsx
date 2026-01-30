@@ -4,7 +4,6 @@ import FeedbackCard from "@/components/card/Feedback"
 import { MessageSquare } from "lucide-react"
 export default function Feedback() {
 
-
   return (
     <>
       <Navbar />
