@@ -1,4 +1,4 @@
-import { Clock, MapPin, Calendar } from "lucide-react";
+import { Clock, MapPin } from "lucide-react";
 import { formatEventDate } from "@/lib/utlis/date";
 
 interface EventCardsProps {
