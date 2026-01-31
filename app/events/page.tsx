@@ -1,4 +1,5 @@
 import EventCards from "@/components/card/EventCards";
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { Calendar, MapPin, Clock } from "lucide-react";
 
@@ -142,6 +143,8 @@ export default async function EventsPage() {
           <div className="absolute bottom-20 left-10 w-96 h-96 bg-[#0C1657]/5 rounded-full blur-3xl"></div>
         </div>
       </div>
+
+      <Footer />
     </>
   );
 }

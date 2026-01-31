@@ -10,7 +10,7 @@ export default function Footer() {
                 <div className="lg:flex lg:w-[70%] p-5 items-center lg:p-10 lg:space-y-0 space-y-7">
                     <div className="text-white space-y-4 w-full flex items-center flex-col text-center">
                         <h2 className="font-grotesk text-[35px] font-semibold">Connect With Us</h2>
-                        <p className='lg:text-[16px] text-[13px]'>
+                        <p className='lg:text-[16px] text-[13px] text-sub'>
                             Stay updated on our activities, events, and opportunities to get involved by following us on social media or contacting us directly.
                         </p>
                         <ul className="font-grotesk space-y-3">
@@ -70,7 +70,7 @@ export default function Footer() {
                 </div>
 
                 <div className="relative w-full text-center">
-                    <hr className="glass w-full" />
+                    <hr className="glass w-full  text-sub" />
 
                     <div className="relative font-grotesk text-white p-5">
                         <p className="font-light">
