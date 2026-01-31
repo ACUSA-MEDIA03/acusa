@@ -3,6 +3,16 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Loader2, UserPlus, Info, ArrowRight, Eye, EyeOff } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import Logo from "@/assets/Logo/media.jpg"
+
 
 export default function AdminLogin() {
   const router = useRouter();
@@ -11,7 +21,9 @@ export default function AdminLogin() {
     password: "",
   });
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -56,118 +68,171 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 to-indigo-100 px-4 py-12">
-      <div className="max-w-md w-full space-y-8">
-        {/* Header */}
-        <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900">Admin Login</h2>
-          <p className="mt-2 text-sm text-gray-600">
-            Sign in to access the admin dashboard
-          </p>
-        </div>
-
-        {/* Form */}
-        <div className="bg-white shadow-xl rounded-lg p-8">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Error Message */}
-            {error && (
-              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
-                <p className="text-sm">{error}</p>
+     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-50 px-4 py-12 font-mont">
+          <div className="w-full max-w-md">
+            {/* Logo/Brand Section */}
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center justify-center w-16 h-16">
+                <Image src={Logo} 
+                  className="w-16 h-16 object-contain"
+                alt="ACUSA Media Logo"/>
               </div>
-            )}
-
-            {/* Email Field */}
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700 mb-2"
-              >
-                Email Address
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                required
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
-                placeholder="admin@acusa.edu"
-                disabled={loading}
-              />
+              <h1 className="text-3xl font-bold text-main mb-2 font-grotesk">
+                Admin Login
+              </h1>
+              <p className="text-sub text-sm">
+                Signin to  your admin account for ACUSA
+              </p>
             </div>
+    
+            {/* Main Card */}
+            <Card className="border-0 shadow-2xl shadow-slate-200/50 backdrop-blur-sm bg-white/80">
+              <CardHeader className="space-y-1 pb-6">
+                <CardTitle className="text-2xl font-semibold text-main font-grotesk">
+                  Welcome back
+                </CardTitle>
+                <CardDescription className="text-sub">
+                  Fill in your details to signin to your admin account
+                </CardDescription>
+              </CardHeader>
+    
+              <CardContent>
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  {/* Error Alert */}
+                  {error && (
+                    <Alert
+                      variant="destructive"
+                      className="bg-red-50 border-red-200 text-red-800 animate-in fade-in slide-in-from-top-2 duration-300"
+                    >
+                      <Info className="h-4 w-4" />
+                      <AlertDescription className="text-sm font-medium">
+                        {error}
+                      </AlertDescription>
+                    </Alert>
+                  )}
+    
 
-            {/* Password Field */}
-            <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-gray-700 mb-2"
-              >
-                Password
-              </label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                required
-                value={formData.password}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
-                placeholder="••••••••"
-                disabled={loading}
-              />
-            </div>
-
-            {/* Submit Button */}
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full flex justify-center items-center px-4 py-3 border border-transparent text-sm font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed transition"
-            >
-              {loading ? (
-                <>
-                  <svg
-                    className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
+                  {/* Email Field */}
+                  <div className="space-y-2">
+                    <Label
+                      htmlFor="email"
+                      className="text-sm font-semibold text-main"
+                    >
+                      Email Address
+                    </Label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="h-12 bg-slate-50 border-slate-200 focus:border-main focus:ring-main transition-all duration-200"
+                      placeholder="admin@acusa.edu"
+                      disabled={loading}
+                    />
+                  </div>
+    
+                  {/* Password Field */}
+                  <div className="space-y-2">
+                    <Label
+                      htmlFor="password"
+                      className="text-sm font-semibold text-main"
+                    >
+                      Password
+                    </Label>
+                    <div className="relative">
+                      <Input
+                        id="password"
+                        name="password"
+                        type={showPassword ? "text" : "password"}
+                        required
+                        value={formData.password}
+                        onChange={handleChange}
+                        className="h-12 bg-slate-50 border-slate-200 focus:border-main focus:ring-main transition-all duration-200 pr-12"
+                        placeholder="••••••••"
+                        disabled={loading}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-sub hover:text-main transition-colors duration-200"
+                        tabIndex={-1}
+                      >
+                        {showPassword ? (
+                          <EyeOff className="h-5 w-5" />
+                        ) : (
+                          <Eye className="h-5 w-5" />
+                        )}
+                      </button>
+                    </div>
+                    <p className="text-xs text-sub mt-1.5">
+                      Must be at least 8 characters long
+                    </p>
+                  </div>
+    
+                
+    
+                  {/* Submit Button */}
+                  <Button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full h-12 bg-main hover:bg-main/90 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-200 mt-6"
                   >
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                    ></circle>
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                    ></path>
-                  </svg>
-                  Signing in...
-                </>
-              ) : (
-                "Sign In"
-              )}
-            </button>
-          </form>
-
-          {/* Signup Link */}
-          <div className="mt-6 text-center">
-            <p className="text-sm text-gray-600">
-              Don&apos;t have an account?{" "}
-              <a
-                href="/admin/signup"
-                className="font-medium text-indigo-600 hover:text-indigo-500"
-              >
-                Create admin account
-              </a>
-            </p>
+                    {loading ? (
+                      <>
+                        <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                        Log in...
+                      </>
+                    ) : (
+                      <>
+                        <UserPlus className="mr-2 h-5 w-5" />
+                        Signin 
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                      </>
+                    )}
+                  </Button>
+                </form>
+    
+                {/* Sign In Link */}
+                <div className="mt-6 text-center">
+                  <p className="text-sm text-sub">
+                    Don&apos;t have an account?{" "}
+                    <Link
+                      href="/admin/signup"
+                      className="font-semibold text-main hover:text-sub transition-colors duration-200"
+                    >
+                      Sign up here
+                    </Link>
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+    
+            {/* Info Box */}
+            <div className="mt-6 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 rounded-2xl p-4 shadow-sm">
+              <div className="flex items-start gap-3">
+                <div className="shrink-0 mt-0.5">
+                  <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <Info className="h-4 w-4 text-main" />
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <p className="text-sm text-main leading-relaxed">
+                    This panel is for admin accounts only. Make sure you have
+                    authorization to have an admin account.
+                  </p>
+                </div>
+              </div>
+            </div>
+    
+            {/* Footer */}
+            <div className="mt-8 text-center">
+              <p className="text-xs text-sub">
+                © {new Date().getFullYear()} ACUSA. All rights reserved.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
   );
 }
