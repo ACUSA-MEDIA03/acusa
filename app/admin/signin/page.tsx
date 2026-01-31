@@ -68,7 +68,7 @@ const [loading, setLoading] = useState(false);
   };
 
   return (
-     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-50 px-4 py-12 font-mont">
+     <div className="min-h-screen flex items-center justify-center  px-4 py-12 font-mont">
           <div className="w-full max-w-md">
             {/* Logo/Brand Section */}
             <div className="text-center mb-8">
@@ -166,9 +166,6 @@ const [loading, setLoading] = useState(false);
                         )}
                       </button>
                     </div>
-                    <p className="text-xs text-sub mt-1.5">
-                      Must be at least 8 characters long
-                    </p>
                   </div>
     
                 
