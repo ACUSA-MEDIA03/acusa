@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { DraftingCompass } from "lucide-react";
+// import { DraftingCompass } from "lucide-react";
 interface User {
   id: string;
   name: string | null;
@@ -28,7 +28,7 @@ export default function AdminUsersPage() {
   const fetchUsers = useCallback(async () => {
     try {
       setLoading(true);
-      let url = "/api/admin/users?limit=100";
+      let url = "/api/admin/users?limit=10";
 
       if (filter === "admin") url += "&role=ADMIN";
       else if (filter === "user") url += "&role=USER";
