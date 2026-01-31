@@ -3,7 +3,15 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
-
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Loader2, UserPlus, Info, ArrowRight, Eye, EyeOff } from "lucide-react";
+import Link from "next/link";
+import Logo from "@/assets/Logo/media.jpg"
+import Image from "next/image";
 export default function Signup() {
   const router = useRouter();
   const [formData, setFormData] = useState({
@@ -14,6 +22,8 @@ export default function Signup() {
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -86,7 +96,9 @@ export default function Signup() {
       });
 
       if (signInResult?.error) {
-        setError("Registration successful but login failed. Please login manually.");
+        setError(
+          "Registration successful but login failed. Please login manually."
+        );
         setLoading(false);
         setTimeout(() => {
           router.push("/admin/signin");
@@ -104,192 +116,224 @@ export default function Signup() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 to-indigo-100 px-4 py-12">
-      <div className="max-w-md w-full space-y-8">
-        {/* Header */}
-        <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900">
+    <div className="min-h-screen flex items-center justify-center  px-4 py-12 font-mont">
+      <div className="w-full max-w-md">
+        {/* Logo/Brand Section */}
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center justify-center w-16 h-16">
+            <Image src={Logo} 
+              className="w-16 h-16 object-contain"
+            alt="ACUSA Media Logo"/>
+          </div>
+          <h1 className="text-3xl font-bold text-main mb-2 font-grotesk">
             Admin Registration
-          </h2>
-          <p className="mt-2 text-sm text-gray-600">
+          </h1>
+          <p className="text-sub text-sm">
             Create your admin account for ACUSA
           </p>
         </div>
 
-        {/* Form */}
-        <div className="bg-white shadow-xl rounded-lg p-8">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Error Message */}
-            {error && (
-              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
-                <p className="text-sm">{error}</p>
+        {/* Main Card */}
+        <Card className="border-0 shadow-2xl shadow-slate-200/50 backdrop-blur-sm bg-white/80">
+          <CardHeader className="space-y-1 pb-6">
+            <CardTitle className="text-2xl font-semibold text-main font-grotesk">
+              Get Started
+            </CardTitle>
+            <CardDescription className="text-sub">
+              Fill in your details to create an admin account
+            </CardDescription>
+          </CardHeader>
+
+          <CardContent>
+            <form onSubmit={handleSubmit} className="space-y-5">
+              {/* Error Alert */}
+              {error && (
+                <Alert
+                  variant="destructive"
+                  className="bg-red-50 border-red-200 text-red-800 animate-in fade-in slide-in-from-top-2 duration-300"
+                >
+                  <Info className="h-4 w-4" />
+                  <AlertDescription className="text-sm font-medium">
+                    {error}
+                  </AlertDescription>
+                </Alert>
+              )}
+
+              {/* Name Field */}
+              <div className="space-y-2">
+                <Label
+                  htmlFor="name"
+                  className="text-sm font-semibold text-main"
+                >
+                  Full Name
+                </Label>
+                <Input
+                  id="name"
+                  name="name"
+                  type="text"
+                  required
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="h-12 bg-slate-50 border-slate-200 focus:border-main focus:ring-main transition-all duration-200"
+                  placeholder="John Doe"
+                  disabled={loading}
+                />
               </div>
-            )}
 
-            {/* Name Field */}
-            <div>
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium text-gray-700 mb-2"
-              >
-                Full Name
-              </label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                required
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
-                placeholder="John Doe"
-                disabled={loading}
-              />
-            </div>
+              {/* Email Field */}
+              <div className="space-y-2">
+                <Label
+                  htmlFor="email"
+                  className="text-sm font-semibold text-main"
+                >
+                  Email Address
+                </Label>
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="h-12 bg-slate-50 border-slate-200 focus:border-main focus:ring-main transition-all duration-200"
+                  placeholder="admin@acusa.edu"
+                  disabled={loading}
+                />
+              </div>
 
-            {/* Email Field */}
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700 mb-2"
-              >
-                Email Address
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                required
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
-                placeholder="admin@acusa.edu"
-                disabled={loading}
-              />
-            </div>
+              {/* Password Field */}
+              <div className="space-y-2">
+                <Label
+                  htmlFor="password"
+                  className="text-sm font-semibold text-main"
+                >
+                  Password
+                </Label>
+                <div className="relative">
+                  <Input
+                    id="password"
+                    name="password"
+                    type={showPassword ? "text" : "password"}
+                    required
+                    value={formData.password}
+                    onChange={handleChange}
+                    className="h-12 bg-slate-50 border-slate-200 focus:border-main focus:ring-main transition-all duration-200 pr-12"
+                    placeholder="••••••••"
+                    disabled={loading}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-sub hover:text-main transition-colors duration-200"
+                    tabIndex={-1}
+                  >
+                    {showPassword ? (
+                      <EyeOff className="h-5 w-5" />
+                    ) : (
+                      <Eye className="h-5 w-5" />
+                    )}
+                  </button>
+                </div>
+                <p className="text-xs text-sub mt-1.5">
+                  Must be at least 8 characters long
+                </p>
+              </div>
 
-            {/* Password Field */}
-            <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-gray-700 mb-2"
-              >
-                Password
-              </label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                required
-                value={formData.password}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
-                placeholder="••••••••"
+              {/* Confirm Password Field */}
+              <div className="space-y-2">
+                <Label
+                  htmlFor="confirmPassword"
+                  className="text-sm font-semibold text-main"
+                >
+                  Confirm Password
+                </Label>
+                <div className="relative">
+                  <Input
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    type={showConfirmPassword ? "text" : "password"}
+                    required
+                    value={formData.confirmPassword}
+                    onChange={handleChange}
+                    className="h-12 bg-slate-50 border-slate-200 focus:border-main focus:ring-main transition-all duration-200 pr-12"
+                    placeholder="••••••••"
+                    disabled={loading}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-sub hover:text-main transition-colors duration-200"
+                    tabIndex={-1}
+                  >
+                    {showConfirmPassword ? (
+                      <EyeOff className="h-5 w-5" />
+                    ) : (
+                      <Eye className="h-5 w-5" />
+                    )}
+                  </button>
+                </div>
+              </div>
+
+              {/* Submit Button */}
+              <Button
+                type="submit"
                 disabled={loading}
-              />
-              <p className="mt-1 text-xs text-gray-500">
-                Must be at least 8 characters
+                className="w-full h-12 bg-main hover:bg-main/90 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-200 mt-6"
+              >
+                {loading ? (
+                  <>
+                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                    Creating account...
+                  </>
+                ) : (
+                  <>
+                    <UserPlus className="mr-2 h-5 w-5" />
+                    Create Admin Account
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </>
+                )}
+              </Button>
+            </form>
+
+            {/* Sign In Link */}
+            <div className="mt-6 text-center">
+              <p className="text-sm text-sub">
+                Already have an account?{" "}
+                <Link
+                  href="/admin/signin"
+                  className="font-semibold text-main hover:text-[#D3AE1A] transition-colors duration-200"
+                >
+                  Sign in here
+                </Link>
               </p>
             </div>
-
-            {/* Confirm Password Field */}
-            <div>
-              <label
-                htmlFor="confirmPassword"
-                className="block text-sm font-medium text-gray-700 mb-2"
-              >
-                Confirm Password
-              </label>
-              <input
-                id="confirmPassword"
-                name="confirmPassword"
-                type="password"
-                required
-                value={formData.confirmPassword}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
-                placeholder="••••••••"
-                disabled={loading}
-              />
-            </div>
-
-            {/* Submit Button */}
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full flex justify-center items-center px-4 py-3 border border-transparent text-sm font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed transition"
-            >
-              {loading ? (
-                <>
-                  <svg
-                    className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                    ></circle>
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                    ></path>
-                  </svg>
-                  Creating account...
-                </>
-              ) : (
-                "Create Admin Account"
-              )}
-            </button>
-          </form>
-
-          {/* Login Link */}
-          <div className="mt-6 text-center">
-            <p className="text-sm text-gray-600">
-              Already have an account?{" "}
-              <a
-                href="/admin/signin"
-                className="font-medium text-indigo-600 hover:text-indigo-500">
-                Sign in here
-              </a>
-            </p>
-          </div>
-        </div>
+          </CardContent>
+        </Card>
 
         {/* Info Box */}
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-          <div className="flex">
-            <div className="shrink-0">
-              <svg
-                className="h-5 w-5 text-blue-400"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                  clipRule="evenodd"
-                />
-              </svg>
+        <div className="mt-6 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 rounded-2xl p-4 shadow-sm">
+          <div className="flex items-start gap-3">
+            <div className="shrink-0 mt-0.5">
+              <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                <Info className="h-4 w-4 text-main" />
+              </div>
             </div>
-            <div className="ml-3">
-              <p className="text-sm text-blue-700">
+            <div className="flex-1">
+              <p className="text-sm text-main leading-relaxed">
                 This registration is for admin accounts only. Make sure you have
                 authorization to create an admin account.
               </p>
             </div>
           </div>
         </div>
+
+        {/* Footer */}
+        <div className="mt-8 text-center">
+          <p className="text-xs text-sub">
+            © {new Date().getFullYear()} ACUSA. All rights reserved.
+          </p>
+        </div>
       </div>
     </div>
   );
 }
-
-
