@@ -269,15 +269,15 @@ export function OfficialLettersTab() {
         {/* Form Section */}
         {showForm && (
           <Card className="mb-8 animate-in fade-in slide-in-from-top-4 duration-300 shadow-xl">
-            <CardHeader className="bg-main">
-              <CardTitle className="text-2xl text-white">
+            <CardHeader className="">
+              <CardTitle className="text-2xl text-main">
                 {editingLetter
                   ? "Edit Official Letter"
                   : "Add New Official Letter"}
               </CardTitle>
             </CardHeader>
 
-            <CardContent className="p-6 sm:p-8">
+            <CardContent className="p-6 sm:p-8 -mt-8 ">
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Title Field */}
                 <div className="space-y-2">
@@ -423,7 +423,7 @@ export function OfficialLettersTab() {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex gap-3 pt-4">
+                <div className="flex gap-3 pt-2">
                   <Button
                     type="submit"
                     disabled={submitting}

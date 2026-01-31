@@ -973,13 +973,13 @@ export function PodcastsTab() {
         {/* Form Section */}
         {showForm && (
           <Card className="mb-8 animate-in fade-in slide-in-from-top-4 duration-300 shadow-xl">
-            <CardHeader className="bg-main">
-              <CardTitle className="text-2xl text-white">
+            <CardHeader className="">
+              <CardTitle className="text-2xl text-main">
                 {editingPodcast ? "Edit Podcast" : "Add New Podcast"}
               </CardTitle>
             </CardHeader>
 
-            <CardContent className="p-6 sm:p-8">
+            <CardContent className="p-4 -mt-8 sm:p-8 ">
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Title Field */}
                 <div className="space-y-2">
@@ -1242,7 +1242,7 @@ export function PodcastsTab() {
                 </div>
 
                 {/* Published Checkbox */}
-                <div className="flex items-center space-x-3 p-4">
+                <div className="flex items-center space-x-3 p-2">
                   <Input
                     id="podcast-published"
                     type="checkbox"
@@ -1266,7 +1266,7 @@ export function PodcastsTab() {
                   <Button
                     type="submit"
                     disabled={submitting}
-                    className="flex-1 sm:flex-none bg-main hover:bg-main/90 focus:ring-4 focus:ring-purple-200 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 transition-all duration-200 shadow-lg"
+                    className="flex-1 sm:flex-none bg-main hover:bg-main/90 focus:ring-4 focus:ring-par disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 transition-all duration-200 shadow-lg"
                   >
                     {editingPodcast ? "Update Podcast" : "Add Podcast"}
                   </Button>

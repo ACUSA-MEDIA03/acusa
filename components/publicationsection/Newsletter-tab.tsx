@@ -105,7 +105,7 @@ export default function Newsletter() {
         .split(",")
         .map((tag) => tag.trim())
         .filter(Boolean);
-      //  Determine URL and method
+      //  Determine URL and method for either creating or updating
       const url = editingNewsLetter
         ? `/api/admin/publications/${editingNewsLetter.id}`
         : `/api/admin/publications`;
@@ -260,13 +260,13 @@ export default function Newsletter() {
         {/* Form Section */}
         {showForm && (
           <Card className="mb-8 animate-in fade-in slide-in-from-top-4 duration-300 shadow-xl">
-            <CardHeader className="bg-main">
-              <CardTitle className="text-2xl text-white">
+            <CardHeader className="">
+              <CardTitle className="text-2xl text-main">
                 {editingNewsLetter ? "Edit Newsletter" : "Create Newsletter"}
               </CardTitle>
             </CardHeader>
 
-            <CardContent className="p-6 sm:p-8">
+            <CardContent className="p-6 sm:p-8 -mt-8 ">
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Title Field */}
                 <div className="space-y-2">
@@ -416,7 +416,7 @@ export default function Newsletter() {
                 </div>
 
                 {/* Published Checkbox */}
-                <div className="flex items-center space-x-3 p-4">
+                <div className="flex items-center space-x-3 p-2">
                   <Input
                     id="newsletter-published"
                     type="checkbox"
@@ -438,11 +438,11 @@ export default function Newsletter() {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex gap-3 pt-4">
+                <div className="flex gap-3 pt-2">
                   <Button
                     type="submit"
                     disabled={submitting}
-                    className="flex-1 sm:flex-none bg-main hover:bg-main/90 focus:ring-4 focus:ring-purple-200 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 transition-all duration-200 shadow-lg"
+                    className="flex-1 sm:flex-none bg-main hover:bg-main/90 focus:ring-4 focus:ring-par disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 transition-all duration-200 shadow-lg"
                   >
                     {editingNewsLetter
                       ? "Update Newsletter"
@@ -469,7 +469,7 @@ export default function Newsletter() {
               <Card className="shadow-xl">
                 <CardContent className="flex flex-col items-center justify-center py-16 px-6">
                   <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mb-4">
-                    <Mail className="w-10 h-10 text-main" />
+                    <Mail className="w-10 h-10 text-sub" />
                   </div>
                   <h3 className="text-xl font-semibold text-par mb-2">
                     No newsletters yet
