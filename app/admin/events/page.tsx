@@ -214,7 +214,7 @@ export default function EventsPage() {
 
   return (
     <div className="min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl  mt-8 mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header Section */}
         <div className="mb-8">
           <div className="flex items-center justify-between">
@@ -244,8 +244,8 @@ export default function EventsPage() {
         {/* Form Section */}
         {showForm && (
           <Card className="mb-8 animate-in fade-in slide-in-from-top-4 duration-300 shadow-xl">
-            <CardHeader className="bg-main">
-              <CardTitle className="text-2xl text-white">
+            <CardHeader className="">
+              <CardTitle className="text-2xl text-main ">
                 {editingEvent ? "Edit Event" : "Create New Event"}
               </CardTitle>
             </CardHeader>
