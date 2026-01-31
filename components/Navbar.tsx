@@ -66,6 +66,12 @@ export default function Navbar() {
           active={pathname === "/gallery"}
           onClick={removeNav}
         />
+         <NavItem
+          href="/events"
+          label="Events"
+          active={pathname === "/events"}
+          onClick={removeNav}
+        />
         <NavItem
           href="/publications"
           label="Publications"
