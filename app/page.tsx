@@ -82,13 +82,7 @@ export default function Home() {
 As elected representatives, we serve as a vital link students, faculty, and administration. We actively engage with our peers to understand their perspectives, gather feedback, and champion their interests across various facets of university life.`}
           </p>
 
-          {/* Button */}
-          {/* <div className="border lg:w-[15%] w-[40%] grid mt-2">
-            <Link href="/about">
-               <Button text={`View More ...`} bgcolor='blue'/>
-              </Link>
-            </div> */}
-          {/* Button */}
+         
         </div>
         {/* left */}
 
@@ -143,7 +137,7 @@ As elected representatives, we serve as a vital link students, faculty, and admi
 
           {/* Event Card */}
           <div className="grid gap-7">
-            {Events.slice(0, 2).map((event) => {
+            {Events.slice(0,2).map((event) => {
               return (
                 <EventCards
                  key={event.id}
