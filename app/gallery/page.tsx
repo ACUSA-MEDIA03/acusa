@@ -193,10 +193,7 @@ export default function Gallery() {
         <section className="py-20 bg-white">
           <div className="container mx-auto px-6 lg:px-12">
             <h2 className="text-5xl font-grotesk text-center mb-12 text-main">
-              EVENTS HIGHLIGHTS
-             
-            </h2>
-
+              EVENTS HIGHLIGHTS     </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {events.map((event) => (
                 <EventCard key={event.id} event={event} />
