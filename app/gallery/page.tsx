@@ -29,7 +29,6 @@ interface Category {
 }
 
 /* COMPONENTS  */
-
 const ImageCarousel: React.FC<{ images: EventImage[] }> = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -38,7 +37,6 @@ const ImageCarousel: React.FC<{ images: EventImage[] }> = ({ images }) => {
 
   const prevSlide = () =>
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
-
   return (
     <div className="relative h-64 overflow-hidden">
       <Image
