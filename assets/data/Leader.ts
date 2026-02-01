@@ -812,7 +812,21 @@ const Team: LeaderProfile[] = [
   //   department: "Computer Science",
   //   level: "400 Level",
   // },
-
+  {
+    name: "Ajibola Ajaiyeoba",
+    position: "Web Design Lead",
+    image:"",
+    email: "ajaiyeobajibola@gmail.com",
+    phone: "+234 08052148610 ",
+    facebook: "https://facebook.com/",
+    x: "https://x.com/theNubiadev",
+    instagram: "https://instagram.com/",
+    linkedin: "https://linkedin.com/in/",
+    faculty: "Faculty of Computing",
+    department: "Computer Science",
+    snapchat: "",
+    level: "300",
+  },
   {
     name: "Samson Olagunju",
     position: "Graphics Lead",
