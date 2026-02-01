@@ -32,8 +32,7 @@ interface Category {
 const ImageCarousel: React.FC<{ images: EventImage[] }> = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const nextSlide = () =>
-    setCurrentIndex((prev) => (prev + 1) % images.length);
+  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % images.length);
 
   const prevSlide = () =>
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
@@ -68,10 +67,8 @@ const EventCard: React.FC<{ event: Event }> = ({ event }) => {
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
       <ImageCarousel images={event.images} />
       <div className="p-6">
-        <h3 className="text-2xl font-bold text-gray-900">
-          {event.title}
-        </h3>
-        <p className="text-sm text-gray-500">{event.category}</p>
+        <h3 className="text-2xl font-bold font-rubik text-sub">{event.title}</h3>
+        <p className="text-sm font-semibold   text-main">{event.category}</p>
       </div>
     </div>
   );
@@ -83,30 +80,67 @@ export default function Gallery() {
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   const heroImages: EventImage[] = [
-    { id: "hero-1", url: "/Gallery/fc1.jpeg", alt: "Freshers Conference" },
-    { id: "hero-2", url: "/Gallery/9.jpg", alt: "Conference" },
+    { id: "hero-1", url: "/Gallery/29.jpg", alt: "Freshers Conference" },
+    { id: "hero-2", url: "/Gallery/fc1.jpeg", alt: "Conference" },
     { id: "hero-3", url: "/Gallery/11.jpg", alt: "Conference" },
   ];
 
   const events: Event[] = [
-    {
+   {
       id: "1",
-      title: "Freshers Conference 2026",
-      category: "Conference",
+      title: "ACUSA Swearing-in",
+      category: "Swearing-In",
       images: [
-        { id: "img1", url: "/Gallery/fc1.jpeg", alt: "FC 1" },
-        { id: "img2", url: "/Gallery/cm4.jpeg", alt: "FC 2" },
+        { id: "img1", url: "/Gallery/12.jpg", alt: "Swearing In" },
+        { id: "img2", url: "/Gallery/13.jpg", alt: "Swearing In" },
+        { id: "img3", url: "/Gallery/14.jpg", alt: "Swearing In" },
+        { id: "img4", url: "/Gallery/15.jpg", alt: "Swearing In" },
+        { id: "img5", url: "/Gallery/16.jpg", alt: "Swearing In" },
+        { id: "img6", url: "/Gallery/17.jpg", alt: "Swearing In" },
+        { id: "img7", url: "/Gallery/18.jpg", alt: "Swearing In" },
+        { id: "img8", url: "/Gallery/19.jpg", alt: "Swearing In" },
+        { id: "img9", url: "/Gallery/20.jpg", alt: "Swearing In" },
+        { id: "img10", url: "/Gallery/21.jpg", alt: "Swearing In" },
+        { id: "img11", url: "/Gallery/22.jpg", alt: "Swearing In" },
+        { id: "img12", url: "/Gallery/23.jpg", alt: "Swearing In" },
+        { id: "img13", url: "/Gallery/24.jpg", alt: "Swearing In" },
       ],
     },
     {
       id: "2",
-      title: "ACUSA Outreach Program",
-      category: "Community",
+      title: "Freshers Conference 2026",
+      category: "Conference",
       images: [
-        { id: "img3", url: "/Gallery/9.jpg", alt: "Outreach 1" },
-        { id: "img4", url: "/Gallery/cm1.jpeg", alt: "Outreach 2" },
+        { id: "img1", url: "/Gallery/fc1.jpeg", alt: "FC 1" },
+        { id: "img2", url: "/Gallery/fc2.jpeg", alt: "FC 1" },
+        { id: "img3", url: "/Gallery/fc3.jpeg", alt: "FC 1" },
+        { id: "img4", url: "/Gallery/fc4.jpeg", alt: "FC 1" },
+        { id: "img5", url: "/Gallery/fc5.jpeg", alt: "FC 5" },
+        { id: "img6", url: "/Gallery/fc6.jpeg", alt: "FC 6" },
+        { id: "img7", url: "/Gallery/fc7.jpeg", alt: "FC 7" },
+        { id: "img8", url: "/Gallery/fc8.jpeg", alt: "FC 8" },
+        { id: "img9", url: "/Gallery/fc9.jpeg", alt: "FC 9" },
+        { id: "img10", url: "/Gallery/fc10.jpeg", alt: "FC 10" },
       ],
     },
+    {
+      id: "3",
+      title: "ACUSA at the Council Meeting",
+      category: "Community",
+      images: [
+        { id: "img1", url: "/Gallery/cm1.jpeg", alt: "Outreach 1" },
+        { id: "img2", url: "/Gallery/cm2.jpeg", alt: "Outreach 1" },
+        { id: "img3", url: "/Gallery/cm3.jpeg", alt: "Outreach 1" },
+        { id: "img4", url: "/Gallery/cm4.jpeg", alt: "Outreach 1" },
+        { id: "img5", url: "/Gallery/cm5.jpeg", alt: "Outreach 1" },
+        { id: "img6", url: "/Gallery/cm6.jpeg", alt: "Outreach 1" },
+        { id: "img3", url: "/Gallery/cm7.jpeg", alt: "Outreach 1" },
+        { id: "img3", url: "/Gallery/cm8.jpeg", alt: "Outreach 1" },
+        { id: "img3", url: "/Gallery/cm9.jpeg", alt: "Outreach 1" },
+        { id: "img3", url: "/Gallery/cm10.jpeg", alt: "Outreach 1" },
+      ],
+    },
+   
   ];
 
   const categories: Category[] = [
@@ -134,24 +168,23 @@ export default function Gallery() {
 
       <main className="min-h-screen">
         {/* HERO */}
-            <section className="relative min-h-screen overflow-hidden bg-main ">
+        <section className="relative min-h-screen overflow-hidden bg-main ">
           <div className="container mx-auto px-6 lg:px-12 py-20 relative z-10 mt-12">
             <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
-              
               {/* LEFT CONTENT */}
               <div className="space-y-6">
                 <h1 className="text-6xl lg:text-7xl font-grotesk text-white leading-tight">
                   ACUSA Gallery
                 </h1>
                 <p className="text-xl text-sub max-w-xl leading-relaxed font-mont">
-                  Explore our memorable moments as a community — events, activities,
-                  and achievements that define our vibrant campus life.
+                  Explore our memorable moments as a community — events,
+                  activities, and achievements that define our vibrant campus
+                  life.
                 </p>
               </div>
 
               {/* RIGHT IMAGE GRID */}
               <div className="grid grid-cols-2 gap-4">
-                
                 {/* IMAGE 1 */}
                 <div className="relative h-64 rounded-2xl overflow-hidden shadow-2xl group">
                   <Image
@@ -190,8 +223,9 @@ export default function Gallery() {
         {/* EVENTS */}
         <section className="py-20 bg-white">
           <div className="container mx-auto px-6 lg:px-12">
-            <h2 className="text-5xl font-grotesk text-center mb-12 text-main">
-              EVENTS HIGHLIGHTS     </h2>
+            <h2 className="text-5xl font-grotesk font-bold text-center mb-12 text-main">
+              EVENTS HIGHLIGHTS{" "}
+            </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {events.map((event) => (
                 <EventCard key={event.id} event={event} />
@@ -211,25 +245,24 @@ export default function Gallery() {
                     onClick={() => setSelectedCategory(cat)}
                     className={
                       selectedCategory === cat
-                        ? "bg-main text-white"
-                        : "bg-gray-200 text-par"
+                        ? "bg-main text-sub shadow-lg"
+                        : "bg-gray-300 text-gray-800 hover:bg-main hover:text-white"
                     }
                   >
                     {cat}
                   </Button>
-                )
+                ),
               )}
             </div>
 
             {categories
               .filter(
                 (cat) =>
-                  selectedCategory === "All" ||
-                  cat.name === selectedCategory
+                  selectedCategory === "All" || cat.name === selectedCategory,
               )
               .map((category) => (
                 <div key={category.id} className="mb-16">
-                  <h3 className="text-3xl font-bold mb-6">
+                  <h3 className="text-3xl font-bold  font-grotesk mb-6">
                     {category.name}
                   </h3>
 
