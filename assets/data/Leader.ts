@@ -784,7 +784,6 @@ const Team: LeaderProfile[] = [
   {
     name: "Uzoechi Goodness",
     position: "Social Handler Lead",
-    // image: "/Executives/social_lead.jpeg",
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767256/public/Executives/social_lead_ysupbs.jpg",
     email: "lilyylily768@gmail.com",
@@ -798,20 +797,7 @@ const Team: LeaderProfile[] = [
     department: "Accounting",
     level: "400 Level",
   },
-  // {
-  //   name: "Gbotemi",
-  //   position: "Content Writer",
-  //   image: "/Executives/President.jpg",
-  //   email: "ayo.odunayo@student.acu.edu.ng",
-  //   phone: "+234 123 456 7890",
-  //   facebook: "https://facebook.com/",
-  //   x: "https://x.com/",
-  //   instagram: "https://instagram.com/",
-  //   linkedin: "https://linkedin.com/in/",
-  //   faculty: "Faculty of Science",
-  //   department: "Computer Science",
-  //   level: "400 Level",
-  // },
+
   {
     name: "Ajibola Ajaiyeoba",
     position: "Web Design Lead",
