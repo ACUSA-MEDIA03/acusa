@@ -211,7 +211,7 @@ export default function About() {
                 onClick={() => setCategory(type)}
                 className={`px-6 lg:px-8 py-2.5 lg:py-3 rounded-lg text-sm lg:text-base font-medium transition-all ${
                   category === type
-                    ? "bg-main text-white shadow-lg"
+                    ? "bg-main text-sub shadow-lg"
                     : "bg-gray-300 text-gray-800 hover:bg-main hover:text-white"
                 }`}
               >
