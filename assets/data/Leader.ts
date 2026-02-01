@@ -737,7 +737,8 @@ const Team: LeaderProfile[] = [
     name: " Adio Daniel",
     position: "Media Head",
     // image: "/Executives/media_lead.jpg",
-    image: "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767300/public/Executives/media_lead_jbdywc.jpg",
+    image:
+      "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767300/public/Executives/media_lead_jbdywc.jpg",
     email: "adiodaniel808@gmail.com",
     phone: "+234 7048 440 287",
     facebook: "https://facebook.com/",
@@ -753,7 +754,8 @@ const Team: LeaderProfile[] = [
     name: "Mgbmoka Divine",
     position: "Content Creation Lead",
     // image: "/Executives/content_lead.jpeg",
-    image: "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767227/public/Executives/content_lead_hgfnex.jpg",
+    image:
+      "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767227/public/Executives/content_lead_hgfnex.jpg",
     email: "dnmgbamoka@gmail.com",
     phone: "+234 704 844 0287 ",
     facebook: "",
@@ -783,7 +785,8 @@ const Team: LeaderProfile[] = [
     name: "Uzoechi Goodness",
     position: "Social Handler Lead",
     // image: "/Executives/social_lead.jpeg",
-    image: "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767256/public/Executives/social_lead_ysupbs.jpg",
+    image:
+      "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767256/public/Executives/social_lead_ysupbs.jpg",
     email: "lilyylily768@gmail.com",
     phone: "+234 901 837 0300",
     facebook: "",
@@ -813,8 +816,8 @@ const Team: LeaderProfile[] = [
   {
     name: "Samson Olagunju",
     position: "Graphics Lead",
-    // image: "/Executives/graphics_lead.jpg",
-    image: "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767242/public/Executives/graphics_lead_mxqkbi.jpg",
+    image:
+      "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767232/public/Executives/graphics_lead_ooe4f6.jpg",
     email: "olagunjusamson53@gmail.com",
     phone: "+234 09036582085 ",
     facebook: "https://facebook.com/",
@@ -829,8 +832,8 @@ const Team: LeaderProfile[] = [
   {
     name: "Oluwagbotemi Olabiyi ",
     position: "Content Writing Lead",
-    // image: "/Executives/editor_lead.jpg",
-    image: "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767245/public/Executives/editor_lead_wuozwd.jpg",
+    image:
+      "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767230/public/Executives/editor_lead_epjlp8.jpg",
     email: "Gbotemiolabiyi@gmail.com",
     phone: "+2349079727635 ",
     facebook: "https://facebook.com/",
