@@ -67,7 +67,9 @@ const EventCard: React.FC<{ event: Event }> = ({ event }) => {
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
       <ImageCarousel images={event.images} />
       <div className="p-6">
-        <h3 className="text-2xl font-bold font-rubik text-sub">{event.title}</h3>
+        <h3 className="text-2xl font-bold font-rubik text-sub">
+          {event.title}
+        </h3>
         <p className="text-sm font-semibold   text-main">{event.category}</p>
       </div>
     </div>
@@ -86,7 +88,7 @@ export default function Gallery() {
   ];
 
   const events: Event[] = [
-   {
+    {
       id: "1",
       title: "ACUSA Swearing-in",
       category: "Swearing-In",
@@ -140,7 +142,22 @@ export default function Gallery() {
         { id: "img3", url: "/Gallery/cm10.jpeg", alt: "Outreach 1" },
       ],
     },
-   
+    // {
+    //   id: "4",
+    //   title: "Gospel Fest",
+    //   category: "Community",
+    //   images: [
+
+    //   ]
+    // },
+    // {
+    //   id: "5",
+    //   title: "ACUSA at the Council Meeting",
+    //   category: "Community",
+    //   images: [
+
+    //   ]
+    // }
   ];
 
   const categories: Category[] = [
@@ -168,25 +185,75 @@ export default function Gallery() {
 
       <main className="min-h-screen">
         {/* HERO */}
-        <section className="relative min-h-screen overflow-hidden bg-main ">
+
+        <section className="relative min-h-screen overflow-hidden bg-main">
           <div className="container mx-auto px-6 lg:px-12 py-20 relative z-10 mt-12">
-            <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
-              {/* LEFT CONTENT */}
-              <div className="space-y-6">
-                <h1 className="text-6xl lg:text-7xl font-grotesk text-white leading-tight">
-                  ACUSA Gallery
-                </h1>
-                <p className="text-xl text-sub max-w-xl leading-relaxed font-mont">
-                  Explore our memorable moments as a community — events,
+            {/* Ambient glow */}
+            <div className="absolute inset-0 pointer-events-none" />
+
+            <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh] relative z-10">
+              {/* ── LEFT: Content ── */}
+              <div className="space-y-8">
+                {/* Eyebrow pill */}
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-main bg-white w-fit">
+                  <span className="w-1.5 h-1.5 rounded-full bg-main block" />
+                  <span className="text-xs text-sub font-medium tracking-widest uppercase">
+                    Campus Life
+                  </span>
+                </div>
+
+                {/* Headline */}
+                <div>
+                  <h1 className="text-6xl lg:text-7xl font-grotesk text-white leading-[1.05]">
+                    ACUSA
+                  </h1>
+                  <h1 className="text-6xl lg:text-7xl font-grotesk leading-[1.05] text-sub ">
+                    Gallery
+                  </h1>
+                </div>
+
+                <p className="text-base text-sub max-w-sm leading-relaxed font-mont">
+                  Explore our memorable moments as a community, events,
                   activities, and achievements that define our vibrant campus
                   life.
                 </p>
+
+                {/* CTAs */}
+                <div className="flex gap-3 flex-wrap">
+                  <button className="px-5 py-2.5 bg-sub text-main text-sm font-medium rounded-lg hover:bg-sub transition-colors">
+                    Browse gallery →
+                  </button>
+                  <button className="px-5 py-2.5 text-white/60 text-sm border border-white/20 rounded-lg hover:bg-white/5 transition-colors">
+                    View events
+                  </button>
+                </div>
+
+                {/* Stats strip */}
+                <div className="flex gap-8 pt-6 border-t border-white/10">
+                  {[
+                    { value: "10+", label: "Events" },
+                    { value: "4,000", label: "Students" },
+                    { value: "8 yrs", label: "Running" },
+                  ].map((stat) => (
+                    <div key={stat.label}>
+                      <p className="text-2xl font-medium text-white">
+                        {stat.value}
+                      </p>
+                      <p className="text-[11px] text-white/40 uppercase tracking-widest mt-1">
+                        {stat.label}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              {/* RIGHT IMAGE GRID */}
-              <div className="grid grid-cols-2 gap-4">
-                {/* IMAGE 1 */}
-                <div className="relative h-64 rounded-2xl overflow-hidden shadow-2xl group">
+              {/* ── RIGHT: Staggered image grid ── */}
+              <div
+                className="grid grid-cols-2 gap-3"
+                style={{ gridTemplateRows: "200px 200px 120px" }}
+              >
+                {/* Top row: two portrait images */}
+                <div className="relative rounded-2xl overflow-hidden shadow-xl group">
                   <Image
                     src={heroImages[0].url}
                     alt={heroImages[0].alt}
@@ -196,8 +263,7 @@ export default function Gallery() {
                   />
                 </div>
 
-                {/* IMAGE 2 */}
-                <div className="relative h-64 rounded-2xl overflow-hidden shadow-2xl group">
+                <div className="relative rounded-2xl overflow-hidden shadow-xl group">
                   <Image
                     src={heroImages[1].url}
                     alt={heroImages[1].alt}
@@ -206,15 +272,22 @@ export default function Gallery() {
                   />
                 </div>
 
-                {/* IMAGE 3 */}
-                <div className="relative col-span-2 h-80 rounded-2xl overflow-hidden shadow-2xl group">
+                {/* Middle row: wide feature image */}
+                <div className="relative col-span-2 rounded-2xl overflow-hidden shadow-xl group">
                   <Image
                     src={heroImages[2].url}
                     alt={heroImages[2].alt}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
+                  {/* Optional label overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <span className="absolute bottom-3 left-4 text-white/80 text-xs font-medium tracking-wide">
+                    {/* Cultural Night 2024 */}
+                  </span>
                 </div>
+
+                {/* Bottom: "View all" strip */}
               </div>
             </div>
           </div>
