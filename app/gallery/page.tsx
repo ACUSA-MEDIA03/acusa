@@ -290,6 +290,10 @@ export default function Gallery() {
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <span className="absolute bottom-3 left-4 text-white/80 text-xs font-medium tracking-wide">
+                    Freshers COnference 2026
+                  </span>
                 </div>
 
                 {/* Middle row: wide feature image */}
@@ -303,7 +307,7 @@ export default function Gallery() {
                   {/* Optional label overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   <span className="absolute bottom-3 left-4 text-white/80 text-xs font-medium tracking-wide">
-                    {/* Cultural Night 2024 */}
+                    Mental Health Summit 2026
                   </span>
                 </div>
 
