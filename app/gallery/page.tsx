@@ -84,7 +84,7 @@ export default function Gallery() {
   const heroImages: EventImage[] = [
     { id: "hero-1", url: "/Gallery/29.jpg", alt: "Freshers Conference" },
     { id: "hero-2", url: "/Gallery/fc1.jpeg", alt: "Conference" },
-    { id: "hero-3", url: "/Gallery/11.jpg", alt: "Conference" },
+    { id: "hero-3", url: "/Gallery/ms7.jpg", alt: "Mental Health Summit" },
   ];
 
   const events: Event[] = [
@@ -128,7 +128,7 @@ export default function Gallery() {
     {
       id: "3",
       title: "ACUSA at the Council Meeting",
-      category: "Community",
+      category: "Formal",
       images: [
         { id: "img1", url: "/Gallery/cm1.jpeg", alt: "Outreach 1" },
         { id: "img2", url: "/Gallery/cm2.jpeg", alt: "Outreach 1" },
@@ -142,22 +142,42 @@ export default function Gallery() {
         { id: "img3", url: "/Gallery/cm10.jpeg", alt: "Outreach 1" },
       ],
     },
-    // {
-    //   id: "4",
-    //   title: "Gospel Fest",
-    //   category: "Community",
-    //   images: [
-
-    //   ]
-    // },
-    // {
-    //   id: "5",
-    //   title: "ACUSA at the Council Meeting",
-    //   category: "Community",
-    //   images: [
-
-    //   ]
-    // }
+    {
+      id: "4",
+      title: "Gospel Fest",
+      category: "Community",
+      images: [
+        { id: "img1", url: "/Gallery/gf1.jpg", alt: "Gospel Fest" },
+        { id: "img2", url: "/Gallery/gf2.jpg", alt: "Gospel Fest" },
+        { id: "img3", url: "/Gallery/gf3.jpg", alt: "Gospel Fest" },
+        { id: "img4", url: "/Gallery/gf4.jpg", alt: "Gospel Fest" },
+        { id: "img5", url: "/Gallery/gf5.jpg", alt: "Gospel Fest" },
+        { id: "img6", url: "/Gallery/gf6.jpg", alt: "Gospel Fest" },
+        { id: "img7", url: "/Gallery/gf7.jpg", alt: "Gospel Fest" },
+        { id: "img8", url: "/Gallery/gf8.jpg", alt: "Gospel Fest" },
+        { id: "img9", url: "/Gallery/gf9.jpg", alt: "Gospel Fest" },
+        { id: "img10", url: "/Gallery/gf10.jpg", alt: "Gospel Fest"},
+        
+      ]
+    },
+    {
+      id: "5",
+      title: "Mental Health Summit",
+      category: "Conference",
+      images: [
+        { id: "img1", url: "/Gallery/ms1.jpg", alt: "Mental Health Summit" },
+        { id: "img2", url: "/Gallery/ms2.jpg", alt: "Mental Health Summit" },
+        { id: "img3", url: "/Gallery/ms3.jpg", alt: "Mental Health Summit" },
+        { id: "img4", url: "/Gallery/ms4.jpg", alt: "Mental Health Summit" },
+        { id: "img5", url: "/Gallery/ms5.jpg", alt: "Mental Health Summit" },
+        { id: "img6", url: "/Gallery/ms6.jpg", alt: "Mental Health Summit" },
+        { id: "img7", url: "/Gallery/ms7.jpg", alt: "Mental Health Summit" },
+        { id: "img8", url: "/Gallery/ms8.jpg", alt: "Mental Health Summit" },
+        { id: "img9", url: "/Gallery/ms9.jpg", alt: "Mental Health Summit" },
+        { id: "img10", url: "/Gallery/ms10.jpg", alt: "Mental Health Summit" },
+        
+      ]
+    }
   ];
 
   const categories: Category[] = [
