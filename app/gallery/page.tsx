@@ -157,6 +157,7 @@ export default function Gallery() {
         { id: "img8", url: "/Gallery/gf8.jpg", alt: "Gospel Fest" },
         { id: "img9", url: "/Gallery/gf9.jpg", alt: "Gospel Fest" },
         { id: "img10", url: "/Gallery/gf10.jpg", alt: "Gospel Fest" },
+        { id: "img11", url: "/Gallery/gf11.jpg", alt: "Gospel Fest" },
       ],
     },
     {
