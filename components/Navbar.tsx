@@ -95,7 +95,6 @@ export default function Navbar() {
     </div>
   );
 }
-
 /*  Nav Item Component  */
 
 interface NavItemProps {

@@ -17,14 +17,13 @@ import ProfileCard from "@/components/card/AboutProfileCard"
 import Banner from "@/assets/Banner/all2.jpg"
 import Acusa from "@/assets/Logo/logo.png"
 import Acusa_Media from "@/assets/Logo/media.jpg"
-import Frame270 from "@/assets/About/12.jpg"
+import Frame270 from "@/assets/About/ms14.jpg"
 import Frame272 from '@/assets/About/gf3.jpg'
 import Frame273 from '@/assets/About/14.jpg'
 import Frame275 from '@/assets/About/34.jpg'
 import Frame276 from '@/assets/About/ms7.jpg'
-// import Frame276 from '@/assets/About/Frame275.png'
-export default function About() {
-  
+
+export default function About() { 
   const [category, setCategory] = useState("Executive");
   const filteredLeaders = Leaders.filter((leader) => leader.tag === category);
   const filteredTeam = Team;
