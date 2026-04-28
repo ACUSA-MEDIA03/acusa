@@ -2,18 +2,24 @@
 
 import { useState } from "react";
 import ReactPaginate from "react-paginate";
-import PublicationCard from "@/component/Card/PublicationCard";
-import PodcastCard from "@/component/Card/PodcastCard";
+import PublicationCard from "@/components/card/publicationcard";
+import PodcastCard from "@/components/card/podcastcard";
 import Link from "next/link";
 
 export interface PublicationItem {
-  id: number;
+  id: string;
   header: string;
+  title: string;
   date: string;
   description: string;
-  author?: string;
-  image?: string;
-   audioSource?: string;
+  author?: string| null;
+  image?: string | null;
+  audioSource?: string;
+  category: string;
+  audioUrl?: string | null;
+  fileUrl?: string | null;
+  imageUrl?: string | null;
+  referenceNo?: string | null;
 }
 
 interface ItemsProps {
@@ -30,23 +36,47 @@ interface PaginatedItemsProps {
 /*  Items Component  */
 
 function Items({ currentItems, category }: ItemsProps) {
+  // Helper function to convert category to URL-friendly format
+  const getCategorySlug = (pub: PublicationItem) => {
+    // Mapping database categories to URL slugs
+    const categoryMap: { [key: string]: string } = {
+      "ARTICLE": "article",
+      "NEWSLETTER": "newsletter",
+      "OFFICIAL_LETTER": "official-letter",
+      "PODCAST": "podcast",
+    };
+    return categoryMap[pub.category] || pub.category.toLowerCase().replace("_", "-");
+  };
+
   return (
     <div className="w-full space-y-4 flex flex-col justify-center items-center">
       {currentItems.map((item) =>
         category === "Podcasts" ? (
-          <PodcastCard key={item.id} audioSource={item.audioSource!}/>
+          <Link
+            key={item.id}
+            href={`/publications/${getCategorySlug(item)}/${item.id}`}
+            className="w-full" 
+          >
+            <PodcastCard 
+              audioSource={item.audioUrl || item.audioSource || ""}
+              title={item.header || item.title}
+              description={item.description || item.description}
+              author={item.author}
+              date={item.date}
+            />
+          </Link>
         ) : (
           <Link
             key={item.id}
-            href={`/publication/${category}/${item.id}`}
+            href={`/publications/${getCategorySlug(item)}/${item.id}`}
             className="w-full"
           >
             <PublicationCard
-              header={item.header}
+              header={item.header || item.title}
               date={item.date}
               description={item.description}
-              image={item.image}
-              author={item.author}
+              image={item.image || item.imageUrl || item.fileUrl || undefined}
+              // author={item.author}
             />
           </Link>
         )
@@ -69,8 +99,7 @@ export default function PaginatedItems({
   const pageCount = Math.ceil(currentItems.length / itemsPerPage);
 
   const handlePageClick = (event: { selected: number }) => {
-    const newOffset =
-      (event.selected * itemsPerPage) % currentItems.length;
+    const newOffset = (event.selected * itemsPerPage) % currentItems.length;
     setItemOffset(newOffset);
   };
 
@@ -80,22 +109,24 @@ export default function PaginatedItems({
         <Items currentItems={currentPageItems} category={category} />
       </div>
 
-      <ReactPaginate
-        breakLabel="..."
-        nextLabel="Next >"
-        previousLabel="< Previous"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
-        pageCount={pageCount}
-        containerClassName="flex items-center px-15 gap-4 py-5 font-grotesk text-[14px]"
-        pageClassName="flex items-center justify-center h-[25px] w-[25px] rounded-full"
-        pageLinkClassName="w-full h-full flex items-center border rounded-full justify-center cursor-pointer bg-[whitesmoke]"
-        activeClassName="text-[#0C1657]"
-        previousClassName="flex items-center justify-center rounded-md cursor-pointer"
-        nextClassName="flex items-center justify-center rounded-md cursor-pointer"
-        disabledClassName="opacity-50 cursor-not-allowed"
-        activeLinkClassName="font-bold"
-      />
+      {pageCount > 1 && (
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel="Next >"
+          previousLabel="< Previous"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={5}
+          pageCount={pageCount}
+          containerClassName="flex items-center px-15 gap-4 py-5 font-grotesk text-[14px]"
+          pageClassName="flex items-center justify-center h-[25px] w-[25px] rounded-full"
+          pageLinkClassName="w-full h-full flex items-center border rounded-full justify-center cursor-pointer bg-[whitesmoke]"
+          activeClassName="text-[#0C1657]"
+          previousClassName="flex items-center justify-center rounded-md cursor-pointer"
+          nextClassName="flex items-center justify-center rounded-md cursor-pointer"
+          disabledClassName="opacity-50 cursor-not-allowed"
+          activeLinkClassName="font-bold"
+        />
+      )}
     </>
   );
 }

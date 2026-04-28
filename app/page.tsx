@@ -1,20 +1,43 @@
-import  Image from "next/image";
+import Image from "next/image";
 import Link from "next/link";
-// components
-import NavBar from "../component/Navbar";
-import Footer from "../component/Footer";
-import Button from "../component/Button";
-import Card from "../component/Card/Card"
-import EventCards from "../component/Card/EventCards";
-import ProfileCard from "../component/Card/ProfileCard";
 
-// Data Objects
-import {Events} from "@/assets/data/Events";
+// components
+import NavBar from "../components/navbar";
+import Footer from "../components/footer";
+import Button from "../components/button";
+import  Card  from "@/components/card/card";
+import EventCards from "../components/card/eventcards";
+import ProfileCard from "../components/card/profilecard";
 
 import Banner from "@/assets/Banner/banner.jpg"
 import Animation from "@/assets/Animation/animation.gif"
 import President from "@/assets/Executives/President.jpg"
 import Vice_President from "@/assets/Executives/Vice_President.jpeg"
+
+interface Event {
+  id: string;
+  title: string;
+  description: string;
+  location: string;
+  startDateTime: string;
+}
+
+async function getPublicEvents() {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/events`,
+      { cache: "no-store" }
+    );
+    if (!res.ok) {
+      throw new Error("Failed to fetch events");
+    }
+    return res.json();
+  } catch (error) {
+    console.error("getPublicEvents error:", error);
+    return [];
+  }
+}
+const Events: Event[] = await getPublicEvents();
 
 export default function Home() {
   return (
@@ -33,9 +56,10 @@ export default function Home() {
             </p>
 
             {/* Button */}
-            <div className="border lg:w-[15%] w-[40%] grid mt-2">
+            <Link href={'/gallery'}>
+              <div className="border lg:w-[15%] w-[40%] grid mt-2">
               <Button text={`View More ...`} bgcolor='blue'/>
-            </div>
+            </div></Link>
             {/* Button */}
           </div>
         </div>
@@ -58,11 +82,11 @@ As elected representatives, we serve as a vital link students, faculty, and admi
           </p>
 
           {/* Button */}
-          <div className="border lg:w-[30%] w-[50%] grid mt-2">
+          <div className="border lg:w-[15%] w-[40%] grid mt-2">
             <Link href="/about">
-              <Button text={`View More ...`} bgcolor='blue' />
-               </Link>
-          </div>
+               <Button text={`View More ...`} bgcolor='blue'/>
+              </Link>
+            </div>
           {/* Button */}
         </div>
         {/* left */}
@@ -74,14 +98,13 @@ As elected representatives, we serve as a vital link students, faculty, and admi
               white
               number={1}
               title="Media Coverage"
-              text=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa atque
-          eum temporibus dolore. Nobis, commodi."
+              text=" We amplify student voices by highlighting key issues, achievements, and events through responsible and engaging media coverage that informs, educates, and inspires the campus community."
             />
             <Card
               number={2}
               title="Students Welfare"
-              text=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa atque
-          eum temporibus dolore. Nobis, commodi."
+              text="We foster a culture of service by organizing outreach programs, volunteering initiatives, and social impact projects that strengthen our connection with the wider community."
+
             />
           </div>
 
@@ -89,14 +112,14 @@ As elected representatives, we serve as a vital link students, faculty, and admi
             <Card
               number={3}
               title="Student Activism"
-              text=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa atque
-          eum temporibus dolore. Nobis, commodi."
+              text="We encourage active student participation in leadership, dialogue, and advocacy by empowering students to stand up for their rights and contribute to positive institutional change."
+
             />
             <Card
               number={4}
               title="Community Service"
-              text=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa atque
-          eum temporibus dolore. Nobis, commodi."
+              text="We foster a culture of service by organizing outreach programs, volunteering initiatives, and social impact projects that strengthen our connection with the wider community."
+
             />
           </div>
         </div>
@@ -119,17 +142,15 @@ As elected representatives, we serve as a vital link students, faculty, and admi
 
           {/* Event Card */}
           <div className="grid gap-7">
-            {Events.slice(0, 3).map((event) => {
+            {Events.slice(0, 2).map((event) => {
               return (
                 <EventCards
-                  key={event.eventTitle}
-                  date={event.date}
-                  suffix={event.suffix}
-                  month={event.month}
-                  year={event.year}
-                  time={event.time}
-                  location={event.location}
-                  eventTitle={event.eventTitle}
+                 key={event.id}
+                id={event.id}
+                title={event.title}
+                location={event.location}
+                startDateTime={event.startDateTime}
+                description={event.description}
                 />
               );
             })}
