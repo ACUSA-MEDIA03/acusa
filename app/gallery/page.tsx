@@ -156,9 +156,8 @@ export default function Gallery() {
         { id: "img7", url: "/Gallery/gf7.jpg", alt: "Gospel Fest" },
         { id: "img8", url: "/Gallery/gf8.jpg", alt: "Gospel Fest" },
         { id: "img9", url: "/Gallery/gf9.jpg", alt: "Gospel Fest" },
-        { id: "img10", url: "/Gallery/gf10.jpg", alt: "Gospel Fest"},
-        
-      ]
+        { id: "img10", url: "/Gallery/gf10.jpg", alt: "Gospel Fest" },
+      ],
     },
     {
       id: "5",
@@ -175,9 +174,8 @@ export default function Gallery() {
         { id: "img8", url: "/Gallery/ms8.jpg", alt: "Mental Health Summit" },
         { id: "img9", url: "/Gallery/ms9.jpg", alt: "Mental Health Summit" },
         { id: "img10", url: "/Gallery/ms10.jpg", alt: "Mental Health Summit" },
-        
-      ]
-    }
+      ],
+    },
   ];
 
   const categories: Category[] = [
@@ -186,7 +184,12 @@ export default function Gallery() {
       name: "Social Events",
       images: [
         { id: "1", url: "/Gallery/fc1.jpeg", alt: "Social 1" },
-        { id: "2", url: "/Gallery/fc1.jpeg", alt: "Social 2" },
+        { id: "2", url: "/Gallery/gf5.jpg", alt: "Social 2" },
+        { id: "3", url: "/Gallery/ms1.jpg", alt: "Social 3" },
+        { id: "4", url: "/Gallery/ms2.jpg", alt: "Social 3" },
+        { id: "5", url: "/Gallery/ms3.jpg", alt: "Social 3" },
+        { id: "6", url: "/Gallery/ms4.jpg", alt: "Social 3" },
+        { id: "7", url: "/Gallery/gf1.jpg", alt: "Social 3" },
       ],
     },
     {
@@ -195,6 +198,12 @@ export default function Gallery() {
       images: [
         { id: "3", url: "/Gallery/cm1.jpeg", alt: "Community 1" },
         { id: "4", url: "/Gallery/cm4.jpeg", alt: "Community 2" },
+        { id: "4", url: "/Gallery/gf2.jpg", alt: "Gospel Festival" },
+        { id: "4", url: "/Gallery/gf5.jpg", alt: "Gospel Festival" },
+        { id: "4", url: "/Gallery/gf4.jpg", alt: "Gospel Festival" },
+        { id: "4", url: "/Gallery/gf3.jpg", alt: "Gospel Festival" },
+        { id: "4", url: "/Gallery/gf6.jpg", alt: "Gospel Festival" },
+        { id: "4", url: "/Gallery/gf7.jpg", alt: "Gospel Festival" },
       ],
     },
   ];
@@ -239,21 +248,21 @@ export default function Gallery() {
                 </p>
 
                 {/* CTAs */}
-                <div className="flex gap-3 flex-wrap">
+                {/* <div className="flex gap-3 flex-wrap">
                   <button className="px-5 py-2.5 bg-sub text-main text-sm font-medium rounded-lg hover:bg-sub transition-colors">
                     Browse gallery →
                   </button>
                   <button className="px-5 py-2.5 text-white/60 text-sm border border-white/20 rounded-lg hover:bg-white/5 transition-colors">
                     View events
                   </button>
-                </div>
+                </div> */}
 
                 {/* Stats strip */}
                 <div className="flex gap-8 pt-6 border-t border-white/10">
                   {[
                     { value: "10+", label: "Events" },
-                    { value: "4,000", label: "Students" },
-                    { value: "8 yrs", label: "Running" },
+                    { value: "4,000+", label: "Students" },
+                    // { value: "8 yrs", label: "Running" },
                   ].map((stat) => (
                     <div key={stat.label}>
                       <p className="text-2xl font-medium text-white">
