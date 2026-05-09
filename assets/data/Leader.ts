@@ -976,7 +976,7 @@ const Team: LeaderProfile[] = [
     level: "400",
   },
   {
-    name: "Ajibola Ajaiyeoba",
+    name: "Ajaiyeoba Ajibola",
     position: "Web Design Lead",
     image: "",
     email: "ajaiyeobajibola@gmail.com",
