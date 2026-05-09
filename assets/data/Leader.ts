@@ -25,7 +25,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767248/public/Executives/President_f8wpbg.jpg",
     email: "",
-    phone: "+2348128442171",
+    phone: "08128442171",
     facebook: "https://facebook.com/",
     snapchat: "",
     x: "https://x.com/",
@@ -42,7 +42,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767263/public/Executives/Vice_President_xaeqki.jpg",
     email: "mylifestyle.arike.e@gmail.com",
-    phone: "+234 813 011 6201",
+    phone: "08130116201",
     facebook: "https://www.facebook.com/share/17tdbtAv6q/?mibextid=wwXIfr",
     snapchat: "",
     x: "https://x.com/_arike_e_?s=21",
@@ -60,7 +60,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767233/public/Executives/Gen_Sec_akiebv.jpg",
     email: "popoolajeremiah5@gmail.com",
-    phone: "+234 811 661 2672",
+    phone: "08116612672",
     facebook: "https://facebook.com/",
     snapchat: "",
     x: "https://x.com/Eleniyanoluwa",
@@ -77,7 +77,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767255/public/Executives/treasurer_vrumgj.jpg",
     email: "oduwalevictor@gmail.com",
-    phone: "+234 8071730938",
+    phone: "08071730938",
     facebook: "https://facebook.com/",
     snapchat: "",
     x: "https://x.com/Spa_kul",
@@ -94,7 +94,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767229/public/Executives/fin_sec_npv2p1.jpg",
     email: "elizabethayeku3@gmail.com",
-    phone: "+234 8071730938",
+    phone: "08071730938",
     facebook: "",
     snapchat: "",
     x: "",
@@ -111,7 +111,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767257/public/Executives/Soc_Dir_toxs7x.jpg",
     email: "ajayibernard1@gmail.com",
-    phone: "+234 8069919199",
+    phone: "08069919199",
     facebook: "https://facebook.com/Ayodeji Ajayi",
     snapchat: "",
     x: "https://x.com/Manager_b_",
@@ -128,7 +128,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767263/public/Executives/Welfare_Dir_d9hbam.jpg",
     email: "tumziekesh@gmail.com",
-    phone: "+234 0146613817",
+    phone: "07014661381",
     facebook: "https://facebook.com/",
     x: "https://x.com/",
     snapchat: "",
@@ -145,7 +145,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767233/public/Executives/Health_Dir_si5als.jpg",
     email: "oluwatosinpleasant33@gmail.com",
-    phone: "+234 8034780224",
+    phone: "08034780224",
     facebook: "https://facebook.com/",
     x: "https://x.com/",
     snapchat: "",
@@ -162,7 +162,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767309/public/Executives/Spo_Dir_shagrw.jpg",
     email: "johnitodo99@gmail.com",
-    phone: "+234 903 376 9105",
+    phone: "09033769105",
     facebook: "https://facebook.com/John itodo",
     snapchat: "",
     x: "https://x.com/Itozee14",
@@ -180,7 +180,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767251/public/Executives/Pro_clrb0e.jpg",
     email: "kamsyozoudeh@gmail.com",
-    phone: "+234 7044167155",
+    phone: "07044167155",
     facebook: "https://facebook.com/",
     x: "https://x.com/",
     snapchat: "",
@@ -198,7 +198,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767234/public/Executives/Auditor_nq0gav.jpg",
     email: "Chidoluegosife@gmail.com",
-    phone: "+234 8081814086",
+    phone: "08081814086",
     facebook: "https://facebook.com/",
     x: "https://x.com/",
     snapchat: "",
@@ -216,7 +216,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767226/public/Executives/Ass_GenSec_jhxlga.jpg",
     email: "heisfranklinmain@gmail.com",
-    phone: "+234 906 571 0685",
+    phone: "09065710685",
     facebook: "https://facebook.com/Franklin Eitokpah",
     snapchat: "",
     x: "https://x.com/marketwithfeco",
@@ -233,7 +233,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1778306784/a_sport_dir_wf635t.jpg",
     email: "oduyomibola@gmail.com",
-    phone: "+23490167772099",
+    phone: "09167772099",
     facebook: "https://facebook.com/",
     x: "https://x.com/",
     instagram: "https://instagram.com/",
@@ -246,13 +246,47 @@ const Leaders: LeaderProfile[] = [
 
   // Legislative
   {
+    name: "Anokwute Victor",
+    position: "Senator President",
+    tag: "Legislative",
+    image:
+      "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1778349359/senate_pres_h78bwy.jpg",
+    email: "@gmail.com",
+    phone: "09063596799",
+    facebook: "https://facebook.com/",
+    x: "https://x.com/",
+    snapchat: "",
+    instagram: "https://instagram.com/",
+    linkedin: "https://linkedin.com/in/",
+    faculty: "Law",
+    department: "Law ",
+    level: "300 ",
+  },
+  {
+    name: "Chizurum wogu",
+    position: "Dept Senate President",
+    tag: "Legislative",
+    image:
+      "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1778306784/engr_rep_fltjrq.jpg",
+    email: "Chizuwogu@icloud.com",
+    phone: "09079820572",
+    facebook: "",
+    snapchat: "",
+    x: "",
+    instagram: "https://instagram.com/E_V_I_D_E_N_C_E",
+    linkedin: "",
+    faculty: "Engineering ",
+    department: "Electrical/Electronics",
+    level: "400 ",
+  },
+  {
     name: "Oso Bamidele",
-    position: "Senator",
+    position: "Senate CLerk ",
     tag: "Legislative",
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767227/public/Executives/bmj_rep1_nu7hnf.jpg",
     email: "delediamond633@gmail.com",
-    phone: "+234 907 031 9559",
+    phone: "09070319559",
     facebook: "https://facebook.com/",
     x: "https://x.com/",
     snapchat: "",
@@ -262,7 +296,42 @@ const Leaders: LeaderProfile[] = [
     department: "Computer Science ",
     level: "300 ",
   },
+  {
+    name: "Oyekunle Ireoluwamiri ",
+    position: "Ass Senate Clerk",
+    tag: "Legislative",
 
+    image:
+      "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767306/public/Executives/ufh_rep2_a4ylv4.jpg",
+    email: "ayomikunempire@gmail.com",
+    phone: "'09162249297",
+    facebook: "",
+    snapchat: "",
+    x: "https://x.com/Livinwithjolaaa",
+    instagram: "https:instagram.com/livinwitjolaaa",
+    linkedin: "",
+    faculty: "Humantites ",
+    department: "English",
+    level: "300 ",
+  },
+  {
+    name: "Morakinyo Shalom",
+    position: "Chief Whip ",
+    tag: "Legislative",
+
+    image:
+      "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767265/public/Executives/jah_rep2_qupdsf.jpg",
+    email: "morakshalom@gmail.com",
+    phone: "09079741061",
+    facebook: "",
+    snapchat: "",
+    x: "https:x.com/Shalom_morak",
+    instagram: "https://instagram.com/shalommorak",
+    linkedin: "",
+    faculty: "Basic Medical Science ",
+    department: "Medical Laboratory Science",
+    level: "200 ",
+  },
   {
     name: "Ayenogun Titilope",
     position: "Senator",
@@ -271,7 +340,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767257/public/Executives/ufh_rep1_cg6tox.jpg",
     email: "titilopefaith050@gmail.com",
-    phone: "+234 816 521 1540",
+    phone: "08165211540",
     facebook: "",
     snapchat: "",
     x: "",
@@ -290,7 +359,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767227/public/Executives/dlw_rep2_qbmaoc.jpg",
     email: "feyi.adegbite2005@gmail.com",
-    phone: "+234 814 732 7479",
+    phone: "08147327479",
     facebook: "",
     snapchat: "",
     x: "",
@@ -308,7 +377,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767260/public/Executives/umh_rep1_tvqj2d.jpg",
     email: "ayoajiboyejeremiah06@gmail.com",
-    phone: "+234 704 440 9310",
+    phone: "07044409310",
     facebook: "",
     snapchat: "",
     x: "https://x.com/roshie_jerry",
@@ -326,7 +395,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767260/public/Executives/umh_rep1_tvqj2d.jpg",
     email: "irebiaeduvie@gmail.com",
-    phone: "+234 8086727593",
+    phone: "08086727593",
     facebook: "",
     snapchat: "",
     x: "https://x.com/roshie_jerry",
@@ -343,7 +412,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1778306788/premium_fm_gkinyv.jpg",
     email: "fakoyaokikiola2007@gmail.com",
-    phone: "+234 913 172 7885",
+    phone: "09131727885",
     facebook: "",
     snapchat: "",
     x: "https://x.com/roshie_jerry",
@@ -360,7 +429,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767232/public/Executives/fmj_rep2_mndvgd.jpg",
     email: "oduntancharity715@gmail.com",
-    phone: "+234 913 172 7885",
+    phone: "09131727885",
     facebook: "",
     snapchat: "",
     x: "https://x.com/roshie_jerry",
@@ -370,24 +439,7 @@ const Leaders: LeaderProfile[] = [
     department: "English",
     level: "200 ",
   },
-  {
-    name: "Oyekunle Ireoluwamiri ",
-    position: "DLW",
-    tag: "Legislative",
 
-    image:
-      "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767306/public/Executives/ufh_rep2_a4ylv4.jpg",
-    email: "ayomikunempire@gmail.com",
-    phone: "'09162249297",
-    facebook: "",
-    snapchat: "",
-    x: "https://x.com/Livinwithjolaaa",
-    instagram: "https:instagram.com/livinwitjolaaa",
-    linkedin: "",
-    faculty: "Humantites ",
-    department: "English",
-    level: "300 ",
-  },
   {
     name: "Sanni Samuel",
     position: "Senator",
@@ -395,7 +447,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767235/public/Executives/jah_rep1_ytjzxk.jpg",
     email: "samuelsanni906@gmail.com",
-    phone: "+234 707 314 5607",
+    phone: "07073145607",
     facebook: "",
     snapchat: "",
     x: "",
@@ -412,7 +464,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767228/public/Executives/dlw_rep3_ychctn.jpg",
     email: "akandeadeyemisi8@gmail.com",
-    phone: "+234 913 349 4196",
+    phone: "09133494196",
     facebook: "",
     snapchat: "",
     x: "https:x.com/Akande_Yemisi",
@@ -422,24 +474,7 @@ const Leaders: LeaderProfile[] = [
     department: "Physics with Electronics",
     level: "200 ",
   },
-  {
-    name: "Morakinyo Shalom",
-    position: "JAH ",
-    tag: "Legislative",
 
-    image:
-      "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767265/public/Executives/jah_rep2_qupdsf.jpg",
-    email: "morakshalom@gmail.com",
-    phone: "+234 907 974 1061",
-    facebook: "",
-    snapchat: "",
-    x: "https:x.com/Shalom_morak",
-    instagram: "https://instagram.com/shalommorak",
-    linkedin: "",
-    faculty: "Basic Medical Science ",
-    department: "Medical Laboratory Science",
-    level: "200 ",
-  },
   {
     name: "Adewale  Deborah",
     position: "Goshen Inn",
@@ -448,7 +483,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767232/public/Executives/goshen_rep_xkjdm2.jpg",
     email: "debbydoodoo2373@gmail.com",
-    phone: "+234 913 842 3984",
+    phone: " 09138423984",
     facebook: "",
     snapchat: "",
     x: "https:x.com/oloyebirin",
@@ -460,9 +495,10 @@ const Leaders: LeaderProfile[] = [
   },
   {
     name: "Babayeju Oluwatofunmi",
-    position: "IB HOstel",
+    position: "Ib Hostel",
     tag: "Legislative",
-    image: "/Executives/President.jpg",
+    image:
+      "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767234/public/Executives/ibh_rep2_sedkxc.jpg",
     email: "babayejuoluwatofunmi@gmail.com",
     phone: "08151079593",
     snapchat: "",
@@ -476,13 +512,13 @@ const Leaders: LeaderProfile[] = [
   },
   {
     name: "Oyedeji Paul",
-    position: "LAgos Hostel",
+    position: "Lagos Hostel",
     tag: "Legislative",
 
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767248/public/Executives/lag_rep1_mnt3vq.jpg",
     email: "oluwaferanmi286@gmail.com",
-    phone: "+234 815 107 9593",
+    phone: "08151079593",
     facebook: "",
     snapchat: "",
     x: "",
@@ -500,7 +536,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767229/public/Executives/dlw_rep4_flhqts.jpg",
     email: "oluwaferanmi286@gmail.com",
-    phone: "+234 815 107 9593",
+    phone: "0 8151079593",
     facebook: "",
     snapchat: "",
     x: "",
@@ -517,7 +553,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767226/public/Executives/dlw_rep1_lfayuz.jpg",
     email: "allievidence@gmail.com",
-    phone: "+234 807 888 0249",
+    phone: "08078880249",
     facebook: "",
     snapchat: "",
     x: "",
@@ -535,7 +571,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767258/public/Executives/ufh_rep3_icbrj7.jpg",
     email: "alamutoluwanimi762@gmail.com",
-    phone: "+234 814 034 4353",
+    phone: "08140344353",
     facebook: "",
     snapchat: "",
     x: "",
@@ -552,7 +588,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767224/public/Executives/bmj_rep2_obbko9.jpg",
     email: "imisioluwalawani9@gmail.com",
-    phone: "+234 816 373 0767",
+    phone: "08163730767",
     facebook: "",
     snapchat: "",
     x: "",
@@ -569,7 +605,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1778312648/IMG-20251203-WA0409_-_Racheal_rejoice_oletfj.jpg",
     email: "rachealrejoice1@gmail.com",
-    phone: "+234 907 951 0334",
+    phone: "09079510334",
     facebook: "",
     snapchat: "",
     x: "",
@@ -587,7 +623,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767261/public/Executives/ufh_rep4_r4jkik.jpg",
     email: "elizabethxoxo2006@gmail.com",
-    phone: "+234 707 314 5607",
+    phone: "07073145607",
     facebook: "",
     snapchat: "",
     x: "",
@@ -604,7 +640,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1778306789/envir_rep_f8in3c.jpg",
     email: "olaoluwanathaniel5@gmail.com",
-    phone: "+07041240723",
+    phone: "07041240723",
     facebook: "",
     snapchat: "",
     x: "",
@@ -622,7 +658,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767233/public/Executives/ibh_rep1_idluw2.jpg",
     email: "igioyetimilehin@gmail.com",
-    phone: "+234 708 350 6775",
+    phone: "07083506775",
     facebook: "",
     x: "",
     snapchat: "",
@@ -640,7 +676,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767235/public/Executives/jah_rep3_fwil7a.jpg",
     email: "ikechukwuvictor2019@gmail.com",
-    phone: "+234 708 394 2524",
+    phone: "07083942524",
     facebook: "",
     x: "",
     snapchat: "",
@@ -657,7 +693,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767226/public/Executives/beulah_rep_hlygdg.jpg",
     email: "iweajunwarenata@gmail.com",
-    phone: "+234 816 327 7868",
+    phone: "08163277868",
     facebook: "",
     x: "",
     snapchat: "",
@@ -674,7 +710,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767231/public/Executives/fmj_rep3_jfds9u.jpg",
     email: "favourolaleye100@gmail.com",
-    phone: "+234 07062713860",
+    phone: "07062713860",
     facebook: "",
     snapchat: "",
     x: "",
@@ -684,23 +720,7 @@ const Leaders: LeaderProfile[] = [
     department: "Accounting",
     level: "400 ",
   },
-  {
-    name: "Chizurum wogu",
-    position: "Engineering",
-    tag: "Legislative",
-    image:
-      "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1778306784/engr_rep_fltjrq.jpg",
-    email: "Chizuwogu@icloud.com",
-    phone: "+2349079820572",
-    facebook: "",
-    snapchat: "",
-    x: "",
-    instagram: "https://instagram.com/E_V_I_D_E_N_C_E",
-    linkedin: "",
-    faculty: "Engineering ",
-    department: "Electrical/Electronics",
-    level: "400 ",
-  },
+
   {
     name: "Lauren Nwakanma",
     position: "Communication and Media Studies ",
@@ -708,7 +728,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1778306799/masscom_rep_itbajn.jpg",
     email: "laurennwakanma@gmail.com",
-    phone: "9073873016",
+    phone: "09073873016",
     facebook: "",
     snapchat: "",
     x: "",
@@ -812,7 +832,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1777379399/attorney_oxwjhj.jpg",
     email: "",
-    phone: "+234 123 456 7890",
+    phone: "08183919583",
     facebook: "https://facebook.com/",
     x: "https://x.com/",
     instagram: "https://instagram.com/",
@@ -828,7 +848,7 @@ const Leaders: LeaderProfile[] = [
   //   tag: "Judiciary",
   //   image: "/Executives/President.jpg",
   //   email: "ayo.odunayo@student.acu.edu.ng",
-  //   phone: "+234 123 456 7890",
+  //   phone: "0 123 456 7890",
   //   facebook: "https://facebook.com/",
   //   x: "https://x.com/",
   //   instagram: "https://instagram.com/",
@@ -843,7 +863,7 @@ const Leaders: LeaderProfile[] = [
   //   tag: "Judiciary",
   //   image: "/Executives/President.jpg",
   //   email: "ayo.odunayo@student.acu.edu.ng",
-  //   phone: "+234 123 456 7890",
+  //   phone: "0 123 456 7890",
   //   facebook: "https://facebook.com/",
   //   x: "https://x.com/",
   //   instagram: "https://instagram.com/",
@@ -861,7 +881,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1777379364/fundraiser_klx2rn.jpg",
     email: "",
-    phone: "+234 123 456 7890",
+    phone: "09161258076",
     facebook: "https://facebook.com/",
     x: "https://x.com/",
     instagram: "https://instagram.com/",
@@ -878,7 +898,7 @@ const Leaders: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767300/public/Executives/media_lead_jbdywc.jpg",
     email: "adiodaniel808@gmail.com",
-    phone: "+234 9137989227",
+    phone: "09137989227",
     facebook: "https://facebook.com/",
     x: "https://x.com/",
     instagram: "https://instagram.com/",
@@ -894,7 +914,7 @@ const Leaders: LeaderProfile[] = [
   //   tag: "Appointee",
   //   image: "/Executives/dlw_rep_1.jpg",
   //   email: "ayo.odunayo@student.acu.edu.ng",
-  //   phone: "+234 123 456 7890",
+  //   phone: "0 123 456 7890",
   //   facebook: "https://facebook.com/",
   //   x: "https://x.com/",
   //   instagram: "https://instagram.com/",
@@ -912,7 +932,7 @@ const Team: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767300/public/Executives/media_lead_jbdywc.jpg",
     email: "adiodaniel808@gmail.com",
-    phone: "+234 9137989227",
+    phone: "09137989227",
     facebook: "https://facebook.com/",
     snapchat: "",
     x: "https://x.com/Adio_dan",
@@ -929,7 +949,7 @@ const Team: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767256/public/Executives/social_lead_ysupbs.jpg",
     email: "lilyylily768@gmail.com",
-    phone: "+234 901 837 0300",
+    phone: "09018370300",
     facebook: "",
     snapchat: "",
     x: "https://x.com/nmesoma.ly",
@@ -945,7 +965,7 @@ const Team: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767232/public/Executives/graphics_lead_ooe4f6.jpg",
     email: "olagunjusamson53@gmail.com",
-    phone: "+234 09036582085 ",
+    phone: "09036582085 ",
     facebook: "https://facebook.com/",
     x: "https://x.com/world_ofsam1",
     instagram: "https://instagram.com/",
@@ -960,7 +980,7 @@ const Team: LeaderProfile[] = [
     position: "Web Design Lead",
     image: "",
     email: "ajaiyeobajibola@gmail.com",
-    phone: "+234 7044 909 346",
+    phone: "07044909346",
     facebook: "https://facebook.com/",
     x: "https://x.com/lifeofajay",
     instagram: "https://instagram.com/",
@@ -976,7 +996,7 @@ const Team: LeaderProfile[] = [
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767230/public/Executives/editor_lead_epjlp8.jpg",
     email: "Gbotemiolabiyi@gmail.com",
-    phone: "+2349079727635 ",
+    phone: "09079727635 ",
     facebook: "https://facebook.com/",
     x: "https://x.com/gbotemiolabiyi",
     instagram: "https://www.instagram.com/_jomii",
