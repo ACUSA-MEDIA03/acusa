@@ -755,6 +755,23 @@ const Leaders: LeaderProfile[] = [
     department: "Microbiology/Biotechnology",
     level: "400 ",
   },
+    {
+    name: "OLalekan Tola ",
+    position: "Social Science",
+    tag: "Legislative",
+    image:
+      "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1778351276/social_Sci_mwcoee.jpg",
+    email: "tolakehinde04@gmail.com",
+    phone: "07054817590",
+    facebook: "",
+    snapchat: "",
+    x: "",
+    instagram: "https://instagram.com/E_V_I_D_E_N_C_E",
+    linkedin: "",
+    faculty: "Social Science",
+    department: "Political Science",
+    level: "300 ",
+  },
   {
     name: "Abigail Samuel ",
     position: "Education",
@@ -908,21 +925,6 @@ const Leaders: LeaderProfile[] = [
     level: "400 Level",
     snapchat: "",
   },
-  // {
-  //   name: "Ewaoluwanimi",
-  //   position: "DLW Hostel Rep",
-  //   tag: "Appointee",
-  //   image: "/Executives/dlw_rep_1.jpg",
-  //   email: "ayo.odunayo@student.acu.edu.ng",
-  //   phone: "0 123 456 7890",
-  //   facebook: "https://facebook.com/",
-  //   x: "https://x.com/",
-  //   instagram: "https://instagram.com/",
-  //   linkedin: "https://linkedin.com/in/",
-  //   faculty: "Faculty of Law",
-  //   department: "Law",
-  //   level: "500 Level",
-  // },
 ];
 
 const Team: LeaderProfile[] = [
@@ -1005,6 +1007,22 @@ const Team: LeaderProfile[] = [
     department: "History and International Studies",
     snapchat: "https://www.snapchat.com/add/itsme6653",
     level: "400",
+  },
+   {
+    name: "Fagbenle Temitope ",
+    position: "Content Creator Lead",
+    image:
+      "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1778350981/content_lead_zrdikl.jpg",
+    email: "@gmail.com",
+    phone: "09023065460 ",
+    facebook: "https://facebook.com/",
+    x: "https://x.com/",
+    instagram: "https://www.instagram.com/",
+    linkedin: "https://www.linkedin.com/in/",
+    faculty: "Faculty of Humanities ",
+    department: "",
+    snapchat: "https://www.snapchat.com/add/",
+    level: "",
   },
 ];
 
