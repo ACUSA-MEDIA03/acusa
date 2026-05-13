@@ -387,24 +387,24 @@ const Leaders: LeaderProfile[] = [
     department: "Civil Engineering",
     level: "200 ",
   },
-  {
-    name: "Eduvieoghene Irebia",
-    position: "Lagos Hostel",
-    tag: "Legislative",
+  // {
+  //   name: "Eduvieoghene Irebia",
+  //   position: "Lagos Hostel",
+  //   tag: "Legislative",
 
-    image:
-      "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767260/public/Executives/umh_rep1_tvqj2d.jpg",
-    email: "irebiaeduvie@gmail.com",
-    phone: "08086727593",
-    facebook: "",
-    snapchat: "",
-    x: "https://x.com/roshie_jerry",
-    instagram: "https:instagram.com/Yourmanjerry_",
-    linkedin: "",
-    faculty: "Engineering ",
-    department: "Computer  Engineering",
-    level: "400 ",
-  },
+  //   image:
+  //     "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767260/public/Executives/umh_rep1_tvqj2d.jpg",
+  //   email: "irebiaeduvie@gmail.com",
+  //   phone: "08086727593",
+  //   facebook: "",
+  //   snapchat: "",
+  //   x: "https://x.com/roshie_jerry",
+  //   instagram: "https:instagram.com/Yourmanjerry_",
+  //   linkedin: "",
+  //   faculty: "Engineering ",
+  //   department: "Computer  Engineering",
+  //   level: "400 ",
+  // },
   {
     name: "Fakoya Okikiola",
     position: "Education ",
@@ -925,6 +925,23 @@ const Leaders: LeaderProfile[] = [
     level: "400 Level",
     snapchat: "",
   },
+    {
+    name: " Aina Ibukunoluwa",
+    position: "Asst Media Head",
+    tag: "Appointee",
+    image:
+      "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1778660915/ass_medialead.jpg",
+    email: "",
+    phone: "09019165105",
+    facebook: "https://facebook.com/",
+    snapchat: "",
+    x: "https://x.com/Adio_dan",
+    instagram: "https://instagram.com/",
+    linkedin: "https://linkedin.com/in/",
+    faculty: "Agriculture ",
+    department: "Agricultural economics and extension",
+    level: "500 Level",
+  },
 ];
 
 const Team: LeaderProfile[] = [
@@ -944,7 +961,22 @@ const Team: LeaderProfile[] = [
     department: "Peace studies and conflict resolution  ",
     level: "400 Level",
   },
-
+  {
+    name: " Aina Ibukunoluwa",
+    position: "Asst Media Head",
+    image:
+      "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1778660915/ass_medialead.jpg",
+    email: "",
+    phone: "09019165105",
+    facebook: "https://facebook.com/",
+    snapchat: "",
+    x: "https://x.com/Adio_dan",
+    instagram: "https://instagram.com/",
+    linkedin: "https://linkedin.com/in/",
+    faculty: "Agriculture ",
+    department: "Agricultural economics and extension",
+    level: "500 Level",
+  },
   {
     name: "Uzoechi Goodness",
     position: "Social Handler Lead",
