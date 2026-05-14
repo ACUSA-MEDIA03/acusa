@@ -978,7 +978,7 @@ const Team: LeaderProfile[] = [
     level: "500 Level",
   },
   {
-    name: "Uzoechi Goodness",
+    name: "AAT Uzoechi Goodness",
     position: "Social Handler Lead",
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767256/public/Executives/social_lead_ysupbs.jpg",
