@@ -34,7 +34,7 @@ export default function Navbar() {
       {/* Nav Links */}
       <ul
         ref={navBarRef}
-        className={`font-grotesk transition-all duration-300 bg-white 
+        className={`font-grotesk transition-all duration-300  
         lg:flex lg:flex-row lg:relative lg:bg-transparent lg:w-fit lg:h-fit lg:space-x-12.5
         ${
           open
