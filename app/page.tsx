@@ -5,15 +5,14 @@ import Link from "next/link";
 import NavBar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Button from "@/components/Button";
-import  Card  from "@/components/card/Card";
+import Card from "@/components/card/Card";
 import EventCards from "@/components/card/EventCards";
 import ProfileCard from "@/components/card/ProfileCard";
 
-
-import Banner from "@/assets/Banner/banner.jpg"
-import Animation from "@/assets/Animation/animation.gif"
-import President from "@/assets/Executives/President.jpg"
-import Vice_President from "@/assets/Executives/Vice_President.jpeg"
+import Banner from "@/assets/Banner/banner.jpg";
+import Animation from "@/assets/Animation/animation.gif";
+import President from "@/assets/Executives/President.jpg";
+import Vice_President from "@/assets/Executives/Vice_President.jpeg";
 
 interface Event {
   id: string;
@@ -25,10 +24,9 @@ interface Event {
 
 async function getPublicEvents() {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/events`,
-      { cache: "no-store" }
-    );
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/events`, {
+      cache: "no-store",
+    });
     if (!res.ok) {
       throw new Error("Failed to fetch events");
     }
@@ -44,9 +42,10 @@ export default function Home() {
   return (
     <>
       <NavBar />
-        <div
+      <div
         className={`lg:h-screen grid bg-no-repeat bg-cover bg-center`}
-        style={{backgroundImage: `url(${Banner.src})`}}>
+        style={{ backgroundImage: `url(${Banner.src})` }}
+      >
         <div className="overlay flex justify-center flex-col lg:p-17.5 px-5 py-30 text-white">
           <div className="lg:space-y-6 space-y-4">
             <p className="font-grotesk lg:text-[30px] text-[15px] ">
@@ -57,16 +56,17 @@ export default function Home() {
             </p>
 
             {/* Button */}
-            <Link href={'/gallery'}>
+            <Link href={"/gallery"}>
               <div className="border lg:w-[15%] w-[40%] grid mt-2">
-              <Button text={`View More ...`} bgcolor='blue'/>
-            </div></Link>
+                <Button text={`View More ...`} bgcolor="blue" />
+              </div>
+            </Link>
             {/* Button */}
           </div>
         </div>
       </div>
 
-       {/* What About Us */}
+      {/* What About Us */}
       <div className="lg:p-10 p-5 grid lg:grid-cols-2 bg-main text-white gap-4">
         {/* left */}
         <div className="flex flex-col justify-center items-left lg:p-5 space-y-3 p-2.5">
@@ -81,8 +81,6 @@ export default function Home() {
             {`Welcome to the heart of student advocacy and empowerment at Ajayi Crowther University. The Student Assembly Body is a dedicated team of elected student leaders committed to amplifying the voices,interests, and concerns of the diverse student body.
 As elected representatives, we serve as a vital link students, faculty, and administration. We actively engage with our peers to understand their perspectives, gather feedback, and champion their interests across various facets of university life.`}
           </p>
-
-         
         </div>
         {/* left */}
 
@@ -99,7 +97,6 @@ As elected representatives, we serve as a vital link students, faculty, and admi
               number={2}
               title="Students Welfare"
               text="We foster a culture of service by organizing outreach programs, volunteering initiatives, and social impact projects that strengthen our connection with the wider community."
-
             />
           </div>
 
@@ -108,21 +105,18 @@ As elected representatives, we serve as a vital link students, faculty, and admi
               number={3}
               title="Student Activism"
               text="We encourage active student participation in leadership, dialogue, and advocacy by empowering students to stand up for their rights and contribute to positive institutional change."
-
             />
             <Card
               number={4}
               title="Community Service"
               text="One of the biggest benefits of community service is that it teaches responsibility and compassion. When we serve others, we begin to understand the challenges people face and learn how our actions can make a difference. It helps us develop empathy, kindness, teamwork, and leadership skills."
-
             />
           </div>
         </div>
         {/* right */}
       </div>
 
-      
-       {/* upcoming Events */}
+      {/* upcoming Events */}
       <div className="lg:grid-cols-5 lg:grid lg:p-10 gap-4 p-5">
         <div className="lg:col-span-3 flex-col flex justify-center items-left lg:p-5 space-y-7">
           <div className="">
@@ -137,15 +131,15 @@ As elected representatives, we serve as a vital link students, faculty, and admi
 
           {/* Event Card */}
           <div className="grid gap-7">
-            {Events.slice(0,2).map((event) => {
+            {Events.slice(0, 2).map((event) => {
               return (
                 <EventCards
-                 key={event.id}
-                id={event.id}
-                title={event.title}
-                location={event.location}
-                startDateTime={event.startDateTime}
-                description={event.description}
+                  key={event.id}
+                  id={event.id}
+                  title={event.title}
+                  location={event.location}
+                  startDateTime={event.startDateTime}
+                  description={event.description}
                 />
               );
             })}
@@ -154,12 +148,15 @@ As elected representatives, we serve as a vital link students, faculty, and admi
         </div>
 
         <div className="lg:col-span-2 lg:grid hidden place-content-center lg:mt-0 mt-5">
-          <Image  src={Animation} alt="Calendar Animation" className="lg:w-162.5"/>
+          <Image
+            src={Animation}
+            alt="Calendar Animation"
+            className="lg:w-162.5"
+          />
         </div>
       </div>
 
-      
-       {/* Executives */}
+      {/* Executives */}
       <div className="lg:p-10 p-2.5 flex lg:flex-row flex-col bg-[#dfa41cda] text-white gap-4">
         {/* left */}
         <div className="flex flex-col justify-center items-left lg:p-5 space-y-3 p-2.5 basis-[50%]">
@@ -175,13 +172,15 @@ As elected representatives, we serve as a vital link students, faculty, and admi
           </p>
 
           {/* Button */}
-          <div className="border lg:w-[30%] w-[50%] grid mt-2">
-            <Button text={`Meet The Team ...`} bgcolor='sub' />
-          </div>
+          <Link href="/about">
+            <div className="border lg:w-[30%] w-[50%] grid mt-2">
+              <Button text="Meet The Team ..." />
+            </div>
+          </Link>
           {/* Button */}
         </div>
         <div className="lg:grid lg:grid-cols-2 flex flex-col gap-5 p-3 basis-[60%]">
-             {/* Profile Card */}
+          {/* Profile Card */}
           <ProfileCard
             name="Bello Emmanuel"
             position="President"
@@ -190,13 +189,13 @@ As elected representatives, we serve as a vital link students, faculty, and admi
           <ProfileCard
             name="Faleye Gift "
             position="Vice President"
-            image={Vice_President.src} />
-
+            image={Vice_President.src}
+          />
         </div>
         {/* right */}
       </div>
-      
+
       <Footer />
-    </>  
-  )
+    </>
+  );
 }

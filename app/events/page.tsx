@@ -15,11 +15,9 @@ async function getPublicEvents() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/events`, {
     cache: "no-store", // Always get fresh data
   });
-
   if (!res.ok) {
     throw new Error("Failed to fetch events");
   }
-
   return res.json();
 }
 
@@ -29,7 +27,7 @@ export default async function EventsPage() {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-50">
+      <div className="min-h-screen bg-l-to-br from-slate-50 via-blue-50/30 to-slate-50">
         {/* Hero Section */}
         <div className="bg-gradient-to-r from-[#0C1657] to-[#0C1657]/90 text-white py-16 sm:py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
