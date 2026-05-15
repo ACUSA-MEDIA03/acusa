@@ -1,5 +1,4 @@
 'use client'
-
 import { ArrowRight } from 'lucide-react'
 
 type ButtonProps = {
@@ -15,7 +14,6 @@ export default function Button({
 }: ButtonProps) {
   const bgClass =
     bgcolor === 'blue' ? 'bg-sub' : 'bg-main'
-
   const content = (
     <>
       <span
@@ -31,7 +29,6 @@ export default function Button({
       </span>
     </>
   )
-
   if (as === 'link') {
     return (
       <div className="relative inline-flex items-center justify-center px-4 lg:py-5.75 py-4.75 overflow-hidden font-medium text-white transition duration-300 ease-out group cursor-pointer">
@@ -39,7 +36,6 @@ export default function Button({
       </div>
     )
   }
-
   return (
     <button className="relative inline-flex items-center justify-center px-4 lg:py-5.75 py-4.75 overflow-hidden font-medium text-white transition duration-300 ease-out group cursor-pointer">
       {content}

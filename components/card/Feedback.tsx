@@ -22,7 +22,7 @@ export default function FeedbackCard() {
     setSubmitted(true)
     
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/feedback`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/feedback`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
