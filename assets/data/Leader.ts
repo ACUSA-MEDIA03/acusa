@@ -811,7 +811,7 @@ const Leaders: LeaderProfile[] = [
     position: "Lagos Hostel ",
     tag: "Legislature",
     image:
-      "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767226/public/Executives/dlw_rep1_lfayuz.jpg",
+      "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1778835201/lagrep.jpg",
     email: "kujeirojoseph@gmail.com",
     phone: "09076388010",
     facebook: "",
@@ -859,36 +859,7 @@ const Leaders: LeaderProfile[] = [
     level: "500 ",
     snapchat: "",
   },
-  // {
-  //   name: "ACUSA CEC",
-  //   position: "Treasurer",
-  //   tag: "Judiciary",
-  //   image: "/Executives/President.jpg",
-  //   email: "ayo.odunayo@student.acu.edu.ng",
-  //   phone: "0 123 456 7890",
-  //   facebook: "https://facebook.com/",
-  //   x: "https://x.com/",
-  //   instagram: "https://instagram.com/",
-  //   linkedin: "https://linkedin.com/in/",
-  //   faculty: "Faculty of Science",
-  //   department: "Computer Science",
-  //   level: "400 Level",
-  // },
-  // {
-  //   name: "ACUSA CEC",
-  //   position: "Public Relations Officer",
-  //   tag: "Judiciary",
-  //   image: "/Executives/President.jpg",
-  //   email: "ayo.odunayo@student.acu.edu.ng",
-  //   phone: "0 123 456 7890",
-  //   facebook: "https://facebook.com/",
-  //   x: "https://x.com/",
-  //   instagram: "https://instagram.com/",
-  //   linkedin: "https://linkedin.com/in/",
-  //   faculty: "Faculty of Science",
-  //   department: "Computer Science",
-  //   level: "400 Level",
-  // },
+
 
   // Appointee
   {
@@ -1012,7 +983,7 @@ const Team: LeaderProfile[] = [
   {
     name: "Ajaiyeoba Ajibola",
     position: "Web Design Lead",
-    image: "",
+    image: "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1778835418/web_lead.jpg",
     email: "ajaiyeobajibola@gmail.com",
     phone: "07044909346",
     facebook: "https://facebook.com/",
