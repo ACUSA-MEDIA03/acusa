@@ -273,7 +273,7 @@ const Leaders: LeaderProfile[] = [
     facebook: "",
     snapchat: "",
     x: "",
-    instagram: "https://instagram.com/E_V_I_D_E_N_C_E",
+    instagram: "https://instagram.com/",
     linkedin: "",
     faculty: "Engineering ",
     department: "Electrical/Electronics",
@@ -644,7 +644,7 @@ const Leaders: LeaderProfile[] = [
     facebook: "",
     snapchat: "",
     x: "",
-    instagram: "https://instagram.com/E_V_I_D_E_N_C_E",
+    instagram: "",
     linkedin: "",
     faculty: "Environmental studies ",
     department: "Estate management ",
@@ -687,6 +687,23 @@ const Leaders: LeaderProfile[] = [
     level: "500 ",
   },
   {
+    name: "Kujeiro Joseph",
+    position: "Lagos Hostel",
+    tag: "Legislative",
+    image:
+      "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1778835201/lagrep.jpg",
+    email: "kujeirojoseph@gmail.com",
+    phone: "09076388010",
+    facebook: "",
+    x: "",
+    snapchat: "",
+    instagram: "",
+    linkedin: "",
+    faculty: "Management Sciences",
+    department: "Accounting",
+    level: "200 ",
+  },
+  {
     name: "Iweajunwa Renata",
     position: "Beulah Hostel",
     tag: "Legislative",
@@ -703,6 +720,7 @@ const Leaders: LeaderProfile[] = [
     department: "Mass communication",
     level: "200 ",
   },
+
   {
     name: "Olaleye Favour",
     position: "Premium Female Hostel",
@@ -732,7 +750,7 @@ const Leaders: LeaderProfile[] = [
     facebook: "",
     snapchat: "",
     x: "",
-    instagram: "https://instagram.com/E_V_I_D_E_N_C_E",
+    instagram: "https://instagram.com/",
     linkedin: "",
     faculty: "Communication and Media Studies  ",
     department: "Mass Communication ",
@@ -749,14 +767,14 @@ const Leaders: LeaderProfile[] = [
     facebook: "",
     snapchat: "",
     x: "",
-    instagram: "https://instagram.com/E_V_I_D_E_N_C_E",
+    instagram: "https://instagram.com/",
     linkedin: "",
     faculty: "Natural Science",
     department: "Microbiology/Biotechnology",
     level: "400 ",
   },
-    {
-    name: "OLalekan Tola ",
+  {
+    name: "Olalekan Tola ",
     position: "Social Science",
     tag: "Legislative",
     image:
@@ -766,7 +784,7 @@ const Leaders: LeaderProfile[] = [
     facebook: "",
     snapchat: "",
     x: "",
-    instagram: "https://instagram.com/E_V_I_D_E_N_C_E",
+    instagram: "https://instagram.com/",
     linkedin: "",
     faculty: "Social Science",
     department: "Political Science",
@@ -783,7 +801,7 @@ const Leaders: LeaderProfile[] = [
     facebook: "",
     snapchat: "",
     x: "",
-    instagram: "https://instagram.com/E_V_I_D_E_N_C_E",
+    instagram: "https://instagram.com/",
     linkedin: "",
     faculty: "Education ",
     department: "Educational Foundations ",
@@ -800,29 +818,13 @@ const Leaders: LeaderProfile[] = [
     facebook: "",
     snapchat: "",
     x: "",
-    instagram: "https://instagram.com/E_V_I_D_E_N_C_E",
+    instagram: "https://instagram.com/",
     linkedin: "",
     faculty: "Nursing science",
     department: "Nursing science ",
     level: "400 ",
   },
-  {
-    name: "Joseph Kujeiro ",
-    position: "Lagos Hostel ",
-    tag: "Legislature",
-    image:
-      "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1778835201/lagrep.jpg",
-    email: "kujeirojoseph@gmail.com",
-    phone: "09076388010",
-    facebook: "",
-    snapchat: "",
-    x: "",
-    instagram: "https://instagram.com/E_V_I_D_E_N_C_E",
-    linkedin: "",
-    faculty: "Management science ",
-    department: "Accounting  ",
-    level: "300 ",
-  },
+
   // {
   //   name: "Bright N. Onyemachi  ",
   //   position: "Management Sciences ",
@@ -833,8 +835,8 @@ const Leaders: LeaderProfile[] = [
   //   phone: "'07067235299",
   //   facebook: "",
   //   snapchat: "",
-  //   x: "",
-  //   instagram: "https://instagram.com/E_V_I_D_E_N_C_E",
+  //   x: ""
+  //   instagram: "https://instagram.com/",
   //   linkedin: "",
   //   faculty: "Management Sciences",
   //   department: "Business Adminminstration ",
@@ -859,7 +861,6 @@ const Leaders: LeaderProfile[] = [
     level: "500 ",
     snapchat: "",
   },
-
 
   // Appointee
   {
@@ -896,7 +897,7 @@ const Leaders: LeaderProfile[] = [
     level: "400 Level",
     snapchat: "",
   },
-    {
+  {
     name: " Aina Ibukunoluwa",
     position: "Asst Media Head",
     tag: "Appointee",
@@ -983,7 +984,8 @@ const Team: LeaderProfile[] = [
   {
     name: "Ajaiyeoba Ajibola",
     position: "Web Design Lead",
-    image: "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1778835418/web_lead.jpg",
+    image:
+      "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1778835418/web_lead.jpg",
     email: "ajaiyeobajibola@gmail.com",
     phone: "07044909346",
     facebook: "https://facebook.com/",
@@ -1011,7 +1013,7 @@ const Team: LeaderProfile[] = [
     snapchat: "https://www.snapchat.com/add/itsme6653",
     level: "400",
   },
-   {
+  {
     name: "Fagbenle Temitope ",
     position: "Content Creator Lead",
     image:
@@ -1027,7 +1029,7 @@ const Team: LeaderProfile[] = [
     snapchat: "https://www.snapchat.com/add/",
     level: "",
   },
-    {
+  {
     name: "Adepoju Peace",
     position: "Photography Lead",
     image:
@@ -1043,7 +1045,7 @@ const Team: LeaderProfile[] = [
     snapchat: "https://www.snapchat.cm/add/",
     level: "",
   },
-    {
+  {
     name: "Ajayi Bernard",
     position: "Videography Lead",
     image:
