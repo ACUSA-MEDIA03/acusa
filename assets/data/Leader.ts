@@ -1057,7 +1057,7 @@ const Team: LeaderProfile[] = [
     instagram: "https://www.instagram.com/",
     linkedin: "https://www.linkedin.com/in/",
     faculty: "Faculty of Humanities ",
-    department: "Peace and ConflictStudies ",
+    department: "Peace and Conflict Studies ",
     snapchat: "https://www.snapchat.com/add/",
     level: "",
   },
