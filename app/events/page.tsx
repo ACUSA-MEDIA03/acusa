@@ -22,8 +22,7 @@ async function getPublicEvents() {
 }
 
 export default async function EventsPage() {
-  const events: Event[] = await getPublicEvents();
-
+  const events: Event[] = await getPublicEvents()
   return (
     <>
       <Navbar />
