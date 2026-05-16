@@ -29,7 +29,7 @@ export default async function EventsPage() {
       <Navbar />
       <div className="min-h-screen bg-l-to-br from-slate-50 via-blue-50/30 to-slate-50">
         {/* Hero Section */}
-        <div className="bg-gradient-to-r from-[#0C1657] to-[#0C1657]/90 text-white py-16 sm:py-20">
+        <div className="bg-linear-to-r from-[#0C1657] to-[#0C1657]/90 text-white py-16 sm:py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl mb-6">
@@ -38,7 +38,7 @@ export default async function EventsPage() {
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 font-grotesk">
                 Upcoming Events
               </h1>
-              <p className="text-lg sm:text-xl text-blue-100 max-w-2xl mx-auto font-[family-name:var(--font-mont)]">
+              <p className="text-lg sm:text-xl text-blue-100 max-w-2xl mx-auto font-mont">
                 Join us for exciting events and connect with the ACUSA community
               </p>
               
@@ -74,13 +74,13 @@ export default async function EventsPage() {
           {events.length === 0 ? (
             <div className="text-center py-16 sm:py-20">
               <div className="bg-white rounded-3xl shadow-xl border border-slate-200 p-12 sm:p-16 max-w-2xl mx-auto">
-                <div className="w-20 h-20 bg-gradient-to-br from-[#0C1657] to-[#0C1657]/80 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-20 h-20 bg-linear-to-br from-[#0C1657] to-[#0C1657]/80 rounded-full flex items-center justify-center mx-auto mb-6">
                   <Calendar className="w-10 h-10 text-sub" />
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-bold text-[#0C1657] mb-4 font-[family-name:var(--font-grotesk)]">
+                <h2 className="text-2xl sm:text-3xl font-bold text-[#0C1657] mb-4 font-grotesk">
                   No Upcoming Events
                 </h2>
-                <p className="text-[#808080] text-lg mb-6 font-[family-name:var(--font-mont)]">
+                <p className="text-[#808080] text-lg mb-6 font-mont">
                   We don&apos;t have any events scheduled at the moment, but check
                   back soon! We&apos;re always planning exciting new events for our
                   community.
@@ -95,10 +95,10 @@ export default async function EventsPage() {
             <>
               {/* Section Header */}
               <div className="mb-8">
-                <h2 className="text-2xl sm:text-3xl font-bold text-[#0C1657] mb-2 font-[family-name:var(--font-grotesk)]">
+                <h2 className="text-2xl sm:text-3xl font-bold text-[#0C1657] mb-2 font-grotesk">
                   All Events
                 </h2>
-                <p className="text-[#808080] font-[family-name:var(--font-mont)]">
+                <p className="text-[#808080] font-mont">
                   Discover and join our upcoming events
                 </p>
               </div>
@@ -119,7 +119,7 @@ export default async function EventsPage() {
 
               {/* Bottom CTA */}
               <div className="mt-12 text-center">
-                <div className="inline-flex flex-col sm:flex-row items-center gap-4 bg-gradient-to-r from-[#0C1657] to-[#0C1657]/90 text-white px-8 py-6 rounded-2xl shadow-lg">
+                <div className="inline-flex flex-col sm:flex-row items-center gap-4 bg-linear-to-r from-[#0C1657] to-[#0C1657]/90 text-white px-8 py-6 rounded-2xl shadow-lg">
                   <Calendar className="w-8 h-8 text-sub" />
                   <div className="text-center sm:text-left">
                     <p className="font-semibold text-lg">

@@ -427,7 +427,7 @@ const Leaders: LeaderProfile[] = [
     position: "Premium Female Hostel",
     tag: "Legislative",
     image:
-      "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767232/public/Executives/fmj_rep2_mndvgd.jpg",
+      "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1778890225/fmj_rep2.jpg",
     email: "oduntancharity715@gmail.com",
     phone: "09131727885",
     facebook: "",
@@ -481,7 +481,7 @@ const Leaders: LeaderProfile[] = [
     tag: "Legislative",
 
     image:
-      "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767232/public/Executives/goshen_rep_xkjdm2.jpg",
+      "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1778890226/Goshen_rep.jpg",
     email: "debbydoodoo2373@gmail.com",
     phone: " 09138423984",
     facebook: "",
