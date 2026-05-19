@@ -813,7 +813,7 @@ const Leaders: LeaderProfile[] = [
     tag: "Legislative",
     image:
       "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1778311757/nursing_rep_zq46xt.jpg",
-    email: "oluwatosinoladipo85.com@gmail.com",
+    email: "oluwatosinoladipo85@gmail.com",
     phone: "09043474833",
     facebook: "",
     snapchat: "",
@@ -824,24 +824,23 @@ const Leaders: LeaderProfile[] = [
     department: "Nursing science ",
     level: "400 ",
   },
-
-  // {
-  //   name: "Bright N. Onyemachi  ",
-  //   position: "Management Sciences ",
-  //   tag: "Legislative",
-  //   image:
-  //     "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1769767226/public/Executives/dlw_rep1_lfayuz.jpg",
-  //   email: "tl3mbright@gmail.com",
-  //   phone: "'07067235299",
-  //   facebook: "",
-  //   snapchat: "",
-  //   x: ""
-  //   instagram: "https://instagram.com/",
-  //   linkedin: "",
-  //   faculty: "Management Sciences",
-  //   department: "Business Adminminstration ",
-  //   level: "300 ",
-  // },
+  {
+    name: "Olayinka Olajide ",
+    position: "Agriculture ",
+    tag: "Legislative",
+    image:
+      "https://res.cloudinary.com/dtwtfkm7z/image/upload/v1779210108/agric_rep_idczte.jpg",
+    email: "",
+    phone: "",
+    facebook: "",
+    snapchat: "",
+    x: "",
+    instagram: "https://instagram.com/",
+    linkedin: "",
+    faculty: "Agriculture",
+    department: "Nursing science ",
+    level: "500 ",
+  },
   // Judicaiary
 
   {
